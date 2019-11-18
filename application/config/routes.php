@@ -50,13 +50,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'claims_controller';
+<<<<<<< HEAD
 $route['404_override'] = 'claims_controller/error404';
+=======
+$route['404_override'] = '';
+>>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
 $route['translate_uri_dashes'] = FALSE;
 
 $route['login-submit'] = 'claims_controller/login';
 $route['dashboard'] = 'claims_controller/dashboard';
 $route['borrowers'] = 'claims_controller/borrowers';
+<<<<<<< HEAD
 $route['register-clients'] = 'claims_controller/register_client';
 $route['client-profile'] = 'claims_controller/client_profile';
 $route['apply-loan'] = 'claims_controller/apply_loan';
 $route['logout'] = 'claims_controller/logout';
+=======
+>>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566

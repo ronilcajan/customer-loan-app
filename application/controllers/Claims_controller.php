@@ -4,8 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Claims_controller extends CI_Controller {
 
 	public function index(){
+<<<<<<< HEAD
 		$this->load->view('templates/header');
 		$this->load->view('login');
+=======
+		$data['title'] = 'Login';
+		$this->load->view('templates/header');
+		$this->load->view('login',$data);
+>>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
 		$this->load->view('templates/footer');
 	}
 
@@ -23,7 +29,11 @@ class Claims_controller extends CI_Controller {
 			$login_data = array(
 				'username' => $data['username'],
 				'password' => $data['password'],
+<<<<<<< HEAD
 				'usertype' => $data['user_type'],
+=======
+				'usertype' => $data['usertype'],
+>>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
 				'logged_in' => TRUE
 			);
 
@@ -35,13 +45,18 @@ class Claims_controller extends CI_Controller {
 		}else{
 
 			$validator['success'] = false;
+<<<<<<< HEAD
 			$validator['messages'] = 'Incorrect username or password. Please try again.';	
+=======
+			$validator['messages'] = 'Incorrect username/password combination';	
+>>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
 		}
 
 		echo json_encode($validator);
 		
 	}
 
+<<<<<<< HEAD
 	public function error404(){
 
 		$this->load->view('templates/header');
@@ -60,6 +75,10 @@ class Claims_controller extends CI_Controller {
 
 		$this->check_auth('borrowers');
 
+=======
+	public function dashboard(){
+
+>>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
 		$this->load->view('templates/header');
 		$this->load->view('dashboard');
 		$this->load->view('templates/footer');
@@ -67,6 +86,7 @@ class Claims_controller extends CI_Controller {
 
 	public function borrowers(){
 
+<<<<<<< HEAD
 		$this->check_auth('borrowers');
 		
 		//new clients query
@@ -151,4 +171,10 @@ class Claims_controller extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect(base_url());
 	}
+=======
+		$this->load->view('templates/header');
+		$this->load->view('borrowers');
+		$this->load->view('templates/footer');
+	}
+>>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
 }

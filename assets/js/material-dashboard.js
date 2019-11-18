@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+=======
+/*!
+
+ =========================================================
+ * Material Dashboard - v2.1.1
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/material-dashboard
+ * Copyright 2018 Creative Tim (http://www.creative-tim.com)
+
+ * Designed by www.invisionapp.com Coded by www.creative-tim.com
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+ */
+>>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
 
 (function() {
   isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
@@ -12,6 +31,7 @@
   }
 })();
 
+<<<<<<< HEAD
 //files
 $('.form-file-simple .inputFileVisible').click(function() {
   $(this).siblings('.inputFileHidden').trigger('click');
@@ -47,6 +67,8 @@ $('.form-file-multiple .btn').on('focusout', function() {
   $(this).parent().siblings().trigger('focusout');
 });
 
+=======
+>>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
 
 var breakCards = true;
 

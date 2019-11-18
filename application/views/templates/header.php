@@ -15,5 +15,8 @@
         <link href="<? echo base_url();?>assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
         <link href="<? echo base_url();?>assets/css/mystyle.css" rel="stylesheet"/> 
         
+<<<<<<< HEAD
 
+=======
+>>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
     </head>

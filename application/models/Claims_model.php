@@ -14,7 +14,11 @@ class Claims_model extends CI_Model {
             'password' => sha1($data['password'])
         );
 
+<<<<<<< HEAD
         $query = $this->db->get_where('users', $userdata);
+=======
+        $query = $this->db->get_where('user_login', $userdata);
+>>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
         $result = $query->result_array();
 
         if(count($result) >0){
@@ -24,6 +28,7 @@ class Claims_model extends CI_Model {
         }
     }
 
+<<<<<<< HEAD
     public function insert_client($data){
         $client_data = array(
             'account_no' => $data['account_no'],
@@ -79,4 +84,6 @@ class Claims_model extends CI_Model {
 
 
     }
+=======
+>>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
 }
