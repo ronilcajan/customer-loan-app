@@ -1,0 +1,53 @@
+.login-div {
+	height: 100%;
+	width: 30%;
+	margin: 7% auto;
+}
+.remember-me {
+	margin-left: 5%;
+	color: rebeccapurple;
+}
+.forgot-password {
+	font-size: 12px;
+}
+@media screen and (max-width: 1150px) {
+	.remember-me {
+		margin-left: 7%;
+	}
+}
+@media screen and (max-width: 860px) {
+	.login-div {
+		height: 100%;
+		width: 40%;
+		margin: 15% auto;
+	}
+	.remember-me {
+		margin-left: 7%;
+	}
+}
+@media screen and (max-width: 630px) {
+	.login-div {
+		height: 100%;
+		width: 50%;
+		margin: 20% auto;
+	}
+}
+@media screen and (max-width: 455px) {
+	.login-div {
+		height: 100%;
+		width: 75%;
+		margin: 20% auto;
+	}
+}
+
+input[type="date"]:required:invalid::-webkit-datetime-edit {
+	color: transparent;
+}
+input[type="date"]:focus:invalid::-webkit-datetime-edit {
+	color: black !important;
+}
+
+div#new_client_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer {
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
