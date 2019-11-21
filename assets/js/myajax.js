@@ -16,11 +16,6 @@ function showNotification(from, align, message, icon, color) {
 	);
 }
 
-//======= image preview before upload =====
-var loadFile = function(event) {
-	var output = document.getElementById("output");
-	output.src = URL.createObjectURL(event.target.files[0]);
-};
 // ==== login ajax =====
 $(document).ready(function() {
 	$(".login-submit").click(function() {
@@ -69,6 +64,7 @@ $(document).ready(function() {
 		var purok_no = $(".purok_no").val();
 		var barangay = $(".barangay").val();
 		var city = $(".city").val();
+		var province = $(".province").val();
 		var postal_code = $(".postal_code").val();
 		var image = $(".inputFileVisible").val();
 
@@ -81,6 +77,7 @@ $(document).ready(function() {
 			purok_no &&
 			barangay &&
 			city &&
+			province &&
 			postal_code &&
 			image
 		) {
@@ -98,7 +95,7 @@ $(document).ready(function() {
 
 						setTimeout(function() {
 							window.location.reload(1);
-						}, 5000);
+						}, 3000);
 
 						showNotification(
 							"top",
@@ -121,8 +118,4 @@ $(document).ready(function() {
 			return false;
 		}
 	});
-});
-// ====== DataTable for new Clients ===========
-$(document).ready(function() {
-	$("#new_client_table").DataTable();
 });

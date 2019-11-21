@@ -46,8 +46,12 @@ input[type="date"]:required:invalid::-webkit-datetime-edit {
 input[type="date"]:focus:invalid::-webkit-datetime-edit {
 	color: black !important;
 }
-
-div#new_client_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer {
+/*  ===Remove DataTable scrollbar */
+div#new_client_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer,
+div#loan_clients_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer,
+div#approved_clients_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer,
+div#rejected_clients_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer,
+div#clients_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer {
 	overflow-y: hidden;
 	overflow-x: hidden;
 }

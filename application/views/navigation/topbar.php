@@ -5,9 +5,13 @@
 				<?
 				$site = $_SERVER['PATH_INFO'];
 				if( $site == '/dashboard'){?>
-				<a class="navbar-brand" href="#pablo">Dashboard</a>
+				<a class="navbar-brand font-weight-bold" href="#pablo">Dashboard</a>
 				<?}elseif($site == '/borrowers') {?>
-				<a class="navbar-brand" href="#pablo">Manage Clients</a>
+				<a class="navbar-brand font-weight-bold" href="#pablo">Manage Clients</a>
+				<?}elseif(strpos($site, '/client-profile')){?>
+				<a class="navbar-brand font-weight-bold" href="#pablo">Client Profile</a>
+				<?}elseif($site == '/loan'){?>
+				<a class="navbar-brand font-weight-bold" href="#pablo">Manage Loan</a>
 				<?}else{}?>
 			</div>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">

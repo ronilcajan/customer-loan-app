@@ -42,6 +42,11 @@
                   Rejected Clients
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#link6" role="tablist" aria-expanded="false">
+                  Clients
+                    </a>
+                </li>
               </ul>
 
               <div class="tab-content tab-space">
@@ -73,6 +78,18 @@
                             </div>
                           </div>
                           <div class="col-md-8">
+                            <div class="row">
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label class="bmd-label-floating">Account no.</label>
+                                  <? if($acc_no == 1000){?>
+                                    <input type="text" class="form-control account_no" name="account_no" value="<? echo $acc_no['account_no'] + 10000;?>" readonly>
+                                  <? }else{ ?>
+                                    <input type="text" class="form-control account_no" name="account_no" value="<? echo $acc_no['account_no'] + 1;?>" readonly>
+                                  <? } ?>
+                                  </div>
+                              </div>
+                            </div>
                             <div class="row">
                               <div class="col-md-4">
                                 <div class="form-group">
@@ -116,25 +133,31 @@
                               </div>
                             </div>
                             <div class="row">
-                              <div class="col-md-6">
+                              <div class="col-md-2">
                                 <div class="form-group">
                                   <label class="bmd-label-floating">Purok No.</label>
                                   <input type="number" class="form-control purok_no" name="purok_no" required>
                                 </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                 <div class="form-group">
                                   <label class="bmd-label-floating">Barangay</label>
                                   <input type="text" class="form-control barangay" name="barangay" required>
                                 </div>
                               </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-md-4">
+                              <div class="col-md-6">
                                 <div class="form-group">
                                   <label class="bmd-label-floating">City</label>
                                   <input type="text" class="form-control city" name="city" required>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label class="bmd-label-floating">Province</label>
+                                  <input type="text" class="form-control province" name="province" required>
                                 </div>
                               </div>
                               <div class="col-md-4">
@@ -143,7 +166,7 @@
                                   <input type="text" class="form-control" disabled value="Philippines">
                                 </div>
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-2">
                                 <div class="form-group">
                                   <label class="bmd-label-floating">Postal Code</label>
                                   <input type="number" class="form-control postal_code" name="postal_code" required>
@@ -195,8 +218,9 @@
                                 </div>
                               </div>
                             </div>
-                          
-                        <button class="btn btn-primary pull-right client-save">Save</button>
+                        
+                        <button class="btn btn-primary btn-round pull-right client-save">Create Profile</button>
+                        <button class="btn btn-default btn-round pull-right cancel-create">Cancel</button>
                         <div class="clearfix"></div>
                       </form>
                     </div>
@@ -225,14 +249,14 @@
                               ?>
                                 <tr>
                                   <td><? echo $newC['account_no'];?></td>
-                                  <td><a href="<? echo base_url().'client/'.$newC['account_no'];?>" ><? echo $newC['firstname'].' '.$newC['middlename'].' '.$newC['lastname'];?></a></td>
+                                  <td><a href="<? echo base_url().'borrowers/client-profile/'.$newC['account_no'];?>" ><? echo $newC['firstname'].' '.$newC['middlename'].' '.$newC['lastname'];?></a></td>
                                   <td><? echo $newC['purok_no'].', '.$newC['barangay'].', '.$newC['city'].', '.$newC['postal_code'];?></td>
                                   <td>
-                                    <span class="font-italic text-muted"><? echo $newC['status'];?></span>
+                                    <span class="font-italic text-muted "><? echo $newC['status'];?></span>
                                   </td>
                                   <td>
-                                    <a href="#" class="badge badge-primary p-2" title="View clients information">Review</a>
-                                    <a href="#" class="badge badge-success p-2" title="Approve this client application">Apply Loan</a>
+                                    <a href="#" class="badge badge-info p-2" title="View clients information">Review</a>
+                                    <a href="<? echo base_url().'apply-loan/'.$newC['account_no'];?>" class="badge badge-primary p-2" title="Approve this client application">Apply Loan</a>
                                     <a href="#" class="badge badge-danger p-2" title="Delete clients profile">Delete</a>
                                   </td>
                                 </tr>
@@ -251,18 +275,17 @@
                 <div class="tab-pane" id="link3" aria-expanded="false">
                   <div class="card">
                     <div class="card-header card-header-primary">
-                          <h4 class="card-title mt-0">Approved Clients Table</h4>
-                          <p class="card-category"> Below is the list of all approved clients</p>
+                          <h4 class="card-title mt-0">New Loan Applicant Table</h4>
+                          <p class="card-category"> Below is the list of all new loan applicants</p>
                         </div>
                         <div class="card-body">
-                          <div class="table-responsive">
-                            <table class="table table-hover">
+                          <div class="table-responsive ">
+                            <table class="table table-hover table-sm" id="loan_clients_table">
                               <thead class="text-primary">
                                 <th>Account No.</th>
                                 <th>Name</th>
-                                <th>Address</th>
-                                <th>Contact Info</th>
-                                <th>Loan Amount</th>
+                                <th class="text-right">Desired Loan Amount</th>
+                                <th class="text-center">Verified by</th>
                                 <th>Status</th>
                                 <th>Action</th>
                               </thead>
@@ -270,15 +293,15 @@
                                 <tr>
                                   <td>10003</td>
                                   <td>Dakota Bigas</td>
-                                  <td>Looc,Plaridel</td>
-                                  <td>0987654321</td>
                                   <td class="text-right">P 3,000</td>
+                                  <td class="text-center">Ron</td>
                                   <td>
-                                    <span class="font-italic text-muted">Processing..</span>
+                                    <span class="font-italic text-muted">Waiting for approval..</span>
                                   </td>
                                   <td>
-                                    <a href="#" class="badge badge-primary p-2" title="Release cash for this client?">Release</a>
-                                    <a href="#" class="badge badge-danger p-2" title="Reject this client?">Reject</a>
+                                    <a href="#" class="badge badge-info p-2" title="View applicant loan">Review</a>
+                                    <a href="#" class="badge badge-primary p-2" title="Approved applicant loan">Approve</a>
+                                    <a href="#" class="badge badge-danger p-2" title="Reject applicant loan">Reject</a>
                                   </td>
                                 </tr>
                               </tbody>
@@ -291,16 +314,17 @@
                 <div class="tab-pane" id="link4" aria-expanded="false">
                   <div class="card">
                     <div class="card-header card-header-primary">
-                      <h4 class="card-title mt-0">Rejected Clients Table</h4>
-                      <p class="card-category"> Below is the list of all rejected clients</p>
+                      <h4 class="card-title mt-0">Approved Clients Table</h4>
+                      <p class="card-category"> Below is the list of all approved clients</p>
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover" id="approved_clients_table">
                           <thead class="text-primary">
                             <th>Account No.</th>
                             <th>Name</th>
-                            <th>Reason</th>
+                            <th class="text-right">Loan Amount</th>
+                            <th class="text-center">Approve by</th>
                             <th>Status</th>
                             <th>Action</th>
                           </thead>
@@ -308,13 +332,15 @@
                             <tr>
                               <td>10003</td>
                               <td>Dakota Bigas</td>
-                              <td>Lack of documents</td>
+                              <td class="text-right">P 4,000</td>
+                              <td class="text-center">Ron</td>
                               <td>
-                                <span class="font-italic text-muted">Rejected..</span>
+                                <span class="font-italic text-muted">Waiting for cash release..</span>
                               </td>
                               <td>
-                                <a href="#" class="badge badge-primary p-2" title="Apply again?">Re-Apply</a>
-                                <a href="#" class="badge badge-danger p-2" title="Remove this clients?">Delete</a>
+                                <a href="#" class="badge badge-info p-2" title="Review client">Review</a>
+                                <a href="#" class="badge badge-primary p-2" title="Release cash">Release</a>
+                                <a href="#" class="badge badge-danger p-2" title="Reject client">Reject</a>
                               </td>
                             </tr>
                           </tbody>
@@ -327,19 +353,59 @@
                 <div class="tab-pane" id="link5" aria-expanded="false">
                   <div class="card">
                     <div class="card-header card-header-primary">
-                      <h4 class="card-title mt-0"> Clients Table</h4>
-                      <p class="card-category"> Below is the list of all active clients</p>
+                      <h4 class="card-title mt-0"> Rejected Clients Table</h4>
+                      <p class="card-category"> Below is the list of all rejected clients</p>
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover" id="rejected_clients_table">
+                          <thead class="text-primary">
+                            <th>Account No.</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Reason</th>
+                            <th>Rejected by</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>10001</td>
+                              <td>Dakota Rice</td>
+                              <td>Mobod,Oroqueita City</td>
+                              <td>Lack of documents</td>
+                              <td>Ron</td>
+                              <td>
+                                <span class="font-italic text-muted">Rejected..</span>
+                              </td>
+                              <td>
+                                <a href="#" class="badge badge-info p-2" title="View client information">Review</a>
+                                <a href="#" class="badge badge-primary p-2" title="Re-apply client loan">Re-Apply</a>
+                                <a href="#" class="badge badge-danger p-2" disabled>Delete</a>
+                              </td>
+                            </tr>                          
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="link6" aria-expanded="false">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                      <h4 class="card-title mt-0">Clients Table</h4>
+                      <p class="card-category"> Below is the list of all clients</p>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-hover" id="clients_table">
                           <thead class="text-primary">
                             <th>Account No.</th>
                             <th>Name</th>
                             <th>Address</th>
                             <th>Contact Info</th>
-                            <th >Amount Loan</th>
-                            <th>Status</th>
+                            <th class="text-right">Amount Loan</th>
+                            <th class="text-center">Status</th>
                             <th>Action</th>
                           </thead>
                           <tbody>
@@ -349,7 +415,7 @@
                               <td>Mobod,Oroqueita City</td>
                               <td>09123456789</td>
                               <td class="text-right">P 3,000</td>
-                              <td>
+                              <td class="text-center">
                                 <span class="font-italic text-muted">Active..</span>
                               </td>
                               <td>
@@ -362,55 +428,19 @@
                         </table>
                       </div>
                     </div>
+                
                   </div>
-                  <div class="card mt-5">
-                    <div class="card-header card-header-primary">
-                          <h4 class="card-title mt-0">Paid Clients Table</h4>
-                          <p class="card-category"> Below is the list of all paid clients</p>
-                        </div>
-                        <div class="card-body">
-                          <div class="table-responsive">
-                            <table class="table table-hover">
-                              <thead class="text-primary">
-                                <th>Account No.</th>
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>Contact Info</th>
-                                <th>Amount Loaned</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>10002</td>
-                                  <td>John Sena</td>
-                                  <td>Mobod,Oroqueita City</td>
-                                  <td>09123456789</td>
-                                  <td class="text-right">P 4,000</td>
-                                  <td>
-                                    <span class="font-italic text-muted">Paid..</span>
-                                  </td>
-                                  <td>
-                                    <a href="#" class="badge badge-primary p-2" title="View clients information">View</a>
-                                    <a href="#" class="badge badge-info p-2" title="Apply for loan">Re-loan</a>
-                                    <a href="#" class="badge badge-danger p-2" title="Remove this client">Delete</a>
-                                  </td>
-                                </tr>   
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-
+                </div>
               </div>
 
             </div>
+
           </div>
         </div>
       </div>
-
-
     </div>
+
+
   </div>
+</div>
   

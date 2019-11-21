@@ -4,14 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Claims_controller extends CI_Controller {
 
 	public function index(){
-<<<<<<< HEAD
 		$this->load->view('templates/header');
 		$this->load->view('login');
-=======
-		$data['title'] = 'Login';
-		$this->load->view('templates/header');
-		$this->load->view('login',$data);
->>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
 		$this->load->view('templates/footer');
 	}
 
@@ -29,11 +23,7 @@ class Claims_controller extends CI_Controller {
 			$login_data = array(
 				'username' => $data['username'],
 				'password' => $data['password'],
-<<<<<<< HEAD
 				'usertype' => $data['user_type'],
-=======
-				'usertype' => $data['usertype'],
->>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
 				'logged_in' => TRUE
 			);
 
@@ -45,18 +35,13 @@ class Claims_controller extends CI_Controller {
 		}else{
 
 			$validator['success'] = false;
-<<<<<<< HEAD
 			$validator['messages'] = 'Incorrect username or password. Please try again.';	
-=======
-			$validator['messages'] = 'Incorrect username/password combination';	
->>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
 		}
 
 		echo json_encode($validator);
 		
 	}
 
-<<<<<<< HEAD
 	public function error404(){
 
 		$this->load->view('templates/header');
@@ -75,10 +60,6 @@ class Claims_controller extends CI_Controller {
 
 		$this->check_auth('borrowers');
 
-=======
-	public function dashboard(){
-
->>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
 		$this->load->view('templates/header');
 		$this->load->view('dashboard');
 		$this->load->view('templates/footer');
@@ -86,15 +67,32 @@ class Claims_controller extends CI_Controller {
 
 	public function borrowers(){
 
-<<<<<<< HEAD
 		$this->check_auth('borrowers');
 		
 		//new clients query
 		$clients['new_clients'] = $this->claims_model->get_new_clients();
 
-		$this->load->view('templates/header');
-		$this->load->view('borrowers', $clients);
-		$this->load->view('templates/footer');
+		//get last account_no of client
+		$account_no = $this->claims_model->get_account_id();
+
+		if(is_null($account_no)){
+
+			$clients['acc_no'] = 1000;
+
+			$this->load->view('templates/header');
+			$this->load->view('borrowers', $clients);
+			$this->load->view('templates/footer');
+
+		}else{
+			$clients['acc_no'] = array('account_no' => $account_no['account_no']);
+			
+			$this->load->view('templates/header');
+			$this->load->view('borrowers', $clients);
+			$this->load->view('templates/footer');
+		}
+		
+
+		
 	}
 
 	public function register_client()
@@ -125,10 +123,9 @@ class Claims_controller extends CI_Controller {
 			$this->load->library('image_lib', $config);
 			$this->image_lib->resize();
 			
-			$account_no = $this->claims_model->get_account_id();
 
 			$client_data = array(
-				'account_no' => $account_no['account_no'] + 1,
+				'account_no' => $this->input->post('account_no'),
 				'client_img' => $data['file_name'],
 				'mname' => $this->input->post('mname'),
 				'gname' => $this->input->post('gname'),
@@ -139,6 +136,7 @@ class Claims_controller extends CI_Controller {
 				'purok_no' => $this->input->post('purok_no'),
 				'barangay' => $this->input->post('barangay'),
 				'city' => $this->input->post('city'),
+				'province' => $this->input->post('province'),
 				'postal_code' => $this->input->post('postal_code'),
 				'birthdate' => $this->input->post('birthdate'),
 				'gender' => $this->input->post('inlineRadioOptions'),
@@ -161,6 +159,51 @@ class Claims_controller extends CI_Controller {
 			echo json_encode($validator);
 	}
 
+	public function client_profile($account_no){
+
+		$result = $this->claims_model->profile($account_no);
+
+		if(!is_null($result)){
+			$client['profile'] = array(
+				'account_no' => $result['account_no'],
+				'prof-img' => $result['profile_img'],
+				'email' => $result['email'],
+				'number1' => $result['number1'],
+				'number2' => $result['number2'],
+				'birthdate' => $result['birthdate'],
+				'gender' => $result['gender'],
+				'info' => $result['added_info'],
+				'status' => $result['status'],
+				'purok' => $result['purok_no'],
+				'barangay' => $result['barangay'],
+				'city' => $result['city'],
+				'province' => $result['province'],
+				'country' => $result['country'],
+				'postal_code' => $result['postal_code'],
+				'fname' => $result['firstname'],
+				'mname' => $result['middlename'],
+				'lname' => $result['lastname']
+			);
+
+			$this->load->view('templates/header');
+			$this->load->view('profile', $client);
+			$this->load->view('templates/footer');
+
+		}else{
+			redirect(base_url('error404'));
+		}
+
+		
+	}
+
+	public function loan(){
+
+		$this->load->view('templates/header');
+		$this->load->view('loan');
+		$this->load->view('templates/footer');
+
+	}
+
 	function logout(){
 		$user_data = $this->session->all_userdata();
 			foreach ($user_data as $key => $value) {
@@ -171,10 +214,4 @@ class Claims_controller extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect(base_url());
 	}
-=======
-		$this->load->view('templates/header');
-		$this->load->view('borrowers');
-		$this->load->view('templates/footer');
-	}
->>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
 }

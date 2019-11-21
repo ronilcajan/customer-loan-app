@@ -14,11 +14,7 @@ class Claims_model extends CI_Model {
             'password' => sha1($data['password'])
         );
 
-<<<<<<< HEAD
         $query = $this->db->get_where('users', $userdata);
-=======
-        $query = $this->db->get_where('user_login', $userdata);
->>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
         $result = $query->result_array();
 
         if(count($result) >0){
@@ -28,7 +24,6 @@ class Claims_model extends CI_Model {
         }
     }
 
-<<<<<<< HEAD
     public function insert_client($data){
         $client_data = array(
             'account_no' => $data['account_no'],
@@ -51,6 +46,7 @@ class Claims_model extends CI_Model {
             'purok_no' => $data['purok_no'],
             'barangay' => $data['barangay'],
             'city' => $data['city'],
+            'province' => $data['province'],
             'postal_code' => $data['postal_code'],
         );
 
@@ -69,7 +65,11 @@ class Claims_model extends CI_Model {
         $this->db->order_by('account_no', 'DESC');
         $query = $this->db->get();
         $result = $query->result_array();
-        return $result[0];
+        if(count($result) >0){
+            return $result[0];
+        }else{
+            return null;
+        }
     }
 
     public function get_new_clients(){
@@ -81,9 +81,23 @@ class Claims_model extends CI_Model {
         $result = $this->db->get();
 
         return $result->result_array();
-
-
     }
-=======
->>>>>>> 01351c1b6fee4ecb4a86f84955f8d50f375c2566
+
+    public function profile($data){
+
+        $this->db->select('*');
+        $this->db->from('clients');
+        $this->db->join('names', 'clients.account_no = names.account_no');
+        $this->db->join('address', 'clients.account_no = address.account_no');
+        $this->db->where('clients.account_no', $data);
+
+        $query = $this->db->get();
+
+        $result = $query->result_array();
+        if(count($result) >0){
+            return $result[0];
+        }else{
+            return null;
+        }
+    }
 }
