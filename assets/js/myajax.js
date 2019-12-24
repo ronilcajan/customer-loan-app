@@ -1,5 +1,5 @@
 // ======= Notification ========
-function showNotification(from, align, message, icon, color) {
+function showNotification(message, icon, color) {
 	$.notify(
 		{
 			icon: icon,
@@ -9,8 +9,8 @@ function showNotification(from, align, message, icon, color) {
 			type: color,
 			timer: 4000,
 			placement: {
-				from: from,
-				align: align
+				from: "top",
+				align: "right"
 			}
 		}
 	);
@@ -21,6 +21,21 @@ $(document).ready(function() {
 	$(".login-submit").click(function() {
 		var username = $(".username").val();
 		var password = $(".password").val();
+		if(username.trim() == ""){
+			showNotification(
+							"Please enter username",
+							"error",
+							"warning"
+						);
+		}
+		if(password.trim() == ""){
+			showNotification(
+							"Please enter your password",
+							"error",
+							"warning"
+						);
+		}
+
 		if (username && password) {
 			$.ajax({
 				type: "POST",
@@ -36,8 +51,6 @@ $(document).ready(function() {
 						window.location = response.messages;
 					} else {
 						showNotification(
-							"top",
-							"center",
 							response.messages,
 							"error",
 							"danger"
@@ -98,16 +111,12 @@ $(document).ready(function() {
 						}, 3000);
 
 						showNotification(
-							"top",
-							"right",
 							response.messages,
 							"check_circle",
 							"success"
 						);
 					} else {
 						showNotification(
-							"top",
-							"right",
 							response.messages,
 							"info",
 							"warning"
