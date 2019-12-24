@@ -1,5 +1,13 @@
 <body style="background-color:#eeeeee;">
     <div class="contiainer-fluid ">
+        
+        <div id="loading-screen" style="display: none;">
+            <div class="loading-gif">
+                Loading Please Wait....<br>
+                <img src="<? echo base_url();?>assets/img/loading.gif" alt="Redirecting" />
+            </div>
+        </div>
+
         <div class="content login-div">
             <form action="" method="POST">
                 <div class="card">
