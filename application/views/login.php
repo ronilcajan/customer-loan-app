@@ -32,18 +32,9 @@
                                 </div>
                                 <input type="password" name="password" id="registerPassword" class="form-control password" required='true'>
                             </div>
-                        </div>
-                        <div class="form-check mt-3 remember-me ">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="">
-                                Remember me?
-                                <span class="form-check-sign">
-                                    <span class="check"></span>
-                                </span>
-                            </label>
-                        </div>
+                        </div>  
                             <button class="btn btn-primary ml-3 mt-4 d-block login-submit">Submit</button>
-                            <label class="ml-3 mt-3 forgot-password text-muted">Forgot password?<a href="<? echo base_url();?>forgot-password">Recover here</a></p>
+                            <label class="ml-3 mt-3 forgot-password text-muted font-italic">Forgot password?<a href="<? echo base_url();?>forgot-password">Recover here</a></p>
                         </div>
                         
                 </div>
