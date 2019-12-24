@@ -58,7 +58,7 @@
 			</li>
 			<li class="nav-item ">
 				<a class="nav-link" href="./icons.html">
-				<i class="material-icons">attach_money</i>
+				<i class="fa fa-percent"  style="font-size: 17px;"></i>
 				<p>Interest</p>
 				</a>
 			</li>

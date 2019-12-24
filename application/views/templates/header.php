@@ -10,7 +10,8 @@
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
         <link rel="stylesheet" type="text/css" href="<? echo base_url();?>assets/iconfont/material-icons.css" />
-        <link rel="stylesheet" href="<? echo base_url();?>assets/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="<? echo base_url();?>assets/fontawesome/css/fontawesome-all.min.css" />
+        <link rel="stylesheet" type="text/css" href="<? echo base_url();?>assets/css/roboto-font.css" />
         <!-- CSS Files -->
         <link href="<? echo base_url();?>assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
         <link href="<? echo base_url();?>assets/css/mystyle.css" rel="stylesheet"/> 

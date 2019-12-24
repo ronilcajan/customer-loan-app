@@ -72,7 +72,6 @@ $(document).ready(function() {
 		}
 	});
 });
-
 // =============== saving clients info ================
 $(document).ready(function() {
 	$(".client-save").click(function() {
@@ -143,3 +142,36 @@ $(document).ready(function() {
 		}
 	});
 });
+
+// =============== Delete Clients ================
+$(document).on('click', '.delete', function(){
+	var id = $(this).attr('id');
+
+	$.ajax({
+		url: "delete-clients",
+		method: 'POST',
+		data:{
+			id:id
+		},
+		beforeSend: function() {
+			$("#loading-screen").show();
+		},
+		success: function(data){
+			if(data!="False"){
+				showNotification(
+							data,
+							"check_circle",
+							"success"
+						);
+				$('.modal').modal('hide');
+				$("#loading-screen").hide();
+				setTimeout(function() {
+					window.location.reload(1);
+				}, 4000);
+			}else{
+				$("#loading-screen").hide();
+			}
+			
+		}
+	});
+}); 

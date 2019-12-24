@@ -16,9 +16,9 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="card">
-                                    <div class="card-header m-0 card-profile w-">
-                                        <div class="fileinput-new thumbnail img-raised text-center">
-                                            <img class="img-fluid" id="output" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img" />
+                                    <div class="card-header m-0 ml-auto mr-auto card-profile">
+                                        <div class="fileinput-new thumbnail img-raised" style="width: 300px;">
+                                            <img class="img-fluid" id="output" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img" height="300" />
                                         </div>
                                     </div>
                                     <div class="card-body">

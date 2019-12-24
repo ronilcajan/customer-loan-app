@@ -58,6 +58,12 @@ div#clients_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer {
 	overflow-y: hidden;
 	overflow-x: hidden;
 }
+/* ======= Position top right for dataTable Search ========== */
+.dataTables_filter {
+   width: 50%;
+   float: right;
+   text-align: right;
+}
 
 /*  ==========Loading Screen============  */
 #loading-screen{

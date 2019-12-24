@@ -77,7 +77,8 @@ class Claims_model extends CI_Model {
         $this->db->from('clients');
         $this->db->join('address', 'clients.account_no = address.account_no');
         $this->db->join('names', 'clients.account_no = names.account_no');
-        $this->db->order_by('clients.account_no', 'DESC');
+        $this->db->where('status', 'New');
+        $this->db->group_by('clients.account_no');
         $result = $this->db->get();
 
         return $result->result_array();
@@ -99,5 +100,11 @@ class Claims_model extends CI_Model {
         }else{
             return null;
         }
+    }
+
+    public function delete_clients($data){
+        $this->db->where('account_no', $data);
+        $this->db->delete('clients');
+        return $this->db->affected_rows();
     }
 }

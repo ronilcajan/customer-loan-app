@@ -147,7 +147,7 @@ class Claims_controller extends CI_Controller {
 
 			if($insert_data == true){
 				$validator['success'] = true;
-				$validator['messages'] = 'Client successfully added';
+				$validator['messages'] = 'Success. Page refreshing...';
 				$validator['link'] = 'client_profile';
 			}else{
 
@@ -202,6 +202,16 @@ class Claims_controller extends CI_Controller {
 		$this->load->view('loan');
 		$this->load->view('templates/footer');
 
+	}
+
+	public function delete_clients(){
+		$result = $this->claims_model->delete_clients($_POST['id']);
+		if($result){
+			echo "Success. Redirecting to add clients form...";
+		}else{
+			echo "False";
+		}
+		
 	}
 
 	function logout(){
