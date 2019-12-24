@@ -1,4 +1,11 @@
 <body class="">
+  
+  <div id="loading-screen" style="display: none;">
+            <div class="loading-gif">
+                Loading Please Wait....<br>
+                <img src="<? echo base_url();?>assets/img/loading.gif" alt="Redirecting" />
+            </div>
+        </div>
 	<div class="wrapper ">
 
 		<!-- Top NavBar -->
@@ -72,7 +79,7 @@
                                       <i class="material-icons">attach_file</i>
                                       </button>
                                   </span>
-                                  <input type="text" class="form-control inputFileVisible"  placeholder="Choose client picture.." required>
+                                  <input type="text" class="form-control inputFileVisible"  placeholder="Choose client picture..">
                                 </div>
                               </div>
                             </div>
@@ -83,9 +90,9 @@
                                 <div class="form-group">
                                   <label class="bmd-label-floating">Account no.</label>
                                   <? if($acc_no == 1000){?>
-                                    <input type="text" class="form-control account_no" name="account_no" value="<? echo $acc_no['account_no'] + 10000;?>" readonly>
+                                    <input type="number" class="form-control account_no" name="account_no" value="<? echo $acc_no['account_no'] + 10000;?>" readonly>
                                   <? }else{ ?>
-                                    <input type="text" class="form-control account_no" name="account_no" value="<? echo $acc_no['account_no'] + 1;?>" readonly>
+                                    <input type="number" class="form-control account_no" name="account_no" value="<? echo $acc_no['account_no'] + 1;?>" readonly>
                                   <? } ?>
                                   </div>
                               </div>
@@ -210,10 +217,10 @@
                         <div class="row mt-1">
                               <div class="col-md-12">
                                 <div class="form-group">
-                                  <label>Additional Info</label>
+                                  <label>Additional Info(Optional)</label>
                                   <div class="form-group">
                                     <label class="bmd-label-floating">Write something about the client.. </label>
-                                    <textarea class="form-control info" name="info" rows="5" required></textarea>
+                                    <textarea class="form-control info" name="info" rows="5"></textarea>
                                   </div>
                                 </div>
                               </div>
@@ -250,7 +257,7 @@
                                 <tr>
                                   <td><? echo $newC['account_no'];?></td>
                                   <td><a href="<? echo base_url().'borrowers/client-profile/'.$newC['account_no'];?>" ><? echo $newC['firstname'].' '.$newC['middlename'].' '.$newC['lastname'];?></a></td>
-                                  <td><? echo $newC['purok_no'].', '.$newC['barangay'].', '.$newC['city'].', '.$newC['postal_code'];?></td>
+                                  <td>Purok <? echo $newC['purok_no'].', '.$newC['barangay'].', '.$newC['city'].', '.$newC['postal_code'];?></td>
                                   <td>
                                     <span class="font-italic text-muted "><? echo $newC['status'];?></span>
                                   </td>

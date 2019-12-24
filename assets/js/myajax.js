@@ -110,20 +110,27 @@ $(document).ready(function() {
 				processData: false,
 				contentType: false,
 				cache: false,
+				beforeSend: function() {
+			        $("#loading-screen").show();
+			    },
 				success: function(response) {
 					if (response.success == true) {
 						$("#form-register")[0].reset();
-
-						setTimeout(function() {
-							window.location.reload(1);
-						}, 3000);
-
+						$("#loading-screen").hide();
+						
 						showNotification(
 							response.messages,
 							"check_circle",
 							"success"
 						);
+
+						setTimeout(function() {
+							window.location.reload(1);
+						}, 3000);
+
+						
 					} else {
+						$("#loading-screen").hide();
 						showNotification(
 							response.messages,
 							"info",
