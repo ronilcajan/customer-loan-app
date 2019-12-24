@@ -7,7 +7,7 @@ function showNotification(message, icon, color) {
 		},
 		{
 			type: color,
-			timer: 4000,
+			timer: 3000,
 			placement: {
 				from: "top",
 				align: "right"
@@ -21,6 +21,7 @@ $(document).ready(function() {
 	$(".login-submit").click(function() {
 		var username = $(".username").val();
 		var password = $(".password").val();
+
 		if(username.trim() == ""){
 			showNotification(
 							"Please enter username",
@@ -46,10 +47,16 @@ $(document).ready(function() {
 				},
 				dataType: "json",
 				cache: false,
+				beforeSend: function() {
+			        $("#loading-screen").show();
+			    },
 				success: function(response) {
 					if (response.success == true) {
+						
 						window.location = response.messages;
 					} else {
+						$("#loading-screen").hide();
+						
 						showNotification(
 							response.messages,
 							"error",
@@ -57,6 +64,7 @@ $(document).ready(function() {
 						);
 						$("i.usr-error-icon").addClass("text-danger");
 						$("i.psw-error-icon").addClass("text-danger");
+
 					}
 				}
 			});
