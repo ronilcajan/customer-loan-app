@@ -11,14 +11,14 @@
 		<? $this->load->view('navigation/topbar');?>
         <!-- End Navbar -->
 
-        <div class="content">
+        <div class="content" style="margin-top:20px">
             <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="card">
                                     <div class="card-header m-0 ml-auto mr-auto card-profile">
                                         <div class="fileinput-new thumbnail img-raised" style="width: 300px;">
-                                            <img class="img-fluid" id="output" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img" height="300" />
+                                            <img class="img-fluid" width="300" id="output" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img"  />
                                         </div>
                                     </div>
                                     <div class="card-body">

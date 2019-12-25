@@ -1,13 +1,9 @@
 .login-div {
 	height: 100%;
-	width: 30%;
+	width: 35%;
 	margin: 7% auto;
-	z-index: -1;
 }
-.remember-me {
-	margin-left: 5%;
-	color: rebeccapurple;
-}
+
 .forgot-password {
 	font-size: 12px;
 }
@@ -23,9 +19,6 @@
 		height: 100%;
 		width: 40%;
 		margin: 15% auto;
-	}
-	.remember-me {
-		margin-left: 7%;
 	}
 }
 @media screen and (max-width: 630px) {
@@ -43,6 +36,7 @@
 	}
 }
 
+/*========= Input textbox for Birthdate modified =============*/
 input[type="date"]:required:invalid::-webkit-datetime-edit {
 	color: transparent;
 }
@@ -77,6 +71,19 @@ div#clients_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer {
 	background-color: white;
 }
 .loading-gif{
-	margin-top: 20%;
+	margin-top: 5%;
 }
 
+.fa-toggle-off{
+	font-size: 25px;
+	cursor: pointer;
+	user-select: none;
+	color: grey;
+}
+
+.fa-toggle-on{
+  	font-size: 25px;
+  	cursor: pointer;
+  	user-select: none;
+  	color: purple;
+}

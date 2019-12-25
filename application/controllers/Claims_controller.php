@@ -160,7 +160,7 @@ class Claims_controller extends CI_Controller {
 	}
 
 	public function client_profile($account_no){
-
+		$this->check_auth('borrowers');
 		$result = $this->claims_model->profile($account_no);
 
 		if(!is_null($result)){
@@ -195,8 +195,30 @@ class Claims_controller extends CI_Controller {
 
 		
 	}
+	public function account_query(){
 
-	public function loan(){
+		$data = array('success' => false, 'name' => array(), 'address' => array(), 'email' => array(), 'sim1' => array(), 'sim2' => array());
+
+		$result = $this->claims_model->account_query($_POST['account_no']);
+
+		if($result){
+
+			$data['name'] = $result['firstname'].' '.$result['middlename'].' '.$result['lastname'];
+			$data['address'] = 'Purok '.$result['purok_no'].', '.$result['barangay'].', '.$result['city'].', '.$result['postal_code'];
+			$data['email'] = $result['email'];
+			$data['sim1'] = $result['number1'];
+			$data['sim2'] = $result['number2'];
+			$data['success'] = true;
+
+		}else{
+			$data['success'] = false;
+		}
+
+		echo json_encode($data);
+	}
+
+	public function loan($id=""){
+		$this->check_auth('borrowers');
 
 		$this->load->view('templates/header');
 		$this->load->view('loan');

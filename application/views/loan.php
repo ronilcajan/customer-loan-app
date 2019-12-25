@@ -11,7 +11,7 @@
         <? $this->load->view('navigation/topbar');?>
         <!-- End Navbar -->
 
-            <div class="content">
+            <div class="content" style="margin-top:50px">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
@@ -33,7 +33,7 @@
                                     <div class="card">
                                         <div class="card-header card-header-primary">
                                             <h4 class="card-title">Loan Application Form</h4>
-                                            <p class="card-category">Complete the loan form application</p>
+                                            <p class="card-category">Complete the loan application form</p>
                                         </div>
                                         <div class="card-body">
                                             <form id="loan-form" enctype="mutlipart/form-data" action="" method="POST">
@@ -58,7 +58,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-4">
-                                                                    <div class="input-group-prepend form-group">
+                                                                    <div class="input-group-prepend form-group label-floating acc_no">
                                                                         <label class="bmd-label-floating">Account No</label>
                                                                         <input type="text" class="form-control account_no" name="account_no" required>
                                                                         <span class="input-group-text">
@@ -68,8 +68,11 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label class="bmd-label-floating">Loan Amount</label>
+                                                                <div class="form-group input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                            P
+                                                                    </span>
+                                                                    <label class="bmd-label-floating pl-3">Loan Amount</label>
                                                                     <input type="number" class="form-control ammount text-right" name="amount" required>
                                                                 </div>
                                                             </div>
@@ -105,60 +108,53 @@
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Email</label>
-                                                                    <input type="email" class="form-control ammount address" name="address" readonly>
+                                                                    <input type="email" class="form-control ammount email" name="email" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">SIM1-Contact No</label>
-                                                                    <input type="text" class="form-control ammount address" name="address" readonly>
+                                                                    <input type="text" class="form-control ammount sim1" name="sim1" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">SIM2-Contact No</label>
-                                                                    <input type="text" class="form-control ammount address" name="address" readonly>
+                                                                    <input type="text" class="form-control ammount sim2" name="sim2" readonly>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-4">
-                                                                <div class="form-check">
-                                                                    <label class="form-check-label">
-                                                                        <input class="form-check-input" type="checkbox" value="">
-                                                                        Send Email Notication
-                                                                        <span class="form-check-sign">
-                                                                            <span class="check"></span>
-                                                                        </span>
+                                                                <span>
+                                                                    <i class="fas fa-toggle-off" onclick="email(this)"></i>
+                                                                    <label class="bmd-label-floating">
+                                                                        Send Email Notification
                                                                     </label>
-                                                                </div>
+                                                                </span>
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <div class="form-check">
-                                                                    <label class="form-check-label">
-                                                                        <input class="form-check-input" type="checkbox" value="">
+                                                                <span>
+                                                                    <i class="fas fa-toggle-off" onclick="sim1(this)"></i>
+                                                                    <label class="bmd-label-floating">
                                                                         Send SMS Notification
-                                                                        <span class="form-check-sign">
-                                                                            <span class="check"></span>
-                                                                        </span>
                                                                     </label>
-                                                                </div>
+                                                                </span>
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <div class="form-check">
-                                                                    <label class="form-check-label">
-                                                                        <input class="form-check-input" type="checkbox" value="">
-                                                                        Send SMS Notication
-                                                                        <span class="form-check-sign">
-                                                                            <span class="check"></span>
-                                                                        </span>
+                                                                <span>
+                                                                    <i class="fas fa-toggle-off" onclick="sim2(this)"></i>
+                                                                    <label class="bmd-label-floating">
+                                                                        Send SMS Notification
                                                                     </label>
-                                                                </div>
+                                                                </span>
                                                             </div>
                                                         </div>
+
                                                         <div class="mt-3 mb-2">
                                                             <h6 class="card-title">Business Info</h6>
                                                         </div>
+
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
@@ -167,7 +163,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+
+                                                        <div class="row bs">
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Purok No</label>
@@ -187,7 +184,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        <div class="row bs">
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Province</label>
@@ -203,15 +200,12 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-4">
-                                                                <div class="form-check">
-                                                                    <label class="form-check-label">
-                                                                        <input class="form-check-input" type="checkbox" value="">
-                                                                        Same as Current Address
-                                                                        <span class="form-check-sign">
-                                                                            <span class="check"></span>
-                                                                        </span>
+                                                                <span>
+                                                                    <i class="fas fa-toggle-off" onclick="business_add(this)"></i>
+                                                                    <label class="bmd-label-floating">
+                                                                        Same as the current address
                                                                     </label>
-                                                                </div>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -18,3 +18,20 @@ $(document).ready(function() {
 	$("#rejected_clients_table").DataTable();
 	$("#clients_table").DataTable();
 });
+// =========== Loan form toggle notification ==========
+function email(x) {
+  	x.classList.toggle("fa-toggle-on");
+  	x.classList.toggle("email");
+}
+function sim1(x) {
+  	x.classList.toggle("fa-toggle-on");
+  	x.classList.toggle("sim1");
+}
+function sim2(x) {
+  	x.classList.toggle("fa-toggle-on");
+  	x.classList.toggle("sim2");
+}
+function business_add(x) {
+  	x.classList.toggle("fa-toggle-on");
+  	x.classList.toggle("business");
+}

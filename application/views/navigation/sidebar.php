@@ -1,11 +1,11 @@
-<div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+<div class="sidebar" data-color="purple" data-background-color="white" >
 		<!--
 			Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
 			Tip 2: you can also add an image using data-image tag
 		-->
 	<div class="logo">
-		<a href="#" class="simple-text logo-normal">CLAIMS</a>
+		<a href="#" class="simple-text logo-normal">RFS Corporation</a>
 	</div>
 	<? $site = $_SERVER['PATH_INFO'];?>
 	<div class="sidebar-wrapper">

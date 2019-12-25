@@ -2,8 +2,9 @@
   
     <div id="loading-screen" style="display: none;">
             <div class="loading-gif">
-                Loading Please Wait....<br>
-                <img src="<? echo base_url();?>assets/img/loading.gif" alt="Redirecting" />
+                 <img class="mb-5" src="<? echo base_url();?>assets/img/CLAIMS.png" alt="logo" /><br>
+                <p>Loading Please Wait....</p>
+                <img class="" width="400" src="<? echo base_url();?>assets/img/loading.gif" alt="Redirecting" />
             </div>
         </div>
 	<div class="wrapper ">
@@ -18,7 +19,7 @@
 	<? $this->load->view('navigation/topbar');?>
     <!-- End Navbar -->
 
-        <div class="content">
+        <div class="content" style="margin-top:50px">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -251,14 +252,14 @@
                                                 <span class="font-italic text-muted "><? echo $newC['status'];?></span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-link btn-sm" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                    <i class="material-icons">visibility</i>
-                                                </button>|
-                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-link btn-sm" onclick="location.href='<? echo base_url().'apply-loan/'.$newC['account_no'];?>'">
-                                                    <i class="material-icons">monetization_on</i>
-                                                </button>|
-                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-link btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                    <i class="material-icons">close</i>
+                                                <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                    View
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'apply-loan/'.$newC['account_no'];?>'">
+                                                    Apply Loan
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                    Remove
                                                 </button>
                                             </td>
                                         </tr>
@@ -279,16 +280,16 @@
                                                                 <img class="border-round" src="<? echo base_url().'uploads/'.$newC['profile_img'];?>" width="150" height="150"/>
                                                             </div>
                                                             <div class="col-md-8">
-                                                                <p>Name: 
+                                                                <p><strong>Name:</strong> 
                                                                     <? echo $newC['firstname'].' '.$newC['middlename'].' '.$newC['lastname'];?>    
                                                                 </p>
-                                                                <p>Email: 
+                                                                <p><strong>Email:</strong> 
                                                                     <? echo $newC['email']; ?>
                                                                 </p>
-                                                                <p>Contact No:
+                                                                <p><strong>Contact No:</strong>
                                                                     <? echo $newC['number1']; ?>,<? echo $newC['number2']; ?>
                                                                 </p>
-                                                                <p>Info:
+                                                                <p><strong>Info:</strong>
                                                                     <? echo $newC['added_info']; ?>
                                                                 </p>
 
@@ -318,7 +319,7 @@
                                                         <small class="text-danger font-italic">Note:This process cannot be undoned!</small>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                                         <button type="button" class="btn btn-danger delete" id="<? echo $newC['account_no'];?>">Remove</button>
                                                     </div>
                                                 </div>
@@ -365,15 +366,15 @@
                                             <span class="font-italic text-muted">Waiting for approval..</span>
                                         </td>
                                         <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-link btn-sm" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                <i class="material-icons">visibility</i>
-                                            </button>|
-                                            <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-link btn-sm" onclick="location.href='<? echo base_url().'apply-loan/'.$newC['account_no'];?>'">
-                                                <i class="material-icons">monetization_on</i>
-                                            </button>|
-                                            <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-link btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                <i class="material-icons">close</i>
-                                            </button>
+                                            <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                    View
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'apply-loan/'.$newC['account_no'];?>'">
+                                                    Apply Loan
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                    Remove
+                                                </button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -410,14 +411,14 @@
                                                 <span class="font-italic text-muted">Waiting for cash release..</span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-link btn-sm" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                    <i class="material-icons">visibility</i>
-                                                </button>|
-                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-link btn-sm" onclick="location.href='<? echo base_url().'apply-loan/'.$newC['account_no'];?>'">
-                                                    <i class="material-icons">monetization_on</i>
-                                                </button>|
-                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-link btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                    <i class="material-icons">close</i>
+                                                <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                    View
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'apply-loan/'.$newC['account_no'];?>'">
+                                                    Apply Loan
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                    Remove
                                                 </button>
                                             </td>
                                         </tr>
@@ -455,14 +456,14 @@
                                                 <span class="font-italic text-muted">Rejected..</span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-link btn-sm" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                    <i class="material-icons">visibility</i>
-                                                </button>|
-                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-link btn-sm" onclick="location.href='<? echo base_url().'apply-loan/'.$newC['account_no'];?>'">
-                                                    <i class="material-icons">monetization_on</i>
-                                                </button>|
-                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-link btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                    <i class="material-icons">close</i>
+                                                <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                    View
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'apply-loan/'.$newC['account_no'];?>'">
+                                                    Apply Loan
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                    Remove
                                                 </button>
                                             </td>
                                         </tr>                          
@@ -500,14 +501,14 @@
                                                 <span class="font-italic text-muted">Active..</span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-link btn-sm" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                    <i class="material-icons">visibility</i>
-                                                </button>|
-                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-link btn-sm" onclick="location.href='<? echo base_url().'apply-loan/'.$newC['account_no'];?>'">
-                                                    <i class="material-icons">monetization_on</i>
-                                                </button>|
-                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-link btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                    <i class="material-icons">close</i>
+                                                <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                    View
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'apply-loan/'.$newC['account_no'];?>'">
+                                                    Apply Loan
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                    Remove
                                                 </button>
                                             </td>
                                         </tr>                          

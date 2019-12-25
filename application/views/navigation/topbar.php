@@ -10,7 +10,7 @@
 				<a class="navbar-brand font-weight-bold" href="#pablo">Manage Clients</a>
 				<?}elseif(strpos($site, '/client-profile')){?>
 				<a class="navbar-brand font-weight-bold" href="#pablo">Client Profile</a>
-				<?}elseif($site == '/loan'){?>
+				<?}elseif($site == '/loan' || strpos($site, '/apply-loan') == 0){?>
 				<a class="navbar-brand font-weight-bold" href="#pablo">Manage Loan</a>
 				<?}else{}?>
 			</div>
