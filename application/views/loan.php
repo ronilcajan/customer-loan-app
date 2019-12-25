@@ -60,7 +60,7 @@
                                                             <div class="col-md-4">
                                                                     <div class="input-group-prepend form-group label-floating acc_no">
                                                                         <label class="bmd-label-floating">Account No</label>
-                                                                        <input type="text" class="form-control account_no" name="account_no" required>
+                                                                        <input type="number" class="form-control account_no" name="account_no" required>
                                                                         <span class="input-group-text">
                                                                             <i class="fa fa-search"></i>
                                                                         </span>
@@ -126,28 +126,22 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-4">
-                                                                <span>
-                                                                    <i class="fas fa-toggle-off" onclick="email(this)"></i>
-                                                                    <label class="bmd-label-floating">
-                                                                        Send Email Notification
-                                                                    </label>
-                                                                </span>
+                                                                <div class="row ml-1">
+                                                                    <i class="fas fa-toggle-off mr-2" rel="tooltip" title="Send Email Notification" onclick="email(this)"></i>
+                                                                    Send Email Notification
+                                                                </div>
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <span>
-                                                                    <i class="fas fa-toggle-off" onclick="sim1(this)"></i>
-                                                                    <label class="bmd-label-floating">
-                                                                        Send SMS Notification
-                                                                    </label>
-                                                                </span>
+                                                                <div class="row ml-1">
+                                                                    <i class="fas fa-toggle-off mr-2" onclick="sim1(this)" rel="tooltip" title="Send SMS Notification"></i>
+                                                                    Send SIM1 Notification
+                                                                </div>
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <span>
-                                                                    <i class="fas fa-toggle-off" onclick="sim2(this)"></i>
-                                                                    <label class="bmd-label-floating">
-                                                                        Send SMS Notification
-                                                                    </label>
-                                                                </span>
+                                                                <div class="row ml-1">
+                                                                    <i class="fas fa-toggle-off mr-2" onclick="sim2(this)" rel="tooltip" title="Send SMS Notification"></i>
+                                                                    Send SIM2 Notification
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -200,12 +194,10 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-4">
-                                                                <span>
-                                                                    <i class="fas fa-toggle-off" onclick="business_add(this)"></i>
-                                                                    <label class="bmd-label-floating">
+                                                                <div class="row ml-1">
+                                                                    <i class="fas fa-toggle-off mr-2" rel="tooltip" title="Select current address" onclick="business_add(this)"></i>
                                                                         Same as the current address
-                                                                    </label>
-                                                                </span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

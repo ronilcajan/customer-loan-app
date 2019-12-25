@@ -204,7 +204,7 @@ class Claims_controller extends CI_Controller {
 		if($result){
 
 			$data['name'] = $result['firstname'].' '.$result['middlename'].' '.$result['lastname'];
-			$data['address'] = 'Purok '.$result['purok_no'].', '.$result['barangay'].', '.$result['city'].', '.$result['postal_code'];
+			$data['address'] = 'Purok '.$result['purok_no'].', '.$result['barangay'].', '.$result['city'].', '.$result['province'].', '.$result['postal_code'];
 			$data['email'] = $result['email'];
 			$data['sim1'] = $result['number1'];
 			$data['sim2'] = $result['number2'];
