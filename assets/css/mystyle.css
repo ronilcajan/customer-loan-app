@@ -79,6 +79,7 @@ div#clients_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer {
 	cursor: pointer;
 	user-select: none;
 	color: grey;
+	transition: 1s all;
 }
 
 .fa-toggle-on{
@@ -86,4 +87,5 @@ div#clients_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer {
   	cursor: pointer;
   	user-select: none;
   	color: purple;
+  	transition: 1s all;
 }

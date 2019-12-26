@@ -198,6 +198,9 @@ $(document).on('blur','.account_no',function(){
 				$('.sim2').val(response.sim2);
 				$(".acc_no").removeClass("has-danger");
 				$(".fa-search").removeClass("text-danager");
+
+
+				$('.fas').click();
 			}else{
 				showNotification(
 					'User not found!',
@@ -214,6 +217,7 @@ $(document).on('blur','.account_no',function(){
 				$(".fa-search").removeClass("text-success");
 				$(".acc_no").addClass("has-danger");
 				$(".fa-search").addClass("text-danger");
+				$('.fas').click();
 			}
 		}
 	});

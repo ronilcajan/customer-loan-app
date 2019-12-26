@@ -73,7 +73,7 @@
                                                                             P
                                                                     </span>
                                                                     <label class="bmd-label-floating pl-3">Loan Amount</label>
-                                                                    <input type="number" class="form-control ammount text-right" name="amount" required>
+                                                                    <input type="number" class="form-control text-right" name="amount" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
@@ -94,13 +94,13 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Full Name</label>
-                                                                    <input type="text" class="form-control ammount full_name" name="fullname" readonly>
+                                                                    <input type="text" class="form-control full_name" name="fullname" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Current Address</label>
-                                                                    <input type="text" class="form-control ammount address" name="address" readonly>
+                                                                    <input type="text" class="form-control address" name="address" readonly>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -108,19 +108,19 @@
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Email</label>
-                                                                    <input type="email" class="form-control ammount email" name="email" readonly>
+                                                                    <input type="email" class="form-control email" name="email" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">SIM1-Contact No</label>
-                                                                    <input type="text" class="form-control ammount sim1" name="sim1" readonly>
+                                                                    <input type="text" class="form-control sim1" name="sim1" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">SIM2-Contact No</label>
-                                                                    <input type="text" class="form-control ammount sim2" name="sim2" readonly>
+                                                                    <input type="text" class="form-control sim2" name="sim2" readonly>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -153,7 +153,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Business Name</label>
-                                                                    <input type="text" class="form-control ammount business" name="business" required>
+                                                                    <input type="text" class="form-control business" name="business" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -162,19 +162,19 @@
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Purok No</label>
-                                                                    <input type="number" class="form-control ammount purok_no" name="purok_no" required>
+                                                                    <input type="number" class="form-control purok_no" name="purok_no" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Barangay</label>
-                                                                    <input type="text" class="form-control ammount Barangay" name="Barangay" required>
+                                                                    <input type="text" class="form-control Barangay" name="Barangay" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">City</label>
-                                                                    <input type="text" class="form-control ammount City" name="City" required>
+                                                                    <input type="text" class="form-control City" name="City" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -182,20 +182,28 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Province</label>
-                                                                    <input type="text" class="form-control ammount Province" name="Province" required>
+                                                                    <input type="text" class="form-control Province" name="Province" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Postal Code</label>
-                                                                    <input type="number" class="form-control ammount postal" name="postal" required>
+                                                                    <input type="number" class="form-control postal" name="postal" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row c-add" style="display: none" >
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label class="bmd-label-floating">Current Address</label>
+                                                                    <input type="text" class="form-control address" name="address" readonly>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="row ml-1">
-                                                                    <i class="fas fa-toggle-off mr-2" rel="tooltip" title="Select current address" onclick="business_add(this)"></i>
+                                                                    <i class="fas fa-toggle-off mr-2" rel="tooltip" title="Select current address" onclick="business_add(this)" id="c-add"></i>
                                                                         Same as the current address
                                                                 </div>
                                                             </div>
