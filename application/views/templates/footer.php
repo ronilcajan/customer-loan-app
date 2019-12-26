@@ -29,7 +29,7 @@
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
     <script src="<? echo base_url();?>assets/js/plugins/nouislider.min.js"></script>
     <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+    <script src="<? echo base_url();?>assets/js/core/core.js"></script>
     <!-- Library for adding dinamically elements -->
     <script src="<? echo base_url();?>assets/js/plugins/arrive.min.js"></script>
     <!--  Google Maps Plugin    -->
@@ -39,7 +39,7 @@
     <!--  Notifications Plugin    -->
     <script src="<? echo base_url();?>assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="<? echo base_url();?>assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
+    <script src="<? echo base_url();?>assets/js/material-dashboard.js?v=2.1.1"></script>
 
     <!-- my ajax here -->
     <script src="<? echo base_url();?>assets/js/myajax.js"></script>

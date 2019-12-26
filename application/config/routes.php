@@ -13,5 +13,6 @@ $route['borrowers/client-profile/(:num)'] = 'claims_controller/client_profile/$1
 $route['loan'] = 'claims_controller/loan';
 $route['account-query'] = 'claims_controller/account_query';
 $route['apply-loan/(:num)'] = 'claims_controller/loan/$1';
+$route['create-loan'] = 'claims_controller/create_loan';
 $route['delete-clients'] = "claims_controller/delete_clients";
 $route['logout'] = 'claims_controller/logout';

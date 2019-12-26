@@ -217,12 +217,51 @@ class Claims_controller extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function create_loan(){
+
+		$validator = array('success' => false, 'messages' => array());
+
+		$data = $this->input->post();
+		$data1 = $this->input->post();
+
+		$insert_data = $this->claims_model->insert_loan($data);
+
+		if($insert_data){
+
+			$inser_co = $this->claims_model->insert_co_maker($data1);
+
+			$validator['success'] = true;
+			$validator['messages'] = 'Loan successfully registered. The page will reload.';
+		}else{
+			$validator['success'] = false;
+			$validator['messages'] = 'Sorry';
+		}
+
+		echo json_encode($validator);
+	}
+
 	public function loan($id=""){
 		$this->check_auth('borrowers');
 
-		$this->load->view('templates/header');
-		$this->load->view('loan');
-		$this->load->view('templates/footer');
+		//get last loan_no of client
+		$loan_no = $this->claims_model->get_loan_no();
+
+		
+
+		if(is_null($loan_no)){
+			$loan['loan_no'] = 100;
+
+			$this->load->view('templates/header');
+			$this->load->view('loan', $loan);
+			$this->load->view('templates/footer');
+		}else{
+			$loan['loan_no'] = substr($loan_no['loan_no'], 1);
+
+			$this->load->view('templates/header');
+			$this->load->view('loan', $loan);
+			$this->load->view('templates/footer');
+		}
+		
 
 	}
 

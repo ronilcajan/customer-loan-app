@@ -72,6 +72,62 @@ class Claims_model extends CI_Model {
         }
     }
 
+    public function get_loan_no(){
+        $this->db->select('loan_no');
+        $this->db->from('loan');
+        $this->db->order_by('loan_no', 'DESC');
+
+        $query = $this->db->get();
+        $result = $query->result_array();
+        if(count($result) >0){
+            return $result[0];
+        }else{
+            return null;
+        }
+    }
+
+    public function insert_loan($data){
+
+        $loan = array(
+            'loan_no' => $data['loan_no'],
+            'account_no' => $data['account_no'],
+            'area' => $data['area'],
+            'loan_amount' => $data['loan_amount'],
+            'interest' => 20,
+            'collector_id' => $data['collector'],
+        );
+
+        $business = array(
+            'business_name' => $data['b_name'],
+            'business_address' => $data['b_address'],
+            'loan_no' => $data['loan_no'] 
+        );
+
+        $this->db->insert('loan', $loan);
+        $this->db->insert('debtor_business', $business);
+
+        return $this->db->affected_rows();
+            
+    }
+
+    public function insert_co_maker($data){
+
+        for($i=0; $i<count($data['co_maker_name']); $i++){
+
+            $co_data = array(
+                'name' => $data['co_maker_name'][$i],
+                'cedula_no' => $data['cedula'][$i],
+                'date_issued' => $data['date_issued'][$i],
+                'address_issued' => $data['adrs_issued'][$i],
+                'loan_no' => $data['loan_no']
+            );
+
+            $this->db->insert('co_maker', $co_data);
+        }
+
+        return $this->db->affected_rows();
+    }
+
     public function get_new_clients(){
         $this->db->select('*');
         $this->db->from('clients');
