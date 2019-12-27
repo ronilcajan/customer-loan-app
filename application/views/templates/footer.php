@@ -42,6 +42,7 @@
     <script src="<? echo base_url();?>assets/js/material-dashboard.js?v=2.1.1"></script>
 
     <!-- my ajax here -->
+    <script type="text/javascript"> var BASE_URL = "<?php echo base_url();?>"</script>
     <script src="<? echo base_url();?>assets/js/myajax.js"></script>
     <!-- my js script with jquery here -->
     <script src="<? echo base_url();?>assets/js/myscript.js"></script>
