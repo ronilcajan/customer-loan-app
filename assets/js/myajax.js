@@ -40,7 +40,7 @@ $(document).ready(function() {
 		if (username && password) {
 			$.ajax({
 				type: "POST",
-				url: "login-submit",
+				url: BASE_URL+"login-submit",
 				data: {
 					username: username,
 					password: password
@@ -103,7 +103,7 @@ $(document).ready(function() {
 		) {
 			$.ajax({
 				type: "POST",
-				url: "register-clients",
+				url: BASE_URL+"register-clients",
 				dataType: "json",
 				data: formdata,
 				processData: false,
@@ -139,6 +139,12 @@ $(document).ready(function() {
 				}
 			});
 			return false;
+		}else{
+			showNotification(
+				'Please fill the form completely',
+				"info",
+				"warning"
+			);
 		}
 	});
 });
@@ -147,8 +153,11 @@ $(document).ready(function() {
 $(document).on('click', '.delete', function(){
 	var id = $(this).attr('id');
 
+	var $button = $('#remove-button'+id);
+	var table = $("#new_client_table").DataTable();
+	
 	$.ajax({
-		url: "delete-clients",
+		url: BASE_URL+"delete-clients",
 		method: 'POST',
 		data:{
 			id:id
@@ -158,16 +167,16 @@ $(document).on('click', '.delete', function(){
 		},
 		success: function(data){
 			if(data!="False"){
-				showNotification(
-							data,
-							"check_circle",
-							"success"
-						);
+
 				$('.modal').modal('hide');
 				$("#loading-screen").hide();
-				setTimeout(function() {
-					window.location.reload(1);
-				}, 4000);
+
+				table.row( $button.parents('tr')).remove().draw();
+				showNotification(
+					data,
+					"check_circle",
+					"success"
+				);
 			}else{
 				$("#loading-screen").hide();
 			}
@@ -181,8 +190,8 @@ $(document).on('blur','.accnt_no',function(){
 	var account_no = $('.accnt_no').val();
 
 	$.ajax({
-		url: 'account-query',
-		method: 'POST',
+		url: BASE_URL+'account-query',
+		type: 'POST',
 		dataType: "json",
 		data: {
 			account_no : account_no
@@ -225,14 +234,15 @@ $(document).on('blur','.accnt_no',function(){
 
 // =========== Insert Loan Details ================
 
-$(document).on('click', '.create-loan', function(e){
-	e.preventDefault();
+$(document).on('click', '.create-loan', function(){
 
 	var loan_no = $('.loan_no').val();
 	var area = $('.area').val();
 	var account_no = $('.accnt_no').val();
 	var loan_amount = $('.amount').val();
 	var collector = $('.collector').val();
+	var full_name = $('.full_name').val();
+	var email = $('.email').val();
 
 	var email_toggle = $('#email-toggle').hasClass('email');
 	var sim1_toggle = $('#sim1-toggle').hasClass('sim1');
@@ -277,54 +287,89 @@ $(document).on('click', '.create-loan', function(e){
 		adrs_issued.push($(this).val());
 	});
 
+	if(account_no && loan_amount && co_maker_name && cedula && date_issued && adrs_issued && b_address && b_name){
+		$.ajax({
+			type: "POST",
+			url: "create-loan",
+			dataType: "json",
+			data: {
+				loan_no : loan_no,
+				area : area,
+				account_no : account_no,
+				loan_amount : loan_amount,
+				collector : collector,
+				full_name : full_name,
+				email : email,
+				email_notif : email_notif,
+				sim1_notif : sim1_notif,
+				sim2_notif : sim2_notif,
+				b_name : b_name,
+				b_address : b_address, 
+				co_maker_name : co_maker_name,
+				cedula : cedula,
+				date_issued : date_issued,
+				adrs_issued : adrs_issued
+			},
+			cache: false,
+			beforeSend: function() {
+				$("#loading-screen").show();
+			},
+			
+			success: function(response){
+				if(response.success == true){
+					showNotification(
+						response.messages,
+						"check_circle",
+						"success"
+					);
+					setTimeout(function() {
+								window.location.reload(1);
+					}, 3000);
+					$("#loading-screen").hide();
+				}else{
 
-	$.ajax({
-		type: "POST",
-		url: "create-loan",
-		dataType: "json",
-		data: {
-			loan_no : loan_no,
-			area : area,
-			account_no : account_no,
-			loan_amount : loan_amount,
-			collector : collector,
-			email_notif : email_notif,
-			sim1_notif : sim1_notif,
-			sim2_notif : sim2_notif,
-			b_name : b_name,
-			b_address : b_address, 
-			co_maker_name : co_maker_name,
-			cedula : cedula,
-			date_issued : date_issued,
-			adrs_issued : adrs_issued
-		},
-		cache: false,
-		beforeSend: function() {
-			$("#loading-screen").show();
-		},
-		success: function(response){
-			if(response.success == true){
-				showNotification(
-					response.messages,
-					"check_circle",
-					"success"
-				);
-				setTimeout(function() {
-							window.location.reload(1);
-				}, 3000);
-				$("#loading-screen").hide();
-			}else{
-
-				$("#loading-screen").hide();
-				
-				showNotification(
-					response.messages,
-					"info",
-					"danger"
-				);
-			}
-		}
+					$("#loading-screen").hide();
 		
-	});
+					showNotification(
+						response.messages,
+						"info",
+						"danger"
+					);
+				}
+			},
+			error: function (jqXHR, exception) {
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404]';
+		        } else if (jqXHR.status == 500) {
+		            msg = 'Internal Server Error [500].';
+		        } else if (exception === 'parsererror') {
+		            msg = 'Requested JSON parse failed.';
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"danger"
+					);
+		    },
+		
+		});
+	}else{
+		showNotification(
+			'Please fill the form completely',
+			"info",
+			"warning"
+		);
+	}
+
+	
 	return false;
 });

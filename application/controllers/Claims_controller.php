@@ -147,7 +147,7 @@ class Claims_controller extends CI_Controller {
 
 			if($insert_data == true){
 				$validator['success'] = true;
-				$validator['messages'] = 'Success. Page refreshing...';
+				$validator['messages'] = 'Successfully added, the page will reload';
 				$validator['link'] = 'client_profile';
 			}else{
 
@@ -217,10 +217,54 @@ class Claims_controller extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function send_email($name,$user_email,$amount,$b_name){
+
+		//setup SMTP configurion
+		$config = Array(    
+		  'protocol' => 'smtp',
+		  'smtp_host' => 'ssl://smtp.googlemail.com',
+		  'smtp_port' => 465,
+		  'smtp_user' => 'rf.servicing.corporation@gmail.com',
+		  'smtp_pass' => 'CORPOration101',
+		  'mailtype' => 'html',
+		  'charset' => 'utf-8',
+		  'TLS/SSL' => 'required'
+		);
+
+		$this->load->library('email', $config); // Load email template
+
+		$this->email->initialize($config);
+		$this->email->set_mailtype("html");
+		$this->email->set_newline("\r\n");
+		$this->email->from('rf.servicing.corporation@gmail.com', 'RFS Corporation');
+
+		$data = array(
+			'name' => $name,
+			'amount' => $amount,
+			'business' => $b_name
+        );
+
+		$subject = "RFSC Loan application";
+
+		$this->email->to($user_email); // replace it with receiver email id
+		$this->email->subject($subject); // replace it with email subject
+		$message = $this->load->view('templates/email_template.php',$data,TRUE);
+
+		$this->email->message($message); 
+		$this->email->send();
+
+	}
+
+
 	public function create_loan(){
 
-		$validator = array('success' => false, 'messages' => array());
-
+		$validator = array('success' => false, 'messages' => array(), 'email' => array());
+		$full_name = $this->input->post('full_name');
+		$email = $this->input->post('email');
+		$amount = $this->input->post('loan_amount');
+		$business = $this->input->post('b_name');
+		$email_notif = $this->input->post('email_notif');
+		
 		$data = $this->input->post();
 		$data1 = $this->input->post();
 
@@ -229,6 +273,14 @@ class Claims_controller extends CI_Controller {
 		if($insert_data){
 
 			$inser_co = $this->claims_model->insert_co_maker($data1);
+
+			if($email_notif == 'true'){
+
+				$this->send_email($full_name,$email,$amount,$business);
+
+				$validator['email'] = 'Email okay';
+
+			}
 
 			$validator['success'] = true;
 			$validator['messages'] = 'Loan successfully registered. The page will reload.';
@@ -246,9 +298,12 @@ class Claims_controller extends CI_Controller {
 		//get last loan_no of client
 		$loan_no = $this->claims_model->get_loan_no();
 
-		
+		if($id!=''){
+			$loan['account_no'] = $id;
+		}
 
 		if(is_null($loan_no)){
+
 			$loan['loan_no'] = 100;
 
 			$this->load->view('templates/header');
@@ -268,7 +323,7 @@ class Claims_controller extends CI_Controller {
 	public function delete_clients(){
 		$result = $this->claims_model->delete_clients($_POST['id']);
 		if($result){
-			echo "Success. Redirecting to add clients form...";
+			echo "Client data has been deleted";
 		}else{
 			echo "False";
 		}

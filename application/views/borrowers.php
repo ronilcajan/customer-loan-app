@@ -255,10 +255,10 @@
                                                 <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
                                                     View
                                                 </button>
-                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'apply-loan/'.$newC['account_no'];?>'">
+                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'loan/apply-loan/'.$newC['account_no'];?>'">
                                                     Apply Loan
                                                 </button>
-                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" id="remove-button<? echo $newC['account_no'];?>" data-toggle="modal">
                                                     Remove
                                                 </button>
                                             </td>

@@ -11,7 +11,7 @@
 	<div class="sidebar-wrapper">
 		<ul class="nav">
 
-		<? if($site == '/dashboard'){?>
+			<? if($site == '/dashboard'){?>
 
 			<li class="nav-item active  ">
 
@@ -40,7 +40,7 @@
 				<p>Clients</p>
 				</a>
 			</li>
-			<? if($site == '/loan'){?>
+			<? if($site == '/loan' || strpos($site, 'loan/apply-loan')){?>
 				<li class="nav-item active">
 			<? }else{ ?>
 				<li class="nav-item">
@@ -50,7 +50,7 @@
 				<p>Loan</p>
 				</a>
 			</li>
-			<li class="nav-item ">
+			<li class="nav-item">
 				<a class="nav-link" href="./typography.html">
 				<i class="material-icons">payment</i>
 				<p>Payments</p>

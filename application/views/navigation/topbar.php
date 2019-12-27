@@ -10,9 +10,11 @@
 				<a class="navbar-brand font-weight-bold" href="#pablo">Manage Clients</a>
 				<?}elseif(strpos($site, '/client-profile')){?>
 				<a class="navbar-brand font-weight-bold" href="#pablo">Client Profile</a>
-				<?}elseif($site == '/loan' || strpos($site, '/apply-loan') == 0){?>
+				<?}elseif($site == '/loan' || strpos($site, 'loan/apply-loan')){?>
 				<a class="navbar-brand font-weight-bold" href="#pablo">Manage Loan</a>
-				<?}else{}?>
+				<?}else{
+					
+				}?>
 			</div>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="sr-only">Toggle navigation</span>

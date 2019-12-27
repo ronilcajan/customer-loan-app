@@ -75,7 +75,11 @@
                                                             <div class="col-md-4">
                                                                     <div class="input-group-prepend form-group label-floating acc_no">
                                                                         <label class="bmd-label-floating">Enter account no</label>
-                                                                        <input type="number" class="form-control accnt_no" name="account_no" required>
+                                                                        <? if(isset($account_no)){?>
+                                                                        <input type="number" class="form-control accnt_no" name="account_no" value="<? echo $account_no?>" autofocus required>
+                                                                        <?}else{?>
+                                                                        <input type="number" class="form-control accnt_no" autofocus name="account_no" required>
+                                                                        <?}?>
                                                                         <span class="input-group-text">
                                                                             <i class="fa fa-search"></i>
                                                                         </span>

@@ -27,7 +27,7 @@
                                 </span>
                                 </div>
                                 
-                                <input type="text" name="username" class="form-control username" required='true'>
+                                <input type="text" autofocus name="username" class="form-control username" required='true'>
                             </div> 
                         </div>
 
