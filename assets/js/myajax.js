@@ -117,6 +117,13 @@ $(document).ready(function() {
 						$("#form-register")[0].reset();
 						$("#loading-screen").hide();
 						
+						if(response.email){
+							showNotification(
+								response.email,
+								"info",
+								"warning"
+							);
+						}
 						showNotification(
 							response.messages,
 							"check_circle",
@@ -184,11 +191,30 @@ $(document).on('click', '.delete', function(){
 		}
 	});
 }); 
+// ========= Function to check internet connection =============
+function checkconnection(){
+	var status = navigator.onLine;
+
+	if(status){
+		showNotification(
+			"Connected to internet. You can send email notification.",
+			"info",
+			"success"
+		);
+	}else{
+		showNotification(
+			"No internet connection. You can't send email notification.",
+			"info",
+			"warning"
+		);
+	}
+}
+
 
 // ============== Account no.query ==============
 $(document).on('blur','.accnt_no',function(){
 	var account_no = $('.accnt_no').val();
-
+	
 	$.ajax({
 		url: BASE_URL+'account-query',
 		type: 'POST',
@@ -207,9 +233,12 @@ $(document).on('blur','.accnt_no',function(){
 				$('.sim2').val(response.sim2);
 				$(".acc_no").removeClass("has-danger");
 				$(".fa-search").removeClass("text-danager");
-
+				
 
 				$('.fas').click();
+				
+				checkconnection();
+
 			}else{
 				showNotification(
 					'User not found!',
@@ -248,18 +277,18 @@ $(document).on('click', '.create-loan', function(){
 	var sim1_toggle = $('#sim1-toggle').hasClass('sim1');
 	var sim2_toggle = $('#sim2-toggle').hasClass('sim2');
 
-	var email_notif = false;
-	var sim1_notif = false;
-	var sim2_notif = false;
+	var email_notif = '';
+	var sim1_notif = '';
+	var sim2_notif = '';
 
 	if(email_toggle){
-		var email_notif = true;
+		var email_notif = 'yes';
 	}
 	if(sim1_toggle){
-		var sim1_notif = true;
+		var sim1_notif = 'yes';
 	}
 	if(sim2_toggle){
-		var sim2_notif = true;
+		var sim2_notif = 'yes';
 	}
 
 	var b_name = $('.b_name').val();
@@ -290,7 +319,7 @@ $(document).on('click', '.create-loan', function(){
 	if(account_no && loan_amount && co_maker_name && cedula && date_issued && adrs_issued && b_address && b_name){
 		$.ajax({
 			type: "POST",
-			url: "create-loan",
+			url: BASE_URL+"create-loan",
 			dataType: "json",
 			data: {
 				loan_no : loan_no,
@@ -314,7 +343,7 @@ $(document).on('click', '.create-loan', function(){
 			beforeSend: function() {
 				$("#loading-screen").show();
 			},
-			
+
 			success: function(response){
 				if(response.success == true){
 					showNotification(
@@ -323,7 +352,7 @@ $(document).on('click', '.create-loan', function(){
 						"success"
 					);
 					setTimeout(function() {
-								window.location.reload(1);
+							window.location.reload(1);
 					}, 3000);
 					$("#loading-screen").hide();
 				}else{
@@ -338,6 +367,8 @@ $(document).on('click', '.create-loan', function(){
 				}
 			},
 			error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
 		        var msg = '';
 		        if (jqXHR.status === 0) {
 		            msg = 'Not connect.\n Verify Network.';
@@ -346,7 +377,15 @@ $(document).on('click', '.create-loan', function(){
 		        } else if (jqXHR.status == 500) {
 		            msg = 'Internal Server Error [500].';
 		        } else if (exception === 'parsererror') {
-		            msg = 'Requested JSON parse failed.';
+
+		           msg = 'Email notification did not send.';
+
+		           showNotification(
+						'Loan application successfully added. Page will reload...',
+						"check_circle",
+						"success"
+					);
+
 		        } else if (exception === 'timeout') {
 		            msg = 'Time out error.';
 		        } else if (exception === 'abort') {
@@ -357,9 +396,15 @@ $(document).on('click', '.create-loan', function(){
 		        showNotification(
 						msg,
 						"info",
-						"danger"
-					);
+						"warning"
+				);
+				
+
+		  //       setTimeout(function() {
+				// 	window.location.reload(1);
+				// }, 5000);
 		    },
+
 		
 		});
 	}else{

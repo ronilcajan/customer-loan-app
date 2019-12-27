@@ -217,8 +217,8 @@ class Claims_controller extends CI_Controller {
 		echo json_encode($data);
 	}
 
-	public function send_email($name,$user_email,$amount,$b_name){
-
+	function send_email($name,$user_email,$amount,$b_name){
+			
 		//setup SMTP configurion
 		$config = Array(    
 		  'protocol' => 'smtp',
@@ -274,11 +274,13 @@ class Claims_controller extends CI_Controller {
 
 			$inser_co = $this->claims_model->insert_co_maker($data1);
 
-			if($email_notif == 'true'){
+			if($email_notif == 'yes'){
 
-				$this->send_email($full_name,$email,$amount,$business);
-
-				$validator['email'] = 'Email okay';
+				$sendmail = $this->send_email($full_name,$email,$amount,$business);
+				
+				if(!$sendmail){
+					$validator['email'] = $sendmail;
+				}
 
 			}
 
