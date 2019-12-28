@@ -40,7 +40,7 @@
                                         <p class="card-description mt-3 font-weight-bold"><? echo $profile['info'];?></p>
                                         <div class="text-center">
                                             <a href="#" class="btn btn-primary btn-round">Update Profile</a>
-                                            <a href="<? echo base_url().'apply-loan/'.$profile['account_no'];?>" class="btn btn-primary btn-round">Apply Loan</a>
+                                            <a href="<? echo base_url().'loan/apply-loan/'.$profile['account_no'];?>" class="btn btn-primary btn-round">Apply Loan</a>
                                         </div>
                                     </div>
                                 </div>
@@ -58,15 +58,34 @@
                                     <div class="card-body">
                                         <h6 class="card-title font-weight-bold text-primary">Business Name</h6>
                                         <div class="row">
-                                            <div class="col-md-12"><p class="card-description font-weight-bold">Sari-Sari Store</p></div>
+                                            <div class="col-md-12">
+                                                <p class="card-description font-weight-bold">
+                                                   <? if(!empty($business['bname'])){ ?>
+                                                      <? echo $business['bnae'];?>
+                                                    <?}?>
+                                                    No business name
+                                                </p>
+                                                </p>
+                                            </div>
                                         </div>
                                         <h6 class="card-title font-weight-bold text-primary">Business Address</h6>
                                         <div class="row">
-                                            <div class="col-md-12"><p class="card-description font-weight-bold">Purok 3, Looc Proper, Plaridel, Misamis Occidental, Philippines 7209</p></div>
+                                            <div class="col-md-12">
+                                                <p class="card-description font-weight-bold">
+                                                   <? if(!empty($business['baddress'])){ ?>
+                                                      <? echo $business['baddress'];?>
+                                                    <?}?>
+                                                    No business address
+                                                </p>
+                                            </div>
                                         </div>
-                                        <h6 class="card-title font-weight-bold text-primary">Current Address</h6>
+                                        <h6 class="card-title font-weight-bold text-primary">Borrowers Address</h6>
                                         <div class="row">
-                                            <div class="col-md-12"><p class="card-description font-weight-bold">Purok <? echo $profile['purok'].', '.$profile['barangay'].', '.$profile['city'].', '.$profile['province'].', '.$profile['country'].' '.$profile['postal_code'];?></p></div>
+                                            <div class="col-md-12">
+                                                <p class="card-description font-weight-bold">Purok <? echo $profile['purok'].', '.$profile['barangay'].', '.$profile['city'].', '.$profile['province'].', '.$profile['country'].' '.$profile['postal_code'];?>
+                                                    
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

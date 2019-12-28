@@ -59,6 +59,13 @@ class Claims_model extends CI_Model {
         return $this->db->affected_rows();
     }
 
+    public function update_borrowers($data){
+        $this->db->set('status', 'Verified');
+        $this->db->where('account_no', $data);
+        $this->db->update('clients');
+        return $this->db->affected_rows();
+    }
+
     public function get_account_id(){
         $this->db->select('account_no');
         $this->db->from('clients');
@@ -86,6 +93,41 @@ class Claims_model extends CI_Model {
         }
     }
 
+    public function get_verifier(){
+
+        $this->db->select('username');
+        $this->db->from('users');
+        $this->db->where('user_type', 'Loan Officer');
+
+        $query = $this->db->get();
+
+        $result = $query->result_array();
+
+        if(count($result) >0){
+            return $result;
+        }else{
+            return null;
+        }
+    
+    }
+
+    public function get_collector(){
+
+        $this->db->select('username');
+        $this->db->from('users');
+        $this->db->where('user_type', 'Collector');
+        
+        $query = $this->db->get();
+
+        $result = $query->result_array();
+        if(count($result) >0){
+            return $result;
+        }else{
+            return null;
+        }
+    
+    }
+
     public function insert_loan($data){
 
         $loan = array(
@@ -93,14 +135,17 @@ class Claims_model extends CI_Model {
             'account_no' => $data['account_no'],
             'area' => $data['area'],
             'loan_amount' => $data['loan_amount'],
-            'interest' => 20,
-            'collector_id' => $data['collector'],
+            'interest' => $data['interest'],
+            'collector' => $data['collector'],
+            'verified' => $data['verifier']
+
         );
 
         $business = array(
             'business_name' => $data['b_name'],
             'business_address' => $data['b_address'],
-            'loan_no' => $data['loan_no'] 
+            'loan_no' => $data['loan_no'],
+            'account_no' => $data['account_no']
         );
 
         $this->db->insert('loan', $loan);
@@ -134,13 +179,35 @@ class Claims_model extends CI_Model {
         $this->db->join('address', 'clients.account_no = address.account_no');
         $this->db->join('names', 'clients.account_no = names.account_no');
         $this->db->where('status', 'New');
-        $this->db->group_by('clients.account_no');
         $result = $this->db->get();
 
         return $result->result_array();
     }
 
-    public function profile($data){
+    public function get_verified_clients(){
+        $this->db->select('*');
+        $this->db->from('clients');
+        $this->db->join('address', 'clients.account_no = address.account_no');
+        $this->db->join('names', 'clients.account_no = names.account_no');
+        $this->db->join('loan', 'loan.account_no = clients.account_no');
+        $this->db->where('loan.status', 'Waiting for approval');
+        $result = $this->db->get();
+
+        return $result->result_array();
+    }
+    public function get_rejected_clients(){
+        $this->db->select('*');
+        $this->db->from('clients');
+        $this->db->join('address', 'clients.account_no = address.account_no');
+        $this->db->join('names', 'clients.account_no = names.account_no');
+        $this->db->join('loan', 'loan.account_no = clients.account_no');
+        $this->db->where('loan.status', 'Rejected');
+        $result = $this->db->get();
+
+        return $result->result_array();
+    }
+
+    public function get_profile($data){
 
         $this->db->select('*');
         $this->db->from('clients');
@@ -149,6 +216,19 @@ class Claims_model extends CI_Model {
         $this->db->where('clients.account_no', $data);
 
         $query = $this->db->get();
+
+        $result = $query->result_array();
+        if(count($result) >0){
+            return $result[0];
+        }else{
+            return null;
+        }
+    }
+    public function get_profile_bname($data){
+
+        $this->db->where('debtor_business.account_no', $data);
+
+        $query = $this->db->get('debtor_business');
 
         $result = $query->result_array();
         if(count($result) >0){
@@ -180,6 +260,18 @@ class Claims_model extends CI_Model {
     public function delete_clients($data){
         $this->db->where('account_no', $data);
         $this->db->delete('clients');
+        return $this->db->affected_rows();
+    }
+
+    public function reject_loan($data, $data1){
+        if(empty($data1)){
+            $data1 = "No resean given";
+        }
+        $this->db->set('reason', $data1);
+        $this->db->set('status', "Rejected");
+        $this->db->set('approved', $this->session->userdata('username'));
+        $this->db->where('loan_no', $data);
+        $this->db->update('loan');
         return $this->db->affected_rows();
     }
 }

@@ -86,7 +86,7 @@
                                                                     
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-4">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group input-group-prepend">
                                                                     <span class="input-group-text">
                                                                             ₱
@@ -95,19 +95,40 @@
                                                                     <input type="number" class="form-control text-right amount" name="amount" required>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-4">
+                                                             <div class="col-md-1">
+                                                                <div class="form-group input-group-prepend">
+                                                                    <label class="bmd-label-floating">Interest</label>
+                                                                    <input type="text" class="form-control interest text-center" name="amount" value="20" readonly>
+                                                                    <span class="input-group-text">
+                                                                            <i class="fa fa-percent"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2">
                                                                 <div class="form-group">
-                                                                    <select id="inputState" class="form-control collector">
-                                                                        <option disabled>Choose collector...</option>
-                                                                        <option value="1">John</option>
-                                                                        <option value="2">Cena</option>
-                                                                        <option value="3">Rock</option>
+                                                                    <select id="inputState1" class="form-control collector">
+                                                                        <option disabled selected>Choose collector...</option>
+                                                                        <? foreach($collector as $key => $collect) { 
+                                                                            if(!empty($collect)){  ?>
+                                                                            <option value="<? echo $collect['username'];?>"><? echo $collect['username'];?> </option>
+                                                                        <?}}?>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <div class="form-group">
+                                                                    <select id="inputState" class="form-control verifier">
+                                                                        <option disabled selected>Verified by...</option>
+                                                                        <? var_dump($verifier); 
+                                                                        foreach($verifier as $key => $verified) { ?>
+                                                                            <option value="<? echo $verified['username'];?> "><? echo $verified['username'];?></option>
+                                                                        <?}?>
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="mt-3 mb-2">
-                                                            <h6 class="card-title">Client Information</h6>
+                                                            <h6 class="card-title">Borrowers Information</h6>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-6">
@@ -181,19 +202,19 @@
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Purok No</label>
-                                                                    <input type="number" class="form-control purok_no" name="purok_no" required>
+                                                                    <input type="number" class="form-control purok_no1" name="purok_no" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Barangay</label>
-                                                                    <input type="text" class="form-control barangay" name="barangay" required>
+                                                                    <input type="text" class="form-control barangay1" name="barangay" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">City</label>
-                                                                    <input type="text" class="form-control city" name="city" required>
+                                                                    <input type="text" class="form-control city" name="city1" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -201,13 +222,13 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Province</label>
-                                                                    <input type="text" class="form-control province" name="province" required>
+                                                                    <input type="text" class="form-control province1" name="province" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Postal Code</label>
-                                                                    <input type="number" class="form-control postal" name="postal" required>
+                                                                    <input type="number" class="form-control postal1" name="postal" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -270,7 +291,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="mt-2">
-                                                    <button class="btn btn-primary btn-round pull-right create-loan">Create Loan</button>
+                                                    <button type="submit" class="btn btn-primary btn-round pull-right create-loan">Create Loan</button>
                                                     <button class="btn btn-default btn-round pull-right cancel-create-loan">Cancel</button>
                                                 </div>
                                             </form>

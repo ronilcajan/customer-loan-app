@@ -10,14 +10,210 @@ $(document).ready(function() {
 	});
 });
 
-// ====== DataTable for new Clients ===========
+// ====== DataTables ===========
 $(document).ready(function() {
-	$("#new_client_table").DataTable();
-	$("#loan_clients_table").DataTable();
-	$("#approved_clients_table").DataTable();
-	$("#rejected_clients_table").DataTable();
-	$("#clients_table").DataTable();
+	$("#new_client_table").DataTable(
+		{	dom: 'Bfrtip',
+	        buttons: [
+	            {
+	            	extend: 'copyHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'csvHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'excelHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'pdfHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	},
+			    	customize: function(doc){
+			    		doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+			    	}
+
+				},
+				{
+	            	extend: 'print',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				}
+	        ]
+	    } 
+	);
+	$("#loan_clients_table").DataTable(
+		{dom: 'Bfrtip',
+	        buttons: [
+	            {
+	            	extend: 'copyHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'csvHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'excelHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'pdfHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	},
+			    	customize: function(doc){
+			    		doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+			    	}
+
+				},
+				{
+	            	extend: 'print',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				}
+	        ]
+	    } 
+	);
+	$("#approved_clients_table").DataTable(
+		{dom: 'Bfrtip',
+	        buttons: [
+	            {
+	            	extend: 'copyHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'csvHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'excelHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'pdfHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	},
+			    	customize: function(doc){
+			    		doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+			    	}
+
+				},
+				{
+	            	extend: 'print',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				}
+	        ]
+	    } 
+	);
+	$("#rejected_clients_table").DataTable(
+		{dom: 'Bfrtip',
+	        buttons: [
+	            {
+	            	extend: 'copyHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'csvHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'excelHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'pdfHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	},
+			    	customize: function(doc){
+			    		doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+			    	}
+
+				},
+				{
+	            	extend: 'print',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				}
+	        ]
+	    } 
+	);
+	$("#clients_table").DataTable(
+		{dom: 'Bfrtip',
+	        buttons: [
+	            {
+	            	extend: 'copyHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'csvHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'excelHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'pdfHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	},
+			    	customize: function(doc){
+			    		doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+			    	}
+
+				},
+				{
+	            	extend: 'print',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				}
+	        ]
+	    } 
+	);
 });
+
 // =========== Loan form toggle for notification ==========
 function email(x) {
   	x.classList.toggle("fa-toggle-on");

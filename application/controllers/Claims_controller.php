@@ -71,6 +71,8 @@ class Claims_controller extends CI_Controller {
 		
 		//new clients query
 		$clients['new_clients'] = $this->claims_model->get_new_clients();
+		$clients['verify'] = $this->claims_model->get_verified_clients();
+		$clients['rejected'] = $this->claims_model->get_rejected_clients();
 
 		//get last account_no of client
 		$account_no = $this->claims_model->get_account_id();
@@ -161,9 +163,14 @@ class Claims_controller extends CI_Controller {
 
 	public function client_profile($account_no){
 		$this->check_auth('borrowers');
-		$result = $this->claims_model->profile($account_no);
+		$result = $this->claims_model->get_profile($account_no);
 
 		if(!is_null($result)){
+
+			$business = $this->claims_model->get_profile_bname($account_no);
+
+			$client['business'] = array('bname' => $business['bname'],'baddress' => $business['baddress']);
+
 			$client['profile'] = array(
 				'account_no' => $result['account_no'],
 				'prof-img' => $result['profile_img'],
@@ -264,6 +271,7 @@ class Claims_controller extends CI_Controller {
 		$amount = $this->input->post('loan_amount');
 		$business = $this->input->post('b_name');
 		$email_notif = $this->input->post('email_notif');
+		$account_no = $this->input->post('account_no');
 		
 		$data = $this->input->post();
 		$data1 = $this->input->post();
@@ -272,20 +280,18 @@ class Claims_controller extends CI_Controller {
 
 		if($insert_data){
 
-			$inser_co = $this->claims_model->insert_co_maker($data1);
+			$this->claims_model->insert_co_maker($data1);
 
 			if($email_notif == 'yes'){
 
 				$sendmail = $this->send_email($full_name,$email,$amount,$business);
-				
-				if(!$sendmail){
-					$validator['email'] = $sendmail;
-				}
 
 			}
 
 			$validator['success'] = true;
-			$validator['messages'] = 'Loan successfully registered. The page will reload.';
+			$validator['messages'] = 'Loan successfully registered.';
+
+			$this->claims_model->update_borrowers($account_no);
 		}else{
 			$validator['success'] = false;
 			$validator['messages'] = 'Sorry';
@@ -299,6 +305,9 @@ class Claims_controller extends CI_Controller {
 
 		//get last loan_no of client
 		$loan_no = $this->claims_model->get_loan_no();
+
+		$loan['verifier'] = $this->claims_model->get_verifier();
+		$loan['collector'] = $this->claims_model->get_collector();
 
 		if($id!=''){
 			$loan['account_no'] = $id;
@@ -326,6 +335,16 @@ class Claims_controller extends CI_Controller {
 		$result = $this->claims_model->delete_clients($_POST['id']);
 		if($result){
 			echo "Client data has been deleted";
+		}else{
+			echo "False";
+		}
+		
+	}
+
+	public function reject_loan(){
+		$result = $this->claims_model->reject_loan($_POST['id'],$_POST['reason']);
+		if($result){
+			echo "Loan rejected";
 		}else{
 			echo "False";
 		}

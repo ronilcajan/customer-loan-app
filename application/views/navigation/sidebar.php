@@ -37,7 +37,7 @@
 			<? }?>
 				<a class="nav-link" href="<? echo base_url();?>borrowers">
 				<i class="material-icons">group</i>
-				<p>Clients</p>
+				<p>Borrowers</p>
 				</a>
 			</li>
 			<? if($site == '/loan' || strpos($site, 'loan/apply-loan')){?>

@@ -26,22 +26,22 @@
               
                         <ul class="nav nav-pills nav-pills-primary" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active add_client" data-toggle="tab" href="#link1" role="tablist" aria-expanded="true">Add New Clients</a>
+                                <a class="nav-link active add_client" data-toggle="tab" href="#link1" role="tablist" aria-expanded="true">Add Borrowers</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link new" data-toggle="tab" href="#link2" role="tablist" aria-expanded="false">New Clients</a>
+                                <a class="nav-link new" data-toggle="tab" href="#link2" role="tablist" aria-expanded="false">New Borrowers</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#link3" role="tablist" aria-expanded="false">Loan Applicants</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#link4" role="tablist" aria-expanded="false">Approved Clients</a>
+                                <a class="nav-link" data-toggle="tab" href="#link4" role="tablist" aria-expanded="false">Approved Borrowers</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#link5" role="tablist" aria-expanded="false">Rejected Clients</a>
+                                <a class="nav-link" data-toggle="tab" href="#link5" role="tablist" aria-expanded="false">Rejected Borrowers</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#link6" role="tablist" aria-expanded="false">Clients</a>
+                                <a class="nav-link" data-toggle="tab" href="#link6" role="tablist" aria-expanded="false">Active Borrowers</a>
                             </li>
                         </ul>
 
@@ -49,7 +49,7 @@
                             <div class="tab-pane active" id="link1" aria-expanded="true">
                                 <div class="card">
                                     <div class="card-header card-header-primary">
-                                        <h4 class="card-title">Create Client Profile</h4>
+                                        <h4 class="card-title">Create Borrowers Profile</h4>
                                         <p class="card-category">Complete your client information</p>
                                     </div>
                                     <div class="card-body">
@@ -224,8 +224,8 @@
                 <div class="tab-pane" id="link2" aria-expanded="false">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title mt-0">New Clients Table</h4>
-                            <p class="card-category"> Below is the list of all new clients</p>
+                            <h4 class="card-title mt-0">New Borrowers Table</h4>
+                            <p class="card-category"> Below is the list of all new borrowers</p>
                         </div>
                         <div class="card-body container-fluid">
                             <div class="table-responsive">
@@ -238,9 +238,7 @@
                                         <th>Action</th>
                                     </thead>
                                     <tbody>
-                                        <? foreach($new_clients as $key => $newC){
-                                            if(!empty($newC)){  
-                                        ?>
+                                        <? foreach($new_clients as $key => $newC){ ?>
                                         <tr>
                                             <td><? echo $newC['account_no'];?></td>
                                             <td>
@@ -252,13 +250,13 @@
                                                 <span class="font-italic text-muted "><? echo $newC['status'];?></span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="View borrowers" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
                                                     View
                                                 </button>
                                                 <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'loan/apply-loan/'.$newC['account_no'];?>'">
                                                     Apply Loan
                                                 </button>
-                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" id="remove-button<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="Remove borrowers" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" id="remove-button<? echo $newC['account_no'];?>" data-toggle="modal">
                                                     Remove
                                                 </button>
                                             </td>
@@ -269,7 +267,7 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Clients Info</h5>
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Borrowers Information</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -309,7 +307,7 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Removing Clients</h5>
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Removing Permanently</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -326,12 +324,7 @@
                                             </div>
                                         </div>
                                         <!-- End of modal -->
-                                        <? } else { ?>
-
-                                        <tr>
-                                            <td colspan="5">No data available..</td>
-                                        </tr>
-                                        <? } }?> 
+                                        <? }?> 
                                     </tbody>
                                 </table>
                             </div>
@@ -342,41 +335,145 @@
                 <div class="tab-pane" id="link3" aria-expanded="false">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title mt-0">New Loan Applicant Table</h4>
+                            <h4 class="card-title mt-0">Loan Applicant Table</h4>
                             <p class="card-category"> Below is the list of all new loan applicants</p>
                         </div>
                         <div class="card-body container-fluid">
                             <div class="table-responsive ">
-                                <table class="table table-hover table-sm" id="loan_clients_table">
+                                <table class="display nowrap table table-hover table-sm " id="loan_clients_table">
                                 <thead class="text-primary">
-                                    <th>Account No.</th>
-                                    <th>Name</th>
-                                    <th>Loan Amount</th>
+                                    <th>Loan No.</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-right">Loan Amount</th>
                                     <th class="text-center">Verified by</th>
                                     <th>Status</th>
-                                    <th>Action</th>
+                                    <th >Action</th>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>10003</td>
-                                        <td>Dakota Bigas</td>
-                                        <td class="text-right">P 3,000</td>
-                                        <td class="text-center">Ron</td>
-                                        <td>
-                                            <span class="font-italic text-muted">Waiting for approval..</span>
-                                        </td>
-                                        <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                    View
+                                    <? foreach($verify as $key => $verified){
+                                            if(!empty($verified)){  
+                                        ?>
+                                        <tr>
+                                            <td><? echo $verified['loan_no'];?></td>
+                                            <td class="text-center">
+                                                <a href="<? echo base_url().'borrowers/client-profile/'.$verified['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $verified['lastname'].','.$verified['firstname'].' '.$verified['middlename'];?></a>
+                                            </td>
+                                            <td class="text-right"><? echo $verified['loan_amount'];?></td>
+                                            <td class="text-center"><? echo $verified['verified'];?></td>
+                                            <td>
+                                                <span class="font-italic text-muted "><? echo $verified['status'];?></span>
+                                            </td>
+                                            <td class="td-actions text-right">
+                                                <button type="button" rel="tooltip" title="View loan information" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $verified['account_no'];?>" data-toggle="modal">
+                                                    View Loan
                                                 </button>
-                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'apply-loan/'.$newC['account_no'];?>'">
-                                                    Apply Loan
+                                                <button type="button" rel="tooltip" title="Approve loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'loan/apply-loan/'.$verified['loan_no'];?>'">
+                                                    Approve
                                                 </button>
-                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="Reject loan" class="btn btn-warning btn-sm mr-2" data-target="#reject_client<? echo $verified['loan_no'];?>" id="reject-button<? echo $verified['loan_no'];?>" data-toggle="modal">
+                                                    Reject
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Remove loan" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $verified['loan_no'];?>" id="remove-button<? echo $verified['loan_no'];?>" data-toggle="modal">
                                                     Remove
                                                 </button>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Modal to view client data -->
+                                        <div class="modal fade" id="clients-<? echo $verified['account_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Loan Information</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <img class="border-round" src="<? echo base_url().'uploads/'.$verified['profile_img'];?>" width="150" height="150"/>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <p><strong>Name:</strong> 
+                                                                    <? echo $verified['firstname'].' '.$verified['middlename'].' '.$verified['lastname'];?>    
+                                                                </p>
+                                                                <p><strong>Email:</strong> 
+                                                                    <? echo $verified['email']; ?>
+                                                                </p>
+                                                                <p><strong>Contact No:</strong>
+                                                                    <? echo $verified['number1']; ?>,<? echo $verified['number2']; ?>
+                                                                </p>
+                                                                <p><strong>Info:</strong>
+                                                                    <? echo $verified['added_info']; ?>
+                                                                </p>
+
+                                                            </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="button" onclick="location.href='<? echo base_url().'borrowers/client-profile/'.$verified['account_no'];?>'" class="btn btn-primary">Go to profile</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End of modal -->
+                                         <!-- Modal for reject clients -->
+                                        <div class="modal fade" id="reject_client<? echo $verified['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Rejecting Borrowers Loan</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Are you sure you want to reject this loan?</p>
+                                                        <p>Please provide any reason:</p>
+                                                        <form method="POST">
+                                                        <textarea class="form-control reason" placeholder="Write something here(Optional)"></textarea>
+                                                        
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-warning reject" id="<? echo $verified['loan_no'];?>">Reject</button>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End of modal -->
+                                        <!-- Modal for remove clients -->
+                                        <div class="modal fade" id="delete_client<? echo $verified['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Removing Borrowers Loan</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Are you sure you want to remove this loan?</p>
+                                                        <small class="text-danger font-italic">Note:This process cannot be undoned!</small>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-danger delete" id="<? echo $verified['account_no'];?>">Remove</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End of modal -->
+
+                                        <? } else { ?>
+
+                                        <tr>
+                                            <td colspan="5">No data available..</td>
+                                        </tr>
+                                        <? } }?> 
                                 </tbody>
                             </table>
                         </div>
@@ -402,26 +499,130 @@
                                         <th>Action</th>
                                     </thead>
                                     <tbody>
+                                        <? foreach($verify as $key => $verified){
+                                            if(!empty($verified)){  
+                                        ?>
                                         <tr>
-                                            <td>10003</td>
-                                            <td>Dakota Bigas</td>
-                                            <td class="text-right">P 4,000</td>
-                                            <td class="text-center">Ron</td>
+                                            <td><? echo $verified['loan_no'];?></td>
                                             <td>
-                                                <span class="font-italic text-muted">Waiting for cash release..</span>
+                                                <a href="<? echo base_url().'borrowers/client-profile/'.$verified['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $verified['lastname'].','.$verified['firstname'].' '.$verified['middlename'];?></a>
+                                            </td>
+                                            <td><? echo $verified['loan_amount'];?></td>
+                                            <td><? echo $verified['verified'];?></td>
+                                            <td>
+                                                <span class="font-italic text-muted "><? echo $verified['status'];?></span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                    View
+                                                <button type="button" rel="tooltip" title="View loan information" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $verified['account_no'];?>" data-toggle="modal">
+                                                    View Loan
                                                 </button>
-                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'apply-loan/'.$newC['account_no'];?>'">
-                                                    Apply Loan
+                                                <button type="button" rel="tooltip" title="Approve loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'loan/apply-loan/'.$verified['loan_no'];?>'">
+                                                    Approve
                                                 </button>
-                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="Reject loan" class="btn btn-warning btn-sm mr-2" data-target="#reject_client<? echo $verified['loan_no'];?>" id="reject-button<? echo $verified['loan_no'];?>" data-toggle="modal">
+                                                    Reject
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Remove loan" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $verified['loan_no'];?>" id="remove-button<? echo $verified['loan_no'];?>" data-toggle="modal">
                                                     Remove
                                                 </button>
                                             </td>
                                         </tr>
+
+                                        <!-- Modal to view client data -->
+                                        <div class="modal fade" id="clients-<? echo $verified['account_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Loan Information</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <img class="border-round" src="<? echo base_url().'uploads/'.$verified['profile_img'];?>" width="150" height="150"/>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <p><strong>Name:</strong> 
+                                                                    <? echo $verified['firstname'].' '.$verified['middlename'].' '.$verified['lastname'];?>    
+                                                                </p>
+                                                                <p><strong>Email:</strong> 
+                                                                    <? echo $verified['email']; ?>
+                                                                </p>
+                                                                <p><strong>Contact No:</strong>
+                                                                    <? echo $verified['number1']; ?>,<? echo $verified['number2']; ?>
+                                                                </p>
+                                                                <p><strong>Info:</strong>
+                                                                    <? echo $verified['added_info']; ?>
+                                                                </p>
+
+                                                            </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="button" onclick="location.href='<? echo base_url().'borrowers/client-profile/'.$verified['account_no'];?>'" class="btn btn-primary">Go to profile</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End of modal -->
+                                         <!-- Modal for reject clients -->
+                                        <div class="modal fade" id="reject_client<? echo $verified['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Rejecting Borrowers Loan</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Are you sure you want to reject this loan?</p>
+                                                        <p>Please provide any reason:</p>
+                                                        <form method="POST">
+                                                        <textarea class="form-control reason" placeholder="Write something here(Optional)"></textarea>
+                                                        
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-warning reject" id="<? echo $verified['loan_no'];?>">Reject</button>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End of modal -->
+                                        <!-- Modal for remove clients -->
+                                        <div class="modal fade" id="delete_client<? echo $verified['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Removing Borrowers Loan</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Are you sure you want to remove this loan?</p>
+                                                        <small class="text-danger font-italic">Note:This process cannot be undoned!</small>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-danger delete" id="<? echo $verified['account_no'];?>">Remove</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End of modal -->
+
+                                        <? } else { ?>
+
+                                        <tr>
+                                            <td colspan="5">No data available..</td>
+                                        </tr>
+                                        <? } }?> 
                                     </tbody>
                                 </table>
                             </div>
@@ -447,26 +648,132 @@
                                         <th>Action</th>
                                     </thead>
                                     <tbody>
+                                        <? foreach($rejected as $key => $reject){
+                                            if(!empty($reject)){  
+                                        ?>
                                         <tr>
-                                            <td>10001</td>
-                                            <td>Dakota Rice</td>
-                                            <td>Lack of documents</td>
-                                            <td>Ron</td>
+                                            <td><? echo $reject['loan_no'];?></td>
                                             <td>
-                                                <span class="font-italic text-muted">Rejected..</span>
+                                                <a href="<? echo base_url().'borrowers/client-profile/'.$reject['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $reject['lastname'].','.$reject['firstname'].' '.$reject['middlename'];?></a>
+                                            </td>
+                                            <td>
+                                                    <? echo $reject['reason'];?>
+                                            </td>
+                                            <td><? echo $reject['approved'];?></td>
+                                            <td>
+                                                <span class="font-italic text-muted "><? echo $reject['status'];?></span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="View clients" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                    View
+                                                <button type="button" rel="tooltip" title="View loan information" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $reject['account_no'];?>" data-toggle="modal">
+                                                    View Loan
                                                 </button>
-                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'apply-loan/'.$newC['account_no'];?>'">
-                                                    Apply Loan
+                                                <button type="button" rel="tooltip" title="Approve loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'loan/apply-loan/'.$reject['loan_no'];?>'">
+                                                    Approve
                                                 </button>
-                                                <button type="button" rel="tooltip" title="Remove clients" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="Reject loan" class="btn btn-warning btn-sm mr-2" data-target="#reject_client<? echo $reject['loan_no'];?>" id="reject-button<? echo $reject['loan_no'];?>" data-toggle="modal">
+                                                    Reject
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Remove loan" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $reject['loan_no'];?>" id="remove-button<? echo $reject['loan_no'];?>" data-toggle="modal">
                                                     Remove
                                                 </button>
                                             </td>
-                                        </tr>                          
+                                        </tr>
+
+                                        <!-- Modal to view client data -->
+                                        <div class="modal fade" id="clients-<? echo $reject['account_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Loan Information</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <img class="border-round" src="<? echo base_url().'uploads/'.$reject['profile_img'];?>" width="150" height="150"/>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <p><strong>Name:</strong> 
+                                                                    <? echo $reject['firstname'].' '.$reject['middlename'].' '.$reject['lastname'];?>    
+                                                                </p>
+                                                                <p><strong>Email:</strong> 
+                                                                    <? echo $reject['email']; ?>
+                                                                </p>
+                                                                <p><strong>Contact No:</strong>
+                                                                    <? echo $reject['number1']; ?>,<? echo $reject['number2']; ?>
+                                                                </p>
+                                                                <p><strong>Info:</strong>
+                                                                    <? echo $reject['added_info']; ?>
+                                                                </p>
+
+                                                            </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="button" onclick="location.href='<? echo base_url().'borrowers/client-profile/'.$reject['account_no'];?>'" class="btn btn-primary">Go to profile</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End of modal -->
+                                         <!-- Modal for reject clients -->
+                                        <div class="modal fade" id="reject_client<? echo $reject['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Rejecting Borrowers Loan</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Are you sure you want to reject this loan?</p>
+                                                        <p>Please provide any reason:</p>
+                                                        <form method="POST">
+                                                        <textarea class="form-control reason" placeholder="Write something here(Optional)"></textarea>
+                                                        
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-warning reject" id="<? echo $reject['loan_no'];?>">Reject</button>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End of modal -->
+                                        <!-- Modal for remove clients -->
+                                        <div class="modal fade" id="delete_client<? echo $reject['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Removing Borrowers Loan</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Are you sure you want to remove this loan?</p>
+                                                        <small class="text-danger font-italic">Note:This process cannot be undoned!</small>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-danger delete" id="<? echo $reject['account_no'];?>">Remove</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End of modal -->
+
+                                        <? } else { ?>
+
+                                        <tr>
+                                            <td colspan="5">No data available..</td>
+                                        </tr>
+                                        <? } }?>                  
                                     </tbody>
                                 </table>
                             </div>

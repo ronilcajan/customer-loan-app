@@ -66,7 +66,40 @@ $(document).ready(function() {
 						$("i.psw-error-icon").addClass("text-danger");
 
 					}
-				}
+				},
+				error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+		            msg = 'Internal Server Error [500].';
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 5000);
+		    }
+
 			});
 			return false;
 		}
@@ -143,7 +176,40 @@ $(document).ready(function() {
 							"warning"
 						);
 					}
-				}
+				},
+				error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+		            msg = 'Internal Server Error [500].';
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 5000);
+		    }
+
 			});
 			return false;
 		}else{
@@ -188,7 +254,122 @@ $(document).on('click', '.delete', function(){
 				$("#loading-screen").hide();
 			}
 			
-		}
+		},
+		error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+		            msg = 'Internal Server Error [500].';
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 5000);
+		    }
+	});
+}); 
+// =============== Reject Clients ================
+$(document).on('click', '.reject', function(){
+	var id = $(this).attr('id');
+
+	var reason = $('.reason').val();
+
+	var $button = $('#reject-button'+id);
+	var table = $("#loan_clients_table").DataTable();
+
+	var reject_table = $("#rejected_clients_table").DataTable({
+	    ajax:  {
+	        url: "/url_endpoint/",
+	        data: function(d){
+	            d.param1 = "value1";
+	            d.param2 = "value2";
+	        }
+	    }
+	});
+
+	$.ajax({
+		url: BASE_URL+"reject-loan",
+		method: 'POST',
+		data:{
+			id:id,
+			reason:reason
+		},
+		beforeSend: function() {
+			$("#loading-screen").show();
+		},
+		success: function(data){
+			if(data!="False"){
+
+				$('.modal').modal('hide');
+				$("#loading-screen").hide();
+
+				table.row( $button.parents('tr')).remove().draw();
+
+				reject_table.ajax.reload();
+
+				showNotification(
+					data,
+					"check_circle",
+					"success"
+				);
+			}else{
+				$("#loading-screen").hide();
+			}
+			
+		},
+		error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+		            msg = 'Internal Server Error [500].';
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 5000);
+		    }
 	});
 }); 
 // ========= Function to check internet connection =============
@@ -214,7 +395,7 @@ function checkconnection(){
 // ============== Account no.query ==============
 $(document).on('blur','.accnt_no',function(){
 	var account_no = $('.accnt_no').val();
-	
+
 	$.ajax({
 		url: BASE_URL+'account-query',
 		type: 'POST',
@@ -262,8 +443,10 @@ $(document).on('blur','.accnt_no',function(){
 });
 
 // =========== Insert Loan Details ================
-
-$(document).on('click', '.create-loan', function(){
+$(document).ready(function() {
+	$(".create-loan").click(function(e) {
+		e.preventDefault();
+// $(document).on('click', '.create-loan', function(){
 
 	var loan_no = $('.loan_no').val();
 	var area = $('.area').val();
@@ -272,6 +455,8 @@ $(document).on('click', '.create-loan', function(){
 	var collector = $('.collector').val();
 	var full_name = $('.full_name').val();
 	var email = $('.email').val();
+	var interest = $('.interest').val();
+	var verifier = $('.verifier').val();
 
 	var email_toggle = $('#email-toggle').hasClass('email');
 	var sim1_toggle = $('#sim1-toggle').hasClass('sim1');
@@ -293,30 +478,46 @@ $(document).on('click', '.create-loan', function(){
 
 	var b_name = $('.b_name').val();
 	var b_address = $('#c_address').val();
+
+	if(!b_address){
+		var b_address = 'Purok'+$('.purok_no1').val()+','+$('.barangay1').val()+','+$('.city').val()+','+$('.province1').val()+'.'+$('postal1').val();;
+	}
 	
 	if(!b_address){
 		var b_address = 'Purok '+$('.purok_no').val()+','+$('.barangay').val()+','+$('.city').val()+','+$('.province')+','+$('.postal').val(); 
 	}
+	var co_mkr = $('.comaker-name').val();
+	var cdula = $('.cedula').val();
+	var dt = $('.date_issued').val();
+	var wdt = $('.where_issued').val();
 
 	var co_maker_name = [];
 	var cedula = [];
 	var date_issued = [];
 	var adrs_issued = [];
 
-	$('.comaker-name').each(function(){
-		co_maker_name.push($(this).val());
-	});
-	$('.cedula').each(function(){
-		cedula.push($(this).val());
-	});
-	$('.date_issued').each(function(){
-		date_issued.push($(this).val());
-	});
-	$('.where_issued').each(function(){
-		adrs_issued.push($(this).val());
-	});
+	if(co_mkr.trim() != ''){
+		$('.comaker-name').each(function(){
+			co_maker_name.push($(this).val());
+		});
+	}
+	if(cdula.trim() != ''){
+		$('.cedula').each(function(){
+			cedula.push($(this).val());
+		});
+	}
+	if(dt.trim() != ''){
+		$('.date_issued').each(function(){
+			date_issued.push($(this).val());
+		});
+	}
+	if(wdt.trim() != ''){
+		$('.where_issued').each(function(){
+			adrs_issued.push($(this).val());
+		});
+	}
 
-	if(account_no && loan_amount && co_maker_name && cedula && date_issued && adrs_issued && b_address && b_name){
+	if(collector!=null && verifier!=null && account_no.trim() && loan_amount.trim() && co_mkr && cdula && dt && wdt && b_address.trim() && b_name.trim()){
 		$.ajax({
 			type: "POST",
 			url: BASE_URL+"create-loan",
@@ -327,6 +528,8 @@ $(document).on('click', '.create-loan', function(){
 				account_no : account_no,
 				loan_amount : loan_amount,
 				collector : collector,
+				verifier: verifier,
+				interest : interest,
 				full_name : full_name,
 				email : email,
 				email_notif : email_notif,
@@ -381,7 +584,7 @@ $(document).on('click', '.create-loan', function(){
 		           msg = 'Email notification did not send.';
 
 		           showNotification(
-						'Loan application successfully added. Page will reload...',
+						'Loan application successfully added.',
 						"check_circle",
 						"success"
 					);
@@ -400,9 +603,9 @@ $(document).on('click', '.create-loan', function(){
 				);
 				
 
-		  //       setTimeout(function() {
-				// 	window.location.reload(1);
-				// }, 5000);
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 5000);
 		    },
 
 		
@@ -417,4 +620,5 @@ $(document).on('click', '.create-loan', function(){
 
 	
 	return false;
+});
 });

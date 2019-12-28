@@ -15,4 +15,5 @@ $route['loan/apply-loan/(:num)'] = 'claims_controller/loan/$1';
 $route['account-query'] = 'claims_controller/account_query';
 $route['create-loan'] = 'claims_controller/create_loan';
 $route['delete-clients'] = "claims_controller/delete_clients";
+$route['reject-loan'] = "claims_controller/reject_loan";
 $route['logout'] = 'claims_controller/logout';
