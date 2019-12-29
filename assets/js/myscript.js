@@ -1,3 +1,20 @@
+// ======= Notification ========
+function showNotification(message, icon, color) {
+	$.notify(
+		{
+			icon: icon,
+			message: message
+		},
+		{
+			type: color,
+			timer: 3000,
+			placement: {
+				from: "top",
+				align: "right"
+			}
+		}
+	);
+}
 //======= image preview before upload =====
 var loadFile = function(event) {
 	var output = document.getElementById("output");
@@ -10,9 +27,52 @@ $(document).ready(function() {
 	});
 });
 
+
 // ====== DataTables ===========
 $(document).ready(function() {
-	$("#new_client_table").DataTable(
+	$("#rejected_clients_table").DataTable(
+		{
+			dom: 'Bfrtip',
+	        buttons: [
+	            {
+	            	extend: 'copyHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'csvHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'excelHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				},
+				{
+	            	extend: 'pdfHtml5',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	},
+			    	customize: function(doc){
+			    		doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+			    	}
+
+				},
+				{
+	            	extend: 'print',
+					exportOptions: {
+			    		columns: 'th:not(:last-child)'
+			    	}
+				}
+	        ]
+	    } 
+	);
+
+ 	$("#new_client_table").DataTable(
 		{	dom: 'Bfrtip',
 	        buttons: [
 	            {
@@ -52,6 +112,7 @@ $(document).ready(function() {
 	        ]
 	    } 
 	);
+
 	$("#loan_clients_table").DataTable(
 		{dom: 'Bfrtip',
 	        buttons: [
@@ -132,46 +193,7 @@ $(document).ready(function() {
 	        ]
 	    } 
 	);
-	$("#rejected_clients_table").DataTable(
-		{dom: 'Bfrtip',
-	        buttons: [
-	            {
-	            	extend: 'copyHtml5',
-					exportOptions: {
-			    		columns: 'th:not(:last-child)'
-			    	}
-				},
-				{
-	            	extend: 'csvHtml5',
-					exportOptions: {
-			    		columns: 'th:not(:last-child)'
-			    	}
-				},
-				{
-	            	extend: 'excelHtml5',
-					exportOptions: {
-			    		columns: 'th:not(:last-child)'
-			    	}
-				},
-				{
-	            	extend: 'pdfHtml5',
-					exportOptions: {
-			    		columns: 'th:not(:last-child)'
-			    	},
-			    	customize: function(doc){
-			    		doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
-			    	}
-
-				},
-				{
-	            	extend: 'print',
-					exportOptions: {
-			    		columns: 'th:not(:last-child)'
-			    	}
-				}
-	        ]
-	    } 
-	);
+	
 	$("#clients_table").DataTable(
 		{dom: 'Bfrtip',
 	        buttons: [

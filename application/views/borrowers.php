@@ -32,7 +32,7 @@
                                 <a class="nav-link new" data-toggle="tab" href="#link2" role="tablist" aria-expanded="false">New Borrowers</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#link3" role="tablist" aria-expanded="false">Loan Applicants</a>
+                                <a class="nav-link loan-applicant" data-toggle="tab" id="applicant-tab" href="#link3" role="tablist" aria-expanded="false">Loan Applicants</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#link4" role="tablist" aria-expanded="false">Approved Borrowers</a>

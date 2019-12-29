@@ -1,20 +1,4 @@
-// ======= Notification ========
-function showNotification(message, icon, color) {
-	$.notify(
-		{
-			icon: icon,
-			message: message
-		},
-		{
-			type: color,
-			timer: 3000,
-			placement: {
-				from: "top",
-				align: "right"
-			}
-		}
-	);
-}
+
 
 // ==== login ajax =====
 $(document).ready(function() {
@@ -250,6 +234,8 @@ $(document).on('click', '.delete', function(){
 					"check_circle",
 					"success"
 				);
+
+				
 			}else{
 				$("#loading-screen").hide();
 			}
@@ -291,22 +277,13 @@ $(document).on('click', '.delete', function(){
 }); 
 // =============== Reject Clients ================
 $(document).on('click', '.reject', function(){
+
 	var id = $(this).attr('id');
 
 	var reason = $('.reason').val();
 
 	var $button = $('#reject-button'+id);
 	var table = $("#loan_clients_table").DataTable();
-
-	var reject_table = $("#rejected_clients_table").DataTable({
-	    ajax:  {
-	        url: "/url_endpoint/",
-	        data: function(d){
-	            d.param1 = "value1";
-	            d.param2 = "value2";
-	        }
-	    }
-	});
 
 	$.ajax({
 		url: BASE_URL+"reject-loan",
@@ -325,14 +302,16 @@ $(document).on('click', '.reject', function(){
 				$("#loading-screen").hide();
 
 				table.row( $button.parents('tr')).remove().draw();
-
-				reject_table.ajax.reload();
-
+				
 				showNotification(
 					data,
-					"check_circle",
-					"success"
+					"info",
+					"warning"
 				);
+				setTimeout(function() {
+					window.location.reload(1);
+				}, 1000);
+
 			}else{
 				$("#loading-screen").hide();
 			}
