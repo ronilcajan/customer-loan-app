@@ -24,40 +24,7 @@ class Claims_model extends CI_Model {
         }
     }
 
-    public function insert_client($data){
-        $client_data = array(
-            'account_no' => $data['account_no'],
-            'profile_img' => $data['client_img'],
-            'email' => $data['email'],
-            'number1' => $data['number1'],
-            'number2' => $data['number2'],
-            'birthdate' => $data['birthdate'],
-            'gender' => $data['gender'],
-            'added_info' => $data['info'],
-        );
-        $client_name = array(
-            'account_no' => $data['account_no'],
-            'firstname' => $data['gname'],
-            'middlename' => $data['mname'],
-            'lastname' => $data['lname'],
-        );
-        $client_address = array(
-            'account_no' => $data['account_no'],
-            'purok_no' => $data['purok_no'],
-            'barangay' => $data['barangay'],
-            'city' => $data['city'],
-            'province' => $data['province'],
-            'postal_code' => $data['postal_code'],
-        );
 
-        $this->db->insert('clients',$client_data);
-
-        $this->db->insert('names',$client_name);
-
-        $this->db->insert('address',$client_address);
-
-        return $this->db->affected_rows();
-    }
 
     public function update_borrowers($data){
         $this->db->set('status', 'Verified');
@@ -173,70 +140,41 @@ class Claims_model extends CI_Model {
         return $this->db->affected_rows();
     }
 
-    public function get_new_clients(){
-        $this->db->select('*');
-        $this->db->from('clients');
-        $this->db->join('address', 'clients.account_no = address.account_no');
-        $this->db->join('names', 'clients.account_no = names.account_no');
-        $this->db->where('status', 'New');
-        $result = $this->db->get();
+    // public function get_new_clients(){
+    //     $this->db->select('*');
+    //     $this->db->from('clients');
+    //     $this->db->join('address', 'clients.account_no = address.account_no');
+    //     $this->db->join('names', 'clients.account_no = names.account_no');
+    //     $this->db->where('status', 'New');
+    //     $result = $this->db->get();
 
-        return $result->result_array();
-    }
+    //     return $result->result_array();
+    // }
 
-    public function get_verified_clients(){
-        $this->db->select('*');
-        $this->db->from('clients');
-        $this->db->join('address', 'clients.account_no = address.account_no');
-        $this->db->join('names', 'clients.account_no = names.account_no');
-        $this->db->join('loan', 'loan.account_no = clients.account_no');
-        $this->db->where('loan.status', 'Waiting for approval');
-        $result = $this->db->get();
+    // public function get_verified_clients(){
+    //     $this->db->select('*');
+    //     $this->db->from('clients');
+    //     $this->db->join('address', 'clients.account_no = address.account_no');
+    //     $this->db->join('names', 'clients.account_no = names.account_no');
+    //     $this->db->join('loan', 'loan.account_no = clients.account_no');
+    //     $this->db->where('loan.status', 'Waiting for approval');
+    //     $result = $this->db->get();
 
-        return $result->result_array();
-    }
-    public function get_rejected_clients(){
-        $this->db->select('*');
-        $this->db->from('clients');
-        $this->db->join('address', 'clients.account_no = address.account_no');
-        $this->db->join('names', 'clients.account_no = names.account_no');
-        $this->db->join('loan', 'loan.account_no = clients.account_no');
-        $this->db->where('loan.status', 'Rejected');
-        $result = $this->db->get();
+    //     return $result->result_array();
+    // }
+    // public function get_rejected_clients(){
+    //     $this->db->select('*');
+    //     $this->db->from('clients');
+    //     $this->db->join('address', 'clients.account_no = address.account_no');
+    //     $this->db->join('names', 'clients.account_no = names.account_no');
+    //     $this->db->join('loan', 'loan.account_no = clients.account_no');
+    //     $this->db->where('loan.status', 'Rejected');
+    //     $result = $this->db->get();
 
-        return $result->result_array();
-    }
+    //     return $result->result_array();
+    // }
 
-    public function get_profile($data){
-
-        $this->db->select('*');
-        $this->db->from('clients');
-        $this->db->join('names', 'clients.account_no = names.account_no');
-        $this->db->join('address', 'clients.account_no = address.account_no');
-        $this->db->where('clients.account_no', $data);
-
-        $query = $this->db->get();
-
-        $result = $query->result_array();
-        if(count($result) >0){
-            return $result[0];
-        }else{
-            return null;
-        }
-    }
-    public function get_profile_bname($data){
-
-        $this->db->where('debtor_business.account_no', $data);
-
-        $query = $this->db->get('debtor_business');
-
-        $result = $query->result_array();
-        if(count($result) >0){
-            return $result[0];
-        }else{
-            return null;
-        }
-    }
+    
 
     public function account_query($data){
 
@@ -257,21 +195,7 @@ class Claims_model extends CI_Model {
 
     }
 
-    public function delete_clients($data){
-        $this->db->where('account_no', $data);
-        $this->db->delete('clients');
-        return $this->db->affected_rows();
-    }
+    
 
-    public function reject_loan($data, $data1){
-        if(empty($data1)){
-            $data1 = "No resean given";
-        }
-        $this->db->set('reason', $data1);
-        $this->db->set('status', "Rejected");
-        $this->db->set('approved', $this->session->userdata('username'));
-        $this->db->where('loan_no', $data);
-        $this->db->update('loan');
-        return $this->db->affected_rows();
-    }
+    
 }

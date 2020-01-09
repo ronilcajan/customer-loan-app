@@ -5,11 +5,11 @@
 				<?
 				$site = $_SERVER['PATH_INFO'];
 				if( $site == '/dashboard'){?>
-				<a class="navbar-brand font-weight-bold" href="#pablo">Dashboard</a>
-				<?}elseif($site == '/borrowers') {?>
-				<a class="navbar-brand font-weight-bold" href="#pablo">Manage Clients</a>
+				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>dashboard">Dashboard</a>
+				<?}elseif(strpos($site, 'borrowers/')) {?>
+				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>borrowers/create-borrowers">Manage Clients</a>
 				<?}elseif(strpos($site, '/client-profile')){?>
-				<a class="navbar-brand font-weight-bold" href="#pablo">Client Profile</a>
+				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>borrowers/create-borrowers">Client Profile</a>
 				<?}elseif($site == '/loan' || strpos($site, 'loan/apply-loan')){?>
 				<a class="navbar-brand font-weight-bold" href="#pablo">Manage Loan</a>
 				<?}else{
@@ -34,7 +34,7 @@
 				</form>
 				<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="#pablo">
+					<a class="nav-link" href="<? echo base_url();?>dashboard">
 					<i class="material-icons">dashboard</i>
 					<p class="d-lg-none d-md-block">
 						Stats

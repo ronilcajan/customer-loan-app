@@ -11,9 +11,16 @@
 		<? $this->load->view('navigation/topbar');?>
         <!-- End Navbar -->
 
-        <div class="content" style="margin-top:20px">
+        <div class="content">
             <div class="container-fluid">
-                        <div class="row">
+                <nav aria-label="breadcrumb bg-primary" style="margin-top: -40px;" role="navigation">
+                  <ol class="breadcrumb nav-pills-primary">
+                    <li class="breadcrumb-item"><a href="<? echo base_url();?>borrowers/create-borrowers">Borrowers</a></li>
+                    <li class="breadcrumb-item"><a href="#">Profile</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><? echo $profile['fname'].' '.$profile['mname'].'. '.$profile['lname'];?></li>
+                  </ol>
+                </nav>
+                        <div class="row" style="margin-top: -40px;">
                             <div class="col-md-5">
                                 <div class="card">
                                     <div class="card-header m-0 ml-auto mr-auto card-profile">
@@ -61,10 +68,10 @@
                                             <div class="col-md-12">
                                                 <p class="card-description font-weight-bold">
                                                    <? if(!empty($business['bname'])){ ?>
-                                                      <? echo $business['bnae'];?>
-                                                    <?}?>
+                                                      <? echo $business['bname'];?>
+                                                    <?}else{?>
                                                     No business name
-                                                </p>
+                                                <? } ?>
                                                 </p>
                                             </div>
                                         </div>
@@ -74,8 +81,9 @@
                                                 <p class="card-description font-weight-bold">
                                                    <? if(!empty($business['baddress'])){ ?>
                                                       <? echo $business['baddress'];?>
-                                                    <?}?>
+                                                    <?}else{?>
                                                     No business address
+                                                    <? } ?>
                                                 </p>
                                             </div>
                                         </div>

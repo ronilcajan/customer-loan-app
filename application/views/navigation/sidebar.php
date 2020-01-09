@@ -11,7 +11,7 @@
 	<div class="sidebar-wrapper">
 		<ul class="nav">
 
-			<? if($site == '/dashboard'){?>
+			<?if($site == '/dashboard'){?>
 
 			<li class="nav-item active  ">
 
@@ -28,14 +28,14 @@
 			</li>
 
 			<? $site1 = 'borrowers/client-profile';
-			if($site == '/borrowers' || strpos($site, $site1)){?>
+			if(strpos($site, 'borrowers/') || strpos($site, $site1)){?>
 
 				<li class="nav-item active">
 
 			<?}else{?>
 				<li class="nav-item">
 			<? }?>
-				<a class="nav-link" href="<? echo base_url();?>borrowers">
+				<a class="nav-link" href="<? echo base_url();?>borrowers/create-borrowers">
 				<i class="material-icons">group</i>
 				<p>Borrowers</p>
 				</a>

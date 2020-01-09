@@ -89,7 +89,7 @@ $(document).ready(function() {
 		}
 	});
 });
-// =============== saving clients info ================
+// =============== saving borrowers info ================
 $(document).ready(function() {
 	$(".client-save").click(function() {
 		var formdata = new FormData(document.getElementById("form-register"));
@@ -120,7 +120,7 @@ $(document).ready(function() {
 		) {
 			$.ajax({
 				type: "POST",
-				url: BASE_URL+"register-clients",
+				url: BASE_URL+"register-borrowers",
 				dataType: "json",
 				data: formdata,
 				processData: false,
@@ -205,8 +205,84 @@ $(document).ready(function() {
 		}
 	});
 });
+// =============== Approved Borrowers ================
+$(document).on('click', '.approve', function(){
+	var id = $(this).attr('id');
 
-// =============== Delete Clients ================
+	var $button = $('.approve'+id);
+	var table = $("#loan_clients_table").DataTable();
+	
+	$.ajax({
+		url: BASE_URL+"borrowers/approve-loan",
+		method: 'POST',
+		data:{
+			id:id
+		},
+		beforeSend: function() {
+			$("#loading-screen").show();
+		},
+		success: function(data){
+			if(data!="False"){
+
+				$("#loading-screen").hide();
+
+				table.row( $button.parents('tr')).remove().draw();
+
+				showNotification(
+					data,
+					"check_circle",
+					"success"
+				);
+
+				
+			}else{
+				$("#loading-screen").hide();
+			}
+			
+		},
+		error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+
+		            msg = 'Email notification did not send. No internet connection.';
+
+		            showNotification(
+						'Loan successfully approved!',
+						"check_circle",
+						"success"
+					);
+
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 5000);
+		    }
+	});
+}); 
+// =============== Delete Borrowers ================
 $(document).on('click', '.delete', function(){
 	var id = $(this).attr('id');
 
@@ -214,7 +290,7 @@ $(document).on('click', '.delete', function(){
 	var table = $("#new_client_table").DataTable();
 	
 	$.ajax({
-		url: BASE_URL+"delete-clients",
+		url: BASE_URL+"delete-borrowers",
 		method: 'POST',
 		data:{
 			id:id
@@ -275,7 +351,7 @@ $(document).on('click', '.delete', function(){
 		    }
 	});
 }); 
-// =============== Reject Clients ================
+// =============== Reject loan ================
 $(document).on('click', '.reject', function(){
 
 	var id = $(this).attr('id');
@@ -350,7 +426,279 @@ $(document).on('click', '.reject', function(){
 				}, 5000);
 		    }
 	});
+});
+// =============== Loan Re-Apply ================
+$(document).on('click', '.re-apply', function(){
+	var id = $(this).attr('id');
+
+	var $button = $('#remove-another-loan'+id);
+	var table = $("#rejected_clients_table").DataTable();
+	
+	$.ajax({
+		url: BASE_URL+"reapply-loan",
+		method: 'POST',
+		data:{
+			id:id
+		},
+		beforeSend: function() {
+			$("#loading-screen").show();
+		},
+		success: function(data){
+			if(data!="False"){
+				$('.modal').modal('hide');
+				$("#loading-screen").hide();
+
+				table.row( $button.parents('tr')).remove().draw();
+
+				showNotification(
+					data,
+					"check_circle",
+					"success"
+				);
+
+				
+			}else{
+				$("#loading-screen").hide();
+			}
+			
+		},
+		error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+		            msg = 'Internal Server Error [500].';
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 5000);
+		    }
+	});
 }); 
+// =============== Loan Remove ================
+$(document).on('click', '.remove', function(){
+	var id = $(this).attr('id');
+
+	var $button = $('#remove-loan'+id);
+	var table = $("#loan_clients_table").DataTable();
+	
+	$.ajax({
+		url: BASE_URL+"remove-loan",
+		method: 'POST',
+		data:{
+			id:id
+		},
+		beforeSend: function() {
+			$("#loading-screen").show();
+		},
+		success: function(data){
+			if(data!="False"){
+				$('.modal').modal('hide');
+				$("#loading-screen").hide();
+
+				table.row( $button.parents('tr')).remove().draw();
+
+				showNotification(
+					data,
+					"check_circle",
+					"success"
+				);
+
+				
+			}else{
+				$("#loading-screen").hide();
+			}
+			
+		},
+		error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+		            msg = 'Internal Server Error [500].';
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 5000);
+		    }
+	});
+}); 
+
+// =============== Remove rejected loan ================
+$(document).on('click', '.remove-rejected', function(){
+	var id = $(this).attr('id');
+
+	var $button = $('#remove-rejected-loan'+id);
+	var table = $("#rejected_clients_table").DataTable();
+	
+	$.ajax({
+		url: BASE_URL+"remove-loan",
+		method: 'POST',
+		data:{
+			id:id
+		},
+		beforeSend: function() {
+			$("#loading-screen").show();
+		},
+		success: function(data){
+			if(data!="False"){
+				$('.modal').modal('hide');
+				$("#loading-screen").hide();
+
+				table.row( $button.parents('tr')).remove().draw();
+
+				showNotification(
+					data,
+					"check_circle",
+					"success"
+				);
+
+				
+			}else{
+				$("#loading-screen").hide();
+			}
+			
+		},
+		error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+		            msg = 'Internal Server Error [500].';
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 5000);
+		    }
+	});
+});
+// =============== Cash release ================
+$(document).on('click', '.cash-release', function(){
+	var id = $(this).attr('id');
+
+	var $button = $('#cash-release'+id);
+	var table = $("#approved_clients_table").DataTable();
+	
+	$.ajax({
+		url: BASE_URL+"cash-receive",
+		method: 'POST',
+		data:{
+			id:id
+		},
+		beforeSend: function() {
+			$("#loading-screen").show();
+		},
+		success: function(data){
+			if(data!="False"){
+				$('.modal').modal('hide');
+				$("#loading-screen").hide();
+
+				table.row( $button.parents('tr')).remove().draw();
+
+				showNotification(
+					data,
+					"check_circle",
+					"success"
+				);
+
+				
+			}else{
+				$("#loading-screen").hide();
+			}
+			
+		},
+		error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+		            msg = 'Internal Server Error [500].';
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+		    }
+	});
+});
 // ========= Function to check internet connection =============
 function checkconnection(){
 	var status = navigator.onLine;

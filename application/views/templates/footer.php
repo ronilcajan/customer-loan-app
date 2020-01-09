@@ -5,17 +5,17 @@
     <script src="<? echo base_url();?>assets/js/core/bootstrap-material-design.min.js"></script>
     <script src="<? echo base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!-- Plugin for the momentJs  -->
-    <script src="<? echo base_url();?>assets/js/plugins/moment.min.js"></script>
+    <!-- <script src="<? echo base_url();?>assets/js/plugins/moment.min.js"></script> -->
     <!--  Plugin for Sweet Alert -->
-    <script src="<? echo base_url();?>assets/js/plugins/sweetalert2.js"></script>
+    <!-- <script src="<? echo base_url();?>assets/js/plugins/sweetalert2.js"></script> -->
     <!-- Forms Validations Plugin -->
-    <script src="<? echo base_url();?>assets/js/plugins/jquery.validate.min.js"></script>
+    <!-- <script src="<? echo base_url();?>assets/js/plugins/jquery.validate.min.js"></script> -->
     <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-    <script src="<? echo base_url();?>assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+    <!-- <script src="<? echo base_url();?>assets/js/plugins/jquery.bootstrap-wizard.js"></script> -->
     <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-    <script src="<? echo base_url();?>assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <!-- <script src="<? echo base_url();?>assets/js/plugins/bootstrap-selectpicker.js"></script> -->
     <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-    <script src="<? echo base_url();?>assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <!-- <script src="<? echo base_url();?>assets/js/plugins/bootstrap-datetimepicker.min.js"></script> -->
     <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
     <script src="<? echo base_url();?>assets/js/plugins/jszip.min.js"></script>
     <script src="<? echo base_url();?>assets/js/plugins/jquery.dataTables.min.js"></script>
@@ -27,15 +27,15 @@
     <script src="<? echo base_url();?>assets/js/plugins/buttons.print.min.js"></script>
     <script src="<? echo base_url();?>assets/js/plugins/buttons.flash.min.js"></script>
     <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-    <script src="<? echo base_url();?>assets/js/plugins/bootstrap-tagsinput.js"></script>
+    <!-- <script src="<? echo base_url();?>assets/js/plugins/bootstrap-tagsinput.js"></script> -->
     <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-    <script src="<? echo base_url();?>assets/js/plugins/jasny-bootstrap.min.js"></script>
+    <!-- <script src="<? echo base_url();?>assets/js/plugins/jasny-bootstrap.min.js"></script> -->
     <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-    <script src="<? echo base_url();?>assets/js/plugins/fullcalendar.min.js"></script>
+    <!-- <script src="<? echo base_url();?>assets/js/plugins/fullcalendar.min.js"></script> -->
     <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-    <script src="<? echo base_url();?>assets/js/plugins/jquery-jvectormap.js"></script>
+    <!-- <script src="<? echo base_url();?>assets/js/plugins/jquery-jvectormap.js"></script> -->
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <script src="<? echo base_url();?>assets/js/plugins/nouislider.min.js"></script>
+    <!-- <script src="<? echo base_url();?>assets/js/plugins/nouislider.min.js"></script> -->
     <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
     <script src="<? echo base_url();?>assets/js/core/core.js"></script>
     <!-- Library for adding dinamically elements -->
