@@ -51,7 +51,7 @@
                                         <tr>
                                             <td><? echo $appr['account_no'];?></td>
                                             <td class="text-center">
-                                                <a href="<? echo base_url().'borrowers/client-profile/'.$appr['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $appr['lastname'].','.$appr['firstname'].' '.$appr['middlename'];?></a>
+                                                <a href="<? echo base_url().'borrowers/profile/'.$appr['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $appr['lastname'].','.$appr['firstname'].' '.$appr['middlename'];?></a>
                                             </td>
                                             <td class="text-right"><? echo $appr['loan_amount'];?></td>
                                             <td class="text-center"><? echo $appr['approved'];?></td>

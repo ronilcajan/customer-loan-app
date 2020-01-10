@@ -40,16 +40,18 @@
 				<p>Borrowers</p>
 				</a>
 			</li>
-			<? if($site == '/loan' || strpos($site, 'loan/apply-loan')){?>
+			
+			<? if($site == 'loan/' || strpos($site, 'loan/create-loan')){?>
 				<li class="nav-item active">
 			<? }else{ ?>
 				<li class="nav-item">
 			<? } ?>
-				<a class="nav-link" href="<? echo base_url();?>loan">
+				<a class="nav-link" href="<? echo base_url();?>loan/create-loan">
 				<i class="material-icons">monetization_on</i>
 				<p>Loan</p>
 				</a>
 			</li>
+
 			<li class="nav-item">
 				<a class="nav-link" href="./typography.html">
 				<i class="material-icons">payment</i>

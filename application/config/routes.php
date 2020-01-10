@@ -24,12 +24,9 @@ $route['delete-borrowers'] = "borrowers/delete_clients";
 $route['reapply-loan'] = "borrowers/reapply_loan";
 $route['cash-receive'] = "borrowers/cash_recieve";
 
-$route['create-loan'] = "";
-
-$route['loan'] = 'claims_controller/loan';
-$route['loan/apply-loan/(:num)'] = 'claims_controller/loan/$1';
-$route['account-query'] = 'claims_controller/account_query';
-$route['create-loan'] = 'claims_controller/create_loan';
-
+$route['loan/create-loan'] = "loan/create_loan";
+$route['loan/create-loan/(:num)'] = "loan/create_loan/$1";
+$route['insert-loan'] = "loan/insert_loan";
+$route['account-query'] = 'loan/account_query';
 
 $route['logout'] = 'claims_controller/logout';

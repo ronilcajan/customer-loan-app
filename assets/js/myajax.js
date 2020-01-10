@@ -847,7 +847,7 @@ $(document).ready(function() {
 	if(collector!=null && verifier!=null && account_no.trim() && loan_amount.trim() && co_mkr && cdula && dt && wdt && b_address.trim() && b_name.trim()){
 		$.ajax({
 			type: "POST",
-			url: BASE_URL+"create-loan",
+			url: BASE_URL+"insert-loan",
 			dataType: "json",
 			data: {
 				loan_no : loan_no,

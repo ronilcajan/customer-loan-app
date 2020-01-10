@@ -51,7 +51,7 @@
                                         <tr>
                                             <td><? echo $verified['loan_no'];?></td>
                                             <td class="text-center">
-                                                <a href="<? echo base_url().'borrowers/client-profile/'.$verified['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $verified['lastname'].','.$verified['firstname'].' '.$verified['middlename'];?></a>
+                                                <a href="<? echo base_url().'borrowers/profile/'.$verified['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $verified['lastname'].','.$verified['firstname'].' '.$verified['middlename'];?></a>
                                             </td>
                                             <td class="text-right"><? echo $verified['loan_amount'];?></td>
                                             <td class="text-center"><? echo $verified['verified'];?></td>

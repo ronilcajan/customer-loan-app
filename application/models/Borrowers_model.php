@@ -150,6 +150,19 @@ class Borrowers_model extends CI_Model {
         }
     }
 
+    public function get_co_maker($data){
+        $this->db->where('co_maker.account_no', $data);
+
+        $query = $this->db->get('co_maker');
+
+        $result = $query->result_array();
+        if(count($result) >0){
+            return $result;
+        }else{
+            return null;
+        }
+    }
+
     public function approve_loan($data){
         
         $this->db->set('status', "Approved");

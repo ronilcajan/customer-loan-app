@@ -109,6 +109,8 @@ class Borrowers extends CI_Controller {
 				$client['business'] = array('bname' => $business['business_name'],'baddress' => $business['business_address']);
 			}
 
+			$client['co_maker'] = $this->borrowers_model->get_co_maker($account_no);
+
 			$client['profile'] = array(
 				'account_no' => $result['account_no'],
 				'prof-img' => $result['profile_img'],

@@ -7,7 +7,7 @@
 				if( $site == '/dashboard'){?>
 				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>dashboard">Dashboard</a>
 				<?}elseif(strpos($site, 'borrowers/')) {?>
-				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>borrowers/create-borrowers">Manage Clients</a>
+				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>borrowers/create-borrowers">Manage Borrowers</a>
 				<?}elseif(strpos($site, '/client-profile')){?>
 				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>borrowers/create-borrowers">Client Profile</a>
 				<?}elseif($site == '/loan' || strpos($site, 'loan/apply-loan')){?>

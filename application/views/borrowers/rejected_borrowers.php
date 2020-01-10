@@ -51,7 +51,7 @@
                                         <tr>
                                             <td><? echo $reject['loan_no'];?></td>
                                             <td>
-                                                <a href="<? echo base_url().'borrowers/client-profile/'.$reject['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $reject['lastname'].','.$reject['firstname'].' '.$reject['middlename'];?></a>
+                                                <a href="<? echo base_url().'borrowers/profile/'.$reject['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $reject['lastname'].','.$reject['firstname'].' '.$reject['middlename'];?></a>
                                             </td>
                                             <td>
                                                     <? echo $reject['reason'];?>

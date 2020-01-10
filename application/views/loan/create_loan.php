@@ -6,11 +6,11 @@
                 <img class="" width="400" src="<? echo base_url();?>assets/img/loading.gif" alt="Redirecting" />
             </div>
         </div>
-	<div class="wrapper ">
+    <div class="wrapper ">
 
-		<!-- Top NavBar -->
-		<? $this->load->view('navigation/sidebar');?>
-		<!-- End of NavBar -->
+        <!-- Top NavBar -->
+        <? $this->load->view('navigation/sidebar');?>
+        <!-- End of NavBar -->
 
         <div class="main-panel">
 
@@ -22,18 +22,16 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-
                             <ul class="nav nav-pills nav-pills-primary" role="tablist">
                                 <li class="nav-item">
-                                     <a class="btn btn-primary btn-round btn-sm" rel="tooltip" title="Create borrowers profile" href="<? echo base_url();?>borrowers/create-borrowers">Create Loan</a>
+                                    <a class="btn btn-primary btn-round btn-sm" rel="tooltip" title="Create Loan Here" href="<? echo base_url();?>loan/create-loan">Create New Loan</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#link2" role="tablist" aria-expanded="false">
+                                    <a class="nav-link btn-outline-primary" href="#link2">
                                 All Loans
                                     </a>
                                 </li>
                             </ul>
-
                             <div class="tab-content tab-space">
 
                                 <div class="tab-pane active">
