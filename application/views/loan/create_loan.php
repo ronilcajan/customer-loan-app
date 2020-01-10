@@ -22,11 +22,10 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
+
                             <ul class="nav nav-pills nav-pills-primary" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#link1" role="tablist" aria-expanded="true">
-                                Create Loan
-                                    </a>
+                                     <a class="btn btn-primary btn-round btn-sm" rel="tooltip" title="Create borrowers profile" href="<? echo base_url();?>borrowers/create-borrowers">Create Loan</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#link2" role="tablist" aria-expanded="false">
@@ -34,6 +33,7 @@
                                     </a>
                                 </li>
                             </ul>
+
                             <div class="tab-content tab-space">
 
                                 <div class="tab-pane active">

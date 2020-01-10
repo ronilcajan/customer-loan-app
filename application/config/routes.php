@@ -24,7 +24,8 @@ $route['delete-borrowers'] = "borrowers/delete_clients";
 $route['reapply-loan'] = "borrowers/reapply_loan";
 $route['cash-receive'] = "borrowers/cash_recieve";
 
-$route['borrowers/client-profile/(:num)'] = 'claims_controller/client_profile/$1';
+$route['create-loan'] = "";
+
 $route['loan'] = 'claims_controller/loan';
 $route['loan/apply-loan/(:num)'] = 'claims_controller/loan/$1';
 $route['account-query'] = 'claims_controller/account_query';

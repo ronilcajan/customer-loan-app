@@ -13,11 +13,17 @@
 
         <div class="content">
             <div class="container-fluid">
-                <nav aria-label="breadcrumb bg-primary" style="margin-top: -40px;" role="navigation">
-                  <ol class="breadcrumb nav-pills-primary">
-                    <li class="breadcrumb-item"><a href="<? echo base_url();?>borrowers/create-borrowers">Borrowers</a></li>
-                    <li class="breadcrumb-item"><a href="#">Profile</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><? echo $profile['fname'].' '.$profile['mname'].'. '.$profile['lname'];?></li>
+            
+                <nav aria-label="breadcrumb" style="margin-top: -40px;" role="navigation">
+                  <ol class="breadcrumb" style="background-color: #A057B0">
+                    <li class="breadcrumb-item">
+                        <a href="<? echo base_url();?>borrowers/create-borrowers" class="text-light font-weight-bold">Borrowers</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#" class="text-light font-weight-bold">Profile</a></li>
+                    <li class="breadcrumb-item active text-light font-weight-bold" aria-current="page" >
+                        <? echo $profile['fname'].' '.$profile['mname'].'. '.$profile['lname'];?>
+                    </li>
                   </ol>
                 </nav>
                         <div class="row" style="margin-top: -40px;">
@@ -51,7 +57,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<? echo base_url();?>borrowers" class="btn btn-outline-primary btn-round">
+                                <a href="<? echo base_url();?>borrowers/create-borrowers" class="btn btn-outline-primary btn-round">
                                     <i class="material-icons">keyboard_arrow_left</i> Back
                                 </a>
                             </div>

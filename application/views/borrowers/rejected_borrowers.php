@@ -24,26 +24,7 @@
                 <div class="row">
                     <div class="col-md-12">
               
-                        <ul class="nav nav-pills nav-pills-primary">
-                            <li class="nav-item">
-                                <a class="btn btn-outline-primary btn-round btn-sm" rel="tooltip" title="Create borrowers profile" href="<? echo base_url();?>borrowers/create-borrowers">Create Borrowers</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-outline-primary btn-round btn-sm" rel="tooltip" title="List of all new borrowers" href="<? echo base_url();?>borrowers/new-borrowers">New Borrowers</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-outline-primary btn-round btn-sm" rel="tooltip" title="List of borrowers loan" href="<? echo base_url();?>borrowers/loan-applicants">Loan Applicants</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-outline-primary btn-round btn-sm" rel="tooltip" title="Approved borrowers loan" href="<? echo base_url();?>borrowers/approved-borrowers">Approved Borrowers</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-primary btn-round btn-sm" rel="tooltip" title="Rejected borrowers loan" href="<? echo base_url();?>borrowers/rejected-borrowers">Rejected Borrowers</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-outline-primary btn-round btn-sm" rel="tooltip" title="Active borrowers loan" href="<? echo base_url();?>borrowers/active-borrowers">Active Borrowers</a>
-                            </li>
-                        </ul>
+                        <? $this->load->view('navigation/borrowers_navbar');?>
 
                         <div class="tab-content tab-space">
                             <div class="tab-pane active">
