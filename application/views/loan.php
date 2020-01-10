@@ -73,17 +73,16 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-4">
-                                                                    <div class="input-group-prepend form-group label-floating acc_no">
-                                                                        <label class="bmd-label-floating">Enter account no</label>
-                                                                        <? if(isset($account_no)){?>
-                                                                        <input type="number" class="form-control accnt_no" name="account_no" value="<? echo $account_no?>" autofocus required>
-                                                                        <?}else{?>
-                                                                        <input type="number" class="form-control accnt_no" autofocus name="account_no" required>
-                                                                        <?}?>
-                                                                        <span class="input-group-text">
-                                                                            <i class="fa fa-search"></i>
-                                                                        </span>
-                                                                    
+                                                                <div class="input-group no-border">
+                                                                    <? if(isset($account_no)){?>
+                                                                       <input type="text" value="<? echo $account_no?>" class="form-control accnt_no" placeholder="Account no" autofocus required>
+                                                                    <?}else{?>
+                                                                        <input type="text" value="" class="form-control accnt_no" placeholder="Account no" autofocus required>
+                                                                    <?}?>
+                                                                    <button type="submit" class="btn btn-primary btn-round btn-just-icon search_account">
+                                                                    <i class="material-icons">search</i>
+                                                                    <div class="ripple-container"></div>
+                                                                    </button>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-3">

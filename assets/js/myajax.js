@@ -720,7 +720,7 @@ function checkconnection(){
 
 
 // ============== Account no.query ==============
-$(document).on('blur','.accnt_no',function(){
+$(document).on('click','.search_account',function(){
 	var account_no = $('.accnt_no').val();
 
 	$.ajax({
@@ -749,7 +749,7 @@ $(document).on('blur','.accnt_no',function(){
 
 			}else{
 				showNotification(
-					'User not found!',
+					'Borrowers data not found!',
 					"info",
 					"danger"
 				);
