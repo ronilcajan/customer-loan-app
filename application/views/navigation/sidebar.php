@@ -41,7 +41,7 @@
 				</a>
 			</li>
 			
-			<? if($site == 'loan/' || strpos($site, 'loan/create-loan')){?>
+			<? if(strpos($site,'loan/')){?>
 				<li class="nav-item active">
 			<? }else{ ?>
 				<li class="nav-item">

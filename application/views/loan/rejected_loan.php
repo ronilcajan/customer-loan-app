@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-12">
               
-                        <? $this->load->view('navigation/borrowers_navbar');?>
+                        <? $this->load->view('navigation/loan_navbar');?>
 
                         <div class="tab-content tab-space">
                             <div class="tab-pane active">
@@ -37,7 +37,7 @@
                             <div class="table-responsive">
                                 <table class="table table-hover table-sm" id="rejected_clients_table">
                                     <thead class="text-primary">
-                                        <th>Account No.</th>
+                                        <th>Loan No.</th>
                                         <th>Name</th>
                                         <th>Reason</th>
                                         <th>Rejected by</th>

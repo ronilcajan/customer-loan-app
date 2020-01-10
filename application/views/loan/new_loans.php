@@ -23,8 +23,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-              
-                        <? $this->load->view('navigation/borrowers_navbar');?>
+                        
+                        <? $this->load->view('navigation/loan_navbar');?>
 
                         <div class="tab-content tab-space">
                             <div class="tab-pane active">

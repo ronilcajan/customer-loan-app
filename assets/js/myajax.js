@@ -205,7 +205,7 @@ $(document).ready(function() {
 		}
 	});
 });
-// =============== Approved Borrowers ================
+// =============== Approved Loan ================
 $(document).on('click', '.approve', function(){
 	var id = $(this).attr('id');
 
@@ -213,7 +213,7 @@ $(document).on('click', '.approve', function(){
 	var table = $("#loan_clients_table").DataTable();
 	
 	$.ajax({
-		url: BASE_URL+"borrowers/approve-loan",
+		url: BASE_URL+"approve-loan",
 		method: 'POST',
 		data:{
 			id:id
@@ -427,11 +427,12 @@ $(document).on('click', '.reject', function(){
 		    }
 	});
 });
+
 // =============== Loan Re-Apply ================
 $(document).on('click', '.re-apply', function(){
 	var id = $(this).attr('id');
 
-	var $button = $('#remove-another-loan'+id);
+	var $button = $('#reapply-loan'+id);
 	var table = $("#rejected_clients_table").DataTable();
 	
 	$.ajax({

@@ -23,8 +23,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-              
-                       <? $this->load->view('navigation/borrowers_navbar');?>
+
+                        <? $this->load->view('navigation/loan_navbar');?>
 
                         <div class="tab-content tab-space">
                             <div class="tab-pane active">
@@ -37,10 +37,11 @@
                             <div class="table-responsive">
                                 <table class="table table-hover table-sm" id="approved_clients_table">
                                     <thead class="text-primary">
-                                        <th>Account No.</th>
+                                        <th>Loan No.</th>
                                         <th class="text-center">Name</th>
                                         <th class="text-right">Loan Amount</th>
-                                        <th class="text-center">Approve by</th>
+                                        <th class="text-center">Approved by</th>
+                                        <th>Approved Date</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </thead>
@@ -49,12 +50,13 @@
                                             if(!empty($appr)){  
                                         ?>
                                         <tr>
-                                            <td><? echo $appr['account_no'];?></td>
+                                            <td><? echo $appr['loan_no'];?></td>
                                             <td class="text-center">
                                                 <a href="<? echo base_url().'borrowers/profile/'.$appr['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $appr['lastname'].','.$appr['firstname'].' '.$appr['middlename'];?></a>
                                             </td>
                                             <td class="text-right"><? echo $appr['loan_amount'];?></td>
                                             <td class="text-center"><? echo $appr['approved'];?></td>
+                                            <td class="text-center"><? echo $appr['date_approved'];?></td>
                                             <td>
                                                 <span class="font-italic text-muted "><? echo $appr['status'].'.Waiting for cash release.';?></span>
                                             </td>

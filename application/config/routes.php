@@ -11,22 +11,22 @@ $route['dashboard'] = 'claims_controller/dashboard';
 
 $route['borrowers/create-borrowers'] = 'borrowers/create_borrowers';
 $route['borrowers/new-borrowers'] = 'borrowers/new_borrowers';
-$route['borrowers/loan-applicants'] = 'borrowers/loan_applicant';
-$route['borrowers/approved-borrowers'] = 'borrowers/approved_borrowers';
-$route['borrowers/rejected-borrowers'] = 'borrowers/rejected_borrowers';
 $route['borrowers/active-borrowers'] = 'borrowers/active_borrowers';
 $route['borrowers/profile/(:num)'] = 'borrowers/borrowers_profile/$1';
-$route['borrowers/approve-loan'] = 'borrowers/approve_loan';
-$route['remove-loan'] = 'borrowers/remove_loan';
 $route['register-borrowers'] = 'borrowers/register_borrowers';
-$route['reject-loan'] = "borrowers/reject_loan";
 $route['delete-borrowers'] = "borrowers/delete_clients";
-$route['reapply-loan'] = "borrowers/reapply_loan";
-$route['cash-receive'] = "borrowers/cash_recieve";
 
 $route['loan/create-loan'] = "loan/create_loan";
 $route['loan/create-loan/(:num)'] = "loan/create_loan/$1";
+$route['loan/new-loans'] = 'loan/new_loans';
+$route['loan/approved-loans'] = 'loan/approved_loans';
+$route['loan/rejected-loans'] = 'loan/rejected_loans';
 $route['insert-loan'] = "loan/insert_loan";
 $route['account-query'] = 'loan/account_query';
+$route['approve-loan'] = 'loan/approve_loan';
+$route['reject-loan'] = "loan/reject_loan";
+$route['remove-loan'] = 'loan/remove_loan';
+$route['cash-receive'] = "loan/cash_recieve";
+$route['reapply-loan'] = "loan/reapply_loan";
 
 $route['logout'] = 'claims_controller/logout';

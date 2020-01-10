@@ -39,6 +39,7 @@
                                     <thead class="text-primary">
                                         <th>Account No.</th>
                                         <th>Name</th>
+                                        <th>Loan No</th>
                                         <th>Loan Amount</th>
                                         <th>Approve By</th>
                                         <th>Status</th>
@@ -49,10 +50,11 @@
                                             if(!empty($actv)){  
                                         ?>
                                         <tr>
-                                            <td><? echo $actv['loan_no'];?></td>
+                                            <td><? echo $actv['account_no'];?></td>
                                             <td>
                                                 <a href="<? echo base_url().'borrowers/profile/'.$actv['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $actv['lastname'].','.$actv['firstname'].' '.$actv['middlename'];?></a>
                                             </td>
+                                            <td><? echo $actv['loan_no'];?></td>
                                             <td><? echo $actv['loan_amount'];?></td>
                                             <td><? echo $actv['approved'];?></td>
                                             <td>

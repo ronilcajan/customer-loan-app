@@ -46,42 +46,7 @@ class Borrowers extends CI_Controller {
 		$this->load->view('borrowers/new_borrowers', $clients);
 		$this->load->view('templates/footer');
 	}
-	public function loan_applicant(){
-
-		$title['title'] = "RFSC-Loan Applicants";
-
-		$this->check_auth('loan_applicant');
-
-		$clients['verify'] = $this->borrowers_model->get_verified_clients();
-
-		$this->load->view('templates/header',$title);
-		$this->load->view('borrowers/loan_applicants', $clients);
-		$this->load->view('templates/footer');
-	}
-	public function approved_borrowers(){
-
-		$title['title'] = "RFSC-Approved Borrowers";
-
-		$this->check_auth('approve_borrowers');
-
-		$clients['approved'] = $this->borrowers_model->get_approved_clients();
-
-		$this->load->view('templates/header',$title);
-		$this->load->view('borrowers/approve_borrowers', $clients);
-		$this->load->view('templates/footer');
-	}
-	public function rejected_borrowers(){
-
-		$title['title'] = "RFSC-Rejected Borrowers";
-
-		$this->check_auth('rejected_borrowers');
-		
-		$clients['rejected'] = $this->borrowers_model->get_rejected_clients();
-
-		$this->load->view('templates/header',$title);
-		$this->load->view('borrowers/rejected_borrowers', $clients);
-		$this->load->view('templates/footer');
-	}
+	
 	public function active_borrowers(){
 
 		$title['title'] = "RFSC-Active Borrowers";
@@ -206,78 +171,6 @@ class Borrowers extends CI_Controller {
 			echo json_encode($validator);
 	}
 
-	function send_approve_email($name,$user_email,$amount,$b_name){
-			
-		//setup SMTP configurion
-		$config = Array(    
-		  'protocol' => 'smtp',
-		  'smtp_host' => 'ssl://smtp.googlemail.com',
-		  'smtp_port' => 465,
-		  'smtp_user' => 'rf.servicing.corporation@gmail.com',
-		  'smtp_pass' => 'CORPOration101',
-		  'mailtype' => 'html',
-		  'charset' => 'utf-8',
-		  'TLS/SSL' => 'required'
-		);
-
-		$this->load->library('email', $config); // Load email template
-
-		$this->email->initialize($config);
-		$this->email->set_mailtype("html");
-		$this->email->set_newline("\r\n");
-		$this->email->from('rf.servicing.corporation@gmail.com', 'RFS Corporation');
-
-		$data = array(
-			'name' => $name,
-			'amount' => $amount,
-			'business' => $b_name
-        );
-
-		$subject = "RFSC Loan application approved";
-
-		$this->email->to($user_email); // replace it with receiver email id
-		$this->email->subject($subject); // replace it with email subject
-		$message = $this->load->view('templates/approve_email.php',$data,TRUE);
-
-		$this->email->message($message); 
-		$this->email->send();
-
-	}
-
-	public function approve_loan(){
-
-		$result = $this->borrowers_model->approve_loan($_POST['id']);
-
-		if($result){
-
-			$query = $this->borrowers_model->get_loan_details($_POST['id']);
-			if($query){
-
-				$name = $query['firstname'].' '.$query['middlename'].' '.$query['lastname'];
-				$email = $query['email'];
-				$amount = $query['loan_amount'];
-				$b_name = $query['business_name'];
-
-				$send_approve_email = $this->send_approve_email($name, $email, $amount, $b_name);
-				
-			}
-
-			echo "Loan approved";
-		}else{
-			echo "False";
-		}
-	}
-
-	public function reject_loan(){
-		$result = $this->borrowers_model->reject_loan($_POST['id'],$_POST['reason']);
-		if($result){
-			echo "Loan rejected";
-		}else{
-			echo "False";
-		}
-		
-	}
-
 
 	public function delete_clients(){
 		$result = $this->borrowers_model->delete_clients($_POST['id']);
@@ -288,37 +181,5 @@ class Borrowers extends CI_Controller {
 		}
 		
 	}
-
-	public function remove_loan(){
-		$result = $this->borrowers_model->remove_loan($_POST['id']);
-		if($result){
-			echo "Loan remove";
-		}else{
-			echo "False";
-		}
-		
-	}
-
-	public function reapply_loan(){
-		$result = $this->borrowers_model->reapply_loan($_POST['id']);
-		if($result){
-			echo "Loan successfully re-applied.";
-		}else{
-			echo "False";
-		}
-		
-	}
-	public function cash_recieve(){
-
-		$result = $this->borrowers_model->cash_recieve($_POST['id']);
-		if($result){
-			echo "Cash released!";
-		}else{
-			echo "False";
-		}
-		
-	}
-	
-
 
 }

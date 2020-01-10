@@ -67,45 +67,6 @@ class Borrowers_model extends CI_Model {
         return $result->result_array();
     }
 
-    public function get_verified_clients(){
-        $this->db->select('*');
-        $this->db->from('clients');
-        $this->db->join('address', 'clients.account_no = address.account_no');
-        $this->db->join('names', 'clients.account_no = names.account_no');
-        $this->db->join('loan', 'loan.account_no = clients.account_no');
-        $this->db->join('debtor_business', 'loan.loan_no = debtor_business.loan_no');
-        $this->db->where('loan.status', 'Waiting for approval');
-        $this->db->or_where('loan.status', 'Re-applied loan');
-        $result = $this->db->get();
-
-        return $result->result_array();
-    }
-
-    public function get_rejected_clients(){
-        $this->db->select('*');
-        $this->db->from('clients');
-        $this->db->join('address', 'clients.account_no = address.account_no');
-        $this->db->join('names', 'clients.account_no = names.account_no');
-        $this->db->join('loan', 'loan.account_no = clients.account_no');
-        $this->db->join('debtor_business', 'loan.loan_no = debtor_business.loan_no');
-        $this->db->where('loan.status', 'Rejected');
-        $result = $this->db->get();
-
-        return $result->result_array();
-    }
-    
-    public function get_approved_clients(){
-        $this->db->select('*');
-        $this->db->from('clients');
-        $this->db->join('address', 'clients.account_no = address.account_no');
-        $this->db->join('names', 'clients.account_no = names.account_no');
-        $this->db->join('loan', 'loan.account_no = clients.account_no');
-        $this->db->where('loan.status', 'Approved');
-        $result = $this->db->get();
-
-        return $result->result_array();
-    }
-
     public function get_active_clients(){
         $this->db->select('*');
         $this->db->from('clients');
@@ -163,76 +124,11 @@ class Borrowers_model extends CI_Model {
         }
     }
 
-    public function approve_loan($data){
-        
-        $this->db->set('status', "Approved");
-        $this->db->set('approved', $this->session->userdata('username'));
-        $this->db->where('loan_no', $data);
-        $this->db->update('loan');
-        return $this->db->affected_rows();
-    }
-
-    public function get_loan_details($data){
-        $this->db->select('*');
-        $this->db->from('loan');
-        $this->db->join('clients', 'client.account_no=loan.loan_no');
-        $this->db->join('names', 'names.account_no=names.account_no');
-        $this->db->join('debtor_business', 'debtor_business.loan_no=loan.loan_no');
-        $this->db->where('loan.loan_no', $data);
-        $this->db->group_by('loan.loan_no');
-
-        $query = $this->db->get();
-
-        $result = $query->result_array();
-        if(count($result) >0){
-            return $result[0];
-        }else{
-            return null;
-        }
-
-    }
-
-    public function remove_loan($data){
-
-        $this->db->where('loan_no', $data);
-        $this->db->delete('loan');
-    
-        return $this->db->affected_rows();
-    }
-
-    public function reject_loan($data, $data1){
-        if(empty($data1)){
-            $data1 = "No reason given";
-        }
-        $this->db->set('reason', $data1);
-        $this->db->set('status', "Rejected");
-        $this->db->set('approved', $this->session->userdata('username'));
-        $this->db->where('loan_no', $data);
-        $this->db->update('loan');
-        return $this->db->affected_rows();
-    }
-
-    public function reapply_loan($data){
-        $this->db->set('reason', null);
-        $this->db->set('status', "Re-applied loan");
-        $this->db->set('approved', null);
-        $this->db->where('loan_no', $data);
-        $this->db->update('loan');
-        return $this->db->affected_rows();
-    }
 
     public function delete_clients($data){
         $this->db->where('account_no', $data);
         $this->db->delete('clients');
         return $this->db->affected_rows();
     }
-
-    public function cash_recieve($data){
-        $this->db->set('status', "Active");
-        $this->db->where('loan_no', $data);
-        $this->db->update('loan');
-        return $this->db->affected_rows();
-    }
-
 
 }

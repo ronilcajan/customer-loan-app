@@ -22,16 +22,9 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <ul class="nav nav-pills nav-pills-primary" role="tablist">
-                                <li class="nav-item">
-                                    <a class="btn btn-primary btn-round btn-sm" rel="tooltip" title="Create Loan Here" href="<? echo base_url();?>loan/create-loan">Create New Loan</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link btn-outline-primary" href="#link2">
-                                All Loans
-                                    </a>
-                                </li>
-                            </ul>
+
+                            <? $this->load->view('navigation/loan_navbar');?>
+                            
                             <div class="tab-content tab-space">
 
                                 <div class="tab-pane active">
