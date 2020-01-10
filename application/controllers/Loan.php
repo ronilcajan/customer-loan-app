@@ -80,7 +80,7 @@ class Loan extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-    function send_email($name,$user_email,$amount,$b_name){
+    function send_email($name,$user_email,$amount,$b_name,$subject,$template){
 			
 		//setup SMTP configurion
 		$config = Array(    
@@ -99,7 +99,7 @@ class Loan extends CI_Controller {
 		$this->email->initialize($config);
 		$this->email->set_mailtype("html");
 		$this->email->set_newline("\r\n");
-		$this->email->from('rf.servicing.corporation@gmail.com', 'RFS Corporation');
+		$this->email->from($template, 'RFS Corporation');
 
 		$data = array(
 			'name' => $name,
@@ -107,11 +107,9 @@ class Loan extends CI_Controller {
 			'business' => $b_name
         );
 
-		$subject = "RFSC Loan application";
-
 		$this->email->to($user_email); // replace it with receiver email id
 		$this->email->subject($subject); // replace it with email subject
-		$message = $this->load->view('templates/email_template.php',$data,TRUE);
+		$message = $this->load->view($template,$data,TRUE);
 
 		$this->email->message($message); 
 		$this->email->send();
@@ -139,12 +137,14 @@ class Loan extends CI_Controller {
 
 			if($email_notif == 'yes'){
 
-				$sendmail = $this->send_email($full_name,$email,$amount,$business);
+				$subject = "RFSC Loan Application Verification";
+				$template = "templates/email_template";
+				$sendmail = $this->send_email($full_name,$email,$amount,$business,$subject,$template);
 
 			}
 
 			$validator['success'] = true;
-			$validator['messages'] = 'Loan successfully registered.';
+			$validator['messages'] = 'Loan successfully registered. Email notification sent!';
 
 			$this->loan_model->update_borrowers($account_no);
 		}else{
@@ -178,63 +178,29 @@ class Loan extends CI_Controller {
 		echo json_encode($data);
 	}
 
-		function send_approve_email($name,$user_email,$amount,$b_name){
-			
-		//setup SMTP configurion
-		$config = Array(    
-		  'protocol' => 'smtp',
-		  'smtp_host' => 'ssl://smtp.googlemail.com',
-		  'smtp_port' => 465,
-		  'smtp_user' => 'rf.servicing.corporation@gmail.com',
-		  'smtp_pass' => 'CORPOration101',
-		  'mailtype' => 'html',
-		  'charset' => 'utf-8',
-		  'TLS/SSL' => 'required'
-		);
-
-		$this->load->library('email', $config); // Load email template
-
-		$this->email->initialize($config);
-		$this->email->set_mailtype("html");
-		$this->email->set_newline("\r\n");
-		$this->email->from('rf.servicing.corporation@gmail.com', 'RFS Corporation');
-
-		$data = array(
-			'name' => $name,
-			'amount' => $amount,
-			'business' => $b_name
-        );
-
-		$subject = "RFSC Loan application approved";
-
-		$this->email->to($user_email); // replace it with receiver email id
-		$this->email->subject($subject); // replace it with email subject
-		$message = $this->load->view('templates/approve_email.php',$data,TRUE);
-
-		$this->email->message($message); 
-		$this->email->send();
-
-	}
-
 	public function approve_loan(){
 
-		$result = $this->loan_model->approve_loan($_POST['id']);
+		$id = $this->input->post('id');
 
-		if($result){
+		$query = $this->loan_model->get_loan_details($id);
 
-			$query = $this->loan_model->get_loan_details($_POST['id']);
-			if($query){
+		if($query){
+
+			$result = $this->loan_model->approve_loan($id);
+
+			if($result){
 
 				$name = $query['firstname'].' '.$query['middlename'].' '.$query['lastname'];
 				$email = $query['email'];
 				$amount = $query['loan_amount'];
 				$b_name = $query['business_name'];
+				$subject = "RFSC Loan Application Approval";
+				$template = "templates/email_approval";
 
-				$send_approve_email = $this->send_approve_email($name, $email, $amount, $b_name);
-				
+				$sendmail = $this->send_email($name,$email,$amount,$b_name,$subject,$template);	
 			}
 
-			echo "Loan approved";
+			echo "Loan approved. Email notification sent!";
 		}else{
 			echo "False";
 		}

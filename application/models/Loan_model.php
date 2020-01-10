@@ -115,6 +115,7 @@ class Loan_model extends CI_Model {
         $this->db->join('names', 'clients.account_no = names.account_no');
         $this->db->join('loan', 'loan.account_no = clients.account_no');
         $this->db->where('loan.status', 'Approved');
+        $this->db->or_where('loan.status', 'Active');
         $result = $this->db->get();
 
         return $result->result_array();
@@ -148,25 +149,18 @@ class Loan_model extends CI_Model {
     }
 
     public function approve_loan($data){
-        
+        $approved_date = date('Y-m-d');
         $this->db->set('status', "Approved");
         $this->db->set('approved', $this->session->userdata('username'));
-        $this->db->set('date_approved');
+        $this->db->set('date_approved',$approved_date);
         $this->db->where('loan_no', $data);
         $this->db->update('loan');
         return $this->db->affected_rows();
     }
 
     public function get_loan_details($data){
-        $this->db->select('*');
-        $this->db->from('loan');
-        $this->db->join('clients', 'client.account_no=loan.loan_no');
-        $this->db->join('names', 'names.account_no=names.account_no');
-        $this->db->join('debtor_business', 'debtor_business.loan_no=loan.loan_no');
-        $this->db->where('loan.loan_no', $data);
-        $this->db->group_by('loan.loan_no');
-
-        $query = $this->db->get();
+        $sql = "SELECT * FROM `loan` JOIN clients ON loan.account_no=clients.account_no JOIN names ON clients.account_no=names.account_no JOIN debtor_business ON debtor_business.loan_no=loan.loan_no WHERE loan.loan_no= '$data' ";
+        $query = $this->db->query($sql);
 
         $result = $query->result_array();
         if(count($result) >0){

@@ -1,12 +1,7 @@
 <body class="">
   
-    <div id="loading-screen" style="display: none;">
-            <div class="loading-gif">
-                 <img class="mb-5" src="<? echo base_url();?>assets/img/CLAIMS.png" alt="logo" /><br>
-                <p>Loading Please Wait....</p>
-                <img class="" width="400" src="<? echo base_url();?>assets/img/loading.gif" alt="Redirecting" />
-            </div>
-        </div>
+    <? $this->load->view('loading_screen');?>
+    
 	<div class="wrapper ">
 
 	<!-- Top NavBar -->

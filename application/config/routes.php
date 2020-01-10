@@ -7,7 +7,6 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['login-submit'] = 'claims_controller/login';
 $route['dashboard'] = 'claims_controller/dashboard';
-// $route['borrowers'] = 'claims_controller/borrowers';
 
 $route['borrowers/create-borrowers'] = 'borrowers/create_borrowers';
 $route['borrowers/new-borrowers'] = 'borrowers/new_borrowers';

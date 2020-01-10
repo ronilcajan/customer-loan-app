@@ -10,7 +10,7 @@
 				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>borrowers/create-borrowers">Manage Borrowers</a>
 				<?}elseif(strpos($site, '/client-profile')){?>
 				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>borrowers/create-borrowers">Client Profile</a>
-				<?}elseif($site == '/loan' || strpos($site, 'loan/apply-loan')){?>
+				<?}elseif(strpos($site,'loan/')){?>
 				<a class="navbar-brand font-weight-bold" href="#pablo">Manage Loan</a>
 				<?}else{
 					

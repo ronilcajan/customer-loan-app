@@ -1,12 +1,7 @@
 <body class="">
   
-    <div id="loading-screen" style="display: none;">
-            <div class="loading-gif">
-                 <img class="mb-5" src="<? echo base_url();?>assets/img/CLAIMS.png" alt="logo" /><br>
-                <p>Loading Please Wait....</p>
-                <img class="" width="400" src="<? echo base_url();?>assets/img/loading.gif" alt="Redirecting" />
-            </div>
-        </div>
+    <? $this->load->view('loading_screen');?>
+    
     <div class="wrapper ">
 
     <!-- Top NavBar -->
@@ -58,12 +53,25 @@
                                             <td class="text-center"><? echo $appr['approved'];?></td>
                                             <td class="text-center"><? echo $appr['date_approved'];?></td>
                                             <td>
-                                                <span class="font-italic text-muted "><? echo $appr['status'].'.Waiting for cash release.';?></span>
+                                                <span class="font-italic text-muted ">
+                                                    <?if($appr['status'] == 'Approved'){?>
+
+                                                    <? echo $appr['status'].'. Waiting for cash release.';?>
+                                                    <? }else{?> 
+                                                    <? echo 'Loan is '.$appr['status'];?>.
+                                                    <? } ?>        
+                                                </span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="Cash release" class="btn btn-primary btn-sm mr-2" data-target="#cash<? echo $appr['loan_no'];?>" id="cash-release<? echo $appr['loan_no'];?>" data-toggle="modal">
-                                                    Done
-                                                </button>
+                                                <?if($appr['status'] == 'Approved'){?>
+                                                    <button type="button" rel="tooltip" title="Cash release" class="btn btn-primary btn-sm mr-2" data-target="#cash<? echo $appr['loan_no'];?>" id="cash-release<? echo $appr['loan_no'];?>" data-toggle="modal">
+                                                        Release Cash
+                                                    </button>
+                                                <? }else{?> 
+                                                    <button type="button" rel="tooltip" title="View Loan Details" class="btn btn-info btn-sm mr-2">
+                                                        View Loan
+                                                    </button>
+                                                <? } ?>
                                             </td>
                                         </tr>
                                          <!-- Modal  -->
