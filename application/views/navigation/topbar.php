@@ -1,5 +1,5 @@
 <!-- Navbar -->
-		<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+		<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top">
 			<div class="container-fluid">
 			<div class="navbar-wrapper">
 				<?
@@ -11,7 +11,9 @@
 				<?}elseif(strpos($site, '/client-profile')){?>
 				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>borrowers/create-borrowers">Client Profile</a>
 				<?}elseif(strpos($site,'loan/')){?>
-				<a class="navbar-brand font-weight-bold" href="#pablo">Manage Loan</a>
+				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>loan/create-loan">Manage Loan</a>
+				<?}elseif(strpos($site,'payments/')){?>
+				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>loan/create-loan">Manage Loan</a>
 				<?}else{
 					
 				}?>

@@ -52,8 +52,12 @@
 				</a>
 			</li>
 
-			<li class="nav-item">
-				<a class="nav-link" href="./typography.html">
+			<? if(strpos($site,'payments/')){?>
+				<li class="nav-item active">
+			<? }else{ ?>
+				<li class="nav-item">
+			<? } ?>
+				<a class="nav-link" href="<? echo base_url();?>payments/loan-details">
 				<i class="material-icons">payment</i>
 				<p>Payments</p>
 				</a>

@@ -68,7 +68,7 @@
                                                         Release Cash
                                                     </button>
                                                 <? }else{?> 
-                                                    <button type="button" rel="tooltip" title="View Loan Details" class="btn btn-info btn-sm mr-2">
+                                                    <button type="button" rel="tooltip" title="View Loan Details" class="btn btn-info btn-sm mr-2" onclick="location.href='<? echo base_url().'payments/loan-details/'.$appr['loan_no'];?>'">
                                                         View Loan
                                                     </button>
                                                 <? } ?>

@@ -36,7 +36,7 @@
                                                         <div class="form-group form-file-upload form-file-multiple ">
                                                             <input type="file" accept="image/*" onchange="loadFile(event)" class="inputFileHidden"  name="client_img" id="client_img" required>
                                                             <div class="fileinput-new thumbnail img-raised text-center">
-                                                                <img class="img-fluid" id="output" src="<? echo base_url();?>assets/img/person.png" alt="client-img" />
+                                                                <img class="img-fluid" id="output" src="<? echo base_url();?>assets/images/person.png" alt="client-img" />
                                                             </div>
                                                             <div class="input-group mt-2">
                                                                 <span class="input-group-btn">
