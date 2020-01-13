@@ -33,9 +33,11 @@
                                 <table class="display nowrap table table-hover table-sm " id="loan_clients_table">
                                 <thead class="text-primary">
                                     <th>Loan No.</th>
-                                    <th class="text-center">Name</th>
-                                    <th class="text-right">Loan Amount</th>
-                                    <th class="text-center">Verified by</th>
+                                    <th>Name</th>
+                                    <th>Loan Amount</th>
+                                    <th>Int(%)</th>
+                                    <th>Terms(days)</th>
+                                    <th>Verified by</th>
                                     <th>Status</th>
                                     <th >Action</th>
                                 </thead>
@@ -48,8 +50,11 @@
                                             <td class="text-center">
                                                 <a href="<? echo base_url().'borrowers/profile/'.$verified['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $verified['lastname'].','.$verified['firstname'].' '.$verified['middlename'];?></a>
                                             </td>
-                                            <td class="text-right"><? echo $verified['loan_amount'];?></td>
+                                            <td class="text-right" id="amount<? echo $verified['loan_no'];?>" ><? echo intval($verified['loan_amount']);?></td>
+                                            <td class="text-center"><? echo $verified['interest'];?></td>
+                                            <td class="text-center"><? echo $verified['terms'];?></td>
                                             <td class="text-center"><? echo $verified['verified'];?></td>
+
                                             <td>
                                                 <span class="font-italic text-muted "><? echo $verified['status'];?></span>
                                             </td>

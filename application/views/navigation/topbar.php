@@ -13,7 +13,7 @@
 				<?}elseif(strpos($site,'loan/')){?>
 				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>loan/create-loan">Manage Loan</a>
 				<?}elseif(strpos($site,'payments/')){?>
-				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>loan/create-loan">Manage Loan</a>
+				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>payments/loan_details">Manage Payments</a>
 				<?}else{
 					
 				}?>

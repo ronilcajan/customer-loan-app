@@ -62,7 +62,6 @@ class Loan_model extends CI_Model {
             'account_no' => $data['account_no'],
             'area' => $data['area'],
             'loan_amount' => $data['loan_amount'],
-            'interest' => $data['interest'],
             'collector' => $data['collector'],
             'verified' => $data['verifier']
 
@@ -114,8 +113,10 @@ class Loan_model extends CI_Model {
         $this->db->join('address', 'clients.account_no = address.account_no');
         $this->db->join('names', 'clients.account_no = names.account_no');
         $this->db->join('loan', 'loan.account_no = clients.account_no');
+        $this->db->join('approved_loans', 'approved_loans.loan_no = loan.loan_no');
         $this->db->where('loan.status', 'Approved');
         $this->db->or_where('loan.status', 'Active');
+        $this->db->group_by('loan.loan_no');
         $result = $this->db->get();
 
         return $result->result_array();
@@ -148,13 +149,31 @@ class Loan_model extends CI_Model {
         return $result->result_array();
     }
 
-    public function approve_loan($data){
+    public function approve_loan($data,$data1){
         $approved_date = date('Y-m-d');
+        
+        $due_date = date('Y-m-d', strtotime("+60 days"));
+
+        $amount = intval($data1);
+        $int = $amount * 0.1;
+        $total_int = $int*2;
+        $amnt_int = $amount + $total_int;
+        $daily_payment = $amnt_int/60;
+
         $this->db->set('status', "Approved");
         $this->db->set('approved', $this->session->userdata('username'));
-        $this->db->set('date_approved',$approved_date);
         $this->db->where('loan_no', $data);
         $this->db->update('loan');
+
+
+        $loan_data = array(
+            'loan_no' => $data,
+            'date_approved' => $approved_date,
+            'daily_payment' => $daily_payment,
+            'due_date' => $due_date
+        );
+
+        $this->db->insert('approved_loans', $loan_data);
         return $this->db->affected_rows();
     }
 

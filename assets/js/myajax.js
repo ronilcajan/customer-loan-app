@@ -208,6 +208,7 @@ $(document).ready(function() {
 // =============== Approved Loan ================
 $(document).on('click', '.approve', function(){
 	var id = $(this).attr('id');
+	var amount = $('#amount'+id).text();
 
 	var $button = $('.approve'+id);
 	var table = $("#loan_clients_table").DataTable();
@@ -216,13 +217,14 @@ $(document).on('click', '.approve', function(){
 		url: BASE_URL+"approve-loan",
 		method: 'POST',
 		data:{
-			id:id
+			id:id,
+			amount:amount
 		},
 		beforeSend: function() {
 			$("#loading-screen").show();
 		},
 		success: function(data){
-			if(data!="False"){
+			if(data=="True"){
 
 				$("#loading-screen").hide();
 
@@ -237,6 +239,19 @@ $(document).on('click', '.approve', function(){
 				
 			}else{
 				$("#loading-screen").hide();
+				table.row( $button.parents('tr')).remove().draw();
+
+				showNotification(
+					"Loan successfully approved!",
+					"check_circle",
+					"success"
+				);
+
+				showNotification(
+					"Email notification not sent. No internet connection!",
+					"check_circle",
+					"danger"
+				);
 			}
 			
 		},
@@ -276,9 +291,9 @@ $(document).on('click', '.approve', function(){
 				);
 				
 
-		        setTimeout(function() {
-					window.location.reload(1);
-				}, 5000);
+		  //       setTimeout(function() {
+				// 	window.location.reload(1);
+				// }, 5000);
 		    }
 	});
 }); 
@@ -774,7 +789,6 @@ $(document).on('click','.search_account',function(){
 $(document).ready(function() {
 	$(".create-loan").click(function(e) {
 		e.preventDefault();
-// $(document).on('click', '.create-loan', function(){
 
 	var loan_no = $('.loan_no').val();
 	var area = $('.area').val();
@@ -783,7 +797,6 @@ $(document).ready(function() {
 	var collector = $('.collector').val();
 	var full_name = $('.full_name').val();
 	var email = $('.email').val();
-	var interest = $('.interest').val();
 	var verifier = $('.verifier').val();
 
 	var email_toggle = $('#email-toggle').hasClass('email');
@@ -857,7 +870,6 @@ $(document).ready(function() {
 				loan_amount : loan_amount,
 				collector : collector,
 				verifier: verifier,
-				interest : interest,
 				full_name : full_name,
 				email : email,
 				email_notif : email_notif,
@@ -877,15 +889,20 @@ $(document).ready(function() {
 
 			success: function(response){
 				if(response.success == true){
+					
+					$("#loading-screen").hide();
+
 					showNotification(
 						response.messages,
 						"check_circle",
 						"success"
 					);
+					
+					$("#loan-form")[0].reset();
+
 					setTimeout(function() {
-							window.location.reload(1);
-					}, 3000);
-					$("#loading-screen").hide();
+					window.location.reload(1);
+				}, 2000);
 				}else{
 
 					$("#loading-screen").hide();

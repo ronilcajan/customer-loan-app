@@ -118,7 +118,7 @@ class Loan extends CI_Controller {
 
     public function insert_loan(){
 
-		$validator = array('success' => false, 'messages' => array(), 'email' => array());
+		$validator = array('success' => false, 'messages' => array());
 		$full_name = $this->input->post('full_name');
 		$email = $this->input->post('email');
 		$amount = $this->input->post('loan_amount');
@@ -181,12 +181,13 @@ class Loan extends CI_Controller {
 	public function approve_loan(){
 
 		$id = $this->input->post('id');
+		$amount = $this->input->post('amount');
 
 		$query = $this->loan_model->get_loan_details($id);
 
 		if($query){
 
-			$result = $this->loan_model->approve_loan($id);
+			$result = $this->loan_model->approve_loan($id, $amount);
 
 			if($result){
 
@@ -200,7 +201,7 @@ class Loan extends CI_Controller {
 				$sendmail = $this->send_email($name,$email,$amount,$b_name,$subject,$template);	
 			}
 
-			echo "Loan approved. Email notification sent!";
+			echo "True";
 		}else{
 			echo "False";
 		}

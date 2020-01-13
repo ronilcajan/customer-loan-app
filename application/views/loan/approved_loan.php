@@ -51,7 +51,7 @@
                                             </td>
                                             <td class="text-right"><? echo $appr['loan_amount'];?></td>
                                             <td class="text-center"><? echo $appr['approved'];?></td>
-                                            <td class="text-center"><? echo $appr['date_approved'];?></td>
+                                            <td class="text-center"><? $time = $appr['date_approved']; echo date('M, d. Y', strtotime($time));?></td>
                                             <td>
                                                 <span class="font-italic text-muted ">
                                                     <?if($appr['status'] == 'Approved'){?>
@@ -68,8 +68,8 @@
                                                         Release Cash
                                                     </button>
                                                 <? }else{?> 
-                                                    <button type="button" rel="tooltip" title="View Loan Details" class="btn btn-info btn-sm mr-2" onclick="location.href='<? echo base_url().'payments/loan-details/'.$appr['loan_no'];?>'">
-                                                        View Loan
+                                                    <button type="button" rel="tooltip" title="Go to Payments" class="btn btn-info btn-sm mr-2" onclick="location.href='<? echo base_url().'payments/loan-details/'.$appr['loan_no'];?>'">
+                                                        Payments
                                                     </button>
                                                 <? } ?>
                                             </td>

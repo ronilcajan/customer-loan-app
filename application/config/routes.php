@@ -29,5 +29,6 @@ $route['cash-receive'] = "loan/cash_recieve";
 $route['reapply-loan'] = "loan/reapply_loan";
 
 $route['payments/loan-details/(:any)'] = 'payments/loan_details/$1';
-
+$route['payments/loan-details'] = 'payments/loan_details';
+$route['search-loan'] = 'payments/search_loan';
 $route['logout'] = 'claims_controller/logout';

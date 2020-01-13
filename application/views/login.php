@@ -47,7 +47,7 @@
         </div>
         <div class="text-center">
             <small>
-                Powered by:<img class="img img-fluid" width="50" height="50" src="<? echo base_url();?>assets/img/claims-logo.png">
+                Powered by:<img class="img img-fluid" width="50" height="50" src="<? echo base_url();?>assets/images/claims-logo.png">
                 CLAIMS
             </small>
         </div> 

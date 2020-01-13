@@ -27,7 +27,7 @@
                                             <h4 class="card-title">Loan Application Form</h4>
                                             <p class="card-category">Complete the loan application form</p>
                                         </div>
-                                        <div class="card-body form-body">
+                                        <div class="card-body form-body mt-2">
                                             <form id="loan-form" method="POST">
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -48,8 +48,22 @@
                                                                     <input type="text" class="form-control area" name="area" >
                                                                 </div>
                                                             </div>
-                                                            
-                                                            <div class="col-md-4">
+                                                            <div class="col-md-1">
+                                                                <div class="form-group input-group-prepend">
+                                                                    <label class="bmd-label-floating">Interest(mo)</label>
+                                                                    <input type="text" class="form-control interest text-center" value="20" readonly>
+                                                                    <span class="input-group-text">
+                                                                            <i class="fa fa-percent"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <div class="form-group input-group-prepend">
+                                                                    <label class="bmd-label-floating">Terms(days)</label>
+                                                                    <input type="text" class="form-control terms text-center" value="60" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Date</label>
                                                                     <input type="date" class="form-control date" name="date" value="<?php echo date('Y-m-d');?>" readonly>
@@ -70,22 +84,13 @@
                                                                     </button>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                                 <div class="form-group input-group-prepend">
                                                                     <span class="input-group-text">
                                                                             ₱
                                                                     </span>
                                                                     <label class="bmd-label-floating pl-3">Loan Amount</label>
                                                                     <input type="number" class="form-control text-right amount" name="amount" required>
-                                                                </div>
-                                                            </div>
-                                                             <div class="col-md-1">
-                                                                <div class="form-group input-group-prepend">
-                                                                    <label class="bmd-label-floating">Interest</label>
-                                                                    <input type="text" class="form-control interest text-center" name="amount" value="20" readonly>
-                                                                    <span class="input-group-text">
-                                                                            <i class="fa fa-percent"></i>
-                                                                    </span>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-2">

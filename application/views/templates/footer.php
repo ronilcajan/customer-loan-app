@@ -55,7 +55,7 @@
     </script>
     <script src="<? echo base_url();?>assets/js/myscript.js"></script>
     <script src="<? echo base_url();?>assets/js/myajax.js"></script>
-    <!-- my js script with jquery here -->
+    <script src="<? echo base_url();?>assets/js/my_payments.js"></script>
 
 
     <script>
