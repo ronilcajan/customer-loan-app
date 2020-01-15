@@ -14,6 +14,8 @@
 				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>loan/create-loan">Manage Loan</a>
 				<?}elseif(strpos($site,'payments/')){?>
 				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>payments/loan_details">Manage Payments</a>
+				<?}elseif(strpos($site,'reports')){?>
+				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>reprots">Manage Reports</a>
 				<?}else{
 					
 				}?>

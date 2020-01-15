@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Borrowers extends CI_Controller {
+	
 	public function check_auth(){
         if(!$this->session->userdata('logged_in')){
             redirect(base_url());

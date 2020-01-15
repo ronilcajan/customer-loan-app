@@ -13,13 +13,24 @@ class Payments extends CI_Controller {
 
 		$this->check_auth('borrowers_profile');
 
-		if($loan_no != ''){
+		$loan = $loan_no;
 
-			$result['loan'] = $this->payments_model->get_loan_details($loan_no);
+		if($loan != ''){
+
+			$result['loan'] = $this->payments_model->get_loan_details($loan);
 
 			if(!is_null($result)){
 
+				$amount = intval($result['loan']['daily_payment']);
+		        $int = $amount * 0.01;
+		        $amnt_int = $amount + $int;
+
+		        $result['penalty'] = $amnt_int;
+
 				$title['title'] = "RFSC-Loan Details";
+
+				$result['first_mnth'] = $this->payments_model->get_payment_first_month($result['loan']['loan_no']);
+				$result['second_mnth'] = $this->payments_model->get_payment_second_month($result['loan']['loan_no']);
 
 				$this->load->view('templates/header',$title);
 				$this->load->view('payments/loan_payments', $result);
@@ -47,15 +58,39 @@ class Payments extends CI_Controller {
 
 		if(!is_null($result)){
 			$validator['success'] = true;
+
 			$validator['loan'] = array(
 				'loan_no' => $result['loan_no'],
 				'name' => $result['firstname'].' '.$result['middlename'].' '.$result['lastname'],
 				'amount' => $result['loan_amount'],
 				'date' => $result['date_approved']
 			);
+
+
+
 		}else{
+
 			$validator['success'] = false;
 			$validator['loan'] = "Loan number not found. Please check the number carefully!";
+		}
+
+		echo json_encode($validator);
+	}
+
+	public function pay_loan(){
+		$validator = array('success' => false, 'message' => array());
+
+		$data = $this->input->post();
+
+		$result = $this->payments_model->insert_payment($data);
+
+		if($result){
+			$validator['success'] = true;
+			$validator['message'] = "Payment successfull!";
+
+		}else{
+			$validator['success'] = false;
+			$validator['message'] = "Payment error!";
 		}
 
 		echo json_encode($validator);

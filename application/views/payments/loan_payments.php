@@ -114,13 +114,35 @@
                                                             <th>Note</th>
                                                         </thead>
                                                         <tbody>
-                                                           <? for ($i=1; $i<=30 ; $i++) { ?>
-                                                                    <tr>
-                                                                <td><? echo $i;?></td>
-                                                                <td>June 1, 2020</td>
-                                                                <td>P80</td>
-                                                                <td>Ron</td>
-                                                                <td>Penalty</td>
+                                                           <? for ($i=0; $i<=29 ; $i++) {  
+                                                            ?>
+                                                            <tr>
+                                                                <td><? echo $i+1;?></td>
+
+                                                                <td>
+                                                                    <? if(!empty($first_mnth[$i]['date'])){
+                                                                        echo $first_mnth[$i]['date']; 
+                                                                        }
+                                                                    ?>    
+                                                                </td>
+                                                                <td>
+                                                                    <? if(!empty($first_mnth[$i]['amount'])){
+                                                                        echo 'P '.$first_mnth[$i]['amount']; 
+                                                                        }
+                                                                    ?>
+                                                                </td>
+                                                                <td>
+                                                                    <? if(!empty($first_mnth[$i]['collected_by'])){
+                                                                        echo $first_mnth[$i]['collected_by']; 
+                                                                        }
+                                                                    ?>
+                                                                </td>
+                                                                <td>
+                                                                    <? if(!empty($first_mnth[$i]['notes'])){
+                                                                        echo $first_mnth[$i]['notes']; 
+                                                                        }
+                                                                    ?>
+                                                                </td>
                                                             </tr>
                                                            <? } ?>
                                                         </tbody>
@@ -142,16 +164,37 @@
                                                             <th>Note</th>
                                                         </thead>
                                                         <tbody>
-                                                            <? for ($i=1; $i<=30 ; $i++) { ?>
-                                                                    <tr>
-                                                                <td><? echo $i;?></td>
-                                                                <td>June 1, 2020</td>
-                                                                <td>P80</td>
-                                                                <td>Ron</td>
-                                                                <td>Penalty</td>
+                                                            <? for ($i=0; $i<=29 ; $i++) {
+                                                            ?>
+                                                            <tr>
+                                                                <td><? echo $i+1;?></td>
+
+                                                                <td>
+                                                                    <? if(!empty($second_mnth[$i]['date'])){
+                                                                        echo $second_mnth[$i]['date']; 
+                                                                        }
+                                                                    ?>    
+                                                                </td>
+                                                                <td>
+                                                                    <? if(!empty($second_mnth[$i]['amount'])){
+                                                                        echo 'P '.$second_mnth[$i]['amount']; 
+                                                                        }
+                                                                    ?>
+                                                                </td>
+                                                                <td>
+                                                                    <? if(!empty($second_mnth[$i]['collected_by'])){
+                                                                        echo $second_mnth[$i]['collected_by']; 
+                                                                        }
+                                                                    ?>
+                                                                </td>
+                                                                <td>
+                                                                    <? if(!empty($second_mnth[$i]['notes'])){
+                                                                        echo $second_mnth[$i]['notes']; 
+                                                                        }
+                                                                    ?>
+                                                                </td>
                                                             </tr>
                                                            <? } ?>
-                                                            
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -197,24 +240,26 @@
                                                                             ₱
                                                                 </span>
                                                                 <label class="bmd-label-floating">Daily Payment</label>
-                                                                <input type="number" class="form-control pl-3" name="amount" value="<? echo $loan['daily_payment'];?>" readonly required>
+                                                                <input type="number" class="form-control pl-3 daily_payment" name="amount" value="<? echo $loan['daily_payment'];?>" readonly required>
                                                             </div>
-                                                            <div class="form-group input-group-prepend">
+                                                            <div class="form-group input-group-prepend pnalty" style="display: none;">
                                                                 <span class="input-group-text">
                                                                             %
                                                                 </span>
                                                                 <label class="bmd-label-floating">Penalty Percentage</label>
                                                                 <input type="number" class="form-control pl-3" name="amount" value="1" readonly required>
                                                             </div>
-                                                            <div class="form-group input-group-prepend">
+                                                            <div class="form-group input-group-prepend pnalty" style="display: none;">
                                                                 <span class="input-group-text">
                                                                             ₱
                                                                 </span>
                                                                 <label class="bmd-label-floating">Total Payment</label>
-                                                                <input type="number" class="form-control pl-3" name="amount" value="<? echo $loan['daily_payment'];?>" readonly required>
+                                                                <input type="number" class="form-control pl-3 total_pay" name="amount" value="<? echo $penalty;?>" readonly required>
                                                             </div>
+                                                            <input type="hidden" class="form-control loan_no" value="<? echo $loan['loan_no'];?>">
                                                         </div>
-                                                        <button type="button" class="btn btn-primary btn-round btn-sm ml-3">Pay</button>
+                                                        <button type="button" class="btn btn-primary btn-round btn-sm ml-3 pay">Pay</button>
+                                                        <button type="button" class="btn btn-primary btn-round btn-sm ml-3 pay-penalty pnalty" style="display: none">Pay</button>
                                                         
                                                     </div>
 

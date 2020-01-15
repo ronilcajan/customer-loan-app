@@ -31,4 +31,9 @@ $route['reapply-loan'] = "loan/reapply_loan";
 $route['payments/loan-details/(:any)'] = 'payments/loan_details/$1';
 $route['payments/loan-details'] = 'payments/loan_details';
 $route['search-loan'] = 'payments/search_loan';
+$route['pay-loan'] = 'payments/pay_loan';
+
+$route['reports'] = 'reports/all_reports';
+$route['get-clients'] = 'reports/get_clients';
+
 $route['logout'] = 'claims_controller/logout';

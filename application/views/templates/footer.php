@@ -1,11 +1,15 @@
 <div>
     <!--   Core JS Files   -->
+       
     <script src="<? echo base_url();?>assets/js/core/jquery.min.js"></script>
+    <script src="<? echo base_url();?>assets/js/core/jquery-migrate-1.2.1.js"></script>
+    <script src="<? echo base_url();?>assets/js/plugins/jquery-ui.min.js"></script>
     <script src="<? echo base_url();?>assets/js/core/popper.min.js"></script>
     <script src="<? echo base_url();?>assets/js/core/bootstrap-material-design.min.js"></script>
     <script src="<? echo base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!-- Plugin for the momentJs  -->
-    <!-- <script src="<? echo base_url();?>assets/js/plugins/moment.min.js"></script> -->
+     <script src="<? echo base_url();?>assets/js/plugins/moment.min.js"></script>
+
     <!--  Plugin for Sweet Alert -->
     <!-- <script src="<? echo base_url();?>assets/js/plugins/sweetalert2.js"></script> -->
     <!-- Forms Validations Plugin -->
@@ -15,17 +19,23 @@
     <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
     <!-- <script src="<? echo base_url();?>assets/js/plugins/bootstrap-selectpicker.js"></script> -->
     <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-    <!-- <script src="<? echo base_url();?>assets/js/plugins/bootstrap-datetimepicker.min.js"></script> -->
+    <!-- <script src="<? echo base_url();?>assets/js/plugins/bootstrap-datepicker.js"></script> -->
     <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-    <script src="<? echo base_url();?>assets/js/plugins/jszip.min.js"></script>
+
     <script src="<? echo base_url();?>assets/js/plugins/jquery.dataTables.min.js"></script>
-<!--     <script src="<? echo base_url();?>assets/js/plugins/jquery.dataTables.min.js"></script>
+    <script src="<? echo base_url();?>assets/js/plugins/range_dates.js"></script>
+
+    <? $site = $_SERVER['PATH_INFO'];?>
+    <? $site1 = 'reports'; ?>
+    <?if(strpos($site, $site1)){?>
+    <script src="<? echo base_url();?>assets/js/plugins/jszip.min.js"></script>
     <script src="<? echo base_url();?>assets/js/plugins/dataTables.buttons.min.js"></script>
     <script src="<? echo base_url();?>assets/js/plugins/pdfmake.min.js"></script>
     <script src="<? echo base_url();?>assets/js/plugins/vfs_fonts.js"></script>
     <script src="<? echo base_url();?>assets/js/plugins/buttons.html5.min.js"></script>
     <script src="<? echo base_url();?>assets/js/plugins/buttons.print.min.js"></script>
-    <script src="<? echo base_url();?>assets/js/plugins/buttons.flash.min.js"></script> -->
+    <script src="<? echo base_url();?>assets/js/plugins/buttons.flash.min.js"></script>
+    <? } ?>
     <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
     <!-- <script src="<? echo base_url();?>assets/js/plugins/bootstrap-tagsinput.js"></script> -->
     <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
@@ -56,8 +66,7 @@
     <script src="<? echo base_url();?>assets/js/myscript.js"></script>
     <script src="<? echo base_url();?>assets/js/myajax.js"></script>
     <script src="<? echo base_url();?>assets/js/my_payments.js"></script>
-
-
+    <script src="<? echo base_url();?>assets/js/my_reports.js"></script>
     <script>
         $(document).ready(function() {
         $().ready(function() {

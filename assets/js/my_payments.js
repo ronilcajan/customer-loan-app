@@ -78,3 +78,142 @@ $(document).ready(function() {
 		}
 	});
 });
+
+
+// ==================== Payments ================
+
+$(document).on('click', '.pay', function(){
+	var daily_payment = $('.daily_payment').val();
+	var loan_no = $('.loan_no').val();
+
+	$.ajax({
+		type: "POST",
+		url: BASE_URL+"pay-loan",
+		data: {
+			daily_payment: daily_payment,
+			loan_no: loan_no
+		},
+		dataType: "json",
+		cache: false,
+		beforeSend: function() {
+	        $("#loading-screen").show();
+	    },
+		success: function(response) {
+			if (response.success == true) {
+
+				showNotification(
+					response.message,
+						"check_circle",
+						"success"
+				);
+				$('#payment-modal').modal('hide');
+				setTimeout(function() {
+					window.location.reload(1);
+				}, 3000);
+				
+			}
+		},
+		error: function (jqXHR, exception) {
+		$("#loading-screen").hide();
+
+        var msg = '';
+        if (jqXHR.status === 0) {
+            msg = 'Not connect.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404].Please contact developer';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+
+           msg = 'parsererror. Please contact developer';
+
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.Please contact developer';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.Please contact developer';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+        showNotification(
+				msg,
+				"info",
+				"warning"
+		);
+		
+
+        setTimeout(function() {
+			window.location.reload(1);
+		}, 5000);
+    }
+
+	});
+	return false;
+});
+
+$(document).on('click', '.pay-penalty', function(){
+	var total_pay = $('.total_pay').val();
+	var loan_no = $('.loan_no').val();
+
+	$.ajax({
+		type: "POST",
+		url: BASE_URL+"pay-loan",
+		data: {
+			total_pay: total_pay,
+			loan_no: loan_no
+		},
+		dataType: "json",
+		cache: false,
+		beforeSend: function() {
+	        $("#loading-screen").show();
+	    },
+		success: function(response) {
+			if (response.success == true) {
+
+				showNotification(
+					response.message,
+						"check_circle",
+						"success"
+				);
+				$('#payment-modal').modal('hide');
+				setTimeout(function() {
+					window.location.reload(1);
+				}, 3000);
+				
+			}
+		},
+		error: function (jqXHR, exception) {
+		$("#loading-screen").hide();
+
+        var msg = '';
+        if (jqXHR.status === 0) {
+            msg = 'Not connect.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404].Please contact developer';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+
+           msg = 'parsererror. Please contact developer';
+
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.Please contact developer';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.Please contact developer';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+        showNotification(
+				msg,
+				"info",
+				"warning"
+		);
+		
+
+        setTimeout(function() {
+			window.location.reload(1);
+		}, 5000);
+    }
+
+	});
+	return false;
+});

@@ -31,14 +31,65 @@ $(document).ready(function() {
 // ====== DataTables ===========
 $(document).ready(function() {
 	$("#rejected_clients_table").DataTable();
-
  	$("#new_client_table").DataTable();
-
 	$("#loan_clients_table").DataTable();
 	$("#approved_clients_table").DataTable();
-	
 	$("#clients_table").DataTable();
+
+	$('#all-clients-table').DataTable({
+		dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+	});
+
+	$('#all-loans-table').DataTable({
+		dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+	});
+	$('#all-payments-table').DataTable({
+		dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+	});
+
+	
+
+	
+
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = $('input.min.form-control').datepicker('getDate');
+            var max = $('input.max.form-control').datepicker('getDate');
+            var startDate = new Date(data[4]);
+
+            if (min == null && max == null) return true;
+            if (min == null && startDate <= max) return true;
+            if (max == null && startDate >= min) return true;
+            if (startDate <= max && startDate >= min) return true;
+            return false;
+        }
+    );
+
+    $('input.min.form-control').datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true });
+    $('input.max.form-control').datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true });
+    var table = $('#all-payments-table').DataTable();
+
+    // Event listener to the two range filtering inputs to redraw on input
+    $('input.min.form-control, input.max.form-control').change(function () {
+        table.draw();
+    });
+
+
+
 });
+
+
+
+
 // =========== Loan form toggle for notification ==========
 function email(x) {
   	x.classList.toggle("fa-toggle-on");
@@ -120,4 +171,19 @@ $(document).on('click', '.remove_co-maker', function(){
 	$('.to-remove'+div_id).slideUp('1000', function(){
     	$(this).remove();
 	});
+});
+
+$(document).on('click', '.add_penalty', function(){
+
+	$('.pnalty').slideUp('1000', function(){
+    	$(this).show();
+	});
+	$('.pay').hide();
+});
+$(document).on('click', '.norm_payment', function(){
+
+	$('.pnalty').slideDown('1000', function(){
+    	$(this).hide();
+	});
+	$('.pay').show();
 });

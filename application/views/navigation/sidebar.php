@@ -62,14 +62,12 @@
 				<p>Payments</p>
 				</a>
 			</li>
-			<li class="nav-item ">
-				<a class="nav-link" href="./icons.html">
-				<i class="fa fa-percent"  style="font-size: 17px;"></i>
-				<p>Interest</p>
-				</a>
-			</li>
-			<li class="nav-item ">
-				<a class="nav-link" href="./map.html">
+    		<?if(strpos($site, 'reports')){?>
+			<li class="nav-item active">
+			<? }else{ ?>
+			<li class="nav-item">
+			<? } ?>
+				<a class="nav-link" href="<? echo base_url();?>reports">
 				<i class="material-icons">insert_chart</i>
 				<p>Reports</p>
 				</a>
@@ -78,12 +76,6 @@
 				<a class="nav-link" href="./notifications.html">
 				<i class="material-icons">person_alt</i>
 				<p>Staffs</p>
-				</a>
-			</li>
-			<li class="nav-item ">
-				<a class="nav-link" href="./notifications.html">
-				<i class="material-icons">language</i>
-				<p>Logs</p>
 				</a>
 			</li>
 		</ul>

@@ -291,9 +291,9 @@ $(document).on('click', '.approve', function(){
 				);
 				
 
-		  //       setTimeout(function() {
-				// 	window.location.reload(1);
-				// }, 5000);
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 5000);
 		    }
 	});
 }); 
@@ -672,7 +672,9 @@ $(document).on('click', '.cash-release', function(){
 				$('.modal').modal('hide');
 				$("#loading-screen").hide();
 
-				table.row( $button.parents('tr')).remove().draw();
+				 setTimeout(function() {
+					window.location.reload(1);
+				}, 3000);
 
 				showNotification(
 					data,
@@ -967,3 +969,4 @@ $(document).ready(function() {
 	return false;
 });
 });
+

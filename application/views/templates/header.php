@@ -15,6 +15,8 @@
         <link rel="stylesheet" href="<? echo base_url();?>assets/css/roboto-font.css" />
         <link rel="stylesheet" href="<? echo base_url();?>assets/css/jquery.dataTables.min.css" />
         <link rel="stylesheet" href="<? echo base_url();?>assets/css/buttons.dataTables.min.css" />
+        <link rel="stylesheet" href="<? echo base_url();?>assets/css/jquery-ui.css" />
+        <!-- <link rel="stylesheet" href="<? echo base_url();?>assets/css/bootstrap-datepicker.css" /> -->
         <!-- CSS Files -->
         <link href="<? echo base_url();?>assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
         <link href="<? echo base_url();?>assets/css/mystyle.css" rel="stylesheet"/> 
