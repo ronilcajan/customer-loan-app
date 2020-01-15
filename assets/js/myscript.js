@@ -35,6 +35,8 @@ $(document).ready(function() {
 	$("#loan_clients_table").DataTable();
 	$("#approved_clients_table").DataTable();
 	$("#clients_table").DataTable();
+	$("#my_comaker").DataTable();
+	$("#loan_history").DataTable();
 
 	$('#all-clients-table').DataTable({
 		dom: 'Bfrtip',

@@ -76,6 +76,7 @@ class Borrowers extends CI_Controller {
 			}
 
 			$client['co_maker'] = $this->borrowers_model->get_co_maker($account_no);
+			$client['loan'] = $this->borrowers_model->get_loan($account_no);
 
 			$client['profile'] = array(
 				'account_no' => $result['account_no'],
@@ -182,5 +183,19 @@ class Borrowers extends CI_Controller {
 		}
 		
 	}
+
+
+	// public function make_pdf($data){
+
+	// 	$result['profile'] = $this->borrowers_model->get_profile($data);
+	// 	$result['business'] = $this->borrowers_model->get_profile_bname($data);
+	// 	$result['co_maker'] = $this->borrowers_model->get_co_maker($data);
+
+	// 	$mpdf = new \Mpdf\Mpdf();
+	// 	$pdfFilePath ="webpreparations-".time().".pdf"; 
+ //        $html = $this->load->view('html_to_pdf',[],true);
+ //        $mpdf->WriteHTML($html);
+ //        $mpdf->Output($pdfFilePath,'D');
+	// }
 
 }

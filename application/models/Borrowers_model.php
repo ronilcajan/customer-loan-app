@@ -124,6 +124,22 @@ class Borrowers_model extends CI_Model {
         }
     }
 
+     public function get_loan($data){
+        $this->db->select('*');
+        $this->db->from('loan');
+        $this->db->join('approved_loans', 'approved_loans.loan_no=loan.loan_no');
+        $this->db->where('loan.account_no', $data);
+
+        $query = $this->db->get();
+
+        $result = $query->result_array();
+        if(count($result) >0){
+            return $result;
+        }else{
+            return null;
+        }
+    }
+
 
     public function delete_clients($data){
         $this->db->where('account_no', $data);
