@@ -66,9 +66,9 @@ $(document).ready(function() {
 					);
 					
 
-			  //       setTimeout(function() {
-					// 	window.location.reload(1);
-					// }, 5000);
+			        setTimeout(function() {
+						window.location.reload(1);
+					}, 2000);
 			    }
 
 			});
@@ -143,7 +143,7 @@ $(document).on('click', '.pay', function(){
 
         setTimeout(function() {
 			window.location.reload(1);
-		}, 5000);
+		}, 2000);
     }
 
 	});

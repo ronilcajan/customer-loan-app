@@ -4,7 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Claims_controller extends CI_Controller {
 
 	public function index(){
-		$this->load->view('templates/header');
+
+		$title['title'] = "RFSC - Login";
+		$this->load->view('templates/header', $title);
 		$this->load->view('login');
 		$this->load->view('templates/footer');
 	}
@@ -58,14 +60,60 @@ class Claims_controller extends CI_Controller {
 
 	public function dashboard(){
 
-		$this->check_auth('borrowers');
+		$title['title'] = "Dashboard";
 
-		$this->load->view('templates/header');
+		$this->check_auth('dashboard');
+
+		$this->load->view('templates/header', $title);
 		$this->load->view('dashboard');
 		$this->load->view('templates/footer');
 	}
+
+	public function staff(){
+		$this->check_auth('staff');
+
+		$title['title'] = "RFSC - Staff";
+
+		$result['staff'] = $this->claims_model->get_staff();
+
+
+
+		$this->load->view('templates/header', $title);
+		$this->load->view('staff', $result);
+		$this->load->view('templates/footer');
+	}
+
+	public function add_staff(){
+
+		$validator = array('success' => false, 'messages' => array());
+
+		$data = $this->input->post();
+
+		$check_user = $this->claims_model->check_staff($data['username']);
+
+		if(is_null($check_user)){
+
+			$insert_data = $this->claims_model->insert_staff($data);
+
+			if($insert_data){
+
+				$validator['success'] = true;
+				$validator['messages'] = "Staff successfully added!";
+
+			}else{
+				$validator['success'] = false;
+				$validator['messages'] = "Staff did not save!";
+			}
+		}else{
+			$validator['success'] = false;
+			$validator['messages'] = "Username already exist!";
+		}
+		
+		echo json_encode($validator);
+	}
 	
 	function logout(){
+
 		$user_data = $this->session->all_userdata();
 			foreach ($user_data as $key => $value) {
 				if ($key != 'session_id' && $key != 'ip_address' && $key != 'user_agent' && $key != 'last_activity') {

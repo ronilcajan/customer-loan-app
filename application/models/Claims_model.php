@@ -35,7 +35,42 @@ class Claims_model extends CI_Model {
         }else{
             return null;
         }
-    }    
+    }
+
+    public function get_staff(){
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->join('staff', 'users.username=staff.username');
+        $query = $this->db->get();
+        
+        $result = $query->result_array();
+        if(count($result) >0){
+            return $result[0];
+        }else{
+            return null;
+        }
+    }   
+
+    public function insert_staff($data){
+        $staff = array('username' => $data['username'], 'password' => sha1($data['password']), 'user_type' => $data['position'],);
+
+        $this->db->insert('users', $staff);
+
+        return $this->db->affected_rows();
+    }
+
+    public function check_staff($data){
+
+        $this->db->where('username', $data);
+        $query = $this->db->get('users');
+        $result = $query->result_array();
+        
+        if(count($result) >0){
+            return $result;
+        }else{
+            return null;
+        }
+    }
 
     public function account_query($data){
 

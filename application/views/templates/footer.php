@@ -25,8 +25,8 @@
     <script src="<? echo base_url();?>assets/js/plugins/jquery.dataTables.min.js"></script>
     <script src="<? echo base_url();?>assets/js/plugins/range_dates.js"></script>
 
-    <? $site = $_SERVER['PATH_INFO'];?>
-    <? $site1 = 'reports'; ?>
+    <? $site = $_SERVER['REQUEST_URI'];?>
+    <? $site1 = 'reports';?>
     <?if(strpos($site, $site1)){?>
     <script src="<? echo base_url();?>assets/js/plugins/jszip.min.js"></script>
     <script src="<? echo base_url();?>assets/js/plugins/dataTables.buttons.min.js"></script>
@@ -35,7 +35,9 @@
     <script src="<? echo base_url();?>assets/js/plugins/buttons.html5.min.js"></script>
     <script src="<? echo base_url();?>assets/js/plugins/buttons.print.min.js"></script>
     <script src="<? echo base_url();?>assets/js/plugins/buttons.flash.min.js"></script>
-    <? } ?>
+    <? }else{
+
+    } ?>
     <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
     <!-- <script src="<? echo base_url();?>assets/js/plugins/bootstrap-tagsinput.js"></script> -->
     <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
@@ -66,7 +68,7 @@
     <script src="<? echo base_url();?>assets/js/myscript.js"></script>
     <script src="<? echo base_url();?>assets/js/myajax.js"></script>
     <script src="<? echo base_url();?>assets/js/my_payments.js"></script>
-    <script src="<? echo base_url();?>assets/js/my_reports.js"></script>
+    <script src="<? echo base_url();?>assets/js/staff.js"></script>
     <script>
         $(document).ready(function() {
         $().ready(function() {

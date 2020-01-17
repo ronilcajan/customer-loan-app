@@ -72,8 +72,12 @@
 				<p>Reports</p>
 				</a>
 			</li>
+			<?if(strpos($site, 'staff')){?>
+			<li class="nav-item active">
+			<? }else{ ?>
 			<li class="nav-item ">
-				<a class="nav-link" href="./notifications.html">
+			<? } ?>
+				<a class="nav-link" href="<? echo base_url();?>staff">
 				<i class="material-icons">person_alt</i>
 				<p>Staffs</p>
 				</a>
