@@ -13,75 +13,60 @@
 
         <div class="content">
             <div class="container-fluid">
-            
-                <nav aria-label="breadcrumb" style="margin-top: -40px;" role="navigation">
-                  <ol class="breadcrumb" style="background-color: #A057B0">
-                    <li class="breadcrumb-item">
-                        <a href="<? echo base_url();?>borrowers/create-borrowers" class="text-light font-weight-bold">Borrowers</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="#" class="text-light font-weight-bold">Profile</a></li>
-                    <li class="breadcrumb-item active text-light font-weight-bold" aria-current="page" >
-                        <? echo $profile['fname'].' '.$profile['mname'].'. '.$profile['lname'];?>
-                    </li>
-                  </ol>
-                </nav>
-                        <div class="row" style="margin-top: -40px;">
-                            <div class="col-md-5">
-                                <div class="card">
-                                    <div class="card-header border-bottom text-primary font-weight-bold">Borrowers Profile</div>
-                                    <div class="card-header m-0 ml-auto mr-auto card-profile">
-                                        <div class="fileinput-new thumbnail img-raised" style="width: 300px;">
-                                            <img class="img-fluid" width="300" id="output" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img"  />
-                                        </div>
+                        <div class="row"> 
+                            <div class="col-md-4">
+                                <div class="card card-profile">
+                                    <div class="card-avatar" style="height: 150px">
+                                        <img class="img img-fluid" style="height:130px" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img"/>
                                     </div>
                                     <div class="card-body">
+                                        <h4 class="card-title font-weight-bold"><? echo $profile['fname'].' '.$profile['mname'].'. '.$profile['lname'];?></h4>
+                                        <h6 class="card-category text-gray">Account No. <span class="text-primary"><? echo $profile['account_no'];?></span></h6>
+                                        <p class="card-description mt-3 font-weight-bold"><? echo $profile['info'];?></p>
                                         <table class="w-100">
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <h4 class="card-title font-weight-bold" valign="bottom"><? echo $profile['fname'].' '.$profile['mname'].'. '.$profile['lname'];?> </h4>
-                                                    </td>
-                                                    <td class="text-right" valign="bottom">
-                                                        <h6 class="card-subtitle text-gray">Contact No: <? echo $profile['number1'];?></h6>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h6 class="card-subtitle font-weight-bold" valign="bottom">Account No. <span class="text-primary"><? echo $profile['account_no'];?></span></h6>
-                                                    </td>
-                                                    <td class="text-right" valign="bottom">
-                                                        <h6 class="card-subtitle text-gray">Contact No: <? echo $profile['number2'];?></h6>
-                                                    </td>
+                                                <tr style="height:40px">
+                                                    <td class="font-weight-bold text-left">Contact No:</td>
+                                                    <td class="text-right"><? echo $profile['number1'];?></td>
                                                 </tr>
                                                 <tr style="height:40px">
-                                                    <td class="font-weight-bold">Email:</td>
+                                                    <td class="font-weight-bold text-left">Contact No:</td>
+                                                    <td class="text-right"><? echo $profile['number2'];?></td>
+                                                </tr>
+                                                <tr style="height:40px">
+                                                    <td class="font-weight-bold text-left">Email:</td>
                                                     <td class="text-right"><? echo $profile['email'];?></td>
-
                                                 </tr>
                                                 <tr style="height:40px;">
-                                                    <td class="font-weight-bold">Birthdate:</td>
+                                                    <td class="font-weight-bold text-left">Birthdate:</td>
                                                     <td class="text-right">
                                                         <? $time = strtotime($profile['birthdate']); echo date("M d, Y",$time);?>
                                                     </td>
                                                 </tr>
                                                 <tr style="height:40px;">
-                                                    <td class="font-weight-bold">Gender:</td>
+                                                    <td class="font-weight-bold text-left ">Gender:</td>
                                                     <td class="text-right"><? echo $profile['gender'];?>
                                                     </td>
                                                 </tr>
                                             </tbody> 
                                         </table>
-                                        <p class="card-description mt-3 font-weight-bold"><? echo $profile['info'];?></p>
+                                        
                                         <div class="text-center">
-                                            <a href="#" class="btn btn-primary btn-round">Update Profile</a>
-                                            <a href="<? echo base_url().'loan/apply-loan/'.$profile['account_no'];?>" class="btn btn-primary btn-round">Apply Loan</a>
+                                            <button class="btn btn-outline-primary btn-sm btn-round" data-target="#edit_profile" data-toggle="modal" rel="tooltip" title="Edit Profile">
+                                                <i class="material-icons">edit</i> Update
+                                            </button>
+                                            <button onclick='location.href="<? echo base_url().'loan/create-loan/'.$profile['account_no'];?>"' class="btn btn-primary btn-sm btn-round">
+                                                <i class="material-icons">monetization_on</i> Apply Loan
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
 
                                  <div class="card">
-                                    <div class="card-header border-bottom font-weight-bold text-primary">Address</div>
+                                    <div class="card-header border-bottom font-weight-bold text-primary">
+                                            Address
+                                    </div>
+
                                     <div class="card-body">
                                         <h6 class="card-title font-weight-bold">Business Name</h6>
                                         <div class="row">
@@ -120,13 +105,13 @@
 
 
 
-                                <a href="<? echo base_url();?>borrowers/create-borrowers" class="btn btn-outline-primary btn-round">
+                                <a href="<? echo base_url();?>borrowers/create-borrowers" rel="tooltip" title="Back to create borrowers" class="btn btn-outline-primary btn-round">
                                     <i class="material-icons">keyboard_arrow_left</i> Back
                                 </a>
 
                             </div>
 
-                            <div class="col-md-7">
+                            <div class="col-md-8">
 
                                  
 
@@ -191,7 +176,126 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Modal for edit profile-->
+                                        <div class="modal fade" id="edit_profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title font-weight-bold text-primary" >Update Profile</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form id="update_form" enctype="mutlipart/form-data" method="POST">
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <div class="form-group form-file-upload form-file-multiple ">
+                                                                            <input type="file" accept="image/*" onchange="loadFile(event)" name="img" class="inputFileHidden"s required>
+                                                                            <div class="fileinput-new thumbnail img-raised text-center">
+                                                                                <img class="img-fluid" id="output" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img" />
+                                                                            </div>
+                                                                            <div class="input-group mt-2">
+                                                                                <span class="input-group-btn">
+                                                                                    <button type="button" class="btn btn-fab btn-round btn-primary">
+                                                                                        <i class="material-icons">attach_file</i>
+                                                                                    </button>
+                                                                                </span>
+                                                                                <input type="text" class="form-control inputFileVisible" placeholder="Choose client picture..">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
 
+                                                                <div class="col-md-8">
+                                                                    <div class="row">
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <input type="hidden" class="form-control" name="account_no" value="<? echo $profile['account_no'];?>">
+                                                                                <label class="bmd-label-floating">First Name</label>
+                                                                                <input type="text" class="form-control" name="fname" value="<? echo $profile['fname'];?>" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <label class="bmd-label-floating">Middle Name</label>
+                                                                                <input type="text" class="form-control" name=
+                                                                                "mname" value="<? echo $profile['mname'];?>" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <label class="bmd-label-floating">Last Name</label>
+                                                                                <input type="text" class="form-control" name="lname" value="<? echo $profile['lname'];?>"  required>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="bmd-label-floating">Contact Number</label>
+                                                                                <input type="number" class="form-control" name="num1" value="<? echo $profile['number1'];?>" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="bmd-label-floating">Contact Number</label>
+                                                                                <input type="number" class="form-control" name="num2" value="<? echo $profile['number2'];?>" required>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label class="bmd-label-floating">Email Address</label>
+                                                                                <input type="email" class="form-control" name=
+                                                                                "email" value="<? echo $profile['email'];?>" required>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="bmd-label-floating">Birthday</label>
+                                                                                <input type="date" class="form-control" name=
+                                                                                "bday" value="<? echo $profile['birthdate'];?>" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="bmd-label-floating">Gender</label>
+                                                                                <input type="text" class="form-control" name="gender" value="<? echo $profile['gender'];?>" required>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                             <div class="row mt-1">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label>Additional Info(Optional)</label>
+                                                                        <div class="form-group">
+                                                                            <label class="bmd-label-floating">Write something about the client.. </label>
+                                                                            <textarea class="form-control" name="info" rows="5"><? echo $profile['info'];?></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal"><i class="material-icons">cancel</i> Cancel</button>
+                                                        <button type="submit" class="btn btn-primary btn-round" id="update_profile">
+                                                          <i class="material-icons">check_circle</i> Save
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End of modal -->
                             </div>
                         </div>
 

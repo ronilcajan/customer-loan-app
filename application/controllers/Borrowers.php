@@ -160,13 +160,103 @@ class Borrowers extends CI_Controller {
 
 			$insert_data = $this->borrowers_model->insert_client($client_data);
 
-			if($insert_data == true){
+			if($insert_data){
 				$validator['success'] = true;
 				$validator['messages'] = 'Successfully added!';
 			}else{
 
 				$validator['success'] = false;
 				$validator['messages'] = 'Something went wrong. Please contact the administrator';	
+			}
+		}
+
+			echo json_encode($validator);
+	}
+
+	public function update_client()
+	{
+		$validator = array('success' => false, 'messages' => array());
+
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'jpg|png|jpeg|gif';
+		$config['encrypt_name'] = TRUE;
+
+		$this->load->library('upload',$config);
+
+		if(!$this->upload->do_upload('img')){
+
+			$client_data = array(
+				'account_no' => $this->input->post('account_no'),
+				'img' => "",
+				'email' => $this->input->post('email'),
+				'number1' => $this->input->post('num1'),
+				'number2' => $this->input->post('num2'),
+				'bday' => $this->input->post('bday'),
+				'gender' => $this->input->post('gender'),
+				'info' => $this->input->post('info')
+			);
+
+			$name = array(
+				'account_no' => $this->input->post('account_no'),
+				'mname' => $this->input->post('mname'),
+				'fname' => $this->input->post('fname'),
+				'lname' => $this->input->post('lname')
+			);
+
+			$update_profile = $this->borrowers_model->update_profile($client_data);
+			
+
+			if($update_profile){
+				$update_name = $this->borrowers_model->update_name($name);
+
+				$validator['success'] = true;
+				$validator['messages'] = 'Update successfully!';
+			}else{
+				$validator['success'] = false;
+				$validator['messages'] = "Something went wrong!";
+			}
+		
+		}else{
+			$data = $this->upload->data();
+			//Resize and Compress Image
+			$config['image_library'] = 'gd2';
+			$config['source_image'] = './uploads/'.$data['file_name'];
+			$config['create_thumb'] = FALSE;
+			$config['maintain_ratio'] = FALSE;
+			$config['quality'] = '60%';
+			$config['width'] = 600;
+			$config['height'] = 400;
+			$config['new_image'] = './uploads/'.$data['file_name'];
+
+			$this->load->library('image_lib', $config);
+			$this->image_lib->resize();
+			
+
+			$client_data = array(
+				'account_no' => $this->input->post('account_no'),
+				'img' => $data['file_name'],
+				'email' => $this->input->post('email'),
+				'number1' => $this->input->post('num1'),
+				'number2' => $this->input->post('num2'),
+				'bday' => $this->input->post('bday'),
+				'gender' => $this->input->post('gender'),
+				'info' => $this->input->post('info')
+			);
+
+			$name = array(
+				'account_no' => $this->input->post('account_no'),
+				'mname' => $this->input->post('mname'),
+				'fname' => $this->input->post('fname'),
+				'lname' => $this->input->post('lname')
+			);
+
+			$update_profile = $this->borrowers_model->update_profile($client_data);
+
+			if($update_profile){
+				$update_name = $this->borrowers_model->update_name($name);
+			
+				$validator['success'] = true;
+				$validator['messages'] = 'Update successfully!';
 			}
 		}
 

@@ -4,8 +4,8 @@
 
 			Tip 2: you can also add an image using data-image tag
 		-->
-	<div class="logo">
-		<a href="#" class="simple-text logo-normal">RFS Corporation</a>
+	<div class="logo m-1"  style="background-color: #9D57B1; border-radius: 5px">
+		<a href="#" class="simple-text logo-normal text-light font-weight-bold">RFS Corporation</a>
 	</div>
 	<? $site = $_SERVER['PATH_INFO'];?>
 	<div class="sidebar-wrapper">
@@ -78,8 +78,18 @@
 			<li class="nav-item ">
 			<? } ?>
 				<a class="nav-link" href="<? echo base_url();?>staff">
-				<i class="material-icons">person_alt</i>
+				<i class="material-icons">person</i>
 				<p>Staffs</p>
+				</a>
+			</li>
+			<?if(strpos($site, 'staff')){?>
+			<li class="nav-item active">
+			<? }else{ ?>
+			<li class="nav-item ">
+			<? } ?>
+				<a class="nav-link" href="<? echo base_url();?>">
+				<i class="material-icons">backup</i>
+				<p>Back up</p>
 				</a>
 			</li>
 		</ul>

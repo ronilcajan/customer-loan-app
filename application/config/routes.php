@@ -16,6 +16,7 @@ $route['borrowers/active-borrowers'] = 'borrowers/active_borrowers';
 $route['borrowers/profile/(:num)'] = 'borrowers/borrowers_profile/$1';
 $route['register-borrowers'] = 'borrowers/register_borrowers';
 $route['delete-borrowers'] = "borrowers/delete_clients";
+$route['update-borrowers'] = "borrowers/update_client";
 
 $route['loan/create-loan'] = "loan/create_loan";
 $route['loan/create-loan/(:num)'] = "loan/create_loan/$1";

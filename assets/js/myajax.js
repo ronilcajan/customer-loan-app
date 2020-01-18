@@ -1,5 +1,3 @@
-
-
 // ==== login ajax =====
 $(document).ready(function() {
 	$(".login-submit").click(function() {
@@ -115,8 +113,7 @@ $(document).ready(function() {
 			barangay &&
 			city &&
 			province &&
-			postal_code &&
-			image
+			postal_code
 		) {
 			$.ajax({
 				type: "POST",
@@ -146,11 +143,6 @@ $(document).ready(function() {
 							"check_circle",
 							"success"
 						);
-
-						setTimeout(function() {
-							window.location.reload(1);
-						}, 3000);
-
 						
 					} else {
 						$("#loading-screen").hide();
@@ -160,6 +152,11 @@ $(document).ready(function() {
 							"warning"
 						);
 					}
+					
+					setTimeout(function() {
+							window.location.reload(1);
+						}, 3000);
+
 				},
 				error: function (jqXHR, exception) {
 				$("#loading-screen").hide();
@@ -191,7 +188,7 @@ $(document).ready(function() {
 
 		        setTimeout(function() {
 					window.location.reload(1);
-				}, 5000);
+				}, 3000);
 		    }
 
 			});
@@ -724,13 +721,13 @@ function checkconnection(){
 	if(status){
 		showNotification(
 			"Connected to internet. You can send email notification.",
-			"info",
+			"wifi",
 			"success"
 		);
 	}else{
 		showNotification(
 			"No internet connection. You can't send email notification.",
-			"info",
+			"wifi_off",
 			"warning"
 		);
 	}

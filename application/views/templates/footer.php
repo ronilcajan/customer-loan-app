@@ -67,7 +67,7 @@
     </script>
     <script src="<? echo base_url();?>assets/js/myscript.js"></script>
     <script src="<? echo base_url();?>assets/js/myajax.js"></script>
-    <script src="<? echo base_url();?>assets/js/my_payments.js"></script>
+    <script src="<? echo base_url();?>assets/js/myajax2.js"></script>
     <script src="<? echo base_url();?>assets/js/staff.js"></script>
     <script>
         $(document).ready(function() {

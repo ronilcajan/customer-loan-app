@@ -42,6 +42,52 @@ class Borrowers_model extends CI_Model {
         return $this->db->affected_rows();
     }
 
+    public function update_profile($data){
+
+        if(empty($data['img'])){
+
+            $client_data = array(
+                'email' => $data['email'],
+                'number1' => $data['number1'],
+                'number2' => $data['number2'],
+                'birthdate' => $data['bday'],
+                'gender' => $data['gender'],
+                'added_info' => $data['info'],
+            );
+        }else{
+            $client_data = array(
+                'profile_img' => $data['img'],
+                'email' => $data['email'],
+                'number1' => $data['number1'],
+                'number2' => $data['number2'],
+                'birthdate' => $data['bday'],
+                'gender' => $data['gender'],
+                'added_info' => $data['info'],
+            );
+        }
+
+        $this->db->where('account_no', $data['account_no']);
+        $this->db->update('clients', $client_data);
+
+        return $this->db->affected_rows();
+    }
+
+    public function update_name($data){
+
+            $client_name = array(
+                'firstname' => $data['fname'],
+                'middlename' => $data['mname'],
+                'lastname' => $data['lname'],
+            );    
+        
+        $this->db->where('account_no', $data['account_no']);
+        $this->db->update('names', $client_name);
+
+        return $this->db->affected_rows();
+    }
+
+
+
      public function get_account_id(){
         $this->db->select('account_no');
         $this->db->from('clients');

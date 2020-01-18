@@ -1,3 +1,5 @@
+// ================= Search Loan =======================
+
 $(document).ready(function() {
 	$('.search_loan').click(function(){
 		var loan_no = $('.loan-search').val();
@@ -80,7 +82,7 @@ $(document).ready(function() {
 });
 
 
-// ==================== Payments ================
+// ==================== Pay Payments ================
 
 $(document).on('click', '.pay', function(){
 	var daily_payment = $('.daily_payment').val();
@@ -149,6 +151,7 @@ $(document).on('click', '.pay', function(){
 	});
 	return false;
 });
+// ==================== Pay Penalty ================
 
 $(document).on('click', '.pay-penalty', function(){
 	var total_pay = $('.total_pay').val();
@@ -216,4 +219,83 @@ $(document).on('click', '.pay-penalty', function(){
 
 	});
 	return false;
+});
+
+// ==================== Update Profile ================
+$(document).ready(function(){
+	$('#update_profile').on('click', function(){
+		var formdata = new FormData(document.getElementById("update_form"));
+
+		$.ajax({
+			type: "POST",
+				url: BASE_URL+"update-borrowers",
+				dataType: "json",
+				data: formdata,
+				processData: false,
+				contentType: false,
+				cache: false,
+				beforeSend: function() {
+			        $("#loading-screen").show();
+			    },
+				success: function(response) {
+					if (response.success == true) {
+						$("#edit_profile").modal('hide');
+						$("#loading-screen").hide();
+						
+						showNotification(
+							response.messages,
+							"check_circle",
+							"success"
+						);
+						
+					} else {
+						$("#loading-screen").hide();
+						showNotification(
+							response.messages,
+							"info",
+							"warning"
+						);
+					}
+					setTimeout(function() {
+						window.location.reload(1);
+					}, 3000);
+				},
+				error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+		            msg = 'Internal Server Error [500].';
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		  //       setTimeout(function() {
+				// 	window.location.reload(1);
+				// }, 3000);
+		    }
+
+		});
+
+		return false;
+
+	});
 });
