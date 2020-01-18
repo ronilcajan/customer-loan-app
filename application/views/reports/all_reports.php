@@ -23,7 +23,7 @@
 
                         <ul class="nav nav-pills nav-pills-primary" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active mr-2 pt-0 pb-0 font-weight-bold" data-toggle="tab" href="#link1" role="tablist" aria-expanded="true" style="border-radius: 20px; border: 1px solid #9E57B1; font-size: 12px;">
+                                <a class="nav-link active mr-2 pt-0 pb-0 font-weight-bold shadow" data-toggle="tab" href="#link1" role="tablist" aria-expanded="true" style="border-radius: 20px; border: 1px solid #9E57B1; font-size: 12px;">
                               BORROWERS
                                 </a>
                             </li>

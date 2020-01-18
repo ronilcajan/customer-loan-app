@@ -13,171 +13,175 @@
 
         <div class="content">
             <div class="container-fluid">
+                    <? if(empty($staff)){?>
                         <div class="row"> 
-                            <div class="col-md-4">
-                                <div class="card card-profile">
-                                    <div class="card-avatar" style="height: 150px">
-                                        <img class="img img-fluid" style="height:130px" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img"/>
+                            <div class="col-md-8">
+                                <div class="card">
+                                    <div class="card-header card-header-primary">
+                                        <h4 class="card-title">Edit Profile</h4>
+                                        <p class="card-category">Complete your profile</p>
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="card-title font-weight-bold"><? echo $profile['fname'].' '.$profile['mname'].'. '.$profile['lname'];?></h4>
-                                        <h6 class="card-category text-gray">Account No. <span class="text-primary"><? echo $profile['account_no'];?></span></h6>
-                                        <p class="card-description mt-3 font-weight-bold"><? echo $profile['info'];?></p>
-                                        <table class="w-100">
-                                            <tbody>
-                                                <tr style="height:40px">
-                                                    <td class="font-weight-bold text-left">Contact No:</td>
-                                                    <td class="text-right"><? echo $profile['number1'];?></td>
-                                                </tr>
-                                                <tr style="height:40px">
-                                                    <td class="font-weight-bold text-left">Contact No:</td>
-                                                    <td class="text-right"><? echo $profile['number2'];?></td>
-                                                </tr>
-                                                <tr style="height:40px">
-                                                    <td class="font-weight-bold text-left">Email:</td>
-                                                    <td class="text-right"><? echo $profile['email'];?></td>
-                                                </tr>
-                                                <tr style="height:40px;">
-                                                    <td class="font-weight-bold text-left">Birthdate:</td>
-                                                    <td class="text-right">
-                                                        <? $time = strtotime($profile['birthdate']); echo date("M d, Y",$time);?>
-                                                    </td>
-                                                </tr>
-                                                <tr style="height:40px;">
-                                                    <td class="font-weight-bold text-left ">Gender:</td>
-                                                    <td class="text-right"><? echo $profile['gender'];?>
-                                                    </td>
-                                                </tr>
-                                            </tbody> 
-                                        </table>
+
                                         
-                                        <div class="text-center">
-                                            <button class="btn btn-outline-primary btn-sm btn-round" data-target="#edit_profile" data-toggle="modal" rel="tooltip" title="Edit Profile">
-                                                <i class="material-icons">edit</i> Update
-                                            </button>
-                                            <button onclick='location.href="<? echo base_url().'loan/create-loan/'.$profile['account_no'];?>"' class="btn btn-primary btn-sm btn-round" rel="tooltip" title="Apply Loan">
-                                                <i class="material-icons">monetization_on</i> Apply Loan
-                                            </button>
-                                        </div>
+                                        <form method="POST" id="create_staff">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Company</label>
+                                                        <input type="text" class="form-control" value="RFS Corporation" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Email address</label>
+                                                        <input type="email" name="email" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Contact Number</label>
+                                                        <input type="number" name="num" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Fist Name</label>
+                                                        <input type="text" name="fname" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Middle Name</label>
+                                                        <input type="text" name="mname" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Last Name</label>
+                                                        <input type="text" name="lname" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Address</label>
+                                                        <input type="text" name="address" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">City</label>
+                                                        <input type="text" name="city" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                      <label class="bmd-label-floating">Country</label>
+                                                      <input type="text" name="country" value="Philippines" class="form-control" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Postal Code</label>
+                                                        <input type="name" name="postal" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>About Me</label>
+                                                        <div class="form-group">
+                                                            <label class="bmd-label-floating"> Write something about yourself.</label>
+                                                            <textarea class="form-control" rows="5" name="bio"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button id="btn_create_staff" class="btn btn-primary pull-right btn-sm btn-round"><i class="material-icons">check_circle</i> Save</button>
+                                            <div class="clearfix"></div>
+                                        </form>
                                     </div>
                                 </div>
-
-                                 <div class="card">
-                                    <div class="card-header border-bottom font-weight-bold text-primary">
-                                            Address
-                                    </div>
-
-                                    <div class="card-body">
-                                        <h6 class="card-title font-weight-bold">Business Name</h6>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <p class="card-description font-weight-bold">
-                                                   <? if(!empty($business['bname'])){ ?>
-                                                      <? echo $business['bname'];?>
-                                                    <?}else{?>
-                                                    No business name
-                                                <? } ?>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <h6 class="card-title font-weight-bold">Business Address</h6>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <p class="card-description font-weight-bold">
-                                                   <? if(!empty($business['baddress'])){ ?>
-                                                      <? echo $business['baddress'];?>
-                                                    <?}else{?>
-                                                    No business address
-                                                    <? } ?>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <h6 class="card-title font-weight-bold">Borrowers Address</h6>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <p class="card-description font-weight-bold">Purok <? echo $profile['purok'].', '.$profile['barangay'].', '.$profile['city'].', '.$profile['province'].', '.$profile['country'].' '.$profile['postal_code'];?>
-                                                    
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <a href="<? echo base_url();?>borrowers/create-borrowers" rel="tooltip" title="Back to create borrowers" class="btn btn-outline-primary btn-round">
-                                    <i class="material-icons">keyboard_arrow_left</i> Back
-                                </a>
-
                             </div>
 
-                            <div class="col-md-8">
-
-                                 
-
-
-                                <div class="card">
-                                     <div class="card-header border-bottom font-weight-bold text-primary">Loan History</div>
+                            <div class="col-md-4">
+                                <div class="card card-profile">
+                                    <div class="card-avatar">
+                                            <img class="img" src="<? echo base_url();?>assets/images/person.png" />
+                                    </div>
                                     <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-sm" id="loan_history">
-                                                <thead class="text-primary">
-                                                    <tr>
-                                                        <th>Loan No.</th>
-                                                        <th>Loan Amount</th>
-                                                        <th>Status</th>
-                                                        <th>Date</th>
-                                                </thead>
-                                                <tbody>
-                                                    <? if(!empty($loan)){?>
-                                                    <? foreach ($loan as $key => $value) {?>
-                                                        <tr>
-                                                            <td><? echo $value['loan_no'];?></td>
-                                                            <td><? echo $value['loan_amount'];?></td>
-                                                            <td><? echo $value['status'];?></td>
-                                                            <td><? echo $value['date_approved'];?></td>
-                                                        </tr>
-                                                    <?}}?>
-                                                    
-                                                </tbody>
-                                                
-                                            </table>
+                                        <h6 class="card-category text-gray"><? echo $this->session->userdata('usertype');?></h6>
+                                        <h4 class="card-title">Your name</h4>
+                                        <p class="card-description">
+                                             Your bio...
+                                        </p>
+                                        <button class="btn btn-primary btn-round btn-sm">Select Profile Picture</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?}else{?>
+                            <div class="row"> 
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <div class="card-header card-header-primary">
+                                            <h4 class="card-title">My Task</h4>
+                                            <p class="card-category">You can add task or reminder</p>
+                                        </div>
+                                        <div class="card-body">
+                                            
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="card">
-                                     <div class="card-header border-bottom font-weight-bold text-primary">Co-Makers</div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-sm" id="my_comaker">
-                                                <thead class="text-primary">
-                                                    <tr>
-                                                        <th>Loan No.</th>
-                                                        <th>Name</th>
-                                                        <th>Cedula No</th>
-                                                        <th>Address Issued</th>
-                                                        <th>Date Issued</th>
-                                                </thead>
-                                                <tbody>
-                                                    <? if(!empty($co_maker)){?>
-                                                    <? foreach ($co_maker as $key => $cmaker) { ?>
-                                                        <tr>
-                                                            <td><? echo $cmaker['loan_no'];?></td>
-                                                            <td><? echo $cmaker['name'];?></td>
-                                                            <td><? echo $cmaker['cedula_no'];?></td>
-                                                            <td><? echo $cmaker['address_issued'];?></td>
-                                                            <td><? echo $cmaker['date_issued'];?></td>
-                                                    <? } }?>
-                                                    
-                                                </tbody>
-                                                
+                                <div class="col-md-4">
+                                    <div class="card card-profile">
+                                        <div class="card-avatar">
+                                            <? if(empty($staff['profile_img'])){?>
+                                                <img class="img" src="<? echo base_url();?>assets/images/person.png" />
+                                            <?}else{?>
+                                                <img class="img" src="<? echo base_url().'uploads/'.$staff['profile_img'];?>" />
+                                            <? } ?>
+                                        </div>
+                                        <div class="card-body">
+                                            <h6 class="card-category text-gray"><? echo $staff['user_type'];?></h6>
+                                            <h4 class="card-title"><? echo $staff['firstname'];?> <? echo $staff['middlename'];?><? echo $staff['lastname'];?></h4>
+                                            <p class="card-description">
+                                                <? echo $staff['bio'];?>
+                                            </p>
+                                            <table class="w-100">
+                                                <tr class="text-left">
+                                                    <td class="font-weight-bold">Email Address:</td>
+                                                    <td><? echo $staff['email'];?> </td>
+                                                </tr>
+                                                <tr class="text-left">
+                                                    <td class="font-weight-bold">Contact Number</td>
+                                                    <td><? echo $staff['number'];?> </td>
+                                                </tr>
+                                                <tr class="text-left">
+                                                    <td class="font-weight-bold">Address</td>
+                                                    <td><? echo $staff['address'];?> </td>
+                                                </tr>
                                             </table>
+                                            <button class="btn btn-primary btn-round btn-sm mt-4">Update</button>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                    <? }?>
+
+                    </div>
+                </div>
                                 <!-- Modal for edit profile-->
-                                        <div class="modal fade" id="edit_profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                                      <!--   <div class="modal fade" id="edit_profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -294,7 +298,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- End of modal -->
                             </div>
                         </div>

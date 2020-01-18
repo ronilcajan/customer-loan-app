@@ -51,6 +51,22 @@ class Claims_model extends CI_Model {
         }
     }   
 
+    public function get_user_profile($data){
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->join('staff', 'users.username=staff.username');
+        $this->db->where('staff.username', $data);
+        $query = $this->db->get();
+        
+        $result = $query->result_array();
+        if(count($result) >0){
+            return $result[0];
+        }else{
+            return null;
+        }
+    }   
+
+
     public function insert_staff($data){
         $staff = array('username' => $data['username'], 'password' => sha1($data['password']), 'user_type' => $data['position'],);
 
@@ -71,6 +87,39 @@ class Claims_model extends CI_Model {
             return null;
         }
     }
+    public function create_staff($data){
+        $userdata = array(
+            'username' => $this->session->userdata('username'),
+            'firstname' => $data['fname'],
+            'middlename' => $data['mname'],
+            'lastname' => $data['lname'],
+            'number' => $data['num'],
+            'address' => $data['address'].','.$data['city'].',Philippines,'.$data['postal'],
+            'email' => $data['email'],
+            'bio' => $data['bio']
+        );
+
+        $this->db->insert('staff', $userdata);
+
+        return $this->db->affected_rows();
+    }
+    // public function my_profile($username){
+
+    //     $this->db->select('*');
+    //     $this->db->from('users');
+    //     $this->db->join('staff', 'clients.account_no = names.account_no');
+    //     $this->db->join('address', 'clients.account_no = address.account_no');
+    //     $this->db->where('clients.account_no', $data);
+
+    //     $query = $this->db->get();
+    //     $result = $query->result_array();
+        
+    //     if(count($result) >0){
+    //         return $result[0];
+    //     }else{
+    //         return null;
+    //     }
+    // }
 
     public function account_query($data){
 

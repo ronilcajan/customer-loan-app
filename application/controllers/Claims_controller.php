@@ -83,6 +83,20 @@ class Claims_controller extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+	public function user_profile(){
+
+
+		$this->check_auth('user_profile');
+
+		$title['title'] = "RFSC - My Profile";
+
+		$result['staff'] = $this->claims_model->get_user_profile($this->session->userdata('username'));
+
+		$this->load->view('templates/header', $title);
+		$this->load->view('staff_profile',$result);
+		$this->load->view('templates/footer');
+	}
+
 	public function add_staff(){
 
 		$validator = array('success' => false, 'messages' => array());
@@ -108,6 +122,28 @@ class Claims_controller extends CI_Controller {
 			$validator['success'] = false;
 			$validator['messages'] = "Username already exist!";
 		}
+		
+		echo json_encode($validator);
+	}
+
+	public function create_staff(){
+
+		$validator = array('success' => false, 'messages' => array());
+
+		$data = $this->input->post();
+
+		$create_staff = $this->claims_model->create_staff($data);
+
+		if($create_staff){
+
+			$validator['success'] = true;
+			$validator['messages'] = "Profile Completed!";
+
+		}else{
+			$validator['success'] = false;
+			$validator['messages'] = "Profile did not save!";
+			}
+		
 		
 		echo json_encode($validator);
 	}

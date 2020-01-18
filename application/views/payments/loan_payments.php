@@ -13,20 +13,7 @@
 
         <div class="content">
             <div class="container-fluid">
-            
-                <nav aria-label="breadcrumb" style="margin-top: -40px;" role="navigation">
-                  <ol class="breadcrumb" style="background-color: #A057B0">
-                    <li class="breadcrumb-item">
-                        <a href="<? echo base_url();?>loan/create-loan" class="text-light font-weight-bold">Payments</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="#" class="text-light font-weight-bold">Loan Details</a></li>
-                    <li class="breadcrumb-item active text-light font-weight-bold" aria-current="page" >
-                        <? echo $loan['firstname'].' '.$loan['middlename'].'. '.$loan['lastname'];?>
-                    </li>
-                  </ol>
-                </nav>
-                        <div class="row" style="margin-top: -40px;">
+                        <div class="row" style="margin-top: -50px;">
                             <div class="col-md-12">
 
                                 <div class="card">
