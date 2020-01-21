@@ -121,8 +121,37 @@ class Borrowers extends CI_Controller {
 		$this->load->library('upload',$config);
 
 		if(!$this->upload->do_upload('client_img')){
-			$validator['success'] = false;
-			$validator['messages'] = 'Image not found';
+
+			$client_data = array(
+				'account_no' => $this->input->post('account_no'),
+				'client_img' => "",
+				'mname' => $this->input->post('mname'),
+				'gname' => $this->input->post('gname'),
+				'lname' => $this->input->post('lname'),
+				'email' => $this->input->post('email'),
+				'number1' => $this->input->post('number1'),
+				'number2' => $this->input->post('number2'),
+				'purok_no' => $this->input->post('purok_no'),
+				'barangay' => $this->input->post('barangay'),
+				'city' => $this->input->post('city'),
+				'province' => $this->input->post('province'),
+				'postal_code' => $this->input->post('postal_code'),
+				'birthdate' => $this->input->post('birthdate'),
+				'gender' => $this->input->post('inlineRadioOptions'),
+				'info' => $this->input->post('info')
+			);
+
+			$insert_data = $this->borrowers_model->insert_client($client_data);
+
+			if($insert_data){
+				$validator['success'] = true;
+				$validator['messages'] = 'Successfully added!';
+			}else{
+
+				$validator['success'] = false;
+				$validator['messages'] = 'Something went wrong. Please contact the administrator';	
+			}
+			
 		}else{
 			$data = $this->upload->data();
 			//Resize and Compress Image
@@ -265,27 +294,13 @@ class Borrowers extends CI_Controller {
 
 
 	public function delete_clients(){
-		$result = $this->borrowers_model->delete_clients($_POST['id']);
+		$result = $this->borrowers_model->delete_clients($this->input->post('id'));
 		if($result){
-			echo "Client data has been deleted";
+			echo "All client records has been deleted!";
 		}else{
 			echo "False";
 		}
 		
 	}
-
-
-	// public function make_pdf($data){
-
-	// 	$result['profile'] = $this->borrowers_model->get_profile($data);
-	// 	$result['business'] = $this->borrowers_model->get_profile_bname($data);
-	// 	$result['co_maker'] = $this->borrowers_model->get_co_maker($data);
-
-	// 	$mpdf = new \Mpdf\Mpdf();
-	// 	$pdfFilePath ="webpreparations-".time().".pdf"; 
- //        $html = $this->load->view('html_to_pdf',[],true);
- //        $mpdf->WriteHTML($html);
- //        $mpdf->Output($pdfFilePath,'D');
-	// }
 
 }

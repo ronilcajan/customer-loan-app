@@ -335,7 +335,7 @@
                     <tr>
                       <td>
                         <p>Hi there,</p>
-                        <p>This is to notify you that your loan application is approved. Please be in the office for releasing of your loan.</p>
+                        <p>This is to notify you that your loan application is approved. Please visit the office for releasing of your loan.</p>
                         <p>Below is your loan details.</p>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="bg-primary text-light">
                           <tbody>

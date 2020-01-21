@@ -280,8 +280,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="mt-2">
-                                                    <button type="submit" class="btn btn-primary btn-round pull-right create-loan">Create Loan</button>
-                                                    <button class="btn btn-default btn-round pull-right cancel-create-loan">Cancel</button>
+                                                    <button type="submit" class="btn btn-primary btn-round pull-right create-loan"><i class="material-icons">check_circle</i> Submit</button>
+                                                    <button class="btn btn-default btn-round pull-right cancel-create-loan"><i class="material-icons">cancel</i> Cancel</button>
                                                 </div>
                                             </form>
                                         </div>

@@ -189,8 +189,8 @@
                                             </div>
                                         </div>
                         
-                                        <button class="btn btn-primary btn-round pull-right client-save">Create Profile</button>
-                                        <button class="btn btn-default btn-round pull-right cancel-create">Cancel</button>
+                                        <button class="btn btn-primary btn-round pull-right client-save"> <i class="material-icons">check_circle</i> Submit</button>
+                                        <button class="btn btn-default btn-round pull-right cancel-create"><i class="material-icons">cancel</i> Cancel</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>

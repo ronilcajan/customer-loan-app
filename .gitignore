@@ -3,6 +3,9 @@ uploads/
 application/cache/*
 !application/cache/index.html
 
+client_id.json
+credentials.json
+
 application/logs/*
 !application/logs/index.html
 

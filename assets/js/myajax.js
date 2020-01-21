@@ -288,9 +288,9 @@ $(document).on('click', '.approve', function(){
 				);
 				
 
-		        setTimeout(function() {
-					window.location.reload(1);
-				}, 5000);
+		  //       setTimeout(function() {
+				// 	window.location.reload(1);
+				// }, 3000);
 		    }
 	});
 }); 
@@ -298,7 +298,7 @@ $(document).on('click', '.approve', function(){
 $(document).on('click', '.delete', function(){
 	var id = $(this).attr('id');
 
-	var $button = $('#remove-button'+id);
+	var $button = $('#remove-loan'+id);
 	var table = $("#new_client_table").DataTable();
 	
 	$.ajax({
@@ -316,7 +316,6 @@ $(document).on('click', '.delete', function(){
 				$('.modal').modal('hide');
 				$("#loading-screen").hide();
 
-				table.row( $button.parents('tr')).remove().draw();
 				showNotification(
 					data,
 					"check_circle",
@@ -327,6 +326,9 @@ $(document).on('click', '.delete', function(){
 			}else{
 				$("#loading-screen").hide();
 			}
+	        setTimeout(function() {
+				window.location.reload(1);
+			}, 1000);
 			
 		},
 		error: function (jqXHR, exception) {
@@ -359,7 +361,7 @@ $(document).on('click', '.delete', function(){
 
 		        setTimeout(function() {
 					window.location.reload(1);
-				}, 5000);
+				}, 3000);
 		    }
 	});
 }); 
@@ -891,17 +893,27 @@ $(document).ready(function() {
 					
 					$("#loading-screen").hide();
 
-					showNotification(
-						response.messages,
-						"check_circle",
-						"success"
-					);
+					if(response.email == false){
+						showNotification(
+							'Loan successfully added, Email did not sent!',
+							"check_circle",
+							"success"
+						);
+					}else{
+						showNotification(
+							response.messages,
+							"check_circle",
+							"success"
+						);
+					}
 					
 					$("#loan-form")[0].reset();
 
 					setTimeout(function() {
 					window.location.reload(1);
 				}, 2000);
+
+
 				}else{
 
 					$("#loading-screen").hide();

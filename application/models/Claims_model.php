@@ -40,12 +40,12 @@ class Claims_model extends CI_Model {
     public function get_staff(){
         $this->db->select('*');
         $this->db->from('users');
-        $this->db->join('staff', 'users.username=staff.username');
+        $this->db->join('staff', 'users.username = staff.username');
         $query = $this->db->get();
         
         $result = $query->result_array();
         if(count($result) >0){
-            return $result[0];
+            return $result;
         }else{
             return null;
         }
@@ -102,6 +102,38 @@ class Claims_model extends CI_Model {
         $this->db->insert('staff', $userdata);
 
         return $this->db->affected_rows();
+    }
+
+    public function update_my_profile($data){
+        if($data['img'] == ""){
+            $userdata = array(
+                'username' => $this->session->userdata('username'),
+                'firstname' => $data['fname'],
+                'middlename' => $data['mname'],
+                'lastname' => $data['lname'],
+                'number' => $data['num'],
+                'address' => $data['address'],
+                'email' => $data['email'],
+                'bio' => $data['bio']
+            );
+        }else{
+            $userdata = array(
+                'username' => $this->session->userdata('username'),
+                'firstname' => $data['fname'],
+                'middlename' => $data['mname'],
+                'lastname' => $data['lname'],
+                'number' => $data['num'],
+                'address' => $data['address'],
+                'email' => $data['email'],
+                'bio' => $data['bio'],
+                'profile_img' => $data['img']
+            );
+        }
+
+        $this->db->update('staff', $userdata);
+
+        return $this->db->affected_rows();
+
     }
     // public function my_profile($username){
 

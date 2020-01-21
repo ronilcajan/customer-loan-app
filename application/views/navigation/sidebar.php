@@ -82,12 +82,12 @@
 				<p>Staffs</p>
 				</a>
 			</li>
-			<?if(strpos($site, 'staff')){?>
+			<?if(strpos($site, 'back-up')){?>
 			<li class="nav-item active">
 			<? }else{ ?>
 			<li class="nav-item ">
 			<? } ?>
-				<a class="nav-link" href="<? echo base_url();?>">
+				<a class="nav-link" href="<? echo base_url();?>back-up">
 				<i class="material-icons">backup</i>
 				<p>Back up</p>
 				</a>

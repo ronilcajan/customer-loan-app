@@ -1,6 +1,7 @@
 {
 	"require": {
 		"php": ">=5.3.7",
-		"mpdf/mpdf": "^8.0"
+		"mpdf/mpdf": "^8.0",
+		"google/apiclient": "^2.0"
 	}
 }

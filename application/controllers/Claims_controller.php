@@ -1,4 +1,5 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Claims_controller extends CI_Controller {
@@ -72,11 +73,9 @@ class Claims_controller extends CI_Controller {
 	public function staff(){
 		$this->check_auth('staff');
 
-		$title['title'] = "RFSC - Staff";
+		$title['title'] = "RFSC - Staff List";
 
-		$result['staff'] = $this->claims_model->get_staff();
-
-
+		$result['stafflist'] = $this->claims_model->get_staff();
 
 		$this->load->view('templates/header', $title);
 		$this->load->view('staff', $result);
@@ -148,6 +147,107 @@ class Claims_controller extends CI_Controller {
 		echo json_encode($validator);
 	}
 	
+	public function update_user_profile()
+	{
+		$validator = array('success' => false, 'messages' => array());
+
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'jpg|png|jpeg|gif';
+		$config['encrypt_name'] = TRUE;
+
+		$this->load->library('upload',$config);
+
+		if(!$this->upload->do_upload('img')){
+
+			$client_data = array(
+				'username' => $this->session->userdata('username'),
+				'img' => "",
+				'email' => $this->input->post('email'),
+				'num' => $this->input->post('num'),
+				'bio' => $this->input->post('bio'),
+				'mname' => $this->input->post('mname'),
+				'fname' => $this->input->post('fname'),
+				'lname' => $this->input->post('lname'),
+				'address' => $this->input->post('address')
+			);
+
+			$update_profile = $this->claims_model->update_my_profile($client_data);
+			
+
+			if($update_profile){
+				$validator['success'] = true;
+				$validator['messages'] = 'Update successfully!';
+			}else{
+				$validator['success'] = false;
+				$validator['messages'] = "Something went wrong!";
+			}
+		
+		}else{
+			$data = $this->upload->data();
+			//Resize and Compress Image
+			$config['image_library'] = 'gd2';
+			$config['source_image'] = './uploads/'.$data['file_name'];
+			$config['create_thumb'] = FALSE;
+			$config['maintain_ratio'] = FALSE;
+			$config['quality'] = '60%';
+			$config['width'] = 600;
+			$config['height'] = 400;
+			$config['new_image'] = './uploads/'.$data['file_name'];
+
+			$this->load->library('image_lib', $config);
+			$this->image_lib->resize();
+			
+
+			$client_data = array(
+				'username' => $this->session->userdata('username'),
+				'img' => $data['file_name'],
+				'email' => $this->input->post('email'),
+				'num' => $this->input->post('num'),
+				'bio' => $this->input->post('bio'),
+				'mname' => $this->input->post('mname'),
+				'fname' => $this->input->post('fname'),
+				'lname' => $this->input->post('lname'),
+				'address' => $this->input->post('address')
+			);
+
+			$update_profile = $this->claims_model->update_my_profile($client_data);
+
+			if($update_profile){			
+				$validator['success'] = true;
+				$validator['messages'] = 'Update successfully!';
+			}
+		}
+
+			echo json_encode($validator);
+	}
+
+
+	public function back_up(){
+
+		$title['title'] = "RFSC - Back up";
+
+		$this->load->view('templates/header', $title);
+		$this->load->view('backup/back_up');
+		$this->load->view('templates/footer');
+	}
+
+	public function local_backup(){
+
+		$this->load->dbutil();
+
+		$backup = $this->dbutil->backup();
+
+		$this->load->helper('file');
+
+		$name = 'backup_'.date('m-d-Y_hi').'.gz';
+
+		write_file('/path/to/'.$name ,$backup);
+
+		$this->load->helper('download');
+
+		force_download($name, $backup);
+	}
+
 	function logout(){
 
 		$user_data = $this->session->all_userdata();

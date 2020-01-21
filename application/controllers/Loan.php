@@ -118,7 +118,7 @@ class Loan extends CI_Controller {
 
     public function insert_loan(){
 
-		$validator = array('success' => false, 'messages' => array());
+		$validator = array('success' => false, 'messages' => array() , 'email' => array());
 		$full_name = $this->input->post('full_name');
 		$email = $this->input->post('email');
 		$amount = $this->input->post('loan_amount');
@@ -139,7 +139,11 @@ class Loan extends CI_Controller {
 
 				$subject = "RFSC Loan Application Verification";
 				$template = "templates/email_template";
+
 				$sendmail = $this->send_email($full_name,$email,$amount,$business,$subject,$template);
+				if($sendmail){
+					$validator['email'] = false;
+				}
 
 			}
 
@@ -178,7 +182,40 @@ class Loan extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	function send_sms($num, $message, $apicode){
+        
+        $url = 'https://www.itextmo.com/php_api/api.php';
+
+        $itextmo = array('1' => $num, '2' => $message, '3' => $apicode );
+
+        $param = array(
+        	'http' => array(
+        		'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+        		'method' => 'POST',
+        		'content' => http_build_query($itextmo),
+        	),
+        );
+
+        $context = stream_context_create($param);
+
+        return file_get_contents($url, false, $context);
+
+	}
+
+	function itexmo($number,$message,$apicode){
+			$ch = curl_init();
+			$itexmo = array('1' => $number, '2' => $message, '3' => $apicode);
+			curl_setopt($ch, CURLOPT_URL,"https://www.itexmo.com/php_api/api.php");
+			curl_setopt($ch, CURLOPT_POST, 1);
+			 curl_setopt($ch, CURLOPT_POSTFIELDS, 
+			          http_build_query($itexmo));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			return curl_exec ($ch);
+			curl_close ($ch);
+	}
+
 	public function approve_loan(){
+
 
 		$id = $this->input->post('id');
 		$amount = $this->input->post('amount');
@@ -198,12 +235,34 @@ class Loan extends CI_Controller {
 				$subject = "RFSC Loan Application Approval";
 				$template = "templates/email_approval";
 
+				$num = $query['number1'];
+				$num2 = $query['number2'];
+				$msg = "Hi there, This is to notify you that your loan application is approved. From RFS Corporation.";
+				$apicode = "TR-RONIL112668_7CRA9";
+
 				$sendmail = $this->send_email($name,$email,$amount,$b_name,$subject,$template);	
+
+				$send_sms = $this->itexmo($num, $msg, $apicode);
+				$send_sms1 = $this->itexmo($num1, $msg, $apicode);
+
+				if($send_sms == ''){
+					echo 'iTextmo: No response from server!!!
+					Please check the Method used (CURL or CURL-LESS).';
+
+				}elseif ($send_sms == 0) {
+
+					echo "Message sent";
+				}else{
+					echo 'Error Num' . $send_sms . " was encountered!";
+				}
 			}
 
 			echo "True";
+
 		}else{
+
 			echo "False";
+
 		}
 	}
 

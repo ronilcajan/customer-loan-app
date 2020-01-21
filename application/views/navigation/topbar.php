@@ -18,6 +18,10 @@
 				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>reprots">Manage Reports</a>
 				<?}elseif(strpos($site,'staff')){?>
 				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>staff">Manage Staff</a>
+				<?}elseif(strpos($site,'my-profile')){?>
+				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>staff">My Profile</a>
+				<?}elseif(strpos($site, 'back-up')){?>
+				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>staff">Manage Files</a>
 				<?}else{
 					
 				}?>
@@ -31,7 +35,7 @@
 			<div class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="<? echo base_url();?>dashboard">
+					<a class="nav-link" href="<? echo base_url();?>dashboard" rel="tooltip" title="Dashboard">
 					<i class="material-icons">dashboard</i>
 					<p class="d-lg-none d-md-block">
 						Stats
@@ -47,7 +51,7 @@
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
 					<a class="dropdown-item" href="<? echo base_url();?>my-profile">Profile</a>
-					<a class="dropdown-item" href="#">Settings</a>
+					<a class="dropdown-item" href="#">Change Password</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="<? echo base_url();?>logout">Log out</a>
 					</div>

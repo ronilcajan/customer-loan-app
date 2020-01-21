@@ -137,18 +137,22 @@
                                             <p class="card-category">You can add task or reminder</p>
                                         </div>
                                         <div class="card-body">
-                                            
+                                            <table>
+                                                <tbody>
+                                                    
+                                                </tbody>  
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="card card-profile">
-                                        <div class="card-avatar">
+                                        <div class="card-avatar" style="height: 150px">
                                             <? if(empty($staff['profile_img'])){?>
                                                 <img class="img" src="<? echo base_url();?>assets/images/person.png" />
                                             <?}else{?>
-                                                <img class="img" src="<? echo base_url().'uploads/'.$staff['profile_img'];?>" />
+                                                <img class="img"  style="height:130px" src="<? echo base_url().'uploads/'.$staff['profile_img'];?>" />
                                             <? } ?>
                                         </div>
                                         <div class="card-body">
@@ -171,7 +175,7 @@
                                                     <td><? echo $staff['address'];?> </td>
                                                 </tr>
                                             </table>
-                                            <button class="btn btn-primary btn-round btn-sm mt-4">Update</button>
+                                            <button class="btn btn-primary btn-sm btn-round mt-4 pl-2 pr-3" data-target="#edit_my_profile" data-toggle="modal"><i class="material-icons">edit</i> Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -180,8 +184,8 @@
 
                     </div>
                 </div>
-                                <!-- Modal for edit profile-->
-                                      <!--   <div class="modal fade" id="edit_profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                               <!-- Modal for edit profile-->
+                                        <div class="modal fade" id="edit_my_profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -191,14 +195,18 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form id="update_form" enctype="mutlipart/form-data" method="POST">
+                                                        <form id="update_my_form" enctype="mutlipart/form-data" method="POST">
                                                             <div class="row">
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <div class="form-group form-file-upload form-file-multiple ">
                                                                             <input type="file" accept="image/*" onchange="loadFile(event)" name="img" class="inputFileHidden"s required>
                                                                             <div class="fileinput-new thumbnail img-raised text-center">
-                                                                                <img class="img-fluid" id="output" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img" />
+                                                                                <? if(empty($staff['profile_img'])){?>
+                                                                                    <img class="img-fluid" src="<? echo base_url();?>assets/images/person.png"  width="200" height="200" id="output"/>
+                                                                                <?}else{?>
+                                                                                    <img class="img-fluid" src="<? echo base_url().'uploads/'.$staff['profile_img'];?>" id="output"/>
+                                                                                <? } ?> 
                                                                             </div>
                                                                             <div class="input-group mt-2">
                                                                                 <span class="input-group-btn">
@@ -216,36 +224,29 @@
                                                                     <div class="row">
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
-                                                                                <input type="hidden" class="form-control" name="account_no" value="<? echo $profile['account_no'];?>">
                                                                                 <label class="bmd-label-floating">First Name</label>
-                                                                                <input type="text" class="form-control" name="fname" value="<? echo $profile['fname'];?>" required>
+                                                                                <input type="text" class="form-control" name="fname" value="<? echo $staff['firstname'];?>" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
                                                                                 <label class="bmd-label-floating">Middle Name</label>
                                                                                 <input type="text" class="form-control" name=
-                                                                                "mname" value="<? echo $profile['mname'];?>" required>
+                                                                                "mname" value="<? echo $staff['middlename'];?>" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
                                                                                 <label class="bmd-label-floating">Last Name</label>
-                                                                                <input type="text" class="form-control" name="lname" value="<? echo $profile['lname'];?>"  required>
+                                                                                <input type="text" class="form-control" name="lname" value="<? echo $staff['lastname'];?>"  required>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-md-6">
+                                                                        <div class="col-md-12">
                                                                             <div class="form-group">
                                                                                 <label class="bmd-label-floating">Contact Number</label>
-                                                                                <input type="number" class="form-control" name="num1" value="<? echo $profile['number1'];?>" required>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="form-group">
-                                                                                <label class="bmd-label-floating">Contact Number</label>
-                                                                                <input type="number" class="form-control" name="num2" value="<? echo $profile['number2'];?>" required>
+                                                                                <input type="number" class="form-control" name="num" value="<? echo $staff['number'];?>" required>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -254,26 +255,19 @@
                                                                             <div class="form-group">
                                                                                 <label class="bmd-label-floating">Email Address</label>
                                                                                 <input type="email" class="form-control" name=
-                                                                                "email" value="<? echo $profile['email'];?>" required>
+                                                                                "email" value="<? echo $staff['email'];?>" required>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-md-6">
+                                                                        <div class="col-md-12">
                                                                             <div class="form-group">
-                                                                                <label class="bmd-label-floating">Birthday</label>
-                                                                                <input type="date" class="form-control" name=
-                                                                                "bday" value="<? echo $profile['birthdate'];?>" required>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="form-group">
-                                                                                <label class="bmd-label-floating">Gender</label>
-                                                                                <input type="text" class="form-control" name="gender" value="<? echo $profile['gender'];?>" required>
+                                                                                <label class="bmd-label-floating">Address</label>
+                                                                                <input type="text" class="form-control" name=
+                                                                                "address" value="<? echo $staff['address'];?>" required>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
                                                                 </div>
                                                             </div>
 
@@ -282,8 +276,8 @@
                                                                     <div class="form-group">
                                                                         <label>Additional Info(Optional)</label>
                                                                         <div class="form-group">
-                                                                            <label class="bmd-label-floating">Write something about the client.. </label>
-                                                                            <textarea class="form-control" name="info" rows="5"><? echo $profile['info'];?></textarea>
+                                                                            <label class="bmd-label-floating">Write something about your self.. </label>
+                                                                            <textarea class="form-control" name="bio" rows="5"><? echo $staff['bio'];?></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -292,13 +286,13 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal"><i class="material-icons">cancel</i> Cancel</button>
-                                                        <button type="submit" class="btn btn-primary btn-round" id="update_profile">
+                                                        <button type="submit" class="btn btn-primary btn-round" id="update_my_profile">
                                                           <i class="material-icons">check_circle</i> Save
                                                         </button>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div> -->
+                                        </div>
                                         <!-- End of modal -->
                             </div>
                         </div>

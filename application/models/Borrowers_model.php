@@ -8,16 +8,31 @@ class Borrowers_model extends CI_Model {
     }
 
     public function insert_client($data){
-        $client_data = array(
-            'account_no' => $data['account_no'],
-            'profile_img' => $data['client_img'],
-            'email' => $data['email'],
-            'number1' => $data['number1'],
-            'number2' => $data['number2'],
-            'birthdate' => $data['birthdate'],
-            'gender' => $data['gender'],
-            'added_info' => $data['info'],
-        );
+
+        if($data['client_img'] == ""){
+            $client_data = array(
+                'account_no' => $data['account_no'],
+                'profile_img' => $data['client_img'],
+                'email' => $data['email'],
+                'number1' => $data['number1'],
+                'number2' => $data['number2'],
+                'birthdate' => $data['birthdate'],
+                'gender' => $data['gender'],
+                'added_info' => $data['info'],
+            );
+        }else{
+             $client_data = array(
+                'account_no' => $data['account_no'],
+                'profile_img' => $data['client_img'],
+                'email' => $data['email'],
+                'number1' => $data['number1'],
+                'number2' => $data['number2'],
+                'birthdate' => $data['birthdate'],
+                'gender' => $data['gender'],
+                'added_info' => $data['info'],
+            );
+        }
+       
         $client_name = array(
             'account_no' => $data['account_no'],
             'firstname' => $data['gname'],

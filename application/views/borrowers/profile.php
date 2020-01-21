@@ -17,7 +17,11 @@
                             <div class="col-md-4">
                                 <div class="card card-profile">
                                     <div class="card-avatar" style="height: 150px">
+                                        <? if(empty($profile['prof_img'])){?>
+                                            <img class="img img-fluid" style="height:130px" src="<? echo base_url().'assets/images/person.png' ?>" alt="client-img"/>
+                                    <? }else{ ?>
                                         <img class="img img-fluid" style="height:130px" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img"/>
+                                    <? }?>
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title font-weight-bold"><? echo $profile['fname'].' '.$profile['mname'].'. '.$profile['lname'];?></h4>

@@ -11,6 +11,11 @@ $route['staff'] = 'claims_controller/staff';
 $route['add-staff'] = 'claims_controller/add_staff';
 $route['my-profile'] = 'claims_controller/user_profile';
 $route['create-staff'] = 'claims_controller/create_staff';
+$route['update-profile'] = 'claims_controller/update_user_profile';
+
+$route['back-up'] = 'claims_controller/back_up';
+$route['local-backup'] = 'claims_controller/local_backup';
+$route['google-drive'] = 'googleAPI/googledrive';
 
 $route['borrowers/create-borrowers'] = 'borrowers/create_borrowers';
 $route['borrowers/new-borrowers'] = 'borrowers/new_borrowers';
