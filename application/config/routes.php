@@ -15,7 +15,11 @@ $route['update-profile'] = 'claims_controller/update_user_profile';
 
 $route['back-up'] = 'claims_controller/back_up';
 $route['local-backup'] = 'claims_controller/local_backup';
-$route['google-drive'] = 'googleAPI/googledrive';
+$route['googledrive'] = 'googleAPI/googledrive';
+$route['oauth2callback'] = 'googleAPI/oauth2callback';
+$route['dropbox'] = 'dropboxAPI/request_dropbox';
+$route['access_dropbox'] = 'dropboxAPI/access_dropbox';
+$route['test_dropbox'] = 'dropboxAPI/test_dropbox';
 
 $route['borrowers/create-borrowers'] = 'borrowers/create_borrowers';
 $route['borrowers/new-borrowers'] = 'borrowers/new_borrowers';
