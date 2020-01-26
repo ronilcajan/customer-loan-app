@@ -90,7 +90,7 @@
                                                                             ₱
                                                                     </span>
                                                                     <label class="bmd-label-floating pl-3">Loan Amount</label>
-                                                                    <input type="number" class="form-control text-right amount" name="amount" required>
+                                                                    <input type="number" min="0.01" step="0.01" max="100000" class="form-control text-right amount font-weight-bold" name="amount" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-2">

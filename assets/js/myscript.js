@@ -27,9 +27,26 @@ $(document).ready(function() {
 	});
 });
 
-
+(function($) {
+  $.fn.currencyInput = function() {
+    this.each(function() {
+      $(this).change(function() {
+        var min = parseFloat($(this).attr("min"));
+        var max = parseFloat($(this).attr("max"));
+        var value = this.valueAsNumber;
+        if(value < min)
+          value = min;
+        else if(value > max)
+          value = max;
+        $(this).val(value.toFixed(2)); 
+      });
+    });
+  };
+})(jQuery);
 // ====== DataTables ===========
 $(document).ready(function() {
+	 $('input.amount').currencyInput();
+
 	$("#rejected_clients_table").DataTable();
  	$("#new_client_table").DataTable();
 	$("#loan_clients_table").DataTable();

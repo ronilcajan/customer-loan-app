@@ -22,65 +22,79 @@
                                             <h4 class=" font-weight-bold text-primary">Loan Information</h4>
                                         </div>
                                         <div class="col-md-2 text-right">
-                                            <button class="btn btn-outline-primary btn-round pull-right btn-sm" rel="tooltip" title="Pay loan" data-target="#payment-modal" data-toggle="modal">Pay Loan</button>
+                                            <button class="btn btn-outline-primary btn-round pull-right btn-sm" rel="tooltip" title="Pay loan" data-target="#payment-modal" data-toggle="modal"><i class="material-icons">monetization_on</i> Pay Loan</button>
                                         </div>
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
 
                                             <div class="col-md-4 card-loan">
-                                                <div class="fileinput-new thumbnail img-raised" style="width: 300px;">
-                                                    <img class="img-fluid" width="300" id="output" src="<? echo base_url().'uploads/'.$loan['profile_img']; ?>" alt="client-img"  />
+                                                <div class="fileinput-new thumbnail img-raised" style="width: 250px;">
+                                                <?   if(empty($loan['profile_img'])){ ?>
+                                                            <img class="border-round" src="<? echo base_url().'assets/images/person.png' ?>" width="250"/>
+                                                        <?}else{?>
+                                                            <img class="img-fluid" width="250" id="output" src="<? echo base_url().'uploads/'.$loan['profile_img']; ?>" alt="client-img"  />
+                                                        <?}?>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-8">
                                                 <div class="row">
                                                     <div class="col-md-6 p-0">
-                                                        <div class="form-group p-0">
-                                                            <p>Account Number: <u><span class="font-weight-bold"><? echo $loan['account_no'];?></span></u>
-                                                            </p>
+                                                        <div class="form-group input-group-prepend">
+                                                            <label class="bmd-label-floating text-primary">Account Number:</label>
+                                                            <input type="text" class="form-control interest text-left font-weight-bold" value="<? echo $loan['account_no'];?>" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 p-0">
-                                                        <div class="form-group p-0">
-                                                            <p>Date Loan: <u><span  class="font-weight-bold"><? $time = strtotime($loan['date_approved']); echo date("M. d, Y", $time);?></span></u>
-                                                            </p>
+                                                        <div class="form-group input-group-prepend">
+                                                            <label class="bmd-label-floating text-primary">Date Loan:</label>
+                                                            <input type="text" class="form-control interest text-left font-weight-bold" value="<? $time = strtotime($loan['date_approved']); echo date("M. d, Y", $time);?>" disabled>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row p-0">
                                                     <div class="col-md-12 p-0">
-                                                        <div class="form-group p-0">
-                                                            <p>Client's Name: <u><span  class="font-weight-bold"><? echo $loan['firstname'].' '.$loan['middlename'].'. '.$loan['lastname'];?></span>
-                                                            </p></u>
+                                                        <div class="form-group input-group-prepend">
+                                                            <label class="bmd-label-floating text-primary">Client's Name</label>
+                                                            <input type="text" class="form-control interest text-left font-weight-bold" value="<? echo $loan['firstname'].' '.$loan['middlename'].'. '.$loan['lastname'];?>" disabled>
                                                         </div>
                                                     </div>
                                                 </div>
                                                  <div class="row p-0">
                                                     <div class="col-md-12 p-0">
-                                                        <p>Current Address: <u><span class="font-weight-bold">Purok <? echo $loan['purok_no'].', '.$loan['barangay'].', '.$loan['city'].', '.$loan['province'].', '.$loan['country'].' '.$loan['postal_code'];?></span></u>
-                                                        </p>
+                                                        <div class="form-group input-group-prepend">
+                                                            <label class="bmd-label-floating text-primary">Current Address: </label>
+                                                            <input type="text" class="form-control interest text-left font-weight-bold" value="Purok <? echo $loan['purok_no'].', '.$loan['barangay'].', '.$loan['city'].', '.$loan['province'].', '.$loan['country'].' '.$loan['postal_code'];?>" disabled>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="row p-0">
                                                     <div class="col-md-6 p-0">
-                                                        <p>Amount Loan: <u><span class="font-weight-bold"><? echo $loan['loan_amount'];?></span></u>
-                                                        </p>
+                                                        <div class="form-group input-group-prepend">
+                                                            <label class="bmd-label-floating text-primary">Amount Loan:  </label>
+                                                            <input type="text" class="form-control interest text-left font-weight-bold" value="<? echo $loan['loan_amount'];?>" disabled>
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6 p-0">
-                                                        <p>Date Due: <u><span class="font-weight-bold"><? $due = $loan['due_date']; echo date('M. d, Y', strtotime($due));?></span>
-                                                        </p></u>
+                                                        <div class="form-group input-group-prepend">
+                                                            <label class="bmd-label-floating text-primary">Date Due: </label>
+                                                            <input type="text" class="form-control interest text-left font-weight-bold" value="<? $due = $loan['due_date']; echo date('M. d, Y', strtotime($due));?>" disabled>
+                                                        </div>
                                                     </div>     
                                                 </div>
                                                  <div class="row p-0">
                                                     <div class="col-md-6 p-0">
-                                                        <p>Daily Payment P : <u><span class="font-weight-bold"><? echo $loan['daily_payment'];?></span>
-                                                        </p></u>
+                                                        <div class="form-group input-group-prepend">
+                                                            <label class="bmd-label-floating text-primary">Daily Payment(P) : </label>
+                                                            <input type="text" class="form-control interest text-left font-weight-bold" value="<? echo $loan['daily_payment'];?>" disabled>
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6 p-0">
-                                                        <p>Terms: <u><span class="font-weight-bold"><? echo $loan['terms'];?> days</span>
-                                                        </p></u>
+                                                        <div class="form-group input-group-prepend">
+                                                            <label class="bmd-label-floating text-primary">Terms(days): </label>
+                                                            <input type="text" class="form-control interest text-left font-weight-bold" value="<? echo $loan['terms'];?> " disabled>
+                                                        </div>
                                                     </div>     
                                                 </div>                                                         
                                             </div>

@@ -175,7 +175,9 @@
                                                     <td><? echo $staff['address'];?> </td>
                                                 </tr>
                                             </table>
+                                            <? if($this->session->userdata('username') == $staff['user']){?>
                                             <button class="btn btn-primary btn-sm btn-round mt-4 pl-2 pr-3" data-target="#edit_my_profile" data-toggle="modal"><i class="material-icons">edit</i> Update</button>
+                                        <? } ?>
                                         </div>
                                     </div>
                                 </div>

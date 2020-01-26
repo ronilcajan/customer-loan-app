@@ -55,11 +55,11 @@
                                             <td><? echo $st['user_type'];?></td>
 
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="View loan information" class="btn btn-info btn-sm mr-2" data-toggle="modal">
-                                                   <i class="material-icons">eye</i> View Loan
+                                                <button type="button" rel="tooltip" title="View staff information" class="btn btn-info btn-sm mr-2" data-toggle="modal">
+                                                   <i class="material-icons">visibility</i>
                                                 </button>
-                                                <button type="button" rel="tooltip" title="Remove loan" class="btn btn-danger btn-sm"  data-toggle="modal">
-                                                    <i class="material-icons">cancel</i> Remove
+                                                <button type="button" rel="tooltip" title="Remove staff" class="btn btn-danger btn-sm"  data-toggle="modal">
+                                                    <i class="material-icons">remove_circle</i>
                                                 </button>
                                             </td>
                                         </tr>

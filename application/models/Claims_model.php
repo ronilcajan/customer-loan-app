@@ -51,8 +51,9 @@ class Claims_model extends CI_Model {
         }
     }   
 
+
     public function get_user_profile($data){
-        $this->db->select('*');
+        $this->db->select('*, users.username as user');
         $this->db->from('users');
         $this->db->join('staff', 'users.username=staff.username');
         $this->db->where('staff.username', $data);

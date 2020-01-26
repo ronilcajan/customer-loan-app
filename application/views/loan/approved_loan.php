@@ -64,12 +64,12 @@
                                             </td>
                                             <td class="td-actions text-right">
                                                 <?if($appr['status'] == 'Approved'){?>
-                                                    <button type="button" rel="tooltip" title="Cash release" class="btn btn-primary btn-sm mr-2" data-target="#cash<? echo $appr['loan_no'];?>" id="cash-release<? echo $appr['loan_no'];?>" data-toggle="modal">
-                                                        Release Cash
+                                                    <button type="button" rel="tooltip" title="Release cash for this loan" class="btn btn-primary btn-sm mr-2" data-target="#cash<? echo $appr['loan_no'];?>" id="cash-release<? echo $appr['loan_no'];?>" data-toggle="modal">
+                                                        <i class="material-icons">monetization_on</i>
                                                     </button>
                                                 <? }else{?> 
                                                     <button type="button" rel="tooltip" title="Go to Payments" class="btn btn-info btn-sm mr-2" onclick="location.href='<? echo base_url().'payments/loan-details/'.$appr['loan_no'];?>'">
-                                                        Payments
+                                                        <i class="material-icons">payment</i>
                                                     </button>
                                                 <? } ?>
                                             </td>

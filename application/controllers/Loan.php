@@ -47,6 +47,7 @@ class Loan extends CI_Controller {
 
 		$this->check_auth('new_loans');
 
+
 		$clients['verify'] = $this->loan_model->get_verified_clients();
 
 		$this->load->view('templates/header',$title);
@@ -216,6 +217,7 @@ class Loan extends CI_Controller {
 
 	public function approve_loan(){
 
+		$data = array('success' => false, 'email' => false, 'sim1' => array(), 'sim2' => array());
 
 		$id = $this->input->post('id');
 		$amount = $this->input->post('amount');
@@ -236,7 +238,7 @@ class Loan extends CI_Controller {
 				$template = "templates/email_approval";
 
 				$num = $query['number1'];
-				$num2 = $query['number2'];
+				$num1 = $query['number2'];
 				$msg = "Hi there, This is to notify you that your loan application is approved. From RFS Corporation.";
 				$apicode = "TR-RONIL112668_7CRA9";
 
@@ -245,25 +247,50 @@ class Loan extends CI_Controller {
 				$send_sms = $this->itexmo($num, $msg, $apicode);
 				$send_sms1 = $this->itexmo($num1, $msg, $apicode);
 
+				
+
+				if($sendmail){
+
+					$data['email'] = true;
+				
+				}else{
+					$data['email'] = false;
+				}
+
 				if($send_sms == ''){
-					echo 'iTextmo: No response from server!!!
-					Please check the Method used (CURL or CURL-LESS).';
+
+					$data['sim1'] = "Something went wrong. Please contact developer";
 
 				}elseif ($send_sms == 0) {
 
-					echo "Message sent";
+					$data['sim1'] = "SMS sent successfully!";
+
 				}else{
-					echo 'Error Num' . $send_sms . " was encountered!";
+					$data['sim1'] = "SMS not sent.";
+				}
+
+				if($send_sms1 == ''){
+
+					$data['sim1'] = "Something went wrong. Please contact developer";
+
+				}elseif ($send_sms1 == 0) {
+
+					$data['sim1'] = "SMS sent successfully!";
+					
+				}else{
+					$data['sim1'] = "SMS not sent.";
 				}
 			}
 
-			echo "True";
+			$data['success'] =  true;
 
 		}else{
 
-			echo "False";
+			$data['success'] =  true;
 
 		}
+
+		echo json_encode($data);
 	}
 
 	public function reject_loan(){

@@ -30,7 +30,7 @@
                         </div>
                         <div class="card-body container-fluid">
                             <div class="table-responsive">
-                                <table class="table table-hover table-sm" id="new_client_table">
+                                <table class="table table-hover" id="new_client_table">
                                     <thead class="text-primary">
                                         <th>Account No.</th>
                                         <th>Name</th>
@@ -51,14 +51,14 @@
                                                 <span class="font-italic text-muted "><? echo $newC['status'];?></span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="View borrowers" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                    View
+                                                <button type="button" rel="tooltip" title="View borrowers" class="btn btn-info mr-2 btn-sm" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                    <i class="material-icons">visibility</i> 
                                                 </button>
                                                 <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'loan/create-loan/'.$newC['account_no'];?>'">
-                                                    Apply Loan
+                                                    <i class="material-icons">monetization_on</i>
                                                 </button>
                                                 <button type="button" rel="tooltip" title="Remove borrowers" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" id="remove-loan<? echo $newC['account_no'];?>" data-toggle="modal">
-                                                    Remove
+                                                    <i class="material-icons">remove_circle</i>
                                                 </button>
                                             </td>
                                         </tr>
@@ -100,7 +100,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button type="button" onclick="location.href='<? echo base_url().'borrowers/client-profile/'.$newC['account_no'];?>'" class="btn btn-primary">Go to profile</button>
+                                                        <button type="button" onclick="location.href='<? echo base_url().'borrowers/profile/'.$newC['account_no'];?>'" class="btn btn-primary">Go to profile</button>
                                                     </div>
                                                 </div>
                                             </div>

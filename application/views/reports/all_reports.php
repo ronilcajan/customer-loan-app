@@ -24,17 +24,17 @@
                         <ul class="nav nav-pills nav-pills-primary" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active mr-2 pt-0 pb-0 font-weight-bold shadow" data-toggle="tab" href="#link1" role="tablist" aria-expanded="true" style="border-radius: 20px; border: 1px solid #9E57B1; font-size: 12px;">
-                              BORROWERS
+                               <i class="material-icons">group</i> BORROWERS
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link mr-2 pt-0 pb-0 font-weight-bold" data-toggle="tab" href="#link2" role="tablist" aria-expanded="false" style="border-radius: 20px; border: 1px solid #9E57B1; font-size: 12px;">
-                              LOANS
+                             <i class="material-icons">monetization_on</i> LOANS
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link pt-0 pb-0 font-weight-bold" data-toggle="tab" href="#link3" role="tablist" aria-expanded="false" style="border-radius: 20px; border: 1px solid #9E57B1;font-size: 12px;">
-                              PAYMENTS
+                              <i class="material-icons">payment</i> PAYMENTS
                                 </a>
                             </li>
                         </ul>

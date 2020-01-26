@@ -217,37 +217,47 @@ $(document).on('click', '.approve', function(){
 			id:id,
 			amount:amount
 		},
+		dataType: "json",
 		beforeSend: function() {
 			$("#loading-screen").show();
 		},
 		success: function(data){
-			if(data=="True"){
+			if(data.success){
 
-				$("#loading-screen").hide();
-
-				table.row( $button.parents('tr')).remove().draw();
+				if(data.email){
+					showNotification(
+						"Email sent successfully!",
+						"check_circle",
+						"success"
+					);
+				}else{
+					showNotification(
+						"Email not sent!",
+						"check_circle",
+						"success"
+					);
+				}
 
 				showNotification(
-					data,
+					data.sim1,
 					"check_circle",
-					"success"
+					"info"
 				);
 
-				
+				showNotification(
+					data.sim2,
+					"check_circle",
+					"info"
+				);
+
+
 			}else{
 				$("#loading-screen").hide();
-				table.row( $button.parents('tr')).remove().draw();
 
 				showNotification(
-					"Loan successfully approved!",
+					"Something went wrong!",
 					"check_circle",
 					"success"
-				);
-
-				showNotification(
-					"Email notification not sent. No internet connection!",
-					"check_circle",
-					"danger"
 				);
 			}
 			
@@ -262,13 +272,7 @@ $(document).on('click', '.approve', function(){
 		            msg = 'Requested page not found. [404].Please contact developer';
 		        } else if (jqXHR.status == 500) {
 
-		            msg = 'Email notification did not send. No internet connection.';
-
-		            showNotification(
-						'Loan successfully approved!',
-						"check_circle",
-						"success"
-					);
+		            msg = 'Email notification did not send.';
 
 		        } else if (exception === 'parsererror') {
 
@@ -288,9 +292,9 @@ $(document).on('click', '.approve', function(){
 				);
 				
 
-		  //       setTimeout(function() {
-				// 	window.location.reload(1);
-				// }, 3000);
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 3000);
 		    }
 	});
 }); 
@@ -390,8 +394,6 @@ $(document).on('click', '.reject', function(){
 
 				$('.modal').modal('hide');
 				$("#loading-screen").hide();
-
-				table.row( $button.parents('tr')).remove().draw();
 				
 				showNotification(
 					data,
@@ -437,7 +439,7 @@ $(document).on('click', '.reject', function(){
 
 		        setTimeout(function() {
 					window.location.reload(1);
-				}, 5000);
+				}, 3000);
 		    }
 	});
 });
@@ -463,18 +465,19 @@ $(document).on('click', '.re-apply', function(){
 				$('.modal').modal('hide');
 				$("#loading-screen").hide();
 
-				table.row( $button.parents('tr')).remove().draw();
-
 				showNotification(
 					data,
 					"check_circle",
 					"success"
 				);
 
-				
 			}else{
 				$("#loading-screen").hide();
 			}
+
+			setTimeout(function() {
+					window.location.reload(1);
+				}, 3000);
 			
 		},
 		error: function (jqXHR, exception) {
@@ -507,7 +510,7 @@ $(document).on('click', '.re-apply', function(){
 
 		        setTimeout(function() {
 					window.location.reload(1);
-				}, 5000);
+				}, 3000);
 		    }
 	});
 }); 
@@ -532,8 +535,6 @@ $(document).on('click', '.remove', function(){
 				$('.modal').modal('hide');
 				$("#loading-screen").hide();
 
-				table.row( $button.parents('tr')).remove().draw();
-
 				showNotification(
 					data,
 					"check_circle",
@@ -544,7 +545,9 @@ $(document).on('click', '.remove', function(){
 			}else{
 				$("#loading-screen").hide();
 			}
-			
+			setTimeout(function() {
+					window.location.reload(1);
+				}, 3000);
 		},
 		error: function (jqXHR, exception) {
 				$("#loading-screen").hide();
@@ -576,7 +579,7 @@ $(document).on('click', '.remove', function(){
 
 		        setTimeout(function() {
 					window.location.reload(1);
-				}, 5000);
+				}, 3000);
 		    }
 	});
 }); 
@@ -602,8 +605,6 @@ $(document).on('click', '.remove-rejected', function(){
 				$('.modal').modal('hide');
 				$("#loading-screen").hide();
 
-				table.row( $button.parents('tr')).remove().draw();
-
 				showNotification(
 					data,
 					"check_circle",
@@ -614,6 +615,10 @@ $(document).on('click', '.remove-rejected', function(){
 			}else{
 				$("#loading-screen").hide();
 			}
+
+			setTimeout(function() {
+					window.location.reload(1);
+				}, 3000);
 			
 		},
 		error: function (jqXHR, exception) {
@@ -646,7 +651,7 @@ $(document).on('click', '.remove-rejected', function(){
 
 		        setTimeout(function() {
 					window.location.reload(1);
-				}, 5000);
+				}, 3000);
 		    }
 	});
 });
@@ -671,10 +676,6 @@ $(document).on('click', '.cash-release', function(){
 				$('.modal').modal('hide');
 				$("#loading-screen").hide();
 
-				 setTimeout(function() {
-					window.location.reload(1);
-				}, 3000);
-
 				showNotification(
 					data,
 					"check_circle",
@@ -685,6 +686,11 @@ $(document).on('click', '.cash-release', function(){
 			}else{
 				$("#loading-screen").hide();
 			}
+
+			
+				 setTimeout(function() {
+					window.location.reload(1);
+				}, 3000);
 			
 		},
 		error: function (jqXHR, exception) {

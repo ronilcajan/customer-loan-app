@@ -57,13 +57,13 @@
                                             </td>
                                             <td class="td-actions text-right">
                                                 <button type="button" rel="tooltip" title="View loan information" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $reject['account_no'];?>" data-toggle="modal">
-                                                    View Loan
+                                                    <i class="material-icons">visibility</i>
                                                 </button>
                                                 <button type="button" rel="tooltip" title="Re-apply loan" class="btn btn-primary btn-sm mr-2" data-target="#reapply_loan<? echo $reject['loan_no'];?>" id="reapply-loan<? echo $reject['loan_no'];?>"  data-toggle="modal">
-                                                    Re-Apply
+                                                    <i class="material-icons">monetization_on</i>
                                                 </button>
                                                 <button type="button" rel="tooltip" title="Remove loan" class="btn btn-danger btn-sm" data-target="#remove_loan<? echo $reject['loan_no'];?>" id="remove-rejected-loan<? echo $reject['loan_no'];?>" data-toggle="modal">
-                                                    Remove
+                                                    <i class="material-icons">remove_circle</i>
                                                 </button>
                                             </td>
                                         </tr>
@@ -81,7 +81,11 @@
                                                     <div class="modal-body">
                                                         <div class="row">
                                                             <div class="col-md-4">
+                                                                 <?   if(empty($reject['profile_img'])){ ?>
+                                                                <img class="border-round" src="<? echo base_url().'assets/images/person.png' ?>" width="150" height="150"/>
+                                                            <?}else{?>
                                                                 <img class="border-round" src="<? echo base_url().'uploads/'.$reject['profile_img'];?>" width="150" height="150"/>
+                                                            <?}?>
                                                             </div>
                                                             <div class="col-md-8">
                                                                <p><strong>Name:</strong> 
