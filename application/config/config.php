@@ -139,7 +139,7 @@ $config['subclass_prefix'] = 'MY_';
 |	autoloading (application/config/autoload.php)
 */
 // $config['composer_autoload'] = TRUE;
-$config['composer_autoload'] = 'vendor/autoload.php';
+$config['composer_autoload'] = FALSE;
 /*
 |--------------------------------------------------------------------------
 | Allowed URL Characters

@@ -206,3 +206,19 @@ $(document).on('click', '.norm_payment', function(){
 	});
 	$('.pay').show();
 });
+
+$(document).on('click', '.edit_task', function(){
+	var id = $(this).attr('id');
+	$('.task'+id).slideDown('1000', function(){
+    	$(this).hide();
+	});
+	$('.cancel_task'+id).show();
+});
+
+$(document).on('click', '.cancel_task', function(){
+	var id = $(this).attr('id');
+	$('.cancel_task'+id).slideDown('1000', function(){
+    	$(this).hide();
+	});
+	$('.task'+id).show();
+});

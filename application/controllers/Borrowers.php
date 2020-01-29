@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Borrowers extends CI_Controller {
 	
 	public function check_auth(){
@@ -291,7 +290,6 @@ class Borrowers extends CI_Controller {
 
 			echo json_encode($validator);
 	}
-
 
 	public function delete_clients(){
 		$result = $this->borrowers_model->delete_clients($this->input->post('id'));

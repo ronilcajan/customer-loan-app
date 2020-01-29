@@ -131,15 +131,60 @@
                         <?}else{?>
                             <div class="row"> 
                                 <div class="col-md-8">
+                                    <button class="btn btn-primary btn-round btn-sm" data-target="#my_task" data-toggle="modal"><i class="material-icons">add_circle</i> Add Task</button>
                                     <div class="card">
                                         <div class="card-header card-header-primary">
                                             <h4 class="card-title">My Task</h4>
                                             <p class="card-category">You can add task or reminder</p>
                                         </div>
                                         <div class="card-body">
-                                            <table>
+                                            <table class="table">
                                                 <tbody>
-                                                    
+                                                    <? if(!empty($task)){?>
+                                                    <? foreach ($task as $key => $mytask) {?>
+                                                    <tr class="task<? echo $mytask['task_id'];?>">
+                                                        <td><? echo $mytask['description'];?>
+                                                        </td>
+                                                        <td><? echo $mytask['status'];?></td>
+                                                        <? if($mytask['status'] == "Doned"){?>
+                                                             <td class="td-actions text-right">
+                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm remove_task" id="<? echo $mytask['task_id'];?>">
+                                                            <i class="material-icons">close</i>
+                                                            </button></td>
+                                                        <?}else{?>
+                                                        <td class="td-actions text-right">
+                                                        <button type="button" rel="tooltip" title="Done Task" class="btn btn-success btn-link btn-sm done_task" id="<? echo $mytask['task_id'];?>">
+                                                            <i class="material-icons">done_all</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm edit_task" id="<? echo $mytask['task_id'];?>">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm remove_task" id="<? echo $mytask['task_id'];?>">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                        </td>
+                                                        <? } ?>
+                                                    </tr>
+                                                    <tr class="cancel_task<? echo $mytask['task_id'];?>" style="display: none;">
+                                                        <form id="edit_task" method="POST">
+                                                            <td>
+                                                                <input class="form-control task_des" type="text" name="description" value="<? echo $mytask['description'];?>">
+                                                            </td>
+                                                            <td><? echo $mytask['status'];?></td>
+                                                            <td class="td-actions text-right">
+                                                                <button type="submit" rel="tooltip" title="Update Task" class="btn btn-success btn-link btn-sm update_task" id="<? echo $mytask['task_id'];?>">
+                                                                    <i class="material-icons">done</i>
+                                                                </button>
+                                                                <button type="button" rel="tooltip" title="Cancel Update" class="btn btn-danger btn-link btn-sm cancel_task" id="<? echo $mytask['task_id'];?>">
+                                                                    <i class="material-icons">close</i>
+                                                                </button>
+                                                        </td>
+                                                            </td>
+                                                        </form>
+                                                    </tr>
+                                                    <? }}else{?>
+                                                        <tr><td class="text-center">No created task</td></tr>
+                                                    <? } ?>
                                                 </tbody>  
                                             </table>
                                         </div>
@@ -186,116 +231,151 @@
 
                     </div>
                 </div>
-                               <!-- Modal for edit profile-->
-                                        <div class="modal fade" id="edit_my_profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                                            <div class="modal-dialog modal-lg" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title font-weight-bold text-primary" >Update Profile</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form id="update_my_form" enctype="mutlipart/form-data" method="POST">
-                                                            <div class="row">
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <div class="form-group form-file-upload form-file-multiple ">
-                                                                            <input type="file" accept="image/*" onchange="loadFile(event)" name="img" class="inputFileHidden"s required>
-                                                                            <div class="fileinput-new thumbnail img-raised text-center">
-                                                                                <? if(empty($staff['profile_img'])){?>
-                                                                                    <img class="img-fluid" src="<? echo base_url();?>assets/images/person.png"  width="200" height="200" id="output"/>
-                                                                                <?}else{?>
-                                                                                    <img class="img-fluid" src="<? echo base_url().'uploads/'.$staff['profile_img'];?>" id="output"/>
-                                                                                <? } ?> 
-                                                                            </div>
-                                                                            <div class="input-group mt-2">
-                                                                                <span class="input-group-btn">
-                                                                                    <button type="button" class="btn btn-fab btn-round btn-primary">
-                                                                                        <i class="material-icons">attach_file</i>
-                                                                                    </button>
-                                                                                </span>
-                                                                                <input type="text" class="form-control inputFileVisible" placeholder="Choose client picture..">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-8">
-                                                                    <div class="row">
-                                                                        <div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <label class="bmd-label-floating">First Name</label>
-                                                                                <input type="text" class="form-control" name="fname" value="<? echo $staff['firstname'];?>" required>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <label class="bmd-label-floating">Middle Name</label>
-                                                                                <input type="text" class="form-control" name=
-                                                                                "mname" value="<? echo $staff['middlename'];?>" required>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <label class="bmd-label-floating">Last Name</label>
-                                                                                <input type="text" class="form-control" name="lname" value="<? echo $staff['lastname'];?>"  required>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <div class="form-group">
-                                                                                <label class="bmd-label-floating">Contact Number</label>
-                                                                                <input type="number" class="form-control" name="num" value="<? echo $staff['number'];?>" required>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <div class="form-group">
-                                                                                <label class="bmd-label-floating">Email Address</label>
-                                                                                <input type="email" class="form-control" name=
-                                                                                "email" value="<? echo $staff['email'];?>" required>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <div class="form-group">
-                                                                                <label class="bmd-label-floating">Address</label>
-                                                                                <input type="text" class="form-control" name=
-                                                                                "address" value="<? echo $staff['address'];?>" required>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                             <div class="row mt-1">
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label>Additional Info(Optional)</label>
-                                                                        <div class="form-group">
-                                                                            <label class="bmd-label-floating">Write something about your self.. </label>
-                                                                            <textarea class="form-control" name="bio" rows="5"><? echo $staff['bio'];?></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal"><i class="material-icons">cancel</i> Cancel</button>
-                                                        <button type="submit" class="btn btn-primary btn-round" id="update_my_profile">
-                                                          <i class="material-icons">check_circle</i> Save
-                                                        </button>
+                    <!-- Modal for task-->
+                    <div class="modal fade" id="my_task" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title font-weight-bold text-primary" >Create Task</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="task_form" method="POST">
+                                         <div class="row mt-1">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="text-primary">Create Your Task</label>
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Write something about your task.. </label>
+                                                        <textarea class="form-control" name="task" rows="5"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End of modal -->
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal"><i class="material-icons">cancel</i> Cancel</button>
+                                    <button type="submit" class="btn btn-primary btn-round" id="my_task_btn">
+                                      <i class="material-icons">check_circle</i> Save
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                               <!-- Modal for edit profile-->
+                        <div class="modal fade" id="edit_my_profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title font-weight-bold text-primary" >Update Profile</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="update_my_form" enctype="mutlipart/form-data" method="POST">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <div class="form-group form-file-upload form-file-multiple ">
+                                                            <input type="file" accept="image/*" onchange="loadFile(event)" name="img" class="inputFileHidden"s required>
+                                                            <div class="fileinput-new thumbnail img-raised text-center">
+                                                                <? if(empty($staff['profile_img'])){?>
+                                                                    <img class="img-fluid" src="<? echo base_url();?>assets/images/person.png"  width="200" height="200" id="output"/>
+                                                                <?}else{?>
+                                                                    <img class="img-fluid" src="<? echo base_url().'uploads/'.$staff['profile_img'];?>" id="output"/>
+                                                                <? } ?> 
+                                                            </div>
+                                                            <div class="input-group mt-2">
+                                                                <span class="input-group-btn">
+                                                                    <button type="button" class="btn btn-fab btn-round btn-primary">
+                                                                        <i class="material-icons">attach_file</i>
+                                                                    </button>
+                                                                </span>
+                                                                <input type="text" class="form-control inputFileVisible" placeholder="Choose client picture..">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="bmd-label-floating">First Name</label>
+                                                                <input type="text" class="form-control" name="fname" value="<? echo $staff['firstname'];?>" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="bmd-label-floating">Middle Name</label>
+                                                                <input type="text" class="form-control" name=
+                                                                "mname" value="<? echo $staff['middlename'];?>" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="bmd-label-floating">Last Name</label>
+                                                                <input type="text" class="form-control" name="lname" value="<? echo $staff['lastname'];?>"  required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label class="bmd-label-floating">Contact Number</label>
+                                                                <input type="number" class="form-control" name="num" value="<? echo $staff['number'];?>" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label class="bmd-label-floating">Email Address</label>
+                                                                <input type="email" class="form-control" name=
+                                                                "email" value="<? echo $staff['email'];?>" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label class="bmd-label-floating">Address</label>
+                                                                <input type="text" class="form-control" name=
+                                                                "address" value="<? echo $staff['address'];?>" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                             <div class="row mt-1">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Additional Info(Optional)</label>
+                                                        <div class="form-group">
+                                                            <label class="bmd-label-floating">Write something about your self.. </label>
+                                                            <textarea class="form-control" name="bio" rows="5"><? echo $staff['bio'];?></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal"><i class="material-icons">cancel</i> Cancel</button>
+                                        <button type="submit" class="btn btn-primary btn-round" id="update_my_profile">
+                                          <i class="material-icons">check_circle</i> Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of modal -->
                             </div>
                         </div>
 

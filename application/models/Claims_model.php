@@ -24,6 +24,42 @@ class Claims_model extends CI_Model {
         }
     }
 
+    public function get_num_borrowers(){
+        $query = $this->db->get('clients');
+        $result = $query->num_rows();
+        return $result;
+    }
+
+    public function get_sum_payments(){
+
+        $this->db->select('SUM(amount) as amnt');
+        $this->db->from('payment_transactions');
+        $this->db->where('date', date("Y-m-d"));
+        $this->db->group_by('date');
+        $query = $this->db->get();
+        $result = $query->result_array();
+
+        if(count($result) >0){
+            return $result[0];
+        }else{
+            return null;
+        }
+    }
+
+    public function get_actv_borrowers(){
+        $this->db->where('status', 'Active');
+        $query = $this->db->get('loan');
+        $result = $query->num_rows();
+        return $result;
+    }
+
+    public function get_csh_borrowers(){
+        $this->db->where('status', 'Approved');
+        $query = $this->db->get('loan');
+        $result = $query->num_rows();
+        return $result;
+    }
+
     public function get_account_id(){
         $this->db->select('account_no');
         $this->db->from('clients');
@@ -136,23 +172,58 @@ class Claims_model extends CI_Model {
         return $this->db->affected_rows();
 
     }
-    // public function my_profile($username){
+    public function create_task($task){
 
-    //     $this->db->select('*');
-    //     $this->db->from('users');
-    //     $this->db->join('staff', 'clients.account_no = names.account_no');
-    //     $this->db->join('address', 'clients.account_no = address.account_no');
-    //     $this->db->where('clients.account_no', $data);
-
-    //     $query = $this->db->get();
-    //     $result = $query->result_array();
+        $data = array(
+            'description' => $task['task'],
+            'username' => $this->session->userdata('username')
+        );
         
-    //     if(count($result) >0){
-    //         return $result[0];
-    //     }else{
-    //         return null;
-    //     }
-    // }
+        $this->db->insert('task', $data);
+        return $this->db->affected_rows();
+    }
+
+    public function end_task($task){
+
+        $data = array(
+            'status' => "Doned"
+        );
+        
+        $this->db->where('task_id', $task['id']);
+        $this->db->update('task', $data);
+        return $this->db->affected_rows();
+    }
+
+    public function update_task($task){
+
+        $data = array(
+            'description' => $task['description']
+        );
+        
+        $this->db->where('task_id', $task['id']);
+        $this->db->update('task', $data);
+        return $this->db->affected_rows();
+    }
+
+    public function remove_task($task){
+        
+        $this->db->where('task_id', $task['id']);
+        $this->db->delete('task');
+        return $this->db->affected_rows();
+    }
+
+    public function get_my_task($data){
+        $this->db->where('username', $data);
+        $this->db->order_by('status', 'DESC');
+        $query = $this->db->get('task');
+        $result = $query->result_array();
+        
+        if(count($result) >0){
+            return $result;
+        }else{
+            return null;
+        }
+    }
 
     public function account_query($data){
 

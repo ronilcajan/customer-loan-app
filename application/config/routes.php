@@ -12,11 +12,13 @@ $route['add-staff'] = 'claims_controller/add_staff';
 $route['my-profile'] = 'claims_controller/user_profile';
 $route['create-staff'] = 'claims_controller/create_staff';
 $route['update-profile'] = 'claims_controller/update_user_profile';
+$route['my-task'] = 'claims_controller/create_task';
+$route['end-task'] = 'claims_controller/end_task';
+$route['remove-task'] = 'claims_controller/remove_task';
+$route['update-task'] = 'claims_controller/update_task';
 
 $route['back-up'] = 'claims_controller/back_up';
 $route['local-backup'] = 'claims_controller/local_backup';
-$route['googledrive'] = 'googleAPI/googledrive';
-$route['oauth2callback'] = 'googleAPI/oauth2callback';
 $route['dropbox'] = 'dropboxAPI/request_dropbox';
 $route['access_dropbox'] = 'dropboxAPI/access_dropbox';
 $route['test_dropbox'] = 'dropboxAPI/test_dropbox';
@@ -28,6 +30,7 @@ $route['borrowers/profile/(:num)'] = 'borrowers/borrowers_profile/$1';
 $route['register-borrowers'] = 'borrowers/register_borrowers';
 $route['delete-borrowers'] = "borrowers/delete_clients";
 $route['update-borrowers'] = "borrowers/update_client";
+$route['pdf/(:any)'] = "borrowers/generatepdf/$1";
 
 $route['loan/create-loan'] = "loan/create_loan";
 $route['loan/create-loan/(:num)'] = "loan/create_loan/$1";

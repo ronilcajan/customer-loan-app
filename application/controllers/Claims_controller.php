@@ -64,9 +64,15 @@ class Claims_controller extends CI_Controller {
 		$title['title'] = "Dashboard";
 
 		$this->check_auth('dashboard');
+		$result['clients'] = $this->claims_model->get_num_borrowers();
+		$result['payments'] = $this->claims_model->get_sum_payments();
+		$result['active'] = $this->claims_model->get_actv_borrowers();
+		$result['cash'] = $this->claims_model->get_csh_borrowers();
+		$result['task'] = $this->claims_model->get_my_task($this->session->userdata('username'));
+
 
 		$this->load->view('templates/header', $title);
-		$this->load->view('dashboard');
+		$this->load->view('dashboard', $result);
 		$this->load->view('templates/footer');
 	}
 
@@ -90,6 +96,8 @@ class Claims_controller extends CI_Controller {
 		$title['title'] = "RFSC - My Profile";
 
 		$result['staff'] = $this->claims_model->get_user_profile($this->session->userdata('username'));
+
+		$result['task'] = $this->claims_model->get_my_task($this->session->userdata('username'));
 
 		$this->load->view('templates/header', $title);
 		$this->load->view('staff_profile',$result);
@@ -141,7 +149,7 @@ class Claims_controller extends CI_Controller {
 		}else{
 			$validator['success'] = false;
 			$validator['messages'] = "Profile did not save!";
-			}
+		}
 		
 		
 		echo json_encode($validator);
@@ -247,6 +255,93 @@ class Claims_controller extends CI_Controller {
 
 		force_download($name, $backup);
 	}
+
+	public function create_task(){
+		$validator = array('success' => false, 'messages' => array());
+
+		$data = $this->input->post();
+
+		$task = $this->claims_model->create_task($data);
+
+		if($task){
+
+			$validator['success'] = true;
+			$validator['messages'] = "Task Created!";
+
+		}else{
+			$validator['success'] = false;
+			$validator['messages'] = "Failed to create task!";
+		}
+		
+		
+		echo json_encode($validator);
+	}
+
+	public function end_task(){
+
+		$validator = array('success' => false, 'messages' => array());
+
+		$data = $this->input->post();
+
+		$task = $this->claims_model->end_task($data);
+
+		if($task){
+
+			$validator['success'] = true;
+			$validator['messages'] = "Task Doned";
+
+		}else{
+			$validator['success'] = false;
+			$validator['messages'] = "Failed to finish task!";
+			}
+		
+		
+		echo json_encode($validator);
+	}
+
+	public function remove_task(){
+
+		$validator = array('success' => false, 'messages' => array());
+
+		$data = $this->input->post();
+
+		$task = $this->claims_model->remove_task($data);
+
+		if($task){
+
+			$validator['success'] = true;
+			$validator['messages'] = "Task Remove";
+
+		}else{
+			$validator['success'] = false;
+			$validator['messages'] = "Failed to removed task!";
+			}
+		
+		
+		echo json_encode($validator);
+	} 
+
+	public function update_task(){
+
+		$validator = array('success' => false, 'messages' => array());
+
+		$data = $this->input->post();
+
+		$task = $this->claims_model->update_task($data);
+
+		if($task){
+
+			$validator['success'] = true;
+			$validator['messages'] = "Task Updated";
+
+		}else{
+			$validator['success'] = false;
+			$validator['messages'] = "Failed to update task!";
+			}
+		
+		
+		echo json_encode($validator);
+	} 
 
 	function logout(){
 

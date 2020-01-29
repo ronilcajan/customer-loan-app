@@ -299,3 +299,307 @@ $(document).ready(function(){
 
 	});
 });
+
+// ==================== My Task ================
+$(document).ready(function(){
+	$('#my_task_btn').on('click', function(){
+		var formdata = new FormData(document.getElementById("task_form"));
+
+		$.ajax({
+			type: "POST",
+				url: BASE_URL+"my-task",
+				dataType: "json",
+				data: formdata,
+				processData: false,
+				contentType: false,
+				cache: false,
+				beforeSend: function() {
+			        $("#loading-screen").show();
+			    },
+				success: function(response) {
+					if (response.success == true) {
+						$("#my_task").modal('hide');
+						$("#loading-screen").hide();
+						
+						showNotification(
+							response.messages,
+							"check_circle",
+							"success"
+						);
+						
+					} else {
+						$("#loading-screen").hide();
+						showNotification(
+							response.messages,
+							"info",
+							"warning"
+						);
+					}
+					setTimeout(function() {
+						window.location.reload(1);
+					}, 1000);
+				},
+				error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+		            msg = 'Internal Server Error [500].';
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 3000);
+		    }
+
+		});
+
+		return false;
+
+	});
+});
+// =================== Done Task =================
+$(document).on('click', '.done_task', function(){
+	var id = $(this).attr('id');
+	
+	$.ajax({
+		url: BASE_URL+"end-task",
+		method: 'POST',
+		data:{
+			id:id
+		},
+		dataType: "json",
+		beforeSend: function() {
+			$("#loading-screen").show();
+		},
+		success: function(data){
+			if(data.success){
+				$("#loading-screen").hide();
+
+				showNotification(
+					data.messages,
+					"check_circle",
+					"success"
+				);
+
+			}else{
+				$("#loading-screen").hide();
+
+				showNotification(
+					"Something went wrong!",
+					"warning",
+					"danger"
+				);
+			}
+			setTimeout(function() {
+					window.location.reload(1);
+				}, 1000);
+			
+		},
+		error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+
+		            msg = 'Email notification did not send.';
+
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 1000);
+		    }
+	});
+}); 
+// ================= Remove Task ================
+$(document).on('click', '.remove_task', function(){
+	var id = $(this).attr('id');
+	
+	$.ajax({
+		url: BASE_URL+"remove-task",
+		method: 'POST',
+		data:{
+			id:id
+		},
+		dataType: "json",
+		beforeSend: function() {
+			$("#loading-screen").show();
+		},
+		success: function(data){
+			if(data.success){
+				$("#loading-screen").hide();
+
+				showNotification(
+					data.messages,
+					"check_circle",
+					"success"
+				);
+
+			}else{
+				$("#loading-screen").hide();
+
+				showNotification(
+					"Something went wrong!",
+					"warning",
+					"danger"
+				);
+			}
+			setTimeout(function() {
+					window.location.reload(1);
+				}, 1000);
+			
+		},
+		error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+
+		            msg = 'Email notification did not send.';
+
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 1000);
+		    }
+	});
+}); 
+// ============== Edit Task ========================
+// ================= Remove Task ================
+$(document).on('click', '.update_task', function(){
+	var id = $(this).attr('id');
+	var description = $('.task_des').val();
+	
+	$.ajax({
+		url: BASE_URL+"update-task",
+		method: 'POST',
+		data:{
+			id:id,
+			description:description
+		},
+		dataType: "json",
+		beforeSend: function() {
+			$("#loading-screen").show();
+		},
+		success: function(data){
+			if(data.success){
+				$("#loading-screen").hide();
+
+				showNotification(
+					data.messages,
+					"check_circle",
+					"success"
+				);
+
+			}else{
+				$("#loading-screen").hide();
+
+				showNotification(
+					"Something went wrong!",
+					"warning",
+					"danger"
+				);
+			}
+			setTimeout(function() {
+					window.location.reload(1);
+				}, 1000);
+			
+		},
+		error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+
+		            msg = 'Email notification did not send.';
+
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 1000);
+		    }
+	});
+}); 
