@@ -8,7 +8,7 @@ class Payments_model extends CI_Model {
     }
 
     public function get_loan_details($data){
-        $sql = "SELECT * FROM `loan` JOIN clients ON loan.account_no=clients.account_no JOIN names ON clients.account_no=names.account_no JOIN debtor_business ON debtor_business.loan_no=loan.loan_no JOIN address ON address.account_no = clients.account_no JOIN approved_loans on approved_loans.loan_no = loan.loan_no WHERE loan.loan_no= '$data' ";
+        $sql = "SELECT *, loan.status as loan_stats FROM `loan` JOIN clients ON loan.account_no=clients.account_no JOIN names ON clients.account_no=names.account_no JOIN debtor_business ON debtor_business.loan_no=loan.loan_no JOIN address ON address.account_no = clients.account_no JOIN approved_loans on approved_loans.loan_no = loan.loan_no WHERE loan.loan_no= '$data' ";
         $query = $this->db->query($sql);
 
         $result = $query->result_array();
@@ -73,6 +73,17 @@ class Payments_model extends CI_Model {
         }else{
             return null;
         }
+    }
+
+    public function paid($data){
+        $this->db->set('status', 'Paid');
+        $this->db->where('loan_no', $data);
+        $this->db->update('approved_loans');
+
+        $this->db->set('status', 'Paid');
+        $this->db->where('loan_no', $data);
+        $this->db->update('loan');
+        return $this->db->affected_rows();
     }
 
 }

@@ -96,6 +96,24 @@ class Payments extends CI_Controller {
 		echo json_encode($validator);
 	}
 
+		public function fully_paid(){
+		$data = array('success' => false, 'message' => array());
+
+		$result = $this->payments_model->paid($this->input->post('loan_no'));
+
+		if($result){
+
+			$data['success'] = true;
+			$data['message'] = "This loan is fully paid!";
+
+		}else{
+			$data['success'] = false;
+			$data['message'] = "This loan is not fully paid!";
+		}
+
+		echo json_encode($data);
+	}
+
 
 	}
 ?>

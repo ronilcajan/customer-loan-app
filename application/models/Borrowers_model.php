@@ -186,7 +186,7 @@ class Borrowers_model extends CI_Model {
     }
 
      public function get_loan($data){
-        $this->db->select('*');
+        $this->db->select('*, loan.status as loan_stat');
         $this->db->from('loan');
         $this->db->join('approved_loans', 'approved_loans.loan_no=loan.loan_no');
         $this->db->where('loan.account_no', $data);

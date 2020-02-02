@@ -50,7 +50,7 @@
 					</p>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-					<a class="dropdown-item" href="<? echo base_url();?>my-profile">Profile</a>
+					<a class="dropdown-item" href="<? echo base_url().'my-profile/'.$this->session->userdata('username');?>">Profile</a>
 					<a class="dropdown-item" href="#">Change Password</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="<? echo base_url();?>logout">Log out</a>

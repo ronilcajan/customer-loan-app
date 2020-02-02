@@ -32,9 +32,13 @@ class Claims_controller extends CI_Controller {
 
 			$this->session->set_userdata($login_data);
 
-			$validator['success'] = true;
-			$validator['messages'] = 'dashboard';					
-
+			if($data['user_type'] == 'Guest'){
+				$validator['success'] = true;
+				$validator['messages'] = 'guest';
+			}else{
+				$validator['success'] = true;
+				$validator['messages'] = 'dashboard';					
+			}
 		}else{
 
 			$validator['success'] = false;
@@ -88,14 +92,14 @@ class Claims_controller extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function user_profile(){
+	public function user_profile($username=""){
 
 
 		$this->check_auth('user_profile');
 
 		$title['title'] = "RFSC - My Profile";
 
-		$result['staff'] = $this->claims_model->get_user_profile($this->session->userdata('username'));
+		$result['staff'] = $this->claims_model->get_user_profile($username);
 
 		$result['task'] = $this->claims_model->get_my_task($this->session->userdata('username'));
 

@@ -49,7 +49,7 @@
                                             <td>
                                                 <a href="<? echo base_url().'borrowers/profile/'.$actv['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $actv['lastname'].','.$actv['firstname'].' '.$actv['middlename'];?></a>
                                             </td>
-                                            <td><? echo $actv['loan_no'];?></td>
+                                            <td><a href="<? echo base_url().'payments/loan-details/'.$actv['loan_no'];?>"><? echo $actv['loan_no'];?></td>
                                             <td><? echo $actv['loan_amount'];?></td>
                                             <td><? echo $actv['approved'];?></td>
                                             <td>

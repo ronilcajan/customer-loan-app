@@ -9,7 +9,8 @@ $route['login-submit'] = 'claims_controller/login';
 $route['dashboard'] = 'claims_controller/dashboard';
 $route['staff'] = 'claims_controller/staff';
 $route['add-staff'] = 'claims_controller/add_staff';
-$route['my-profile'] = 'claims_controller/user_profile';
+$route['my-profile/(:any)'] = 'claims_controller/user_profile/$1';
+$route['staff-profile/(:any)'] = 'claims_controller/user_profile/$1';
 $route['create-staff'] = 'claims_controller/create_staff';
 $route['update-profile'] = 'claims_controller/update_user_profile';
 $route['my-task'] = 'claims_controller/create_task';
@@ -30,7 +31,6 @@ $route['borrowers/profile/(:num)'] = 'borrowers/borrowers_profile/$1';
 $route['register-borrowers'] = 'borrowers/register_borrowers';
 $route['delete-borrowers'] = "borrowers/delete_clients";
 $route['update-borrowers'] = "borrowers/update_client";
-$route['pdf/(:any)'] = "borrowers/generatepdf/$1";
 
 $route['loan/create-loan'] = "loan/create_loan";
 $route['loan/create-loan/(:num)'] = "loan/create_loan/$1";
@@ -49,6 +49,7 @@ $route['payments/loan-details/(:any)'] = 'payments/loan_details/$1';
 $route['payments/loan-details'] = 'payments/loan_details';
 $route['search-loan'] = 'payments/search_loan';
 $route['pay-loan'] = 'payments/pay_loan';
+$route['fully-paid'] = 'payments/fully_paid';
 
 $route['reports'] = 'reports/all_reports';
 $route['get-clients'] = 'reports/get_clients';

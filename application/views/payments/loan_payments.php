@@ -18,12 +18,37 @@
 
                                 <div class="card">
                                     <div class="card-header border-bottom row">
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <h4 class=" font-weight-bold text-primary">Loan Information</h4>
                                         </div>
-                                        <div class="col-md-2 text-right">
-                                            <button class="btn btn-outline-primary btn-round pull-right btn-sm" rel="tooltip" title="Pay loan" data-target="#payment-modal" data-toggle="modal"><i class="material-icons">monetization_on</i> Pay Loan</button>
-                                        </div>
+                                        <? if($loan['loan_stats'] == 'Paid'){?>
+                                            <div class="col-md-2 text-right">
+                                                <button class="btn btn-outline-primary btn-round pull-right btn-sm" rel="tooltip" title="Pay loan" data-target="#payment-modal" data-toggle="modal" disabled=""><i class="material-icons">monetization_on</i> Pay Loan</button>                 
+                                            </div>
+
+                                            <div class="col-md-1 text-right">
+                                                <button rel="tooltip" title="Applicable only if loan is in due date" class="btn btn-outline-primary btn-round pull-right btn-sm" disabled="">Fully Paid</button>
+                                            </div>
+
+                                         <? }else{?>
+                                            <div class="col-md-2 text-right">
+                                                <button class="btn btn-outline-primary btn-round pull-right btn-sm" rel="tooltip" title="Pay loan" data-target="#payment-modal" data-toggle="modal"><i class="material-icons">monetization_on</i> Pay Loan</button>                 
+                                            </div>
+
+                                            <div class="col-md-1 text-right">
+                                            <?  
+                                                $due = date('M. d, Y', strtotime($loan['due_date']));
+                                                $now = date('M. d, Y');
+
+                                                if(strtotime($due) <= strtotime($now)){ ?>
+                                                    <button rel="tooltip" title="Applicable only if loan is in due date" class="btn btn-outline-primary btn-round pull-right btn-sm" disabled="">Fully Paid</button>
+                                                <? }else{ ?>
+                                                    <button class="btn btn-primary btn-round pull-right btn-sm fully_paid" id="<? echo $loan['loan_no'];?>">Fully Paid</button>
+                                                <? } ?>
+                                            </div>
+
+                                        <? } ?>
+
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
@@ -49,7 +74,7 @@
                                                     <div class="col-md-6 p-0">
                                                         <div class="form-group input-group-prepend">
                                                             <label class="bmd-label-floating text-primary">Date Loan:</label>
-                                                            <input type="text" class="form-control interest text-left font-weight-bold" value="<? $time = strtotime($loan['date_approved']); echo date("M. d, Y", $time);?>" disabled>
+                                                            <input type="text" class="form-control interest text-left font-weight-bold" value="<? $time = strtotime($loan['loan_started']); echo date("M. d, Y", $time);?>" disabled>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -220,15 +245,6 @@
                                                                 <div class="ml-auto mr-auto">
                                                                     <button class="btn btn-primary norm_payment">Payment</button>
                                                                     <button class="btn btn-primary add_penalty">Add Penalty</button>
-                                                                    <?
-                                                                    $due = new DateTime($loan['due_date']);
-                                                                    $now = date('M d Y');
-                                                                    if($due > $now){ ?>
-                                                                        <button rel="tooltip" title="Applicable only if loan is in due date" class="btn btn-primary" disabled="">Due Date Penalty</button>
-                                                                   <? }else{ ?>
-                                                                    <button class="btn btn-primary">Due Date Penalty</button>
-                                                                    <? } ?>
-                                                                    
                                                                 </div>    
                                                             </div>
 

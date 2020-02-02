@@ -250,8 +250,10 @@ $(document).on('click', '.approve', function(){
 					"info"
 				);
 
+				$("#loading-screen").hide();
 
 			}else{
+				
 				$("#loading-screen").hide();
 
 				showNotification(
@@ -260,7 +262,7 @@ $(document).on('click', '.approve', function(){
 					"success"
 				);
 			}
-			
+
 		},
 		error: function (jqXHR, exception) {
 				$("#loading-screen").hide();

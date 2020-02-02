@@ -45,7 +45,7 @@
                                             if(!empty($appr)){  
                                         ?>
                                         <tr>
-                                            <td><? echo $appr['loan_no'];?></td>
+                                            <td><a href="<? echo base_url().'payments/loan-details/'.$appr['loan_no'];?>"><? echo $appr['loan_no'];?></a></td>
                                             <td class="text-center">
                                                 <a href="<? echo base_url().'borrowers/profile/'.$appr['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $appr['lastname'].','.$appr['firstname'].' '.$appr['middlename'];?></a>
                                             </td>
@@ -63,7 +63,7 @@
                                                 </span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <?if($appr['status'] == 'Approved'){?>
+                                                <?if($appr['loan_status'] == 'Approved'){?>
                                                     <button type="button" rel="tooltip" title="Release cash for this loan" class="btn btn-primary btn-sm mr-2" data-target="#cash<? echo $appr['loan_no'];?>" id="cash-release<? echo $appr['loan_no'];?>" data-toggle="modal">
                                                         <i class="material-icons">monetization_on</i>
                                                     </button>

@@ -108,7 +108,7 @@ class Loan_model extends CI_Model {
     }
 
     public function get_approved_clients(){
-        $this->db->select('*');
+        $this->db->select('*, loan.status as loan_status');
         $this->db->from('clients');
         $this->db->join('address', 'clients.account_no = address.account_no');
         $this->db->join('names', 'clients.account_no = names.account_no');
@@ -169,8 +169,7 @@ class Loan_model extends CI_Model {
         $loan_data = array(
             'loan_no' => $data,
             'date_approved' => $approved_date,
-            'daily_payment' => $daily_payment,
-            'due_date' => $due_date
+            'daily_payment' => $daily_payment
         );
 
         $this->db->insert('approved_loans', $loan_data);
@@ -212,9 +211,21 @@ class Loan_model extends CI_Model {
         $this->db->set('status', "Active");
         $this->db->where('loan_no', $data);
         $this->db->update('loan');
+        
+        $loan_start = date('Y-m-d');
+        
+        $due_date = date('Y-m-d', strtotime("+60 days"));
+
+
+        $this->db->set('loan_started', $loan_start);
+        $this->db->set('due_date', $due_date);
+        $this->db->where('loan_no', $data);
+        $this->db->update('approved_loans');
         return $this->db->affected_rows();
     }
+
     public function reapply_loan($data){
+
         $this->db->set('reason', null);
         $this->db->set('status', "Re-applied loan");
         $this->db->set('approved', null);

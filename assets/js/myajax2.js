@@ -526,7 +526,6 @@ $(document).on('click', '.remove_task', function(){
 		    }
 	});
 }); 
-// ============== Edit Task ========================
 // ================= Remove Task ================
 $(document).on('click', '.update_task', function(){
 	var id = $(this).attr('id');
@@ -600,6 +599,81 @@ $(document).on('click', '.update_task', function(){
 		        setTimeout(function() {
 					window.location.reload(1);
 				}, 1000);
+		    }
+	});
+}); 
+
+// ================= Remove Task ================
+$(document).on('click', '.fully_paid', function(){
+	var loan_no = $(this).attr('id');
+	
+	$.ajax({
+		url: BASE_URL+"fully-paid",
+		method: 'POST',
+		data:{
+			loan_no:loan_no
+		},
+		dataType: "json",
+		beforeSend: function() {
+			$("#loading-screen").show();
+		},
+		success: function(data){
+			if(data.success){
+				$("#loading-screen").hide();
+
+				showNotification(
+					data.message,
+					"check_circle",
+					"success"
+				);
+
+			}else{
+				$("#loading-screen").hide();
+
+				showNotification(
+					"Something went wrong!",
+					"warning",
+					"danger"
+				);
+			}
+			setTimeout(function() {
+					window.location.reload(1);
+				}, 1000);
+			
+		},
+		error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+
+		            msg = 'Email notification did not send.';
+
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		  //       setTimeout(function() {
+				// 	window.location.reload(1);
+				// }, 1000);
 		    }
 	});
 }); 

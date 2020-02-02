@@ -271,14 +271,14 @@ class Loan extends CI_Controller {
 
 				if($send_sms1 == ''){
 
-					$data['sim1'] = "Something went wrong. Please contact developer";
+					$data['sim2'] = "Something went wrong. Please contact developer";
 
 				}elseif ($send_sms1 == 0) {
 
-					$data['sim1'] = "SMS sent successfully!";
+					$data['sim2'] = "SMS sent successfully!";
 					
 				}else{
-					$data['sim1'] = "SMS not sent.";
+					$data['sim2'] = "SMS not sent.";
 				}
 			}
 

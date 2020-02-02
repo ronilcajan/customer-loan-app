@@ -35,8 +35,7 @@
                                     <th>Loan No.</th>
                                     <th>Name</th>
                                     <th>Loan Amount</th>
-                                    <th>Int(%)</th>
-                                    <th>Terms(days)</th>
+                                    <th>Date Loan</th>
                                     <th>Verified by</th>
                                     <th>Status</th>
                                     <th >Action</th>
@@ -51,8 +50,7 @@
                                                 <a href="<? echo base_url().'borrowers/profile/'.$verified['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $verified['lastname'].','.$verified['firstname'].' '.$verified['middlename'];?></a>
                                             </td>
                                             <td class="text-center" id="amount<? echo $verified['loan_no'];?>" ><? echo $verified['loan_amount'];?></td>
-                                            <td class="text-center"><? echo $verified['interest'];?></td>
-                                            <td class="text-center"><? echo $verified['terms'];?></td>
+                                            <td class="text-center"><? echo $verified['date_loan'];?></td>
                                             <td class="text-center"><? echo $verified['verified'];?></td>
 
                                             <td>

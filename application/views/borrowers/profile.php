@@ -136,9 +136,9 @@
                                                     <? if(!empty($loan)){?>
                                                     <? foreach ($loan as $key => $value) {?>
                                                         <tr>
-                                                            <td><? echo $value['loan_no'];?></td>
+                                                            <td><a href="<? echo base_url().'payments/loan-details/'.$value['loan_no'];?>"><? echo $value['loan_no'];?></a></td>
                                                             <td><? echo $value['loan_amount'];?></td>
-                                                            <td><? echo $value['status'];?></td>
+                                                            <td><? echo $value['loan_stat'];?></td>
                                                             <td><? echo $value['date_approved'];?></td>
                                                         </tr>
                                                     <?}}?>

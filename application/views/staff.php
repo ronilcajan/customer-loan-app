@@ -46,7 +46,7 @@
                                            
                                         ?>
                                         <tr>
-                                            <td><? echo $st['lastname'].','.$st['firstname'].' '.$st['middlename'];?></td>
+                                            <td><a href="<? echo base_url().'staff-profile/'.$st['username'];?>"><? echo $st['lastname'].','.$st['firstname'].' '.$st['middlename'];?></a></td>
                                             <td class="text-center">
                                                 <? echo $st['address'];?>
                                             </td>
