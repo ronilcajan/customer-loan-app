@@ -1,3 +1,9 @@
+#home{
+	background-image: url('http://localhost/claims-loan-system/assets/images/new-bg.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;	
+}
+
 .login-div {
 	height: 100%;
 	width: 35%;
@@ -83,4 +89,43 @@ div#clients_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer {
   	user-select: none;
   	color: purple;
   	transition: 1s all;
+}
+
+.calendar{
+border: 1px solid #9654AD;
+border-collapse:collapse;
+text-align: center;
+margin-left: 50px;
+}
+td.cal-td{
+width: 50px;
+height: 50px;
+text-align: center;
+border: 1px solid #e2e0e0;
+font-size: 18px;
+font-weight: bold;
+}
+th.cal-th{
+height: 50px;
+padding-bottom: 8px;
+background:#25BAE4;
+font-size: 20px;
+}
+.prev_sign a, .next_sign a{
+color:white;
+text-decoration: none;
+}
+tr.week_name{
+font-size: 16px;
+font-weight:400;
+color:red;
+width: 10px;
+background-color: #efe8e8;
+}
+.highlight{
+background-color:#9654AD;
+color:white;
+height: 45px;
+padding-top: 13px;
+padding-bottom: 7px;
 }

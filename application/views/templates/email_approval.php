@@ -389,7 +389,7 @@
               <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td class="content-block">
-                    <span class="apple-link">Reynaldo Financing Services Corporation, P 6, Mobod, Oroqiueta City,Misamis Occidental, Philippines 7207</span>
+                    <span class="apple-link">Reynaldo Financing Services Corporation, Poblacion 1, Oroqiueta City,Misamis Occidental, Philippines 7207</span>
                     <br>
                   </td>
                 </tr>

@@ -6,6 +6,15 @@ class Claims_controller extends CI_Controller {
 
 	public function index(){
 
+		$title['title'] = "RFSC - Home";
+		$this->load->view('templates/header', $title);
+		$this->load->view('home');
+		$this->load->view('templates/footer');
+	}
+
+
+	public function login_view(){
+
 		$title['title'] = "RFSC - Login";
 		$this->load->view('templates/header', $title);
 		$this->load->view('login');
@@ -13,6 +22,7 @@ class Claims_controller extends CI_Controller {
 	}
 
 	public function login(){
+
 		$validator = array('success' => false, 'messages' => array());
 
 		$login_data = array(
@@ -46,6 +56,11 @@ class Claims_controller extends CI_Controller {
 		}
 
 		echo json_encode($validator);
+		
+	}
+
+	public function guest(){
+
 		
 	}
 

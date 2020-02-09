@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         
-                        <button type="submit" class="btn btn-sm btn-outline-primary btn-round pull-right create-loan" data-target="#add_staff" data-toggle="modal">
+                        <button type="submit" class="btn btn-sm btn-outline-primary btn-round pull-right" data-target="#add_staff" data-toggle="modal">
                              <i class="material-icons">person_add</i>  Add Staff
                         </button>
                         <div class="tab-content tab-space">
@@ -69,6 +69,48 @@
                             </div>
                         </div>
                     </div>
+                     <!-- Modal for add clients -->
+                                    <div class="modal fade" id="add_staff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Add Staff</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <label class="text-danger error" style="display: none;">Username already exist</label>
+                                                        <div class="form-group">
+                                                                    <label class="bmd-label-floating">Enter Username</label>
+                                                                    <input type="text" class="form-control username" required>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label class="bmd-label-floating">Position</label>
+                                                                    <select required="" class="position">
+                                                                        <option selected disabled="">Select Position</option>
+                                                                        <option value="Admin">Admin</option>
+                                                                        <option value="Cashier">Cashier</option>
+                                                                        <option value="Loan Officer">Loan Officer</option>
+                                                                        <option value="Collector">Collector</option>
+                                                                        <option value="Guest">Guest</option>
+                                                                    </select>
+                                                              </div>
+                                                                <div class="form-group">
+                                                                    <label class="bmd-label-floating">Enter Password</label>
+                                                                    <input type="password" class="form-control password" required>
+                                                                </div>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-primary add_staff">Add</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End of modal -->
                 </div>
             </div>
         </div>

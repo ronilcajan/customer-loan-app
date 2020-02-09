@@ -846,22 +846,22 @@ $(document).ready(function() {
 	var date_issued = [];
 	var adrs_issued = [];
 
-	if(co_mkr.trim() != ''){
+	if(co_mkr != ''){
 		$('.comaker-name').each(function(){
 			co_maker_name.push($(this).val());
 		});
 	}
-	if(cdula.trim() != ''){
+	if(cdula != ''){
 		$('.cedula').each(function(){
 			cedula.push($(this).val());
 		});
 	}
-	if(dt.trim() != ''){
+	if(dt != ''){
 		$('.date_issued').each(function(){
 			date_issued.push($(this).val());
 		});
 	}
-	if(wdt.trim() != ''){
+	if(wdt != ''){
 		$('.where_issued').each(function(){
 			adrs_issued.push($(this).val());
 		});

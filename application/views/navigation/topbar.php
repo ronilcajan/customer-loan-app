@@ -34,6 +34,16 @@
 			</button>
 			<div class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav">
+				<? if($this->session->userdata('usertype') == 'Guest') {?>
+				<li class="nav-item">
+					<a class="nav-link" href="#" rel="tooltip" title="Dashboard">
+					<i class="material-icons">dashboard</i>
+					<p class="d-lg-none d-md-block">
+						Stats
+					</p>
+					</a>
+				</li>
+				<?}else{?>
 				<li class="nav-item">
 					<a class="nav-link" href="<? echo base_url();?>dashboard" rel="tooltip" title="Dashboard">
 					<i class="material-icons">dashboard</i>
@@ -42,6 +52,7 @@
 					</p>
 					</a>
 				</li>
+				<? } ?>
 				<li class="nav-item dropdown">
 					<a class="nav-link" href="#" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="material-icons">person</i>
@@ -50,9 +61,15 @@
 					</p>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-					<a class="dropdown-item" href="<? echo base_url().'my-profile/'.$this->session->userdata('username');?>">Profile</a>
-					<a class="dropdown-item" href="#">Change Password</a>
+					<? if($this->session->userdata('usertype') == 'Guest') {?>
+						<a class="dropdown-item" href="#">Profile</a>
+						<a class="dropdown-item" href="#">Change Password</a>
+					<? }else{ ?>
+						<a class="dropdown-item" href="<? echo base_url().'my-profile/'.$this->session->userdata('username');?>">Profile</a>
+						<a class="dropdown-item" href="#">Change Password</a>
+					<? } ?>
 					<div class="dropdown-divider"></div>
+
 					<a class="dropdown-item" href="<? echo base_url();?>logout">Log out</a>
 					</div>
 				</li>

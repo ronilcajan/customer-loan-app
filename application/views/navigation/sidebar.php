@@ -11,6 +11,34 @@
 	<div class="sidebar-wrapper">
 		<ul class="nav">
 
+		<? if($this->session->userdata('usertype') == 'Guest') {?>
+			<? $site1 = 'borrowers/client-profile';
+			if(strpos($site, 'borrowers/') || strpos($site, $site1)){?>
+
+				<li class="nav-item active">
+
+			<?}else{?>
+				<li class="nav-item">
+			<? }?>
+				<a class="nav-link" href="<? echo base_url();?>borrowers/create-borrowers">
+				<i class="material-icons">group</i>
+				<p>Borrowers</p>
+				</a>
+			</li>
+			
+			<? if(strpos($site,'loan/')){?>
+				<li class="nav-item active">
+			<? }else{ ?>
+				<li class="nav-item">
+			<? } ?>
+				<a class="nav-link" href="<? echo base_url();?>loan/create-loan">
+				<i class="material-icons">monetization_on</i>
+				<p>Loan</p>
+				</a>
+			</li>
+
+		<? }else{ ?>
+
 			<?if($site == '/dashboard'){?>
 
 			<li class="nav-item active  ">
@@ -92,6 +120,8 @@
 				<p>Back up</p>
 				</a>
 			</li>
+
+		<? } ?>
 		</ul>
 	</div>
 </div>

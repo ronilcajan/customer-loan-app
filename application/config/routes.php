@@ -5,8 +5,10 @@ $route['default_controller'] = 'claims_controller';
 $route['404_override'] = 'claims_controller/error404';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['login_page'] = 'claims_controller/login_view';
 $route['login-submit'] = 'claims_controller/login';
 $route['dashboard'] = 'claims_controller/dashboard';
+$route['dashboard/(:any)/(:any)'] = 'claims_controller/dashboard/$1/$2';
 $route['staff'] = 'claims_controller/staff';
 $route['add-staff'] = 'claims_controller/add_staff';
 $route['my-profile/(:any)'] = 'claims_controller/user_profile/$1';
@@ -17,6 +19,8 @@ $route['my-task'] = 'claims_controller/create_task';
 $route['end-task'] = 'claims_controller/end_task';
 $route['remove-task'] = 'claims_controller/remove_task';
 $route['update-task'] = 'claims_controller/update_task';
+
+$route['guest'] = 'borrowers/create_borrowers';
 
 $route['back-up'] = 'claims_controller/back_up';
 $route['local-backup'] = 'claims_controller/local_backup';

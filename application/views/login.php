@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="card-body mt-4">
-                            <div class="form-group">
+                            <div class="form-group mt-4">
                             <label class="bmd-label-floating ml-5 pl-2">Enter Username..</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -36,10 +36,9 @@
                                 <input type="password" name="password" id="registerPassword" class="form-control password" required='true'>
                             </div>
                         </div>
-                        <div class="text-center">
-                            <button class="btn btn-primary ml-3 mt-4 d-block login-submit">Submit</button>
-                            <label class="ml-3 mt-3 forgot-password text-muted">Forgot password?<a href="<? echo base_url();?>forgot-password"> Recover here</a>
-                            </label>
+                        <div class="text-center mt-5 mb-5">
+                            <button class="btn btn-outline-primary btn-round ml-3" onclick="location.href='<? echo base_url();?>'">Home</button> 
+                            <button class="btn btn-primary btn-round ml-3 login-submit">Submit</button>  
                         </div>    
                 </div>
             </div>

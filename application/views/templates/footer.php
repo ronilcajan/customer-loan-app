@@ -8,8 +8,8 @@
     <script src="<? echo base_url();?>assets/js/core/bootstrap-material-design.min.js"></script>
     <script src="<? echo base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!-- Plugin for the momentJs  -->
-     <script src="<? echo base_url();?>assets/js/plugins/moment.min.js"></script>
-
+    <script src="<? echo base_url();?>assets/js/plugins/moment.min.js"></script>
+    
     <!--  Plugin for Sweet Alert -->
     <!-- <script src="<? echo base_url();?>assets/js/plugins/sweetalert2.js"></script> -->
     <!-- Forms Validations Plugin -->
