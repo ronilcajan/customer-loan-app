@@ -87,6 +87,17 @@ class Claims_model extends CI_Model {
         }
     }   
 
+    public function get_due_loan(){
+        $this->db->where('loan.loan_no = approved_loans.loan_no');
+        $this->db->where('approved_loans.status = "new"');
+        $this->db->where('YEAR(CURRENT_DATE) = YEAR(approved_loans.due_date)');
+        $this->db->where('MONTH(CURRENT_DATE) = MONTH(approved_loans.due_date)');
+
+        $result = $this->db->get('approved_loans,loan');
+
+        return $result->result_array();
+    }
+
 
     public function get_user_profile($data){
         $this->db->select('*, users.username as user');
@@ -241,6 +252,15 @@ class Claims_model extends CI_Model {
         }else{
             return null;
         }
+
+    }
+
+    public function change_pass($data){
+
+        $this->db->set('password', sha1($data['new_pass']));
+        $this->db->where('username', $data['username']);
+        $this->db->update('users');
+        return $this->db->affected_rows();
 
     }
 

@@ -4,7 +4,7 @@
 
 			Tip 2: you can also add an image using data-image tag
 		-->
-	<div class="logo m-1"  style="background-color: #9D57B1; border-radius: 5px">
+	<div class="logo m-1"  style="background-color: #9C27B0; border-radius: 5px">
 		<a href="#" class="simple-text logo-normal text-light font-weight-bold">RFS Corporation</a>
 	</div>
 	<? $site = $_SERVER['PATH_INFO'];?>

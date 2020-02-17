@@ -19,6 +19,7 @@ $(document).ready(function() {
 						);
 		}
 
+
 		if (username && password) {
 			$.ajax({
 				type: "POST",

@@ -21,6 +21,20 @@ class Loan_model extends CI_Model {
         }
     }
 
+    public function get_paid_loan(){
+        $this->db->select('*');
+        $this->db->from('clients');
+        $this->db->join('address', 'clients.account_no = address.account_no');
+        $this->db->join('names', 'clients.account_no = names.account_no');
+        $this->db->join('loan', 'loan.account_no = clients.account_no');
+        $this->db->join('approved_loans', 'loan.loan_no = approved_loans.loan_no');
+        $this->db->join('debtor_business', 'loan.loan_no = debtor_business.loan_no');
+        $this->db->where('approved_loans.status', 'Paid');
+        $result = $this->db->get();
+
+        return $result->result_array();
+    }
+
     public function get_verifier(){
 
         $this->db->select('username');

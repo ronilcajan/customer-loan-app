@@ -33,5 +33,12 @@
             <a class="btn btn-outline-success btn-round btn-sm" rel="tooltip" title="List of Approved Loans" href="<? echo base_url();?>loan/approved-loans"><i class="material-icons">verified_user</i> Approved Loans</a>
             <? } ?>
         </li>
+         <li class="nav-item">
+            <? if(strpos($site, 'loan/paid-loans')){ ?>
+            <a class="btn btn-primary btn-round btn-sm" rel="tooltip" title="List of Paid Loans" href="<? echo base_url();?>loan/paid-loans"><i class="material-icons">check</i> Paid Loans</a>
+            <? }else{?> 
+            <a class="btn btn-outline-primary btn-round btn-sm" rel="tooltip" title="List of Paid Loans" href="<? echo base_url();?>loan/paid-loans"><i class="material-icons">check</i> Paid Loans</a>
+            <? } ?>
+        </li>
     <? } ?>
 </ul>

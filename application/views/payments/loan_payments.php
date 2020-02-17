@@ -40,10 +40,10 @@
                                                 $due = date('M. d, Y', strtotime($loan['due_date']));
                                                 $now = date('M. d, Y');
 
-                                                if(strtotime($due) <= strtotime($now)){ ?>
+                                                if(strtotime($due) >= strtotime($now)){ ?>
                                                     <button rel="tooltip" title="Applicable only if loan is in due date" class="btn btn-outline-primary btn-round pull-right btn-sm" disabled="">Fully Paid</button>
                                                 <? }else{ ?>
-                                                    <button class="btn btn-primary btn-round pull-right btn-sm fully_paid" id="<? echo $loan['loan_no'];?>">Fully Paid</button>
+                                                    <button class="btn btn-outline-primary btn-round pull-right btn-sm fully_paid" id="<? echo $loan['loan_no'];?>">Fully Paid</button>
                                                 <? } ?>
                                             </div>
 

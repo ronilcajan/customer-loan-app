@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header card-header-text card-header-primary text-center">
                         <div class="card-text w-75">
-                            <h3 class="card-title font-weight-bold">RFSC Login Form</h3>
+                            <h3 class="card-title font-weight-bold">RFSC Login</h3>
                         </div>
                     </div>
                     <div class="card-body mt-4">
@@ -37,8 +37,8 @@
                             </div>
                         </div>
                         <div class="text-center mt-5 mb-5">
-                            <button class="btn btn-outline-primary btn-round ml-3" onclick="location.href='<? echo base_url();?>'">Home</button> 
-                            <button class="btn btn-primary btn-round ml-3 login-submit">Submit</button>  
+                            <button class="btn btn-primary btn-round ml-3 login-submit">Submit</button>
+                            
                         </div>    
                 </div>
             </div>

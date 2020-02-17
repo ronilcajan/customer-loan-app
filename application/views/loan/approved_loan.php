@@ -51,7 +51,7 @@
                                             </td>
                                             <td class="text-right"><? echo $appr['loan_amount'];?></td>
                                             <td class="text-center"><? echo $appr['approved'];?></td>
-                                            <td class="text-center"><? $time = $appr['date_approved']; echo date('M, d. Y', strtotime($time));?></td>
+                                            <td class="text-center"><? $time = $appr['date_approved']; echo date('M. d, Y', strtotime($time));?></td>
                                             <td>
                                                 <span class="font-italic text-muted ">
                                                     <?if($appr['status'] == 'Approved'){?>

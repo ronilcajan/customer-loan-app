@@ -454,7 +454,7 @@ $(document).on('click', '.done_task', function(){
 }); 
 // ================= Remove Task ================
 $(document).on('click', '.remove_task', function(){
-	var id = $(this).attr('id');
+	var formdata = new FormData(document.getElementById("form-register"));
 	
 	$.ajax({
 		url: BASE_URL+"remove-task",
@@ -671,9 +671,108 @@ $(document).on('click', '.fully_paid', function(){
 				);
 				
 
-		  //       setTimeout(function() {
-				// 	window.location.reload(1);
-				// }, 1000);
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 1000);
 		    }
 	});
+}); 
+
+// ================= Remove Task ================
+$(document).on('click', '.change_pass', function(){
+	var pass1 = $('input[name="new_pass"').val();
+	var pass2 = $('input[name="conf_pass"').val();
+
+	if(pass1.trim() == ""){
+		showNotification(
+			"Please enter username",
+			"error",
+			"warning"
+		);
+	}
+	if(pass2.trim() == ""){
+		showNotification(
+			"Please enter your password",
+			"error",
+			"warning"
+		);
+	}
+	if(pass2.trim() == pass1.trim()){
+
+		var formdata = new FormData(document.getElementById("change_pass_form"));
+	
+		$.ajax({
+			url: BASE_URL+"change-password",
+			method: 'POST',
+			data:formdata,
+			dataType: "json",
+			processData: false,
+			contentType: false,
+			cache: false,
+			beforeSend: function() {
+				$("#loading-screen").show();
+			},
+			success: function(data){
+				if(data.success){
+					$("#loading-screen").hide();
+
+					showNotification(
+						data.messages,
+						"check_circle",
+						"success"
+					);
+
+					$('#change_pass').modal('hide');
+
+				}else{
+					$("#loading-screen").hide();
+
+					showNotification(
+						"Password not change.",
+						"warning",
+						"danger"
+					);
+					$('#change_pass').modal('hide');
+				}
+				
+			},
+			error: function (jqXHR, exception) {
+					$("#loading-screen").hide();
+			
+			        var msg = '';
+			        if (jqXHR.status === 0) {
+			            msg = 'Not connect.\n Verify Network.';
+			        } else if (jqXHR.status == 404) {
+			            msg = 'Requested page not found. [404].Please contact developer';
+			        } else if (jqXHR.status == 500) {
+
+			            msg = 'Email notification did not send.';
+
+			        } else if (exception === 'parsererror') {
+
+			           msg = 'parsererror. Please contact developer';
+
+			        } else if (exception === 'timeout') {
+			            msg = 'Time out error.Please contact developer';
+			        } else if (exception === 'abort') {
+			            msg = 'Ajax request aborted.Please contact developer';
+			        } else {
+			            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+			        }
+			        showNotification(
+							msg,
+							"info",
+							"warning"
+					);
+					$('#change_pass').modal('hide');
+			    }
+		});
+	}else{
+		showNotification(
+				'Password did not match. Please try again',
+				"info",
+				"warning"
+		);
+	}
+	
 }); 

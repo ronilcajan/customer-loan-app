@@ -5,7 +5,6 @@ $route['default_controller'] = 'claims_controller';
 $route['404_override'] = 'claims_controller/error404';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['login_page'] = 'claims_controller/login_view';
 $route['login-submit'] = 'claims_controller/login';
 $route['dashboard'] = 'claims_controller/dashboard';
 $route['dashboard/(:any)/(:any)'] = 'claims_controller/dashboard/$1/$2';
@@ -19,6 +18,7 @@ $route['my-task'] = 'claims_controller/create_task';
 $route['end-task'] = 'claims_controller/end_task';
 $route['remove-task'] = 'claims_controller/remove_task';
 $route['update-task'] = 'claims_controller/update_task';
+$route['change-password'] = 'claims_controller/change_password';
 
 $route['guest'] = 'borrowers/create_borrowers';
 
@@ -41,6 +41,7 @@ $route['loan/create-loan/(:num)'] = "loan/create_loan/$1";
 $route['loan/new-loans'] = 'loan/new_loans';
 $route['loan/approved-loans'] = 'loan/approved_loans';
 $route['loan/rejected-loans'] = 'loan/rejected_loans';
+$route['loan/paid-loans'] = 'loan/paid_loans';
 $route['insert-loan'] = "loan/insert_loan";
 $route['account-query'] = 'loan/account_query';
 $route['approve-loan'] = 'loan/approve_loan';

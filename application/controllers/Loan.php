@@ -68,6 +68,18 @@ class Loan extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+	public function paid_loans(){
+		$title['title'] = "RFSC-Paid Loans";
+
+		$this->check_auth('paid_loans');
+
+		$clients['paid'] = $this->loan_model->get_paid_loan();
+
+		$this->load->view('templates/header',$title);
+		$this->load->view('loan/paid_loans', $clients);
+		$this->load->view('templates/footer');
+	}
+
 	public function rejected_loans(){
 
 		$title['title'] = "RFSC-Rejected Loans";

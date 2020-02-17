@@ -83,7 +83,48 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-12 col-md-12">
+				<div class="col-lg-6 col-md-6">
+					<div class="card">
+						<div class="card-header card-header-primary">
+							<div class="card-title">
+								Loans
+							</div>
+							<p class="card-category">Loan due date for this month</p>
+						</div>
+						<div class="card-body">
+							<table class="table">
+								<thead>
+									<th>Loan No.</th>
+									<th>Amount Loan</th>
+									<th>Due Date</th>
+								</thead>
+								<tbody>
+
+								<?
+								if(!empty($due)){?>
+									<? foreach ($due as $key => $d) {?>
+									<tr>
+										<td>
+											<? echo $d['loan_no'];?>
+										</td>	
+										<td>
+											<? echo $d['loan_amount'];?>
+										</td>
+										<td>
+											<? echo $d['due_date'];?>
+										</td>
+									</tr>
+								<? } }else{?>
+									<tr>
+										<td colspan="3" class="text-center">No data available</td>
+									</tr>
+								<? } ?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6">
 					<div class="card">
 						<div class="card-header card-header-primary">
 	                        <h4 class="card-title">My Task</h4>

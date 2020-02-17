@@ -4,16 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Claims_controller extends CI_Controller {
 
+
 	public function index(){
 
-		$title['title'] = "RFSC - Home";
-		$this->load->view('templates/header', $title);
-		$this->load->view('home');
-		$this->load->view('templates/footer');
-	}
-
-
-	public function login_view(){
+		if($this->session->userdata('logged_in')){
+			redirect('claims_controller/dashboard');
+		}
 
 		$title['title'] = "RFSC - Login";
 		$this->load->view('templates/header', $title);
@@ -59,11 +55,6 @@ class Claims_controller extends CI_Controller {
 		
 	}
 
-	public function guest(){
-
-		
-	}
-
 	public function error404(){
 
 		$this->load->view('templates/header');
@@ -89,6 +80,7 @@ class Claims_controller extends CI_Controller {
 		$result['cash'] = $this->claims_model->get_csh_borrowers();
 		$result['task'] = $this->claims_model->get_my_task($this->session->userdata('username'));
 
+		$result['due'] = $this->claims_model->get_due_loan();
 
 		$this->load->view('templates/header', $title);
 		$this->load->view('dashboard', $result);
@@ -356,9 +348,29 @@ class Claims_controller extends CI_Controller {
 		}else{
 			$validator['success'] = false;
 			$validator['messages'] = "Failed to update task!";
-			}
+		}
 		
 		
+		echo json_encode($validator);
+	} 
+
+	public function change_password(){
+		$validator = array('success' => false, 'messages' => array());
+
+		$data = $this->input->post();
+
+		$result = $this->claims_model->change_pass($data);
+
+		if($result){
+
+			$validator['success'] = true;
+			$validator['messages'] = "Password Successfully Changed.";
+
+		}else{
+			$validator['success'] = false;
+			$validator['messages'] = "Password not change.";
+		}
+
 		echo json_encode($validator);
 	} 
 

@@ -66,7 +66,7 @@
 						<a class="dropdown-item" href="#">Change Password</a>
 					<? }else{ ?>
 						<a class="dropdown-item" href="<? echo base_url().'my-profile/'.$this->session->userdata('username');?>">Profile</a>
-						<a class="dropdown-item" href="#">Change Password</a>
+						<a class="dropdown-item" href="#change_pass" data-toggle="modal">Change Password</a>
 					<? } ?>
 					<div class="dropdown-divider"></div>
 
@@ -76,5 +76,6 @@
 				</ul>
 			</div>
 			</div>
+
 		</nav>
 		<!-- End Navbar -->

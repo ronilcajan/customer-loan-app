@@ -320,7 +320,7 @@
                 <tr>
                   <td >
                     <h2 style="margin-bottom: 5px;padding-bottom: 5px;">RFS Corporation</h2>
-                    <p style="text-align: center;">When you're business in need</p>
+                    <p style="text-align: center;">Our mission is to help people through life.</p>
                     <br>
                   </td>
                 </tr>

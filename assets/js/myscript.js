@@ -58,20 +58,32 @@ $(document).ready(function() {
 	$('#all-clients-table').DataTable({
 		dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            'copy', 'csv', 'excel','print',
+            {
+            	'extend': 'pdf',
+            	'download': 'open'
+            }
         ]
 	});
 
 	$('#all-loans-table').DataTable({
 		dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            'copy', 'csv', 'excel', 'print',
+            {
+            	'extend': 'pdf',
+            	'download': 'open'
+            }
         ]
 	});
 	$('#all-payments-table').DataTable({
 		dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            'copy', 'csv', 'excel', 'print',
+            {
+            	'extend': 'pdf',
+            	'download': 'open'
+            }
         ]
 	});
 

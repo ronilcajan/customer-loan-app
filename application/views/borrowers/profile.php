@@ -130,7 +130,7 @@
                                                         <th>Loan No.</th>
                                                         <th>Loan Amount</th>
                                                         <th>Status</th>
-                                                        <th>Date</th>
+                                                        <th>Due Date</th>
                                                 </thead>
                                                 <tbody>
                                                     <? if(!empty($loan)){?>
@@ -139,7 +139,7 @@
                                                             <td><a href="<? echo base_url().'payments/loan-details/'.$value['loan_no'];?>"><? echo $value['loan_no'];?></a></td>
                                                             <td><? echo $value['loan_amount'];?></td>
                                                             <td><? echo $value['loan_stat'];?></td>
-                                                            <td><? echo $value['date_approved'];?></td>
+                                                            <td><? $time = $value['due_date']; echo date('M. d, Y', strtotime($time));?></td>
                                                         </tr>
                                                     <?}}?>
                                                     
@@ -171,7 +171,7 @@
                                                             <td><? echo $cmaker['name'];?></td>
                                                             <td><? echo $cmaker['cedula_no'];?></td>
                                                             <td><? echo $cmaker['address_issued'];?></td>
-                                                            <td><? echo $cmaker['date_issued'];?></td>
+                                                            <td><? $time = $cmaker['date_issued']; echo date('M. d, Y', strtotime($time));?></td>
                                                     <? } }?>
                                                     
                                                 </tbody>
@@ -198,7 +198,12 @@
                                                                         <div class="form-group form-file-upload form-file-multiple ">
                                                                             <input type="file" accept="image/*" onchange="loadFile(event)" name="img" class="inputFileHidden"s required>
                                                                             <div class="fileinput-new thumbnail img-raised text-center">
-                                                                                <img class="img-fluid" id="output" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img" />
+                                                                                 <?   if(empty($loan['profile_img'])){ ?>
+                                                                                        <img class="border-round" src="<? echo base_url().'assets/images/person.png' ?>" width="250"/>
+                                                                                    <?}else{?>
+                                                                                        <img class="img-fluid" width="250" id="output" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img"  />
+                                                                                    <?}?>
+                                                                               <!--  <img class="img-fluid" id="output" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img" /> -->
                                                                             </div>
                                                                             <div class="input-group mt-2">
                                                                                 <span class="input-group-btn">
