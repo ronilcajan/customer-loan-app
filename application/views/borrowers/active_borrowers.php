@@ -56,7 +56,7 @@
                                                 <span class="font-italic text-muted "><? echo $actv['status'];?></span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="Go to Payments" class="btn btn-info btn-sm mr-2" onclick="location.href='<? echo base_url().'payments/loan-details/'.$actv['loan_no'];?>'">
+                                                <button type="button" rel="tooltip" title="Go to Payments" class="btn btn-info btn-sm btn-link" onclick="location.href='<? echo base_url().'payments/loan-details/'.$actv['loan_no'];?>'">
                                                         <i class="material-icons">payment</i>
                                                 </button>
                                             </td>

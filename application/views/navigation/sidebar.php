@@ -4,8 +4,9 @@
 
 			Tip 2: you can also add an image using data-image tag
 		-->
-	<div class="logo m-1"  style="background-color: #9C27B0; border-radius: 5px">
-		<a href="#" class="simple-text logo-normal text-light font-weight-bold">RFS Corporation</a>
+	<div class="logo m-1 form-group">
+		
+		<a href="#" class="simple-text logo-normal font-weight-bold"><img src="<? echo base_url();?>/assets/images/rfsc.png" height="50" width="50"> RFS Corporation</a>
 	</div>
 	<? $site = $_SERVER['PATH_INFO'];?>
 	<div class="sidebar-wrapper">

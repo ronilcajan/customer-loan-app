@@ -57,13 +57,13 @@
                                                 <span class="font-italic text-muted "><? echo $verified['status'];?></span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="Approve this loan" class="btn btn-success btn-sm mr-2 approve approve<? echo $verified['loan_no'];?>" id="<? echo $verified['loan_no'];?>">
+                                                <button type="button" rel="tooltip" title="Approve this loan" class="btn btn-success btn-link btn-sm approve approve<? echo $verified['loan_no'];?>" id="<? echo $verified['loan_no'];?>">
                                                     <i class="material-icons">verified_user</i>
-                                                </button>
-                                                <button type="button" rel="tooltip" title="Reject this loan" class="btn btn-warning btn-sm mr-2" data-target="#reject_client<? echo $verified['loan_no'];?>" id="reject-button<? echo $verified['loan_no'];?>" data-toggle="modal">
+                                                </button>|
+                                                <button type="button" rel="tooltip" title="Reject this loan" class="btn btn-warning btn-sm btn-link" data-target="#reject_client<? echo $verified['loan_no'];?>" id="reject-button<? echo $verified['loan_no'];?>" data-toggle="modal">
                                                     <i class="material-icons">warning</i>
-                                                </button>
-                                                <button type="button" rel="tooltip" title="Remove this loan" class="btn btn-danger btn-sm" data-target="#remove_loan<? echo $verified['loan_no'];?>" id="remove-loan<? echo $verified['loan_no'];?>" data-toggle="modal">
+                                                </button>|
+                                                <button type="button" rel="tooltip" title="Remove this loan" class="btn btn-danger btn-sm btn-link" data-target="#remove_loan<? echo $verified['loan_no'];?>" id="remove-loan<? echo $verified['loan_no'];?>" data-toggle="modal">
                                                     <i class="material-icons">remove_circle</i>
                                                 </button>
                                             </td>

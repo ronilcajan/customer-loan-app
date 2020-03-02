@@ -56,13 +56,13 @@
                                                 <span class="font-italic text-muted "><? echo $reject['status'];?></span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="View loan information" class="btn btn-info btn-sm mr-2" data-target="#clients-<? echo $reject['account_no'];?>" data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="View loan information" class="btn btn-info btn-sm btn-link" data-target="#clients-<? echo $reject['account_no'];?>" data-toggle="modal">
                                                     <i class="material-icons">visibility</i>
-                                                </button>
-                                                <button type="button" rel="tooltip" title="Re-apply loan" class="btn btn-primary btn-sm mr-2" data-target="#reapply_loan<? echo $reject['loan_no'];?>" id="reapply-loan<? echo $reject['loan_no'];?>"  data-toggle="modal">
+                                                </button>|
+                                                <button type="button" rel="tooltip" title="Re-apply loan" class="btn btn-primary btn-sm btn-link" data-target="#reapply_loan<? echo $reject['loan_no'];?>" id="reapply-loan<? echo $reject['loan_no'];?>"  data-toggle="modal">
                                                     <i class="material-icons">monetization_on</i>
-                                                </button>
-                                                <button type="button" rel="tooltip" title="Remove loan" class="btn btn-danger btn-sm" data-target="#remove_loan<? echo $reject['loan_no'];?>" id="remove-rejected-loan<? echo $reject['loan_no'];?>" data-toggle="modal">
+                                                </button>|
+                                                <button type="button" rel="tooltip" title="Remove loan" class="btn btn-danger btn-sm btn-link" data-target="#remove_loan<? echo $reject['loan_no'];?>" id="remove-rejected-loan<? echo $reject['loan_no'];?>" data-toggle="modal">
                                                     <i class="material-icons">remove_circle</i>
                                                 </button>
                                             </td>

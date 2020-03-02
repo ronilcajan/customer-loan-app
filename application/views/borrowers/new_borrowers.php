@@ -50,14 +50,15 @@
                                             <td>
                                                 <span class="font-italic text-muted "><? echo $newC['status'];?></span>
                                             </td>
+
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="View borrowers" class="btn btn-info mr-2 btn-sm" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="View borrowers" class="btn btn-info btn-sm btn-link" data-target="#clients-<? echo $newC['account_no'];?>" data-toggle="modal">
                                                     <i class="material-icons">visibility</i> 
-                                                </button>
-                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-sm mr-2" onclick="location.href='<? echo base_url().'loan/create-loan/'.$newC['account_no'];?>'">
+                                                </button>|
+                                                <button type="button" rel="tooltip" title="Apply Loan" class="btn btn-primary btn-sm btn-link" onclick="location.href='<? echo base_url().'loan/create-loan/'.$newC['account_no'];?>'">
                                                     <i class="material-icons">monetization_on</i>
-                                                </button>
-                                                <button type="button" rel="tooltip" title="Remove borrowers" class="btn btn-danger btn-sm" data-target="#delete_client<? echo $newC['account_no'];?>" id="remove-loan<? echo $newC['account_no'];?>" data-toggle="modal">
+                                                </button>|
+                                                <button type="button" rel="tooltip" title="Remove borrowers" class="btn btn-danger btn-sm btn-link" data-target="#delete_client<? echo $newC['account_no'];?>" id="remove-loan<? echo $newC['account_no'];?>" data-toggle="modal">
                                                     <i class="material-icons">remove_circle</i>
                                                 </button>
                                             </td>

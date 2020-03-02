@@ -1,13 +1,7 @@
-#home{
-	background-image: url('http://localhost/claims-loan-system/assets/images/new-bg.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;	
-}
-
 .login-div {
-	height: 100%;
-	width: 35%;
-	margin: 7% auto;
+	height: 80%;
+	width: 60%;
+	margin: 10% auto 0 auto;
 }
 
 .forgot-password {
