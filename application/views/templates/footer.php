@@ -60,9 +60,7 @@
     <script src="<?php echo base_url();?>assets/js/plugins/buttons.html5.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/plugins/buttons.print.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/plugins/buttons.flash.min.js"></script>
-    <?php }else{
-
-    } ?>
+    <?php } ?>
     <script src="<?php echo base_url();?>assets/js/core/core.js"></script>
     <!-- Library for adding dinamically elements -->
     <script src="<?php echo base_url();?>assets/js/plugins/arrive.min.js"></script>

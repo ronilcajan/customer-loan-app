@@ -21,9 +21,9 @@
 				<a class="navbar-brand font-weight-bold" href="<?php echo base_url();?>staff">My Profile</a>
 				<?php }elseif(strpos($site, 'back-up')){?>
 				<a class="navbar-brand font-weight-bold" href="<?php echo base_url();?>staff">Manage Files</a>
-				<?php }else{
-					
-				}?>
+				<?php }else{ ?>
+				<a class="navbar-brand font-weight-bold" href="#"></a>
+				<?php }?>
 			</div>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="sr-only">Toggle navigation</span>
@@ -42,7 +42,7 @@
 					</p>
 					</a>
 				</li>
-				<?}else{?>
+				<?php }else{?>
 				<li class="nav-item">
 					<a class="nav-link" href="<?php echo base_url();?>dashboard" rel="tooltip" title="Dashboard">
 					<i class="material-icons">dashboard</i>

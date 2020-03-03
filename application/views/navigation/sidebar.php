@@ -18,7 +18,7 @@
 
 				<li class="nav-item active">
 
-			<?}else{?>
+			<?php }else{?>
 				<li class="nav-item">
 			<?php }?>
 				<a class="nav-link" href="<?php echo base_url();?>borrowers/create-borrowers">
@@ -40,15 +40,15 @@
 
 		<?php }else{ ?>
 
-			<?if($site == '/dashboard'){?>
+			<?php if($site == '/dashboard'){?>
 
 			<li class="nav-item active  ">
 
-			<?}else{ ?>
+			<?php }else{ ?>
 
 			<li class="nav-item">
 
-			<?}?>
+			<?php }?>
 
 				<a class="nav-link" href="<?php echo base_url();?>dashboard">
 				<i class="material-icons">dashboard</i>
@@ -61,7 +61,7 @@
 
 				<li class="nav-item active">
 
-			<?}else{?>
+			<?php }else{?>
 				<li class="nav-item">
 			<?php }?>
 				<a class="nav-link" href="<?php echo base_url();?>borrowers/create-borrowers">
@@ -91,7 +91,7 @@
 				<p>Payments</p>
 				</a>
 			</li>
-    		<?if(strpos($site, 'reports')){?>
+    		<?php if(strpos($site, 'reports')){?>
 			<li class="nav-item active">
 			<?php }else{ ?>
 			<li class="nav-item">
@@ -101,7 +101,7 @@
 				<p>Reports</p>
 				</a>
 			</li>
-			<?if(strpos($site, 'staff')){?>
+			<?php if(strpos($site, 'staff')){?>
 			<li class="nav-item active">
 			<?php }else{ ?>
 			<li class="nav-item ">
@@ -111,7 +111,7 @@
 				<p>Staffs</p>
 				</a>
 			</li>
-			<?if(strpos($site, 'back-up')){?>
+			<?php if(strpos($site, 'back-up')){?>
 			<li class="nav-item active">
 			<?php }else{ ?>
 			<li class="nav-item ">
