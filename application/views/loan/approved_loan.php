@@ -1,17 +1,17 @@
 <body class="">
   
-    <? $this->load->view('loading_screen');?>
+    <?php $this->load->view('loading_screen');?>
     
     <div class="wrapper ">
 
     <!-- Top NavBar -->
-    <? $this->load->view('navigation/sidebar');?>
+    <?php $this->load->view('navigation/sidebar');?>
     <!-- End of NavBar -->
 
     <div class="main-panel">
 
     <!-- Navbar -->
-    <? $this->load->view('navigation/topbar');?>
+    <?php $this->load->view('navigation/topbar');?>
     <!-- End Navbar -->
 
         <div class="content" style="margin-top:50px">
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-12">
 
-                        <? $this->load->view('navigation/loan_navbar');?>
+                        <?php $this->load->view('navigation/loan_navbar');?>
 
                         <div class="tab-content tab-space">
                             <div class="tab-pane active">
@@ -41,41 +41,41 @@
                                         <th>Action</th>
                                     </thead>
                                     <tbody>
-                                        <? foreach($approved as $key => $appr){
+                                        <?php foreach($approved as $key => $appr){
                                             if(!empty($appr)){  
                                         ?>
                                         <tr>
-                                            <td><a href="<? echo base_url().'payments/loan-details/'.$appr['loan_no'];?>"><? echo $appr['loan_no'];?></a></td>
+                                            <td><a href="<?php echo base_url().'payments/loan-details/'.$appr['loan_no'];?>"><?php echo $appr['loan_no'];?></a></td>
                                             <td class="text-center">
-                                                <a href="<? echo base_url().'borrowers/profile/'.$appr['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $appr['lastname'].','.$appr['firstname'].' '.$appr['middlename'];?></a>
+                                                <a href="<?php echo base_url().'borrowers/profile/'.$appr['account_no'];?>" rel="tooltip" title="Go to profile"><?php echo $appr['lastname'].','.$appr['firstname'].' '.$appr['middlename'];?></a>
                                             </td>
-                                            <td class="text-right"><? echo $appr['loan_amount'];?></td>
-                                            <td class="text-center"><? echo $appr['approved'];?></td>
-                                            <td class="text-center"><? $time = $appr['date_approved']; echo date('M. d, Y', strtotime($time));?></td>
+                                            <td class="text-right"><?php echo $appr['loan_amount'];?></td>
+                                            <td class="text-center"><?php echo $appr['approved'];?></td>
+                                            <td class="text-center"><?php $time = $appr['date_approved']; echo date('M. d, Y', strtotime($time));?></td>
                                             <td>
                                                 <span class="font-italic text-muted ">
                                                     <?if($appr['status'] == 'Approved'){?>
 
-                                                    <? echo $appr['status'].'. Waiting for cash release.';?>
-                                                    <? }else{?> 
-                                                    <? echo 'Loan is '.$appr['status'];?>.
-                                                    <? } ?>        
+                                                    <?php echo $appr['status'].'. Waiting for cash release.';?>
+                                                    <?php }else{?> 
+                                                    <?php echo 'Loan is '.$appr['status'];?>.
+                                                    <?php } ?>        
                                                 </span>
                                             </td>
                                             <td class="td-actions text-right">
                                                 <?if($appr['loan_status'] == 'Approved'){?>
-                                                    <button type="button" rel="tooltip" title="Release cash for this loan" class="btn btn-primary btn-sm mr-2" data-target="#cash<? echo $appr['loan_no'];?>" id="cash-release<? echo $appr['loan_no'];?>" data-toggle="modal">
+                                                    <button type="button" rel="tooltip" title="Release cash for this loan" class="btn btn-primary btn-sm mr-2" data-target="#cash<?php echo $appr['loan_no'];?>" id="cash-release<?php echo $appr['loan_no'];?>" data-toggle="modal">
                                                         <i class="material-icons">monetization_on</i>
                                                     </button>
-                                                <? }else{?> 
-                                                    <button type="button" rel="tooltip" title="Go to Payments" class="btn btn-info btn-sm mr-2" onclick="location.href='<? echo base_url().'payments/loan-details/'.$appr['loan_no'];?>'">
+                                                <?php }else{?> 
+                                                    <button type="button" rel="tooltip" title="Go to Payments" class="btn btn-info btn-sm mr-2" onclick="location.href='<?php echo base_url().'payments/loan-details/'.$appr['loan_no'];?>'">
                                                         <i class="material-icons">payment</i>
                                                     </button>
-                                                <? } ?>
+                                                <?php } ?>
                                             </td>
                                         </tr>
                                          <!-- Modal  -->
-                                        <div class="modal fade" id="cash<? echo $appr['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="cash<?php echo $appr['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -90,14 +90,14 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <button type="button" class="btn btn-primary cash-release" id="<? echo $appr['loan_no'];?>">Yes</button>
+                                                        <button type="button" class="btn btn-primary cash-release" id="<?php echo $appr['loan_no'];?>">Yes</button>
                                                     </div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- End of modal -->
-                                        <? }} ?> 
+                                        <?php }} ?> 
                                     </tbody>
                                 </table>
                             </div>

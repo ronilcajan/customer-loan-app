@@ -13,7 +13,7 @@
                     <div class="col-md-12">
                         <div class="form-group mt-4">
                             <label class="bmd-label-floating">Username</label>
-                            <input type="text" class="form-control pl-3 username" value="<? echo $this->session->userdata('username');?>" name="username" readonly>
+                            <input type="text" class="form-control pl-3 username" value="<?php echo $this->session->userdata('username');?>" name="username" readonly>
                         </div>
                         <div class="form-group mt-4">
                             <label class="bmd-label-floating">Enter New Password</label>
@@ -38,74 +38,51 @@
 <div>
     <!--   Core JS Files   -->
        
-    <script src="<? echo base_url();?>assets/js/core/jquery.min.js"></script>
-    <script src="<? echo base_url();?>assets/js/core/jquery-migrate-1.2.1.js"></script>
-    <script src="<? echo base_url();?>assets/js/plugins/jquery-ui.min.js"></script>
-    <script src="<? echo base_url();?>assets/js/core/popper.min.js"></script>
-    <script src="<? echo base_url();?>assets/js/core/bootstrap-material-design.min.js"></script>
-    <script src="<? echo base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/core/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/core/jquery-migrate-1.2.1.js"></script>
+    <script src="<?php echo base_url();?>assets/js/plugins/jquery-ui.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/core/popper.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/core/bootstrap-material-design.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!-- Plugin for the momentJs  -->
-    <script src="<? echo base_url();?>assets/js/plugins/moment.min.js"></script>
-    
-    <!--  Plugin for Sweet Alert -->
-    <!-- <script src="<? echo base_url();?>assets/js/plugins/sweetalert2.js"></script> -->
-    <!-- Forms Validations Plugin -->
-    <!-- <script src="<? echo base_url();?>assets/js/plugins/jquery.validate.min.js"></script> -->
-    <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-    <!-- <script src="<? echo base_url();?>assets/js/plugins/jquery.bootstrap-wizard.js"></script> -->
-    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-    <!-- <script src="<? echo base_url();?>assets/js/plugins/bootstrap-selectpicker.js"></script> -->
-    <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-    <!-- <script src="<? echo base_url();?>assets/js/plugins/bootstrap-datepicker.js"></script> -->
-    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+    <script src="<?php echo base_url();?>assets/js/plugins/moment.min.js"></script>
 
-    <script src="<? echo base_url();?>assets/js/plugins/jquery.dataTables.min.js"></script>
-    <script src="<? echo base_url();?>assets/js/plugins/range_dates.js"></script>
+    <script src="<?php echo base_url();?>assets/js/plugins/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/plugins/range_dates.js"></script>
 
-    <? $site = $_SERVER['REQUEST_URI'];?>
-    <? $site1 = 'reports';?>
+    <?php $site = $_SERVER['REQUEST_URI'];?>
+    <?php $site1 = 'reports';?>
     <?if(strpos($site, $site1)){?>
-    <script src="<? echo base_url();?>assets/js/plugins/jszip.min.js"></script>
-    <script src="<? echo base_url();?>assets/js/plugins/dataTables.buttons.min.js"></script>
-    <script src="<? echo base_url();?>assets/js/plugins/pdfmake.min.js"></script>
-    <script src="<? echo base_url();?>assets/js/plugins/vfs_fonts.js"></script>
-    <script src="<? echo base_url();?>assets/js/plugins/buttons.html5.min.js"></script>
-    <script src="<? echo base_url();?>assets/js/plugins/buttons.print.min.js"></script>
-    <script src="<? echo base_url();?>assets/js/plugins/buttons.flash.min.js"></script>
-    <? }else{
+    <script src="<?php echo base_url();?>assets/js/plugins/jszip.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/plugins/dataTables.buttons.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/plugins/pdfmake.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/plugins/vfs_fonts.js"></script>
+    <script src="<?php echo base_url();?>assets/js/plugins/buttons.html5.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/plugins/buttons.print.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/plugins/buttons.flash.min.js"></script>
+    <?php }else{
 
     } ?>
-    <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-    <!-- <script src="<? echo base_url();?>assets/js/plugins/bootstrap-tagsinput.js"></script> -->
-    <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-    <!-- <script src="<? echo base_url();?>assets/js/plugins/jasny-bootstrap.min.js"></script> -->
-    <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-    <!-- <script src="<? echo base_url();?>assets/js/plugins/fullcalendar.min.js"></script> -->
-    <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-    <!-- <script src="<? echo base_url();?>assets/js/plugins/jquery-jvectormap.js"></script> -->
-    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <!-- <script src="<? echo base_url();?>assets/js/plugins/nouislider.min.js"></script> -->
-    <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-    <script src="<? echo base_url();?>assets/js/core/core.js"></script>
+    <script src="<?php echo base_url();?>assets/js/core/core.js"></script>
     <!-- Library for adding dinamically elements -->
-    <script src="<? echo base_url();?>assets/js/plugins/arrive.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/plugins/arrive.min.js"></script>
     <!--  Google Maps Plugin    -->
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
     <!-- Chartist JS -->
-    <script src="<? echo base_url();?>assets/js/plugins/chartist.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/plugins/chartist.min.js"></script>
     <!--  Notifications Plugin    -->
-    <script src="<? echo base_url();?>assets/js/plugins/bootstrap-notify.js"></script>
+    <script src="<?php echo base_url();?>assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="<? echo base_url();?>assets/js/material-dashboard.js?v=2.1.1"></script>
+    <script src="<?php echo base_url();?>assets/js/material-dashboard.js?v=2.1.1"></script>
 
     <!-- my ajax here -->
     <script type="text/javascript"> 
         var BASE_URL = "<?php echo base_url();?>";
     </script>
-    <script src="<? echo base_url();?>assets/js/myscript.js"></script>
-    <script src="<? echo base_url();?>assets/js/myajax.js"></script>
-    <script src="<? echo base_url();?>assets/js/myajax2.js"></script>
-    <script src="<? echo base_url();?>assets/js/staff.js"></script>
+    <script src="<?php echo base_url();?>assets/js/myscript.js"></script>
+    <script src="<?php echo base_url();?>assets/js/myajax.js"></script>
+    <script src="<?php echo base_url();?>assets/js/myajax2.js"></script>
+    <script src="<?php echo base_url();?>assets/js/staff.js"></script>
     <script>
         $(document).ready(function() {
         $().ready(function() {

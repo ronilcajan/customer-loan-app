@@ -1,7 +1,7 @@
 <body style="background-color:#eeeeee;">
     <div class="contiainer-fluid">
         
-        <? $this->load->view('loading_screen');?>
+        <?php $this->load->view('loading_screen');?>
 
  
         <div class="w-100 row">
@@ -49,14 +49,14 @@
                 </div>
                 <div class="text-center col-12">
                     <small>
-                        Powered by:<img class="img img-fluid" width="50" height="50" src="<? echo base_url();?>assets/images/claims-logo.png">
+                        Powered by:<img class="img img-fluid" width="50" height="50" src="<?php echo base_url();?>assets/images/claims-logo.png">
                         CLAIMS
                     </small>
                 </div> 
             </div>
 
             <div class="w-50 p-0 m-0" style="height: 620px;">
-                <img src="<? echo base_url();?>assets/images/home.jpg" height="628">
+                <img src="<?php echo base_url();?>assets/images/home.jpg" height="628">
             </div>
 
         </div>

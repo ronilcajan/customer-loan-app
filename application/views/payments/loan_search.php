@@ -2,13 +2,13 @@
     <div class="wrapper ">
 
         <!-- Top NavBar -->
-        <? $this->load->view('navigation/sidebar');?>
+        <?php $this->load->view('navigation/sidebar');?>
         <!-- End of NavBar -->
 
         <div class="main-panel">
 
         <!-- Navbar -->
-        <? $this->load->view('navigation/topbar');?>
+        <?php $this->load->view('navigation/topbar');?>
         <!-- End Navbar -->
 
         <div class="content">

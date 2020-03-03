@@ -1,17 +1,17 @@
 <body class="">
   
-    <? $this->load->view('loading_screen');?>
+    <?php $this->load->view('loading_screen');?>
     
     <div class="wrapper ">
 
     <!-- Top NavBar -->
-    <? $this->load->view('navigation/sidebar');?>
+    <?php $this->load->view('navigation/sidebar');?>
     <!-- End of NavBar -->
 
     <div class="main-panel">
 
     <!-- Navbar -->
-    <? $this->load->view('navigation/topbar');?>
+    <?php $this->load->view('navigation/topbar');?>
     <!-- End Navbar -->
 
         <div class="content" style="margin-top:50px">
@@ -41,18 +41,18 @@
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
-                                    <? if(!empty($stafflist)){  ?>
-                                    <? foreach($stafflist as $key => $st){
+                                    <?php if(!empty($stafflist)){  ?>
+                                    <?php foreach($stafflist as $key => $st){
                                            
                                         ?>
                                         <tr>
-                                            <td><a href="<? echo base_url().'staff-profile/'.$st['username'];?>"><? echo $st['lastname'].','.$st['firstname'].' '.$st['middlename'];?></a></td>
+                                            <td><a href="<?php echo base_url().'staff-profile/'.$st['username'];?>"><?php echo $st['lastname'].','.$st['firstname'].' '.$st['middlename'];?></a></td>
                                             <td class="text-center">
-                                                <? echo $st['address'];?>
+                                                <?php echo $st['address'];?>
                                             </td>
-                                            <td><? echo $st['number'];?></td>
-                                            <td><? echo $st['email'];?></td>
-                                            <td><? echo $st['user_type'];?></td>
+                                            <td><?php echo $st['number'];?></td>
+                                            <td><?php echo $st['email'];?></td>
+                                            <td><?php echo $st['user_type'];?></td>
 
                                             <td class="td-actions text-right">
                                                 <button type="button" rel="tooltip" title="View staff information" class="btn btn-info btn-sm btn-link" data-toggle="modal">
@@ -63,7 +63,7 @@
                                                 </button>
                                             </td>
                                         </tr>
-                                    <? } }?>
+                                    <?php } }?>
                                     </tbody>
                                 </table>
                             </div>

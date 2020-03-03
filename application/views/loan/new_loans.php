@@ -1,17 +1,17 @@
 <body class="">
   
-    <? $this->load->view('loading_screen');?>
+    <?php $this->load->view('loading_screen');?>
     
     <div class="wrapper ">
 
     <!-- Top NavBar -->
-    <? $this->load->view('navigation/sidebar');?>
+    <?php $this->load->view('navigation/sidebar');?>
     <!-- End of NavBar -->
 
     <div class="main-panel">
 
     <!-- Navbar -->
-    <? $this->load->view('navigation/topbar');?>
+    <?php $this->load->view('navigation/topbar');?>
     <!-- End Navbar -->
 
         <div class="content" style="margin-top:50px">
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         
-                        <? $this->load->view('navigation/loan_navbar');?>
+                        <?php $this->load->view('navigation/loan_navbar');?>
 
                         <div class="tab-content tab-space">
                             <div class="tab-pane active">
@@ -41,35 +41,35 @@
                                     <th >Action</th>
                                 </thead>
                                 <tbody>
-                                    <? foreach($verify as $key => $verified){
+                                    <?php foreach($verify as $key => $verified){
                                             if(!empty($verified)){  
                                         ?>
                                         <tr>
-                                            <td><? echo $verified['loan_no'];?></td>
+                                            <td><?php echo $verified['loan_no'];?></td>
                                             <td class="text-center">
-                                                <a href="<? echo base_url().'borrowers/profile/'.$verified['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $verified['lastname'].','.$verified['firstname'].' '.$verified['middlename'];?></a>
+                                                <a href="<?php echo base_url().'borrowers/profile/'.$verified['account_no'];?>" rel="tooltip" title="Go to profile"><?php echo $verified['lastname'].','.$verified['firstname'].' '.$verified['middlename'];?></a>
                                             </td>
-                                            <td class="text-center" id="amount<? echo $verified['loan_no'];?>" ><? echo $verified['loan_amount'];?></td>
-                                            <td class="text-center"><? echo $verified['date_loan'];?></td>
-                                            <td class="text-center"><? echo $verified['verified'];?></td>
+                                            <td class="text-center" id="amount<?php echo $verified['loan_no'];?>" ><?php echo $verified['loan_amount'];?></td>
+                                            <td class="text-center"><?php echo $verified['date_loan'];?></td>
+                                            <td class="text-center"><?php echo $verified['verified'];?></td>
 
                                             <td>
-                                                <span class="font-italic text-muted "><? echo $verified['status'];?></span>
+                                                <span class="font-italic text-muted "><?php echo $verified['status'];?></span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="Approve this loan" class="btn btn-success btn-link btn-sm approve approve<? echo $verified['loan_no'];?>" id="<? echo $verified['loan_no'];?>">
+                                                <button type="button" rel="tooltip" title="Approve this loan" class="btn btn-success btn-link btn-sm approve approve<?php echo $verified['loan_no'];?>" id="<?php echo $verified['loan_no'];?>">
                                                     <i class="material-icons">verified_user</i>
                                                 </button>|
-                                                <button type="button" rel="tooltip" title="Reject this loan" class="btn btn-warning btn-sm btn-link" data-target="#reject_client<? echo $verified['loan_no'];?>" id="reject-button<? echo $verified['loan_no'];?>" data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="Reject this loan" class="btn btn-warning btn-sm btn-link" data-target="#reject_client<?php echo $verified['loan_no'];?>" id="reject-button<?php echo $verified['loan_no'];?>" data-toggle="modal">
                                                     <i class="material-icons">warning</i>
                                                 </button>|
-                                                <button type="button" rel="tooltip" title="Remove this loan" class="btn btn-danger btn-sm btn-link" data-target="#remove_loan<? echo $verified['loan_no'];?>" id="remove-loan<? echo $verified['loan_no'];?>" data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="Remove this loan" class="btn btn-danger btn-sm btn-link" data-target="#remove_loan<?php echo $verified['loan_no'];?>" id="remove-loan<?php echo $verified['loan_no'];?>" data-toggle="modal">
                                                     <i class="material-icons">remove_circle</i>
                                                 </button>
                                             </td>
                                         </tr>
                                          <!-- Modal for reject clients -->
-                                        <div class="modal fade" id="reject_client<? echo $verified['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="reject_client<?php echo $verified['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -87,7 +87,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <button type="button" class="btn btn-warning reject" id="<? echo $verified['loan_no'];?>">Reject</button>
+                                                        <button type="button" class="btn btn-warning reject" id="<?php echo $verified['loan_no'];?>">Reject</button>
                                                     </div>
                                                     </form>
                                                 </div>
@@ -95,7 +95,7 @@
                                         </div>
                                         <!-- End of modal -->
                                         <!-- Modal for remove clients -->
-                                        <div class="modal fade" id="remove_loan<? echo $verified['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="remove_loan<?php echo $verified['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -110,19 +110,19 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <button type="button" class="btn btn-danger remove" id="<? echo $verified['loan_no'];?>">Remove</button>
+                                                        <button type="button" class="btn btn-danger remove" id="<?php echo $verified['loan_no'];?>">Remove</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- End of modal -->
 
-                                        <? } else { ?>
+                                        <?php } else { ?>
 
                                         <tr>
                                             <td colspan="5">No data available..</td>
                                         </tr>
-                                        <? } }?> 
+                                        <?php } }?> 
                                 </tbody>
                             </table>
                         </div>

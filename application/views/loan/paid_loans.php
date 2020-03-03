@@ -1,17 +1,17 @@
     <body class="">
   
-    <? $this->load->view('loading_screen');?>
+    <?php $this->load->view('loading_screen');?>
     
     <div class="wrapper ">
 
     <!-- Top NavBar -->
-    <? $this->load->view('navigation/sidebar');?>
+    <?php $this->load->view('navigation/sidebar');?>
     <!-- End of NavBar -->
 
     <div class="main-panel">
 
     <!-- Navbar -->
-    <? $this->load->view('navigation/topbar');?>
+    <?php $this->load->view('navigation/topbar');?>
     <!-- End Navbar -->
 
         <div class="content" style="margin-top:50px">
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-12">
               
-                        <? $this->load->view('navigation/loan_navbar');?>
+                        <?php $this->load->view('navigation/loan_navbar');?>
 
                         <div class="tab-content tab-space">
                             <div class="tab-pane active">
@@ -40,27 +40,27 @@
                                         <th>Status</th>
                                     </thead>
                                     <tbody>
-                                        <? foreach($paid as $key => $actv){
+                                        <?php foreach($paid as $key => $actv){
                                             if(!empty($actv)){  
                                         ?>
                                         <tr>
-                                            <td><? echo $actv['account_no'];?></td>
+                                            <td><?php echo $actv['account_no'];?></td>
                                             <td>
-                                                <a href="<? echo base_url().'borrowers/profile/'.$actv['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $actv['lastname'].','.$actv['firstname'].' '.$actv['middlename'];?></a>
+                                                <a href="<?php echo base_url().'borrowers/profile/'.$actv['account_no'];?>" rel="tooltip" title="Go to profile"><?php echo $actv['lastname'].','.$actv['firstname'].' '.$actv['middlename'];?></a>
                                             </td>
-                                            <td><a href="<? echo base_url().'payments/loan-details/'.$actv['loan_no'];?>"><? echo $actv['loan_no'];?></td>
-                                            <td><? echo $actv['loan_amount'];?></td>
-                                            <td><? echo $actv['approved'];?></td>
+                                            <td><a href="<?php echo base_url().'payments/loan-details/'.$actv['loan_no'];?>"><?php echo $actv['loan_no'];?></td>
+                                            <td><?php echo $actv['loan_amount'];?></td>
+                                            <td><?php echo $actv['approved'];?></td>
                                             <td>
-                                                <span class="font-italic text-muted "><? echo $actv['status'];?></span>
+                                                <span class="font-italic text-muted "><?php echo $actv['status'];?></span>
                                             </td>
                                         </tr>
-                                        <? } else { ?>
+                                        <?php } else { ?>
 
                                         <tr>
                                             <td colspan="5">No data available..</td>
                                         </tr>
-                                        <? } }?>                  
+                                        <?php } }?>                  
                                     </tbody>
                                 </table>
                             </div>

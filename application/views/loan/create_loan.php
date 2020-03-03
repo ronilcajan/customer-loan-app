@@ -1,15 +1,15 @@
 <body class="">
-    <? $this->load->view('loading_screen');?>
+    <?php $this->load->view('loading_screen');?>
     <div class="wrapper ">
 
         <!-- Top NavBar -->
-        <? $this->load->view('navigation/sidebar');?>
+        <?php $this->load->view('navigation/sidebar');?>
         <!-- End of NavBar -->
 
         <div class="main-panel">
 
         <!-- Navbar -->
-        <? $this->load->view('navigation/topbar');?>
+        <?php $this->load->view('navigation/topbar');?>
         <!-- End Navbar -->
 
             <div class="content" style="margin-top:50px">
@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-md-12">
 
-                            <? $this->load->view('navigation/loan_navbar');?>
+                            <?php $this->load->view('navigation/loan_navbar');?>
                             
                             <div class="tab-content tab-space">
 
@@ -35,11 +35,11 @@
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Loan No</label>
-                                                                    <? if($loan_no==100){?> 
-                                                                    <input type="text" class="form-control loan_no" name="loan" value="L<? echo 1000;?>" readonly>
-                                                                    <? }else{ ?>
-                                                                    <input type="text" class="form-control loan_no" name="loan" value="L<? echo $loan_no+1;?>" readonly>
-                                                                    <? } ?>
+                                                                    <?php if($loan_no==100){?> 
+                                                                    <input type="text" class="form-control loan_no" name="loan" value="L<?php echo 1000;?>" readonly>
+                                                                    <?php }else{ ?>
+                                                                    <input type="text" class="form-control loan_no" name="loan" value="L<?php echo $loan_no+1;?>" readonly>
+                                                                    <?php } ?>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
@@ -73,8 +73,8 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="input-group no-border">
-                                                                    <? if(isset($account_no)){?>
-                                                                       <input type="text" value="<? echo $account_no?>" class="form-control accnt_no" placeholder="Account no" autofocus required>
+                                                                    <?php if(isset($account_no)){?>
+                                                                       <input type="text" value="<?php echo $account_no?>" class="form-control accnt_no" placeholder="Account no" autofocus required>
                                                                     <?}else{?>
                                                                         <input type="text" value="" class="form-control accnt_no" placeholder="Account no" autofocus required>
                                                                     <?}?>
@@ -97,9 +97,9 @@
                                                                 <div class="form-group">
                                                                     <select id="inputState1" class="form-control collector">
                                                                         <option disabled selected>Choose collector...</option>
-                                                                        <? foreach($collector as $key => $collect) { 
+                                                                        <?php foreach($collector as $key => $collect) { 
                                                                             if(!empty($collect)){  ?>
-                                                                            <option value="<? echo $collect['username'];?>"><? echo $collect['username'];?> </option>
+                                                                            <option value="<?php echo $collect['username'];?>"><?php echo $collect['username'];?> </option>
                                                                         <?}}?>
                                                                     </select>
                                                                 </div>
@@ -108,9 +108,9 @@
                                                                 <div class="form-group">
                                                                     <select id="inputState" class="form-control verifier">
                                                                         <option disabled selected>Verified by...</option>
-                                                                        <? var_dump($verifier); 
+                                                                        <?php var_dump($verifier); 
                                                                         foreach($verifier as $key => $verified) { ?>
-                                                                            <option value="<? echo $verified['username'];?> "><? echo $verified['username'];?></option>
+                                                                            <option value="<?php echo $verified['username'];?> "><?php echo $verified['username'];?></option>
                                                                         <?}?>
                                                                     </select>
                                                                 </div>

@@ -2,27 +2,26 @@
 		<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top">
 			<div class="container-fluid">
 			<div class="navbar-wrapper">
-				<?
-				$site = $_SERVER['PATH_INFO'];
+				<?php $site = $_SERVER['PATH_INFO'];
 				if( $site == '/dashboard'){?>
-				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>dashboard">Dashboard</a>
-				<?}elseif(strpos($site, 'borrowers/')) {?>
-				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>borrowers/create-borrowers">Manage Borrowers</a>
-				<?}elseif(strpos($site, 'borrowers/profile')){?>
-				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>borrowers/create-borrowers">Client Profile</a>
-				<?}elseif(strpos($site,'loan/')){?>
-				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>loan/create-loan">Manage Loan</a>
-				<?}elseif(strpos($site,'payments/')){?>
-				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>payments/loan_details">Manage Payments</a>
-				<?}elseif(strpos($site,'reports')){?>
-				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>reprots">Manage Reports</a>
-				<?}elseif(strpos($site,'staff')){?>
-				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>staff">Manage Staff</a>
-				<?}elseif(strpos($site,'my-profile')){?>
-				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>staff">My Profile</a>
-				<?}elseif(strpos($site, 'back-up')){?>
-				<a class="navbar-brand font-weight-bold" href="<? echo base_url();?>staff">Manage Files</a>
-				<?}else{
+				<a class="navbar-brand font-weight-bold" href="<?php echo base_url();?>dashboard">Dashboard</a>
+				<?php }elseif(strpos($site, 'borrowers/')) {?>
+				<a class="navbar-brand font-weight-bold" href="<?php echo base_url();?>borrowers/create-borrowers">Manage Borrowers</a>
+				<?php }elseif(strpos($site, 'borrowers/profile')){?>
+				<a class="navbar-brand font-weight-bold" href="<?php echo base_url();?>borrowers/create-borrowers">Client Profile</a>
+				<?php }elseif(strpos($site,'loan/')){?>
+				<a class="navbar-brand font-weight-bold" href="<?php echo base_url();?>loan/create-loan">Manage Loan</a>
+				<?php }elseif(strpos($site,'payments/')){?>
+				<a class="navbar-brand font-weight-bold" href="<?php echo base_url();?>payments/loan_details">Manage Payments</a>
+				<?php }elseif(strpos($site,'reports')){?>
+				<a class="navbar-brand font-weight-bold" href="<?php echo base_url();?>reprots">Manage Reports</a>
+				<?php }elseif(strpos($site,'staff')){?>
+				<a class="navbar-brand font-weight-bold" href="<?php echo base_url();?>staff">Manage Staff</a>
+				<?php }elseif(strpos($site,'my-profile')){?>
+				<a class="navbar-brand font-weight-bold" href="<?php echo base_url();?>staff">My Profile</a>
+				<?php }elseif(strpos($site, 'back-up')){?>
+				<a class="navbar-brand font-weight-bold" href="<?php echo base_url();?>staff">Manage Files</a>
+				<?php }else{
 					
 				}?>
 			</div>
@@ -34,7 +33,7 @@
 			</button>
 			<div class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav">
-				<? if($this->session->userdata('usertype') == 'Guest') {?>
+				<?php if($this->session->userdata('usertype') == 'Guest') {?>
 				<li class="nav-item">
 					<a class="nav-link" href="#" rel="tooltip" title="Dashboard">
 					<i class="material-icons">dashboard</i>
@@ -45,14 +44,14 @@
 				</li>
 				<?}else{?>
 				<li class="nav-item">
-					<a class="nav-link" href="<? echo base_url();?>dashboard" rel="tooltip" title="Dashboard">
+					<a class="nav-link" href="<?php echo base_url();?>dashboard" rel="tooltip" title="Dashboard">
 					<i class="material-icons">dashboard</i>
 					<p class="d-lg-none d-md-block">
 						Stats
 					</p>
 					</a>
 				</li>
-				<? } ?>
+				<?php } ?>
 				<li class="nav-item dropdown">
 					<a class="nav-link" href="#" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="material-icons">person</i>
@@ -61,16 +60,16 @@
 					</p>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-					<? if($this->session->userdata('usertype') == 'Guest') {?>
+					<?php if($this->session->userdata('usertype') == 'Guest') {?>
 						<a class="dropdown-item" href="#">Profile</a>
 						<a class="dropdown-item" href="#">Change Password</a>
-					<? }else{ ?>
-						<a class="dropdown-item" href="<? echo base_url().'my-profile/'.$this->session->userdata('username');?>">Profile</a>
+					<?php }else{ ?>
+						<a class="dropdown-item" href="<?php echo base_url().'my-profile/'.$this->session->userdata('username');?>">Profile</a>
 						<a class="dropdown-item" href="#change_pass" data-toggle="modal">Change Password</a>
-					<? } ?>
+					<?php } ?>
 					<div class="dropdown-divider"></div>
 
-					<a class="dropdown-item" href="<? echo base_url();?>logout">Log out</a>
+					<a class="dropdown-item" href="<?php echo base_url();?>logout">Log out</a>
 					</div>
 				</li>
 				</ul>

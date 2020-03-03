@@ -2,13 +2,13 @@
 	<div class="wrapper ">
 
 		<!-- Top NavBar -->
-		<? $this->load->view('navigation/sidebar');?>
+		<?php $this->load->view('navigation/sidebar');?>
 		<!-- End of NavBar -->
 
 		<div class="main-panel">
 
 		<!-- Navbar -->
-		<? $this->load->view('navigation/topbar');?>
+		<?php $this->load->view('navigation/topbar');?>
 		<!-- End Navbar -->
 
 		<div class="content">
@@ -21,13 +21,13 @@
 						<i class="material-icons pl-2">groups</i>
 					</div>
 					<p class="card-category">Clients</p>
-					<h3 class="card-title"><? echo $clients;?>
+					<h3 class="card-title"><?php echo $clients;?>
 					</h3>
 					</div>
 					<div class="card-footer">
 					<div class="stats">
 						<i class="material-icons">groups</i>
-						<a href="<? echo base_url();?>borrowers/new-borrowers" class="text-warning">Show all..</a>
+						<a href="<?php echo base_url();?>borrowers/new-borrowers" class="text-warning">Show all..</a>
 					</div>
 					</div>
 				</div>
@@ -39,7 +39,7 @@
 						<i class="material-icons">store</i>
 					</div>
 					<p class="card-category">Revenue</p>
-					<h3 class="card-title">P <? if(empty($payments['amnt'])){ echo '0.00' ;}else{ echo $payments['amnt'];}?></h3>
+					<h3 class="card-title">P <?php if(empty($payments['amnt'])){ echo '0.00' ;}else{ echo $payments['amnt'];}?></h3>
 					</div>
 					<div class="card-footer">
 					<div class="stats">
@@ -55,7 +55,7 @@
 						<i class="material-icons">verified_user</i> 
 					</div>
 					<p class="card-category">Active Loans</p>
-					<h3 class="card-title"><? echo $active;?></h3>
+					<h3 class="card-title"><?php echo $active;?></h3>
 					</div>
 					<div class="card-footer">
 					<div class="stats">
@@ -76,7 +76,7 @@
 					<div class="card-footer">
 					<div class="stats">
 						<i class="material-icons">warning</i> 
-						<a href="<? echo base_url();?>loan/approved-loans" class="text-danger">Unfinish Cash Release...</a>
+						<a href="<?php echo base_url();?>loan/approved-loans" class="text-danger">Unfinish Cash Release...</a>
 					</div>
 					</div>
 				</div>
@@ -102,23 +102,23 @@
 
 								<?
 								if(!empty($due)){?>
-									<? foreach ($due as $key => $d) {?>
+									<?php foreach ($due as $key => $d) {?>
 									<tr>
 										<td>
-											<? echo $d['loan_no'];?>
+											<?php echo $d['loan_no'];?>
 										</td>	
 										<td>
-											<? echo $d['loan_amount'];?>
+											<?php echo $d['loan_amount'];?>
 										</td>
 										<td>
-											<? echo $d['due_date'];?>
+											<?php echo $d['due_date'];?>
 										</td>
 									</tr>
-								<? } }else{?>
+								<?php } }else{?>
 									<tr>
 										<td colspan="3" class="text-center">No data available</td>
 									</tr>
-								<? } ?>
+								<?php } ?>
 								</tbody>
 							</table>
 						</div>
@@ -134,51 +134,51 @@
 							<div class="card-body">
                                 <table class="table">
                                     <tbody>
-                                        <? if(!empty($task)){?>
-                                        <? foreach ($task as $key => $mytask) {?>
-                                        <tr class="task<? echo $mytask['task_id'];?>">
-                                            <td><? echo $mytask['description'];?>
+                                        <?php if(!empty($task)){?>
+                                        <?php foreach ($task as $key => $mytask) {?>
+                                        <tr class="task<?php echo $mytask['task_id'];?>">
+                                            <td><?php echo $mytask['description'];?>
                                             </td>
-                                            <td><? echo $mytask['status'];?></td>
-                                            <? if($mytask['status'] == "Doned"){?>
+                                            <td><?php echo $mytask['status'];?></td>
+                                            <?php if($mytask['status'] == "Doned"){?>
                                                  <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm remove_task" id="<? echo $mytask['task_id'];?>">
+                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm remove_task" id="<?php echo $mytask['task_id'];?>">
                                                 <i class="material-icons">close</i>
                                                 </button></td>
                                             <?}else{?>
                                             <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" title="Done Task" class="btn btn-success btn-link btn-sm done_task" id="<? echo $mytask['task_id'];?>">
+                                            <button type="button" rel="tooltip" title="Done Task" class="btn btn-success btn-link btn-sm done_task" id="<?php echo $mytask['task_id'];?>">
                                                 <i class="material-icons">done_all</i>
                                             </button>
-                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm edit_task" id="<? echo $mytask['task_id'];?>">
+                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm edit_task" id="<?php echo $mytask['task_id'];?>">
                                                 <i class="material-icons">edit</i>
                                             </button>
-                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm remove_task" id="<? echo $mytask['task_id'];?>">
+                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm remove_task" id="<?php echo $mytask['task_id'];?>">
                                                 <i class="material-icons">close</i>
                                             </button>
                                             </td>
-                                            <? } ?>
+                                            <?php } ?>
                                         </tr>
-                                        <tr class="cancel_task<? echo $mytask['task_id'];?>" style="display: none;">
+                                        <tr class="cancel_task<?php echo $mytask['task_id'];?>" style="display: none;">
                                             <form id="edit_task" method="POST">
                                                 <td>
-                                                    <input class="form-control task_des" type="text" name="description" value="<? echo $mytask['description'];?>">
+                                                    <input class="form-control task_des" type="text" name="description" value="<?php echo $mytask['description'];?>">
                                                 </td>
-                                                <td><? echo $mytask['status'];?></td>
+                                                <td><?php echo $mytask['status'];?></td>
                                                 <td class="td-actions text-right">
-                                                    <button type="submit" rel="tooltip" title="Update Task" class="btn btn-success btn-link btn-sm update_task" id="<? echo $mytask['task_id'];?>">
+                                                    <button type="submit" rel="tooltip" title="Update Task" class="btn btn-success btn-link btn-sm update_task" id="<?php echo $mytask['task_id'];?>">
                                                         <i class="material-icons">done</i>
                                                     </button>
-                                                    <button type="button" rel="tooltip" title="Cancel Update" class="btn btn-danger btn-link btn-sm cancel_task" id="<? echo $mytask['task_id'];?>">
+                                                    <button type="button" rel="tooltip" title="Cancel Update" class="btn btn-danger btn-link btn-sm cancel_task" id="<?php echo $mytask['task_id'];?>">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                             </td>
                                                 </td>
                                             </form>
                                         </tr>
-                                        <? }}else{?>
+                                        <?php }}else{?>
                                             <tr><td class="text-center">No created task</td></tr>
-                                        <? } ?>
+                                        <?php } ?>
                                     </tbody>  
                                 </table>
                             </div>

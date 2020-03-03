@@ -2,18 +2,18 @@
 	<div class="wrapper ">
 
 		<!-- Top NavBar -->
-		<? $this->load->view('navigation/sidebar');?>
+		<?php $this->load->view('navigation/sidebar');?>
 		<!-- End of NavBar -->
 
 		<div class="main-panel">
 
 		<!-- Navbar -->
-		<? $this->load->view('navigation/topbar');?>
+		<?php $this->load->view('navigation/topbar');?>
         <!-- End Navbar -->
 
         <div class="content">
             <div class="container-fluid">
-                    <? if(empty($staff)){?>
+                    <?php if(empty($staff)){?>
                         <div class="row"> 
                             <div class="col-md-8">
                                 <div class="card">
@@ -114,10 +114,10 @@
                             <div class="col-md-4">
                                 <div class="card card-profile">
                                     <div class="card-avatar">
-                                            <img class="img" src="<? echo base_url();?>assets/images/person.png" />
+                                            <img class="img" src="<?php echo base_url();?>assets/images/person.png" />
                                     </div>
                                     <div class="card-body">
-                                        <h6 class="card-category text-gray"><? echo $this->session->userdata('usertype');?></h6>
+                                        <h6 class="card-category text-gray"><?php echo $this->session->userdata('usertype');?></h6>
                                         <h4 class="card-title">Your name</h4>
                                         <p class="card-description">
                                              Your bio...
@@ -140,51 +140,51 @@
                                         <div class="card-body">
                                             <table class="table">
                                                 <tbody>
-                                                    <? if(!empty($task)){?>
-                                                    <? foreach ($task as $key => $mytask) {?>
-                                                    <tr class="task<? echo $mytask['task_id'];?>">
-                                                        <td><? echo $mytask['description'];?>
+                                                    <?php if(!empty($task)){?>
+                                                    <?php foreach ($task as $key => $mytask) {?>
+                                                    <tr class="task<?php echo $mytask['task_id'];?>">
+                                                        <td><?php echo $mytask['description'];?>
                                                         </td>
-                                                        <td><? echo $mytask['status'];?></td>
-                                                        <? if($mytask['status'] == "Doned"){?>
+                                                        <td><?php echo $mytask['status'];?></td>
+                                                        <?php if($mytask['status'] == "Doned"){?>
                                                              <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm remove_task" id="<? echo $mytask['task_id'];?>">
+                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm remove_task" id="<?php echo $mytask['task_id'];?>">
                                                             <i class="material-icons">close</i>
                                                             </button></td>
                                                         <?}else{?>
                                                         <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="Done Task" class="btn btn-success btn-link btn-sm done_task" id="<? echo $mytask['task_id'];?>">
+                                                        <button type="button" rel="tooltip" title="Done Task" class="btn btn-success btn-link btn-sm done_task" id="<?php echo $mytask['task_id'];?>">
                                                             <i class="material-icons">done_all</i>
                                                         </button>
-                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm edit_task" id="<? echo $mytask['task_id'];?>">
+                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm edit_task" id="<?php echo $mytask['task_id'];?>">
                                                             <i class="material-icons">edit</i>
                                                         </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm remove_task" id="<? echo $mytask['task_id'];?>">
+                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm remove_task" id="<?php echo $mytask['task_id'];?>">
                                                             <i class="material-icons">close</i>
                                                         </button>
                                                         </td>
-                                                        <? } ?>
+                                                        <?php } ?>
                                                     </tr>
-                                                    <tr class="cancel_task<? echo $mytask['task_id'];?>" style="display: none;">
+                                                    <tr class="cancel_task<?php echo $mytask['task_id'];?>" style="display: none;">
                                                         <form id="edit_task" method="POST">
                                                             <td>
-                                                                <input class="form-control task_des" type="text" name="description" value="<? echo $mytask['description'];?>">
+                                                                <input class="form-control task_des" type="text" name="description" value="<?php echo $mytask['description'];?>">
                                                             </td>
-                                                            <td><? echo $mytask['status'];?></td>
+                                                            <td><?php echo $mytask['status'];?></td>
                                                             <td class="td-actions text-right">
-                                                                <button type="submit" rel="tooltip" title="Update Task" class="btn btn-success btn-link btn-sm update_task" id="<? echo $mytask['task_id'];?>">
+                                                                <button type="submit" rel="tooltip" title="Update Task" class="btn btn-success btn-link btn-sm update_task" id="<?php echo $mytask['task_id'];?>">
                                                                     <i class="material-icons">done</i>
                                                                 </button>
-                                                                <button type="button" rel="tooltip" title="Cancel Update" class="btn btn-danger btn-link btn-sm cancel_task" id="<? echo $mytask['task_id'];?>">
+                                                                <button type="button" rel="tooltip" title="Cancel Update" class="btn btn-danger btn-link btn-sm cancel_task" id="<?php echo $mytask['task_id'];?>">
                                                                     <i class="material-icons">close</i>
                                                                 </button>
                                                         </td>
                                                             </td>
                                                         </form>
                                                     </tr>
-                                                    <? }}else{?>
+                                                    <?php }}else{?>
                                                         <tr><td class="text-center">No created task</td></tr>
-                                                    <? } ?>
+                                                    <?php } ?>
                                                 </tbody>  
                                             </table>
                                         </div>
@@ -194,40 +194,40 @@
                                 <div class="col-md-4">
                                     <div class="card card-profile">
                                         <div class="card-avatar" style="height: 150px">
-                                            <? if(empty($staff['profile_img'])){?>
-                                                <img class="img" src="<? echo base_url();?>assets/images/person.png" />
+                                            <?php if(empty($staff['profile_img'])){?>
+                                                <img class="img" src="<?php echo base_url();?>assets/images/person.png" />
                                             <?}else{?>
-                                                <img class="img"  style="height:130px" src="<? echo base_url().'uploads/'.$staff['profile_img'];?>" />
-                                            <? } ?>
+                                                <img class="img"  style="height:130px" src="<?php echo base_url().'uploads/'.$staff['profile_img'];?>" />
+                                            <?php } ?>
                                         </div>
                                         <div class="card-body">
-                                            <h6 class="card-category text-gray"><? echo $staff['user_type'];?></h6>
-                                            <h4 class="card-title"><? echo $staff['firstname'];?> <? echo $staff['middlename'];?><? echo $staff['lastname'];?></h4>
+                                            <h6 class="card-category text-gray"><?php echo $staff['user_type'];?></h6>
+                                            <h4 class="card-title"><?php echo $staff['firstname'];?> <?php echo $staff['middlename'];?><?php echo $staff['lastname'];?></h4>
                                             <p class="card-description">
-                                                <? echo $staff['bio'];?>
+                                                <?php echo $staff['bio'];?>
                                             </p>
                                             <table class="w-100">
                                                 <tr class="text-left">
                                                     <td class="font-weight-bold">Email Address:</td>
-                                                    <td><? echo $staff['email'];?> </td>
+                                                    <td><?php echo $staff['email'];?> </td>
                                                 </tr>
                                                 <tr class="text-left">
                                                     <td class="font-weight-bold">Contact Number</td>
-                                                    <td><? echo $staff['number'];?> </td>
+                                                    <td><?php echo $staff['number'];?> </td>
                                                 </tr>
                                                 <tr class="text-left">
                                                     <td class="font-weight-bold">Address</td>
-                                                    <td><? echo $staff['address'];?> </td>
+                                                    <td><?php echo $staff['address'];?> </td>
                                                 </tr>
                                             </table>
-                                            <? if($this->session->userdata('username') == $staff['user']){?>
+                                            <?php if($this->session->userdata('username') == $staff['user']){?>
                                             <button class="btn btn-primary btn-sm btn-round mt-4 pl-2 pr-3" data-target="#edit_my_profile" data-toggle="modal"><i class="material-icons">edit</i> Update</button>
-                                        <? } ?>
+                                        <?php } ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                    <? }?>
+                    <?php }?>
 
                     </div>
                 </div>
@@ -284,11 +284,11 @@
                                                         <div class="form-group form-file-upload form-file-multiple ">
                                                             <input type="file" accept="image/*" onchange="loadFile(event)" name="img" class="inputFileHidden"s required>
                                                             <div class="fileinput-new thumbnail img-raised text-center">
-                                                                <? if(empty($staff['profile_img'])){?>
-                                                                    <img class="img-fluid" src="<? echo base_url();?>assets/images/person.png"  width="200" height="200" id="output"/>
+                                                                <?php if(empty($staff['profile_img'])){?>
+                                                                    <img class="img-fluid" src="<?php echo base_url();?>assets/images/person.png"  width="200" height="200" id="output"/>
                                                                 <?}else{?>
-                                                                    <img class="img-fluid" src="<? echo base_url().'uploads/'.$staff['profile_img'];?>" id="output"/>
-                                                                <? } ?> 
+                                                                    <img class="img-fluid" src="<?php echo base_url().'uploads/'.$staff['profile_img'];?>" id="output"/>
+                                                                <?php } ?> 
                                                             </div>
                                                             <div class="input-group mt-2">
                                                                 <span class="input-group-btn">
@@ -307,20 +307,20 @@
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">First Name</label>
-                                                                <input type="text" class="form-control" name="fname" value="<? echo $staff['firstname'];?>" required>
+                                                                <input type="text" class="form-control" name="fname" value="<?php echo $staff['firstname'];?>" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Middle Name</label>
                                                                 <input type="text" class="form-control" name=
-                                                                "mname" value="<? echo $staff['middlename'];?>" required>
+                                                                "mname" value="<?php echo $staff['middlename'];?>" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Last Name</label>
-                                                                <input type="text" class="form-control" name="lname" value="<? echo $staff['lastname'];?>"  required>
+                                                                <input type="text" class="form-control" name="lname" value="<?php echo $staff['lastname'];?>"  required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -328,7 +328,7 @@
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Contact Number</label>
-                                                                <input type="number" class="form-control" name="num" value="<? echo $staff['number'];?>" required>
+                                                                <input type="number" class="form-control" name="num" value="<?php echo $staff['number'];?>" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -337,7 +337,7 @@
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Email Address</label>
                                                                 <input type="email" class="form-control" name=
-                                                                "email" value="<? echo $staff['email'];?>" required>
+                                                                "email" value="<?php echo $staff['email'];?>" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -346,7 +346,7 @@
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Address</label>
                                                                 <input type="text" class="form-control" name=
-                                                                "address" value="<? echo $staff['address'];?>" required>
+                                                                "address" value="<?php echo $staff['address'];?>" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -359,7 +359,7 @@
                                                         <label>Additional Info(Optional)</label>
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating">Write something about your self.. </label>
-                                                            <textarea class="form-control" name="bio" rows="5"><? echo $staff['bio'];?></textarea>
+                                                            <textarea class="form-control" name="bio" rows="5"><?php echo $staff['bio'];?></textarea>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -2,13 +2,13 @@
     <div class="wrapper ">
 
         <!-- Top NavBar -->
-        <? $this->load->view('navigation/sidebar');?>
+        <?php $this->load->view('navigation/sidebar');?>
         <!-- End of NavBar -->
 
         <div class="main-panel">
 
         <!-- Navbar -->
-        <? $this->load->view('navigation/topbar');?>
+        <?php $this->load->view('navigation/topbar');?>
         <!-- End Navbar -->
 
         <div class="content">
@@ -24,8 +24,8 @@
                                     <div class="input-group no-border mt-5">
                                         <div class="ml-auto mr-auto">
 
-                                        <button class="btn btn-outline-primary btn-lg font-weight-bold" rel="tooltip" title="Download SQL File" onclick="location.href='<? echo base_url();?>local-backup'"><i class="fas fa-download"></i> Local</button>
-                                        <a href='<? echo base_url();?>dropbox' class="btn btn-lg font-weight-bold" style="background-color: #18357D" rel="tooltip" title="Upload SQL File to DropBox " onclick="window.open('<? echo base_url();?>dropbox', 'newwindow', 'width=600,height=600'); return false;"><i class="fab fa-dropbox"></i> DropBox</a>
+                                        <button class="btn btn-outline-primary btn-lg font-weight-bold" rel="tooltip" title="Download SQL File" onclick="location.href='<?php echo base_url();?>local-backup'"><i class="fas fa-download"></i> Local</button>
+                                        <a href='<?php echo base_url();?>dropbox' class="btn btn-lg font-weight-bold" style="background-color: #18357D" rel="tooltip" title="Upload SQL File to DropBox " onclick="window.open('<?php echo base_url();?>dropbox', 'newwindow', 'width=600,height=600'); return false;"><i class="fab fa-dropbox"></i> DropBox</a>
                                     </div>
                                     </div>
                                 </div>

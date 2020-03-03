@@ -1,17 +1,17 @@
 <body class="">
   
-    <? $this->load->view('loading_screen');?>
+    <?php $this->load->view('loading_screen');?>
     
     <div class="wrapper ">
 
     <!-- Top NavBar -->
-    <? $this->load->view('navigation/sidebar');?>
+    <?php $this->load->view('navigation/sidebar');?>
     <!-- End of NavBar -->
 
     <div class="main-panel">
 
     <!-- Navbar -->
-    <? $this->load->view('navigation/topbar');?>
+    <?php $this->load->view('navigation/topbar');?>
     <!-- End Navbar -->
 
         <div class="content" style="margin-top:50px">
@@ -61,16 +61,16 @@
                                                     <th>Status</th>
                                                 </thead>
                                                 <tbody>
-                                                    <? foreach ($clients as $key => $all) {?>
+                                                    <?php foreach ($clients as $key => $all) {?>
                                                     <tr>
-                                                        <td><? echo $all['account_no'];?></td>
-                                                        <td><? echo $all['firstname'].' '.$all['middlename'].' '.$all['lastname'];?></td>
-                                                        <td>Purok no. <? echo $all['purok_no'].','.$all['barangay'].','.$all['city'].','.$all['province'].','.$all['country'].','.$all['postal_code'];?></td>
-                                                        <td><? echo $all['email'];?></td>
-                                                        <td><? echo $all['number1'].' & '.$all['number2'];?></td>
-                                                        <td><? echo $all['status'];?></td>
+                                                        <td><?php echo $all['account_no'];?></td>
+                                                        <td><?php echo $all['firstname'].' '.$all['middlename'].' '.$all['lastname'];?></td>
+                                                        <td>Purok no. <?php echo $all['purok_no'].','.$all['barangay'].','.$all['city'].','.$all['province'].','.$all['country'].','.$all['postal_code'];?></td>
+                                                        <td><?php echo $all['email'];?></td>
+                                                        <td><?php echo $all['number1'].' & '.$all['number2'];?></td>
+                                                        <td><?php echo $all['status'];?></td>
                                                     </tr>
-                                                   <? } ?>
+                                                   <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -101,18 +101,18 @@
                                                     <th>Status</th>
                                                 </thead>
                                                 <tbody>
-                                                    <? foreach ($loans as $key => $all) {?>
+                                                    <?php foreach ($loans as $key => $all) {?>
                                                     <tr>
-                                                        <td><? echo $all['account_no'];?></td>
-                                                        <td><? echo $all['firstname'].' '.$all['middlename'].' '.$all['lastname'];?></td>
-                                                        <td><? echo $all['loan_amount'];?></td>
-                                                        <td><? echo $all['terms'];?></td>
-                                                        <td><? echo $all['daily_payment'];?></td>
-                                                        <td><? $time = $all['date_approved']; echo date('M. d, Y', strtotime($time));?></td>
-                                                        <td><? $time = $all['due_date']; echo date('M. d, Y', strtotime($time));?></td>
-                                                        <td><? echo $all['loan_status'];?></td>
+                                                        <td><?php echo $all['account_no'];?></td>
+                                                        <td><?php echo $all['firstname'].' '.$all['middlename'].' '.$all['lastname'];?></td>
+                                                        <td><?php echo $all['loan_amount'];?></td>
+                                                        <td><?php echo $all['terms'];?></td>
+                                                        <td><?php echo $all['daily_payment'];?></td>
+                                                        <td><?php $time = $all['date_approved']; echo date('M. d, Y', strtotime($time));?></td>
+                                                        <td><?php $time = $all['due_date']; echo date('M. d, Y', strtotime($time));?></td>
+                                                        <td><?php echo $all['loan_status'];?></td>
                                                     </tr>
-                                                   <? } ?>
+                                                   <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -153,17 +153,17 @@
                                                     <th>Notes</th>
                                                 </thead>
                                                 <tbody>
-                                                    <? foreach ($payments as $key => $all) {?>
+                                                    <?php foreach ($payments as $key => $all) {?>
                                                     <tr>
-                                                        <td><? echo $all['transaction_id'];?></td>
-                                                        <td><? echo $all['loan_no'];?></td>
-                                                        <td><? echo $all['firstname'].' '.$all['middlename'].' '.$all['lastname'];?></td>
-                                                        <td><? echo $all['amount'];?></td>
-                                                        <td><? echo $all['date'];?></td>
-                                                        <td><? echo $all['collected_by'];?></td>
-                                                        <td><? echo $all['notes'];?></td>
+                                                        <td><?php echo $all['transaction_id'];?></td>
+                                                        <td><?php echo $all['loan_no'];?></td>
+                                                        <td><?php echo $all['firstname'].' '.$all['middlename'].' '.$all['lastname'];?></td>
+                                                        <td><?php echo $all['amount'];?></td>
+                                                        <td><?php echo $all['date'];?></td>
+                                                        <td><?php echo $all['collected_by'];?></td>
+                                                        <td><?php echo $all['notes'];?></td>
                                                     </tr>
-                                                   <? } ?>
+                                                   <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>

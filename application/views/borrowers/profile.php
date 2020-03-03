@@ -2,13 +2,13 @@
 	<div class="wrapper ">
 
 		<!-- Top NavBar -->
-		<? $this->load->view('navigation/sidebar');?>
+		<?php $this->load->view('navigation/sidebar');?>
 		<!-- End of NavBar -->
 
 		<div class="main-panel">
 
 		<!-- Navbar -->
-		<? $this->load->view('navigation/topbar');?>
+		<?php $this->load->view('navigation/topbar');?>
         <!-- End Navbar -->
 
         <div class="content">
@@ -17,39 +17,39 @@
                             <div class="col-md-4">
                                 <div class="card card-profile">
                                     <div class="card-avatar" style="height: 150px">
-                                        <? if(empty($profile['prof_img'])){?>
-                                            <img class="img img-fluid" style="height:130px" src="<? echo base_url().'assets/images/person.png' ?>" alt="client-img"/>
-                                    <? }else{ ?>
-                                        <img class="img img-fluid" style="height:130px" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img"/>
-                                    <? }?>
+                                        <?php if(empty($profile['prof_img'])){?>
+                                            <img class="img img-fluid" style="height:130px" src="<?php echo base_url().'assets/images/person.png' ?>" alt="client-img"/>
+                                    <?php }else{ ?>
+                                        <img class="img img-fluid" style="height:130px" src="<?php echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img"/>
+                                    <?php }?>
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="card-title font-weight-bold"><? echo $profile['fname'].' '.$profile['mname'].'. '.$profile['lname'];?></h4>
-                                        <h6 class="card-category text-gray">Account No. <span class="text-primary"><? echo $profile['account_no'];?></span></h6>
-                                        <p class="card-description mt-3 font-weight-bold"><? echo $profile['info'];?></p>
+                                        <h4 class="card-title font-weight-bold"><?php echo $profile['fname'].' '.$profile['mname'].'. '.$profile['lname'];?></h4>
+                                        <h6 class="card-category text-gray">Account No. <span class="text-primary"><?php echo $profile['account_no'];?></span></h6>
+                                        <p class="card-description mt-3 font-weight-bold"><?php echo $profile['info'];?></p>
                                         <table class="w-100">
                                             <tbody>
                                                 <tr style="height:40px">
                                                     <td class="font-weight-bold text-left">Contact No:</td>
-                                                    <td class="text-right"><? echo $profile['number1'];?></td>
+                                                    <td class="text-right"><?php echo $profile['number1'];?></td>
                                                 </tr>
                                                 <tr style="height:40px">
                                                     <td class="font-weight-bold text-left">Contact No:</td>
-                                                    <td class="text-right"><? echo $profile['number2'];?></td>
+                                                    <td class="text-right"><?php echo $profile['number2'];?></td>
                                                 </tr>
                                                 <tr style="height:40px">
                                                     <td class="font-weight-bold text-left">Email:</td>
-                                                    <td class="text-right"><? echo $profile['email'];?></td>
+                                                    <td class="text-right"><?php echo $profile['email'];?></td>
                                                 </tr>
                                                 <tr style="height:40px;">
                                                     <td class="font-weight-bold text-left">Birthdate:</td>
                                                     <td class="text-right">
-                                                        <? $time = strtotime($profile['birthdate']); echo date("M d, Y",$time);?>
+                                                        <?php $time = strtotime($profile['birthdate']); echo date("M d, Y",$time);?>
                                                     </td>
                                                 </tr>
                                                 <tr style="height:40px;">
                                                     <td class="font-weight-bold text-left ">Gender:</td>
-                                                    <td class="text-right"><? echo $profile['gender'];?>
+                                                    <td class="text-right"><?php echo $profile['gender'];?>
                                                     </td>
                                                 </tr>
                                             </tbody> 
@@ -59,7 +59,7 @@
                                             <button class="btn btn-outline-primary btn-sm btn-round" data-target="#edit_profile" data-toggle="modal" rel="tooltip" title="Edit Profile">
                                                 <i class="material-icons">edit</i> Update
                                             </button>
-                                            <button onclick='location.href="<? echo base_url().'loan/create-loan/'.$profile['account_no'];?>"' class="btn btn-primary btn-sm btn-round" rel="tooltip" title="Apply Loan">
+                                            <button onclick='location.href="<?php echo base_url().'loan/create-loan/'.$profile['account_no'];?>"' class="btn btn-primary btn-sm btn-round" rel="tooltip" title="Apply Loan">
                                                 <i class="material-icons">monetization_on</i> Apply Loan
                                             </button>
                                         </div>
@@ -76,11 +76,11 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p class="card-description font-weight-bold">
-                                                   <? if(!empty($business['bname'])){ ?>
-                                                      <? echo $business['bname'];?>
+                                                   <?php if(!empty($business['bname'])){ ?>
+                                                      <?php echo $business['bname'];?>
                                                     <?}else{?>
                                                     No business name
-                                                <? } ?>
+                                                <?php } ?>
                                                 </p>
                                             </div>
                                         </div>
@@ -88,18 +88,18 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p class="card-description font-weight-bold">
-                                                   <? if(!empty($business['baddress'])){ ?>
-                                                      <? echo $business['baddress'];?>
+                                                   <?php if(!empty($business['baddress'])){ ?>
+                                                      <?php echo $business['baddress'];?>
                                                     <?}else{?>
                                                     No business address
-                                                    <? } ?>
+                                                    <?php } ?>
                                                 </p>
                                             </div>
                                         </div>
                                         <h6 class="card-title font-weight-bold">Borrowers Address</h6>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <p class="card-description font-weight-bold">Purok <? echo $profile['purok'].', '.$profile['barangay'].', '.$profile['city'].', '.$profile['province'].', '.$profile['country'].' '.$profile['postal_code'];?>
+                                                <p class="card-description font-weight-bold">Purok <?php echo $profile['purok'].', '.$profile['barangay'].', '.$profile['city'].', '.$profile['province'].', '.$profile['country'].' '.$profile['postal_code'];?>
                                                     
                                                 </p>
                                             </div>
@@ -109,7 +109,7 @@
 
 
 
-                                <a href="<? echo base_url();?>borrowers/create-borrowers" rel="tooltip" title="Back to create borrowers" class="btn btn-outline-primary btn-round">
+                                <a href="<?php echo base_url();?>borrowers/create-borrowers" rel="tooltip" title="Back to create borrowers" class="btn btn-outline-primary btn-round">
                                     <i class="material-icons">keyboard_arrow_left</i> Back
                                 </a>
 
@@ -133,13 +133,13 @@
                                                         <th>Due Date</th>
                                                 </thead>
                                                 <tbody>
-                                                    <? if(!empty($loan)){?>
-                                                    <? foreach ($loan as $key => $value) {?>
+                                                    <?php if(!empty($loan)){?>
+                                                    <?php foreach ($loan as $key => $value) {?>
                                                         <tr>
-                                                            <td><a href="<? echo base_url().'payments/loan-details/'.$value['loan_no'];?>"><? echo $value['loan_no'];?></a></td>
-                                                            <td><? echo $value['loan_amount'];?></td>
-                                                            <td><? echo $value['loan_stat'];?></td>
-                                                            <td><? $time = $value['due_date']; echo date('M. d, Y', strtotime($time));?></td>
+                                                            <td><a href="<?php echo base_url().'payments/loan-details/'.$value['loan_no'];?>"><?php echo $value['loan_no'];?></a></td>
+                                                            <td><?php echo $value['loan_amount'];?></td>
+                                                            <td><?php echo $value['loan_stat'];?></td>
+                                                            <td><?php $time = $value['due_date']; echo date('M. d, Y', strtotime($time));?></td>
                                                         </tr>
                                                     <?}}?>
                                                     
@@ -164,15 +164,15 @@
                                                         <th>Date Issued</th>
                                                 </thead>
                                                 <tbody>
-                                                    <? if(!empty($co_maker)){?>
-                                                    <? foreach ($co_maker as $key => $cmaker) { ?>
+                                                    <?php if(!empty($co_maker)){?>
+                                                    <?php foreach ($co_maker as $key => $cmaker) { ?>
                                                         <tr>
-                                                            <td><? echo $cmaker['loan_no'];?></td>
-                                                            <td><? echo $cmaker['name'];?></td>
-                                                            <td><? echo $cmaker['cedula_no'];?></td>
-                                                            <td><? echo $cmaker['address_issued'];?></td>
-                                                            <td><? $time = $cmaker['date_issued']; echo date('M. d, Y', strtotime($time));?></td>
-                                                    <? } }?>
+                                                            <td><?php echo $cmaker['loan_no'];?></td>
+                                                            <td><?php echo $cmaker['name'];?></td>
+                                                            <td><?php echo $cmaker['cedula_no'];?></td>
+                                                            <td><?php echo $cmaker['address_issued'];?></td>
+                                                            <td><?php $time = $cmaker['date_issued']; echo date('M. d, Y', strtotime($time));?></td>
+                                                    <?php } }?>
                                                     
                                                 </tbody>
                                                 
@@ -198,12 +198,12 @@
                                                                         <div class="form-group form-file-upload form-file-multiple ">
                                                                             <input type="file" accept="image/*" onchange="loadFile(event)" name="img" class="inputFileHidden"s required>
                                                                             <div class="fileinput-new thumbnail img-raised text-center">
-                                                                                 <?   if(empty($loan['profile_img'])){ ?>
-                                                                                        <img class="border-round" src="<? echo base_url().'assets/images/person.png' ?>" width="250"/>
+                                                                                 <?php   if(empty($loan['profile_img'])){ ?>
+                                                                                        <img class="border-round" src="<?php echo base_url().'assets/images/person.png' ?>" width="250"/>
                                                                                     <?}else{?>
-                                                                                        <img class="img-fluid" width="250" id="output" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img"  />
+                                                                                        <img class="img-fluid" width="250" id="output" src="<?php echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img"  />
                                                                                     <?}?>
-                                                                               <!--  <img class="img-fluid" id="output" src="<? echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img" /> -->
+                                                                               <!--  <img class="img-fluid" id="output" src="<?php echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img" /> -->
                                                                             </div>
                                                                             <div class="input-group mt-2">
                                                                                 <span class="input-group-btn">
@@ -221,22 +221,22 @@
                                                                     <div class="row">
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
-                                                                                <input type="hidden" class="form-control" name="account_no" value="<? echo $profile['account_no'];?>">
+                                                                                <input type="hidden" class="form-control" name="account_no" value="<?php echo $profile['account_no'];?>">
                                                                                 <label class="bmd-label-floating">First Name</label>
-                                                                                <input type="text" class="form-control" name="fname" value="<? echo $profile['fname'];?>" required>
+                                                                                <input type="text" class="form-control" name="fname" value="<?php echo $profile['fname'];?>" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
                                                                                 <label class="bmd-label-floating">Middle Name</label>
                                                                                 <input type="text" class="form-control" name=
-                                                                                "mname" value="<? echo $profile['mname'];?>" required>
+                                                                                "mname" value="<?php echo $profile['mname'];?>" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
                                                                                 <label class="bmd-label-floating">Last Name</label>
-                                                                                <input type="text" class="form-control" name="lname" value="<? echo $profile['lname'];?>"  required>
+                                                                                <input type="text" class="form-control" name="lname" value="<?php echo $profile['lname'];?>"  required>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -244,13 +244,13 @@
                                                                         <div class="col-md-6">
                                                                             <div class="form-group">
                                                                                 <label class="bmd-label-floating">Contact Number</label>
-                                                                                <input type="number" class="form-control" name="num1" value="<? echo $profile['number1'];?>" required>
+                                                                                <input type="number" class="form-control" name="num1" value="<?php echo $profile['number1'];?>" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <div class="form-group">
                                                                                 <label class="bmd-label-floating">Contact Number</label>
-                                                                                <input type="number" class="form-control" name="num2" value="<? echo $profile['number2'];?>" required>
+                                                                                <input type="number" class="form-control" name="num2" value="<?php echo $profile['number2'];?>" required>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -259,7 +259,7 @@
                                                                             <div class="form-group">
                                                                                 <label class="bmd-label-floating">Email Address</label>
                                                                                 <input type="email" class="form-control" name=
-                                                                                "email" value="<? echo $profile['email'];?>" required>
+                                                                                "email" value="<?php echo $profile['email'];?>" required>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -268,13 +268,13 @@
                                                                             <div class="form-group">
                                                                                 <label class="bmd-label-floating">Birthday</label>
                                                                                 <input type="date" class="form-control" name=
-                                                                                "bday" value="<? echo $profile['birthdate'];?>" required>
+                                                                                "bday" value="<?php echo $profile['birthdate'];?>" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <div class="form-group">
                                                                                 <label class="bmd-label-floating">Gender</label>
-                                                                                <input type="text" class="form-control" name="gender" value="<? echo $profile['gender'];?>" required>
+                                                                                <input type="text" class="form-control" name="gender" value="<?php echo $profile['gender'];?>" required>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -288,7 +288,7 @@
                                                                         <label>Additional Info(Optional)</label>
                                                                         <div class="form-group">
                                                                             <label class="bmd-label-floating">Write something about the client.. </label>
-                                                                            <textarea class="form-control" name="info" rows="5"><? echo $profile['info'];?></textarea>
+                                                                            <textarea class="form-control" name="info" rows="5"><?php echo $profile['info'];?></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>

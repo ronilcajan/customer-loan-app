@@ -1,17 +1,17 @@
 <body class="">
   
-    <? $this->load->view('loading_screen');?>
+    <?php $this->load->view('loading_screen');?>
     
     <div class="wrapper ">
 
     <!-- Top NavBar -->
-    <? $this->load->view('navigation/sidebar');?>
+    <?php $this->load->view('navigation/sidebar');?>
     <!-- End of NavBar -->
 
     <div class="main-panel">
 
     <!-- Navbar -->
-    <? $this->load->view('navigation/topbar');?>
+    <?php $this->load->view('navigation/topbar');?>
     <!-- End Navbar -->
 
         <div class="content" style="margin-top:50px">
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-12">
               
-                        <? $this->load->view('navigation/loan_navbar');?>
+                        <?php $this->load->view('navigation/loan_navbar');?>
 
                         <div class="tab-content tab-space">
                             <div class="tab-pane active">
@@ -40,36 +40,36 @@
                                         <th>Action</th>
                                     </thead>
                                     <tbody>
-                                        <? foreach($rejected as $key => $reject){
+                                        <?php foreach($rejected as $key => $reject){
                                             if(!empty($reject)){  
                                         ?>
                                         <tr>
-                                            <td><? echo $reject['loan_no'];?></td>
+                                            <td><?php echo $reject['loan_no'];?></td>
                                             <td>
-                                                <a href="<? echo base_url().'borrowers/profile/'.$reject['account_no'];?>" rel="tooltip" title="Go to profile"><? echo $reject['lastname'].','.$reject['firstname'].' '.$reject['middlename'];?></a>
+                                                <a href="<?php echo base_url().'borrowers/profile/'.$reject['account_no'];?>" rel="tooltip" title="Go to profile"><?php echo $reject['lastname'].','.$reject['firstname'].' '.$reject['middlename'];?></a>
                                             </td>
                                             <td>
-                                                    <? echo $reject['reason'];?>
+                                                    <?php echo $reject['reason'];?>
                                             </td>
-                                            <td><? echo $reject['approved'];?></td>
+                                            <td><?php echo $reject['approved'];?></td>
                                             <td>
-                                                <span class="font-italic text-muted "><? echo $reject['status'];?></span>
+                                                <span class="font-italic text-muted "><?php echo $reject['status'];?></span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="View loan information" class="btn btn-info btn-sm btn-link" data-target="#clients-<? echo $reject['account_no'];?>" data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="View loan information" class="btn btn-info btn-sm btn-link" data-target="#clients-<?php echo $reject['account_no'];?>" data-toggle="modal">
                                                     <i class="material-icons">visibility</i>
                                                 </button>|
-                                                <button type="button" rel="tooltip" title="Re-apply loan" class="btn btn-primary btn-sm btn-link" data-target="#reapply_loan<? echo $reject['loan_no'];?>" id="reapply-loan<? echo $reject['loan_no'];?>"  data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="Re-apply loan" class="btn btn-primary btn-sm btn-link" data-target="#reapply_loan<?php echo $reject['loan_no'];?>" id="reapply-loan<?php echo $reject['loan_no'];?>"  data-toggle="modal">
                                                     <i class="material-icons">monetization_on</i>
                                                 </button>|
-                                                <button type="button" rel="tooltip" title="Remove loan" class="btn btn-danger btn-sm btn-link" data-target="#remove_loan<? echo $reject['loan_no'];?>" id="remove-rejected-loan<? echo $reject['loan_no'];?>" data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="Remove loan" class="btn btn-danger btn-sm btn-link" data-target="#remove_loan<?php echo $reject['loan_no'];?>" id="remove-rejected-loan<?php echo $reject['loan_no'];?>" data-toggle="modal">
                                                     <i class="material-icons">remove_circle</i>
                                                 </button>
                                             </td>
                                         </tr>
 
                                         <!-- Modal to view client data -->
-                                        <div class="modal fade" id="clients-<? echo $reject['account_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="clients-<?php echo $reject['account_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -81,24 +81,24 @@
                                                     <div class="modal-body">
                                                         <div class="row">
                                                             <div class="col-md-4">
-                                                                 <?   if(empty($reject['profile_img'])){ ?>
-                                                                <img class="border-round" src="<? echo base_url().'assets/images/person.png' ?>" width="150" height="150"/>
+                                                                 <?php   if(empty($reject['profile_img'])){ ?>
+                                                                <img class="border-round" src="<?php echo base_url().'assets/images/person.png' ?>" width="150" height="150"/>
                                                             <?}else{?>
-                                                                <img class="border-round" src="<? echo base_url().'uploads/'.$reject['profile_img'];?>" width="150" height="150"/>
+                                                                <img class="border-round" src="<?php echo base_url().'uploads/'.$reject['profile_img'];?>" width="150" height="150"/>
                                                             <?}?>
                                                             </div>
                                                             <div class="col-md-8">
                                                                <p><strong>Name:</strong> 
-                                                                    <? echo $reject['firstname'].' '.$reject['middlename'].' '.$reject['lastname'];?>    
+                                                                    <?php echo $reject['firstname'].' '.$reject['middlename'].' '.$reject['lastname'];?>    
                                                                 </p>
                                                                 <p><strong>Business Name:</strong> 
-                                                                    <? echo $reject['business_name']; ?>
+                                                                    <?php echo $reject['business_name']; ?>
                                                                 </p>
                                                                 <p><strong>Business Address:</strong>
-                                                                    <? echo $reject['business_address']; ?>
+                                                                    <?php echo $reject['business_address']; ?>
                                                                 </p>
                                                                 <p><strong>Loan Amount:</strong>
-                                                                    <? echo $reject['loan_amount']; ?>
+                                                                    <?php echo $reject['loan_amount']; ?>
                                                                 </p>
 
 
@@ -107,14 +107,14 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button type="button" onclick="location.href='<? echo base_url().'borrowers/client-profile/'.$reject['account_no'];?>'" class="btn btn-primary">Go to profile</button>
+                                                        <button type="button" onclick="location.href='<?php echo base_url().'borrowers/client-profile/'.$reject['account_no'];?>'" class="btn btn-primary">Go to profile</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- End of modal -->
                                          <!-- Modal for reject clients -->
-                                        <div class="modal fade" id="reapply_loan<? echo $reject['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="reapply_loan<?php echo $reject['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -129,7 +129,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <button type="button" class="btn btn-primary re-apply" id="<? echo $reject['loan_no'];?>">Re-Apply</button>
+                                                        <button type="button" class="btn btn-primary re-apply" id="<?php echo $reject['loan_no'];?>">Re-Apply</button>
                                                     </div>
                                                     </form>
                                                 </div>
@@ -137,7 +137,7 @@
                                         </div>
                                         <!-- End of modal -->
                                         <!-- Modal for remove clients -->
-                                        <div class="modal fade" id="remove_loan<? echo $reject['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="remove_loan<?php echo $reject['loan_no'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -152,19 +152,19 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <button type="button" class="btn btn-danger remove-rejected" id="<? echo $reject['loan_no'];?>">Remove</button>
+                                                        <button type="button" class="btn btn-danger remove-rejected" id="<?php echo $reject['loan_no'];?>">Remove</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- End of modal -->
 
-                                        <? } else { ?>
+                                        <?php } else { ?>
 
                                         <tr>
                                             <td colspan="5">No data available..</td>
                                         </tr>
-                                        <? } }?>                  
+                                        <?php } }?>                  
                                     </tbody>
                                 </table>
                             </div>

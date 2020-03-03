@@ -1,17 +1,17 @@
 <body class="">
   
-    <? $this->load->view('loading_screen');?>
+    <?php $this->load->view('loading_screen');?>
     
 	<div class="wrapper ">
 
 	<!-- Top NavBar -->
-	<? $this->load->view('navigation/sidebar');?>
+	<?php $this->load->view('navigation/sidebar');?>
 	<!-- End of NavBar -->
 
 	<div class="main-panel">
 
 	<!-- Navbar -->
-	<? $this->load->view('navigation/topbar');?>
+	<?php $this->load->view('navigation/topbar');?>
     <!-- End Navbar -->
 
         <div class="content" style="margin-top:50px">
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-12">
               
-                        <? $this->load->view('navigation/borrowers_navbar');?>
+                        <?php $this->load->view('navigation/borrowers_navbar');?>
 
                         <div class="tab-content tab-space">
                             <div class="tab-pane active">
@@ -36,7 +36,7 @@
                                                         <div class="form-group form-file-upload form-file-multiple ">
                                                             <input type="file" accept="image/*" onchange="loadFile(event)" class="inputFileHidden"  name="client_img" id="client_img" required>
                                                             <div class="fileinput-new thumbnail img-raised text-center">
-                                                                <img class="img-fluid" id="output" src="<? echo base_url();?>assets/images/person.png" alt="client-img" />
+                                                                <img class="img-fluid" id="output" src="<?php echo base_url();?>assets/images/person.png" alt="client-img" />
                                                             </div>
                                                             <div class="input-group mt-2">
                                                                 <span class="input-group-btn">
@@ -54,11 +54,11 @@
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Account no.</label>
-                                                                <? if($acc_no == 1000){?>
-                                                                <input type="number" class="form-control account_no" name="account_no" value="<? echo $acc_no['account_no'] + 10000;?>" readonly>
-                                                                <? }else{ ?>
-                                                                <input type="number" class="form-control account_no" name="account_no" value="<? echo $acc_no['account_no'] + 1;?>" readonly>
-                                                                <? } ?>
+                                                                <?php if($acc_no == 1000){?>
+                                                                <input type="number" class="form-control account_no" name="account_no" value="<?php echo $acc_no['account_no'] + 10000;?>" readonly>
+                                                                <?php }else{ ?>
+                                                                <input type="number" class="form-control account_no" name="account_no" value="<?php echo $acc_no['account_no'] + 1;?>" readonly>
+                                                                <?php } ?>
                                                             </div>
                                                         </div>
                                                     </div>
