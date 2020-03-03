@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-
+dsds
 <div>
     <!--   Core JS Files   -->
        
@@ -52,14 +52,15 @@
 
     <?php $site = $_SERVER['REQUEST_URI'];?>
     <?php $site1 = 'reports';?>
-    <?if(strpos($site, $site1)){?>
-    <script src="<?php echo base_url();?>assets/js/plugins/jszip.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/plugins/dataTables.buttons.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/plugins/pdfmake.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/plugins/vfs_fonts.js"></script>
-    <script src="<?php echo base_url();?>assets/js/plugins/buttons.html5.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/plugins/buttons.print.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/plugins/buttons.flash.min.js"></script>
+    <?if(strpos($site, $site1) || strpos($site, 'promissory')){?>
+        <script src="<?php echo base_url();?>assets/js/plugins/jszip.min.js"></script>
+        <script src="<?php echo base_url();?>assets/js/plugins/dataTables.buttons.min.js"></script>
+        <script src="<?php echo base_url();?>assets/js/plugins/pdfmake.min.js"></script>
+        <script src="<?php echo base_url();?>assets/js/plugins/vfs_fonts.js"></script>
+        <script src="<?php echo base_url();?>assets/js/plugins/buttons.html5.min.js"></script>
+        <script src="<?php echo base_url();?>assets/js/plugins/buttons.print.min.js"></script>
+        <script src="<?php echo base_url();?>assets/js/plugins/buttons.flash.min.js"></script>
+        <script src="<?php echo base_url();?>assets/js/plugins/jQuery.print.js"></script>
     <?php } ?>
     <script src="<?php echo base_url();?>assets/js/core/core.js"></script>
     <!-- Library for adding dinamically elements -->

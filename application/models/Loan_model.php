@@ -222,19 +222,19 @@ class Loan_model extends CI_Model {
         return $this->db->affected_rows();
     }
     public function cash_recieve($data){
-        $this->db->set('status', "Active");
-        $this->db->where('loan_no', $data);
-        $this->db->update('loan');
-        
         $loan_start = date('Y-m-d');
-        
         $due_date = date('Y-m-d', strtotime("+60 days"));
-
-
+ 
         $this->db->set('loan_started', $loan_start);
         $this->db->set('due_date', $due_date);
         $this->db->where('loan_no', $data);
         $this->db->update('approved_loans');
+        return $this->db->affected_rows();
+    }
+    public function status_update($data){
+        $this->db->set('status', "Active");
+        $this->db->where('loan_no', $data);
+        $this->db->update('loan');
         return $this->db->affected_rows();
     }
 

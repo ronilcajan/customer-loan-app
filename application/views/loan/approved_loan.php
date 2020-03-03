@@ -54,11 +54,11 @@
                                             <td class="text-center"><?php $time = $appr['date_approved']; echo date('M. d, Y', strtotime($time));?></td>
                                             <td>
                                                 <span class="font-italic text-muted ">
-                                                    <?php if($appr['status'] == 'Approved'){?>
+                                                    <?php if($appr['loan_status'] == 'Approved'){?>
 
-                                                    <?php echo $appr['status'].'. Waiting for cash release.';?>
+                                                    <?php echo $appr['loan_status'].'. Waiting for cash release.';?>
                                                     <?php }else{?> 
-                                                    <?php echo 'Loan is '.$appr['status'];?>.
+                                                    <?php echo 'Loan is '.$appr['loan_status'];?>.
                                                     <?php } ?>        
                                                 </span>
                                             </td>
@@ -72,6 +72,9 @@
                                                         <i class="material-icons">payment</i>
                                                     </button>
                                                 <?php } ?>
+                                                <button type="button" rel="tooltip" title="View Promissory Note" class="btn btn-danger btn-sm mr-2" onclick="location.href='<?php echo base_url().'promissory/'.$appr['loan_no'];?>'">
+                                                        <i class="material-icons">ds</i>
+                                                    </button>
                                             </td>
                                         </tr>
                                          <!-- Modal  -->

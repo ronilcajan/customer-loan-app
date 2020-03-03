@@ -50,7 +50,7 @@
                                                             </div>
                                                             <div class="col-md-1">
                                                                 <div class="form-group input-group-prepend">
-                                                                    <label class="bmd-label-floating">Interest(mo)</label>
+                                                                    <label class="bmd-label-floating">Interest(2mo)</label>
                                                                     <input type="text" class="form-control interest text-center" value="20" readonly>
                                                                     <span class="input-group-text">
                                                                             <i class="fa fa-percent"></i>
@@ -108,7 +108,7 @@
                                                                 <div class="form-group">
                                                                     <select id="inputState" class="form-control verifier">
                                                                         <option disabled selected>Verified by...</option>
-                                                                        <?php var_dump($verifier); 
+                                                                        <?php 
                                                                         foreach($verifier as $key => $verified) { ?>
                                                                             <option value="<?php echo $verified['username'];?> "><?php echo $verified['username'];?></option>
                                                                         <?php } ?>

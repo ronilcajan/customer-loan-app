@@ -21,4 +21,11 @@
         <link href="<?php echo base_url();?>assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
         <link href="<?php echo base_url();?>assets/css/mystyle.css" rel="stylesheet"/> 
         
+        <style media="print">
+            @page {
+                size: auto;
+                margin: 0;
+        }
+
+    </style>
     </head>

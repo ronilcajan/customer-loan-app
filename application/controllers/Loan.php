@@ -67,6 +67,32 @@ class Loan extends CI_Controller {
 		$this->load->view('loan/approved_loan', $clients);
 		$this->load->view('templates/footer');
 	}
+	public function promissory($loan_no=""){
+
+		$this->check_auth('approved_loans');
+
+		$loan = $loan_no;
+
+		if($loan != ''){
+
+			$result['loan'] = $this->payments_model->get_loan_details($loan);
+
+			if(!is_null($result)){
+
+				$title['title'] = "RFSC-Promissory Note";
+
+				$result['cmaker'] = $this->borrowers_model->get_co_maker($result['loan']['account_no']);
+
+				$this->load->view('templates/header',$title);
+				$this->load->view('loan/promissory', $result);
+				$this->load->view('templates/footer');
+
+			}else{
+				redirect(base_url('error404'));
+			}
+
+		}
+	}
 
 	public function paid_loans(){
 		$title['title'] = "RFSC-Paid Loans";
@@ -306,7 +332,7 @@ class Loan extends CI_Controller {
 	}
 
 	public function reject_loan(){
-		$result = $this->loan_model->reject_loan($_POST['id'],$_POST['reason']);
+		$result = $this->loan_model->reject_loan($this->input->post('id'),$this->input->post('reason'));
 		if($result){
 			echo "Loan rejected";
 		}else{
@@ -315,7 +341,7 @@ class Loan extends CI_Controller {
 	}
 
 	public function remove_loan(){
-		$result = $this->loan_model->remove_loan($_POST['id']);
+		$result = $this->loan_model->remove_loan($this->input->post('id'));
 		if($result){
 			echo "Loan remove";
 		}else{
@@ -325,8 +351,10 @@ class Loan extends CI_Controller {
 	}
 	public function cash_recieve(){
 
-		$result = $this->loan_model->cash_recieve($_POST['id']);
+		$result = $this->loan_model->cash_recieve($this->input->post('id'));
+
 		if($result){
+			$this->loan_model->status_update($this->input->post('id'));
 			echo "Cash released!";
 		}else{
 			echo "False";
@@ -334,7 +362,7 @@ class Loan extends CI_Controller {
 		
 	}
 	public function reapply_loan(){
-		$result = $this->loan_model->reapply_loan($_POST['id']);
+		$result = $this->loan_model->reapply_loan($this->input->post('id'));
 		if($result){
 			echo "Loan successfully re-applied.";
 		}else{

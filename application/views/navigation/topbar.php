@@ -21,6 +21,8 @@
 				<a class="navbar-brand font-weight-bold" href="<?php echo base_url();?>staff">My Profile</a>
 				<?php }elseif(strpos($site, 'back-up')){?>
 				<a class="navbar-brand font-weight-bold" href="<?php echo base_url();?>staff">Manage Files</a>
+			<?php }elseif(strpos($site, 'promissory')){?>
+				<a class="navbar-brand font-weight-bold" href="<?php echo base_url();?>staff">Promissory Note</a>
 				<?php }else{ ?>
 				<a class="navbar-brand font-weight-bold" href="#"></a>
 				<?php }?>

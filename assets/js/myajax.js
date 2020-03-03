@@ -279,7 +279,8 @@ $(document).on('click', '.approve', function(){
 
 		        } else if (exception === 'parsererror') {
 
-		           msg = 'parsererror. Please contact developer';
+		           msg = 'Loan Approved!';
+		           msg1 = 'No internet. Notification did not send.';
 
 		        } else if (exception === 'timeout') {
 		            msg = 'Time out error.Please contact developer';
@@ -290,6 +291,11 @@ $(document).on('click', '.approve', function(){
 		        }
 		        showNotification(
 						msg,
+						"success",
+						"success"
+				);
+				showNotification(
+						msg1,
 						"info",
 						"warning"
 				);

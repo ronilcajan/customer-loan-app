@@ -49,6 +49,7 @@ $route['reject-loan'] = "loan/reject_loan";
 $route['remove-loan'] = 'loan/remove_loan';
 $route['cash-receive'] = "loan/cash_recieve";
 $route['reapply-loan'] = "loan/reapply_loan";
+$route['promissory/(:any)'] = "loan/promissory/$1";
 
 $route['payments/loan-details/(:any)'] = 'payments/loan_details/$1';
 $route['payments/loan-details'] = 'payments/loan_details';

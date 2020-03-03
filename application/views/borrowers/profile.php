@@ -107,12 +107,6 @@
                                     </div>
                                 </div>
 
-
-
-                                <a href="<?php echo base_url();?>borrowers/create-borrowers" rel="tooltip" title="Back to create borrowers" class="btn btn-outline-primary btn-round">
-                                    <i class="material-icons">keyboard_arrow_left</i> Back
-                                </a>
-
                             </div>
 
                             <div class="col-md-8">
