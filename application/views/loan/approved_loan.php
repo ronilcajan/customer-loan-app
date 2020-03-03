@@ -54,7 +54,7 @@
                                             <td class="text-center"><?php $time = $appr['date_approved']; echo date('M. d, Y', strtotime($time));?></td>
                                             <td>
                                                 <span class="font-italic text-muted ">
-                                                    <?if($appr['status'] == 'Approved'){?>
+                                                    <?php if($appr['status'] == 'Approved'){?>
 
                                                     <?php echo $appr['status'].'. Waiting for cash release.';?>
                                                     <?php }else{?> 
@@ -63,7 +63,7 @@
                                                 </span>
                                             </td>
                                             <td class="td-actions text-right">
-                                                <?if($appr['loan_status'] == 'Approved'){?>
+                                                <?php if($appr['loan_status'] == 'Approved'){?>
                                                     <button type="button" rel="tooltip" title="Release cash for this loan" class="btn btn-primary btn-sm mr-2" data-target="#cash<?php echo $appr['loan_no'];?>" id="cash-release<?php echo $appr['loan_no'];?>" data-toggle="modal">
                                                         <i class="material-icons">monetization_on</i>
                                                     </button>

@@ -81,11 +81,11 @@
                                                     <div class="modal-body">
                                                         <div class="row">
                                                             <div class="col-md-4">
-                                                                 <?php   if(empty($reject['profile_img'])){ ?>
+                                                                 <?php if(empty($reject['profile_img'])){ ?>
                                                                 <img class="border-round" src="<?php echo base_url().'assets/images/person.png' ?>" width="150" height="150"/>
-                                                            <?}else{?>
+                                                            <?php }else{?>
                                                                 <img class="border-round" src="<?php echo base_url().'uploads/'.$reject['profile_img'];?>" width="150" height="150"/>
-                                                            <?}?>
+                                                            <?php }?>
                                                             </div>
                                                             <div class="col-md-8">
                                                                <p><strong>Name:</strong> 

@@ -75,9 +75,9 @@
                                                                 <div class="input-group no-border">
                                                                     <?php if(isset($account_no)){?>
                                                                        <input type="text" value="<?php echo $account_no?>" class="form-control accnt_no" placeholder="Account no" autofocus required>
-                                                                    <?}else{?>
+                                                                    <?php }else{ ?>
                                                                         <input type="text" value="" class="form-control accnt_no" placeholder="Account no" autofocus required>
-                                                                    <?}?>
+                                                                    <?php } ?>
                                                                     <button type="submit" class="btn btn-primary btn-round btn-just-icon search_account">
                                                                     <i class="material-icons">search</i>
                                                                     <div class="ripple-container"></div>
@@ -100,7 +100,7 @@
                                                                         <?php foreach($collector as $key => $collect) { 
                                                                             if(!empty($collect)){  ?>
                                                                             <option value="<?php echo $collect['username'];?>"><?php echo $collect['username'];?> </option>
-                                                                        <?}}?>
+                                                                        <?php }} ?>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -111,7 +111,7 @@
                                                                         <?php var_dump($verifier); 
                                                                         foreach($verifier as $key => $verified) { ?>
                                                                             <option value="<?php echo $verified['username'];?> "><?php echo $verified['username'];?></option>
-                                                                        <?}?>
+                                                                        <?php } ?>
                                                                     </select>
                                                                 </div>
                                                             </div>
