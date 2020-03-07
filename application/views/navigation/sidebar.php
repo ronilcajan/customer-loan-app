@@ -70,7 +70,7 @@
 				</a>
 			</li>
 			
-			<?php if(strpos($site,'loan/')){?>
+			<?php if(strpos($site,'loan/') || strpos($site,'promissory')){?>
 				<li class="nav-item active">
 			<?php }else{ ?>
 				<li class="nav-item">
