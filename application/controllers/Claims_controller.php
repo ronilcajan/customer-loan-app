@@ -37,10 +37,19 @@ class Claims_controller extends CI_Controller {
 			);
 
 			$this->session->set_userdata($login_data);
-
+			
 			if($data['user_type'] == 'Guest'){
 				$validator['success'] = true;
 				$validator['messages'] = 'guest';
+
+			}elseif($data['user_type'] == 'Cashier'){
+				$validator['success'] = true;
+				$validator['messages'] = 'guest';
+
+			}elseif($data['user_type'] == 'Manager'){
+				$validator['success'] = true;
+				$validator['messages'] = 'guest';
+
 			}else{
 				$validator['success'] = true;
 				$validator['messages'] = 'dashboard';					

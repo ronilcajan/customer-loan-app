@@ -157,7 +157,7 @@ class Loan extends CI_Controller {
 
     public function insert_loan(){
 
-		$validator = array('success' => false, 'messages' => array() , 'email' => array());
+		$validator = array('success' => false, 'messages' => array() , 'email' => false);
 		$full_name = $this->input->post('full_name');
 		$email = $this->input->post('email');
 		$amount = $this->input->post('loan_amount');
@@ -174,26 +174,29 @@ class Loan extends CI_Controller {
 
 			$this->loan_model->insert_co_maker($data1);
 
-			if($email_notif == 'yes'){
+			if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 
-				$subject = "RFSC Loan Application Verification";
-				$template = "templates/email_template";
+				if($email_notif == 'yes'){
 
-				$sendmail = $this->send_email($full_name,$email,$amount,$business,$subject,$template);
-				if($sendmail){
-					$validator['email'] = false;
+					$subject = "RFSC Loan Application Verification";
+					$template = "templates/email_template";
+
+					$sendmail = $this->send_email($full_name,$email,$amount,$business,$subject,$template);
+
+
+					$validator['success'] = true;
+					$validator['messages'] = 'Loan successfully registered. Email notification sent!';
+					$validator['email'] = true;
+
+					$this->loan_model->update_borrowers($account_no);
 				}
 
+			}else{
+				$validator['success'] = true;
+				$validator['messages'] = 'Loan successfully registered!';
 			}
-
-			$validator['success'] = true;
-			$validator['messages'] = 'Loan successfully registered. Email notification sent!';
-
-			$this->loan_model->update_borrowers($account_no);
-		}else{
-			$validator['success'] = false;
-			$validator['messages'] = 'Sorry';
 		}
+			
 
 		echo json_encode($validator);
 	}
@@ -242,8 +245,9 @@ class Loan extends CI_Controller {
 	}
 
 	function itexmo($number,$message,$apicode){
+			$passwd = '}%4$$m4ze{';
 			$ch = curl_init();
-			$itexmo = array('1' => $number, '2' => $message, '3' => $apicode);
+			$itexmo = array('1' => $number, '2' => $message, '3' => $apicode, 'passwd' => $passwd);
 			curl_setopt($ch, CURLOPT_URL,"https://www.itexmo.com/php_api/api.php");
 			curl_setopt($ch, CURLOPT_POST, 1);
 			 curl_setopt($ch, CURLOPT_POSTFIELDS, 
@@ -278,22 +282,18 @@ class Loan extends CI_Controller {
 				$num = $query['number1'];
 				$num1 = $query['number2'];
 				$msg = "Hi there, This is to notify you that your loan application is approved. From RFS Corporation.";
-				$apicode = "TR-RONIL112668_7CRA9";
+				$apicode = "TR-RFSCO761275_H4IDW";
 
-				$sendmail = $this->send_email($name,$email,$amount,$b_name,$subject,$template);	
+				if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+
+					$sendmail = $this->send_email($name,$email,$amount,$b_name,$subject,$template);	
+
+					$data['email'] = true;
+				}
 
 				$send_sms = $this->itexmo($num, $msg, $apicode);
 				$send_sms1 = $this->itexmo($num1, $msg, $apicode);
 
-				
-
-				if($sendmail){
-
-					$data['email'] = true;
-				
-				}else{
-					$data['email'] = false;
-				}
 
 				if($send_sms == ''){
 

@@ -47,7 +47,7 @@
                     </div>
                 </form>
                 </div>
-                <div class="text-center col-12">
+                <div class="text-center col-12" style="margin-top: -100px">
                     <small>
                         Powered by:<img class="img img-fluid" width="50" height="50" src="<?php echo base_url();?>assets/images/claims-logo.png">
                         CLAIMS
@@ -55,10 +55,10 @@
                 </div> 
             </div>
 
-            <div class="w-50 p-0 m-0" style="height: 620px;">
-                <img src="<?php echo base_url();?>assets/images/home.jpg" height="628">
+            <div class="w-50 p-0 m-0">
+                <img  style="height: 99.8vh;" width="695" src="<?php echo base_url();?>assets/images/home.jpg">
             </div>
-
+ 
         </div>
        
         

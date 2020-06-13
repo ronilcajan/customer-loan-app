@@ -227,28 +227,28 @@ $(document).on('click', '.approve', function(){
 
 				if(data.email){
 					showNotification(
-						"Email sent successfully!",
+						"Email notification sent successfully!",
 						"check_circle",
 						"success"
 					);
 				}else{
 					showNotification(
-						"Email not sent!",
-						"check_circle",
-						"success"
+						"Email notification failed! Email is not Valid",
+						"info",
+						"warning"
 					);
 				}
 
 				showNotification(
 					data.sim1,
-					"check_circle",
-					"info"
+					"info",
+					"success"
 				);
 
 				showNotification(
 					data.sim2,
-					"check_circle",
-					"info"
+					"info",
+					"success"
 				);
 
 				$("#loading-screen").hide();
@@ -259,8 +259,8 @@ $(document).on('click', '.approve', function(){
 
 				showNotification(
 					"Something went wrong!",
-					"check_circle",
-					"success"
+					"info",
+					"danger"
 				);
 			}
 
@@ -910,16 +910,22 @@ $(document).ready(function() {
 
 					if(response.email == false){
 						showNotification(
-							'Loan successfully added, Email did not sent!',
-							"check_circle",
-							"success"
-						);
-					}else{
-						showNotification(
 							response.messages,
 							"check_circle",
 							"success"
 						);
+						showNotification( 
+							'Email notification failed! Email is not valid!',
+							"info",
+							"warning"
+						);
+					}else{
+						showNotification( 
+							response.messages,
+							"check_circle",
+							"success"
+						);
+
 					}
 					
 					$("#loan-form")[0].reset();
