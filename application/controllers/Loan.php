@@ -157,12 +157,16 @@ class Loan extends CI_Controller {
 
     public function insert_loan(){
 
-		$validator = array('success' => false, 'messages' => array() , 'email' => false);
+		$validator = array('success' => false, 'messages' => array() , 'email' => false, 'sim_1' => false, 'sim_2' => false, 'sim1' => array(), 'sim2' => array());
 		$full_name = $this->input->post('full_name');
 		$email = $this->input->post('email');
 		$amount = $this->input->post('loan_amount');
 		$business = $this->input->post('b_name');
 		$email_notif = $this->input->post('email_notif');
+		$sim1_notif = $this->input->post('sim1_notif');
+		$sim2_notif = $this->input->post('sim2_notif');
+		$sim1 = $this->input->post('sim1');
+		$sim2 = $this->input->post('sim2');
 		$account_no = $this->input->post('account_no');
 		
 		$data = $this->input->post();
@@ -174,27 +178,61 @@ class Loan extends CI_Controller {
 
 			$this->loan_model->insert_co_maker($data1);
 
-			if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-
-				if($email_notif == 'yes'){
-
+			if($email_notif == 'yes'){
+				if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+					
 					$subject = "RFSC Loan Application Verification";
 					$template = "templates/email_template";
 
 					$sendmail = $this->send_email($full_name,$email,$amount,$business,$subject,$template);
 
-
-					$validator['success'] = true;
 					$validator['messages'] = 'Loan successfully registered. Email notification sent!';
 					$validator['email'] = true;
+				}else{
+					$validator['messages'] = 'Loan successfully registered!';
+				}
+			}
 
-					$this->loan_model->update_borrowers($account_no);
+			$msg = "Hi there, This is to notify you that your loan application is approved. From RFS Corporation.";
+			$apicode = "TR-RFSCO761275_H4IDW";
+
+			if($sim1_notif == 'yes'){
+				$send_sms1 = $this->itexmo($sim1, $msg, $apicode);
+
+				if($send_sms1 == ''){
+
+					$validator['sim1'] = "Something went wrong. Please contact developer";
+
+				}elseif ($send_sms1 == 0) {
+
+					$validator['sim1'] = "SMS sent successfully!";
+					
+				}else{
+					$validator['sim1'] = "SMS not sent.";
 				}
 
-			}else{
-				$validator['success'] = true;
-				$validator['messages'] = 'Loan successfully registered!';
+				$validator['sim_1'] = true;
 			}
+
+			if ($sim2_notif == 'yes') {
+				$send_sms2 = $this->itexmo($sim2, $msg, $apicode);
+
+				if($send_sms == ''){
+
+					$validator['sim2'] = "Something went wrong. Please contact developer";
+
+				}elseif ($send_sms == 0) {
+
+					$validator['sim2'] = "SMS sent successfully!";
+
+				}else{
+					$validator['sim2'] = "SMS not sent.";
+				}
+				$validator['sim_2'] = true;
+			}
+
+			$this->loan_model->update_borrowers($account_no);
+			$validator['success'] = true;
 		}
 			
 

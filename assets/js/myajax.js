@@ -828,9 +828,11 @@ $(document).ready(function() {
 	}
 	if(sim1_toggle){
 		var sim1_notif = 'yes';
+		var sim1 = $('.sim1').val();
 	}
 	if(sim2_toggle){
 		var sim2_notif = 'yes';
+		var sim2 = $('.sim2').val();
 	}
 
 	var b_name = $('.b_name').val();
@@ -891,6 +893,8 @@ $(document).ready(function() {
 				email_notif : email_notif,
 				sim1_notif : sim1_notif,
 				sim2_notif : sim2_notif,
+				sim1 : sim1,
+				sim2 : sim2,
 				b_name : b_name,
 				b_address : b_address, 
 				co_maker_name : co_maker_name,
@@ -919,21 +923,29 @@ $(document).ready(function() {
 							"info",
 							"warning"
 						);
-					}else{
+					} else{
 						showNotification( 
 							response.messages,
 							"check_circle",
 							"success"
 						);
-
+						showNotification(
+							data.sim1,
+							"info",
+							"success"
+						);
+						showNotification(
+							data.sim2,
+							"info",
+							"success"
+						);
 					}
-					
+
 					$("#loan-form")[0].reset();
 
 					setTimeout(function() {
-					window.location.reload(1);
-				}, 2000);
-
+						window.location.reload(1);
+					}, 2000);
 
 				}else{
 
