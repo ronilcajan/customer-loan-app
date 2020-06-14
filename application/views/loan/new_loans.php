@@ -57,12 +57,18 @@
                                                 <span class="font-italic text-muted "><?php echo $verified['status'];?></span>
                                             </td>
                                             <td class="td-actions text-right">
+
+                                                <?php if($this->session->userdata('usertype') == 'Manager' || ($this->session->userdata('usertype') == 'Admin')){ ?>
+
                                                 <button type="button" rel="tooltip" title="Approve this loan" class="btn btn-success btn-link btn-sm approve approve<?php echo $verified['loan_no'];?>" id="<?php echo $verified['loan_no'];?>">
                                                     <i class="material-icons">verified_user</i>
                                                 </button>|
                                                 <button type="button" rel="tooltip" title="Reject this loan" class="btn btn-warning btn-sm btn-link" data-target="#reject_client<?php echo $verified['loan_no'];?>" id="reject-button<?php echo $verified['loan_no'];?>" data-toggle="modal">
                                                     <i class="material-icons">warning</i>
-                                                </button>|
+                                                </button>| 
+
+                                                <?php } ?>
+
                                                 <button type="button" rel="tooltip" title="Remove this loan" class="btn btn-danger btn-sm btn-link" data-target="#remove_loan<?php echo $verified['loan_no'];?>" id="remove-loan<?php echo $verified['loan_no'];?>" data-toggle="modal">
                                                     <i class="material-icons">remove_circle</i>
                                                 </button>

@@ -21,6 +21,8 @@ $route['update-task'] = 'claims_controller/update_task';
 $route['change-password'] = 'claims_controller/change_password';
 
 $route['guest'] = 'borrowers/create_borrowers';
+$route['manager'] = 'claims_controller/dashboard';
+$route['cashier'] = 'claims_controller/dashboard';
 
 $route['back-up'] = 'claims_controller/back_up';
 $route['local-backup'] = 'claims_controller/local_backup';

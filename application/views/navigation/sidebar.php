@@ -13,8 +13,9 @@
 		<ul class="nav">
 
 		<?php if($this->session->userdata('usertype') == 'Guest') {?>
-			<?php $site1 = 'borrowers/client-profile';
-			if(strpos($site, 'borrowers/') || strpos($site, $site1)){?>
+			<?php 
+			$site1 = 'borrowers/client-profile';
+			if(strpos($site, 'borrowers/') || strpos($site, $site1) || $site == 'guest'){?>
 
 				<li class="nav-item active">
 
@@ -36,8 +37,122 @@
 				<i class="material-icons">monetization_on</i>
 				<p>Loan</p>
 				</a>
+				</li>
+		
+		<?php }elseif($this->session->userdata('usertype') == 'Manager') { ?>
+			
+			<?php if($site == '/dashboard' || $site == '/manager'){?>
+
+			<li class="nav-item active  ">
+
+			<?php }else{ ?>
+
+			<li class="nav-item">
+
+			<?php }?>
+
+				<a class="nav-link" href="<?php echo base_url();?>dashboard">
+				<i class="material-icons">dashboard</i>
+				<p>Dashboard</p>
+				</a>
 			</li>
 
+			<?php if(strpos($site,'loan/') || strpos($site,'promissory')){?>
+				<li class="nav-item active">
+			<?php }else{ ?>
+				<li class="nav-item">
+			<?php } ?>
+				<a class="nav-link" href="<?php echo base_url();?>loan/create-loan">
+				<i class="material-icons">monetization_on</i>
+				<p>Loan</p>
+				</a>
+			</li>
+
+			<?php if(strpos($site,'payments/')){?>
+				<li class="nav-item active">
+			<?php }else{ ?>
+				<li class="nav-item">
+			<?php } ?>
+				<a class="nav-link" href="<?php echo base_url();?>payments/loan-details">
+				<i class="material-icons">payment</i>
+				<p>Payments</p>
+				</a>
+			</li>
+    		<?php if(strpos($site, 'reports')){?>
+			<li class="nav-item active">
+			<?php }else{ ?>
+			<li class="nav-item">
+			<?php } ?>
+				<a class="nav-link" href="<?php echo base_url();?>reports">
+				<i class="material-icons">insert_chart</i>
+				<p>Reports</p>
+				</a>
+			</li>
+			<?php if(strpos($site, 'staff')){?>
+			<li class="nav-item active">
+			<?php }else{ ?>
+			<li class="nav-item ">
+			<?php } ?>
+				<a class="nav-link" href="<?php echo base_url();?>staff">
+				<i class="material-icons">person</i>
+				<p>Staffs</p>
+				</a>
+			</li>
+
+		<?php }elseif($this->session->userdata('usertype') == 'Cashier') { ?>
+			
+			<?php if($site == '/dashboard' || $site == '/cashier'){?>
+
+			<li class="nav-item active  ">
+
+			<?php }else{ ?>
+
+			<li class="nav-item">
+
+			<?php }?>
+
+				<a class="nav-link" href="<?php echo base_url();?>dashboard">
+				<i class="material-icons">dashboard</i>
+				<p>Dashboard</p>
+				</a>
+			</li>
+
+			<?php $site1 = 'borrowers/client-profile';
+			if(strpos($site, 'borrowers/') || strpos($site, $site1)){?>
+
+				<li class="nav-item active">
+
+			<?php }else{?>
+				<li class="nav-item">
+			<?php }?>
+				<a class="nav-link" href="<?php echo base_url();?>borrowers/create-borrowers">
+				<i class="material-icons">group</i>
+				<p>Borrowers</p>
+				</a>
+			</li>
+
+			<?php if(strpos($site,'loan/') || strpos($site,'promissory')){?>
+				<li class="nav-item active">
+			<?php }else{ ?>
+				<li class="nav-item">
+			<?php } ?>
+				<a class="nav-link" href="<?php echo base_url();?>loan/create-loan">
+				<i class="material-icons">monetization_on</i>
+				<p>Loan</p>
+				</a>
+			</li>
+
+			<?php if(strpos($site,'payments/')){?>
+				<li class="nav-item active">
+			<?php }else{ ?>
+				<li class="nav-item">
+			<?php } ?>
+				<a class="nav-link" href="<?php echo base_url();?>payments/loan-details">
+				<i class="material-icons">payment</i>
+				<p>Payments</p>
+				</a>
+			</li>
+		
 		<?php }else{ ?>
 
 			<?php if($site == '/dashboard'){?>

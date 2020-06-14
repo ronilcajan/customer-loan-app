@@ -91,6 +91,7 @@
                                                                     <select required="" class="position">
                                                                         <option selected disabled="">Select Position</option>
                                                                         <option value="Admin">Admin</option>
+                                                                        <option value="Manager">Manager</option>
                                                                         <option value="Cashier">Cashier</option>
                                                                         <option value="Loan Officer">Loan Officer</option>
                                                                         <option value="Collector">Collector</option>

@@ -44,11 +44,11 @@ class Claims_controller extends CI_Controller {
 
 			}elseif($data['user_type'] == 'Cashier'){
 				$validator['success'] = true;
-				$validator['messages'] = 'guest';
+				$validator['messages'] = 'cashier';
 
 			}elseif($data['user_type'] == 'Manager'){
 				$validator['success'] = true;
-				$validator['messages'] = 'guest';
+				$validator['messages'] = 'manager';
 
 			}else{
 				$validator['success'] = true;
