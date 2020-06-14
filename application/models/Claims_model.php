@@ -75,8 +75,7 @@ class Claims_model extends CI_Model {
 
     public function get_staff(){
         $this->db->select('*');
-        $this->db->from('users');
-        $this->db->join('staff', 'users.username = staff.username');
+        $this->db->from('staff');
         $query = $this->db->get();
         
         $result = $query->result_array();
@@ -123,6 +122,20 @@ class Claims_model extends CI_Model {
         return $this->db->affected_rows();
     }
 
+    public function insert_new_staff($data){
+        $userdata = array(
+            'username' => $data['username'],
+            'firstname' => $data['name'],
+            'address' => $data['address'],
+            'number' => $data['number'],
+            'email' => $data['email'],
+            'position' => $data['position']
+             );
+        $this->db->insert('staff', $userdata);
+
+        return $this->db->affected_rows();
+    }   
+
     public function check_staff($data){
 
         $this->db->where('username', $data);
@@ -144,6 +157,7 @@ class Claims_model extends CI_Model {
             'number' => $data['num'],
             'address' => $data['address'].','.$data['city'].',Philippines,'.$data['postal'],
             'email' => $data['email'],
+            'position' => $data['position'],
             'bio' => $data['bio']
         );
 

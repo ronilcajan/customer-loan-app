@@ -86,10 +86,16 @@
                                                       <input type="text" name="country" value="Philippines" class="form-control" disabled>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Postal Code</label>
-                                                        <input type="name" name="postal" class="form-control">
+                                                        <input type="number" name="postal" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Position</label>
+                                                        <input type="text" name="position" value="<?php echo $this->session->userdata('usertype');?>" class="form-control text-center" readonly>
                                                     </div>
                                                 </div>
                                             </div>

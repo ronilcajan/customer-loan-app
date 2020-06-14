@@ -46,19 +46,16 @@
                                            
                                         ?>
                                         <tr>
-                                            <td><a href="<?php echo base_url().'staff-profile/'.$st['username'];?>"><?php echo $st['lastname'].','.$st['firstname'].' '.$st['middlename'];?></a></td>
+                                            <td><b><?php echo $st['firstname'].' '.$st['middlename'].'. '.$st['lastname'];?></b></td>
                                             <td class="text-center">
                                                 <?php echo $st['address'];?>
                                             </td>
                                             <td><?php echo $st['number'];?></td>
                                             <td><?php echo $st['email'];?></td>
-                                            <td><?php echo $st['user_type'];?></td>
+                                            <td><?php echo $st['position'];?></td>
 
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="View staff information" class="btn btn-info btn-sm btn-link" data-toggle="modal">
-                                                   <i class="material-icons">visibility</i>
-                                                </button>|
-                                                <button type="button" rel="tooltip" title="Remove staff" class="btn btn-danger btn-sm btn-link"  data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="Remove staff" class="btn btn-danger btn-sm btn-link" data-toggle="modal">
                                                     <i class="material-icons">remove_circle</i>
                                                 </button>
                                             </td>
@@ -82,26 +79,43 @@
                                                     <div class="modal-body">
                                                         <label class="text-danger error" style="display: none;">Username already exist</label>
                                                         <div class="form-group">
-                                                                    <label class="bmd-label-floating">Enter Username</label>
-                                                                    <input type="text" class="form-control username" required>
-                                                                </div>
+                                                            <label class="bmd-label-floating">Position</label>
+                                                            <select required="" class="position">
+                                                                <option selected disabled="">Select Position</option>
+                                                                <option value="Admin">Admin</option>
+                                                                <option value="Manager">Manager</option>
+                                                                <option value="Cashier">Cashier</option>
+                                                                <option value="Loan Officer">Loan Officer</option>
+                                                                <option value="Collector">Collector</option>
+                                                                <option value="Guest">Guest</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="bmd-label-floating">Enter Username</label>
+                                                            <input type="text" class="form-control username" required>
+                                                        </div>
+                                                        <div class="form-group main-staff">
+                                                            <label class="bmd-label-floating">Enter Password</label>
+                                                            <input type="password" class="form-control password" required>
+                                                        </div>
+                                                        <div class="form-group staff">
+                                                            <label class="bmd-label-floating">Enter Name</label>
+                                                            <input type="text" class="form-control name" required>
+                                                        </div>
+                                                        <div class="form-group staff">
+                                                            <label class="bmd-label-floating">Enter Address</label>
+                                                            <input type="text" class="form-control address" required>
+                                                        </div>
 
-                                                                <div class="form-group">
-                                                                    <label class="bmd-label-floating">Position</label>
-                                                                    <select required="" class="position">
-                                                                        <option selected disabled="">Select Position</option>
-                                                                        <option value="Admin">Admin</option>
-                                                                        <option value="Manager">Manager</option>
-                                                                        <option value="Cashier">Cashier</option>
-                                                                        <option value="Loan Officer">Loan Officer</option>
-                                                                        <option value="Collector">Collector</option>
-                                                                        <option value="Guest">Guest</option>
-                                                                    </select>
-                                                              </div>
-                                                                <div class="form-group">
-                                                                    <label class="bmd-label-floating">Enter Password</label>
-                                                                    <input type="password" class="form-control password" required>
-                                                                </div>
+                                                        <div class="form-group staff">
+                                                            <label class="bmd-label-floating">Enter Co. Number</label>
+                                                            <input type="number" class="form-control number" required>
+
+                                                        </div>
+                                                        <div class="form-group staff">
+                                                            <label class="bmd-label-floating">Enter Email</label>
+                                                            <input type="email" class="form-control email" required>
+                                                        </div>
 
                                                     </div>
                                                     <div class="modal-footer">

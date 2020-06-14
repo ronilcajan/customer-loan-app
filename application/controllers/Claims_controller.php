@@ -131,19 +131,34 @@ class Claims_controller extends CI_Controller {
 		$data = $this->input->post();
 
 		$check_user = $this->claims_model->check_staff($data['username']);
-
+		
 		if(is_null($check_user)){
 
-			$insert_data = $this->claims_model->insert_staff($data);
+			if($data['name']){
 
-			if($insert_data){
+				$insert_data = $this->claims_model->insert_new_staff($data);
 
-				$validator['success'] = true;
-				$validator['messages'] = "Staff successfully added!";
+				if($insert_data){
 
+					$validator['success'] = true;
+					$validator['messages'] = "Staff successfully added!";
+
+				}else{
+					$validator['success'] = false;
+					$validator['messages'] = "Staff did not save!";
+				}
 			}else{
-				$validator['success'] = false;
-				$validator['messages'] = "Staff did not save!";
+				$insert_data = $this->claims_model->insert_staff($data);
+
+				if($insert_data){
+
+					$validator['success'] = true;
+					$validator['messages'] = "Staff successfully added!";
+
+				}else{
+					$validator['success'] = false;
+					$validator['messages'] = "Staff did not save!";
+				}
 			}
 		}else{
 			$validator['success'] = false;

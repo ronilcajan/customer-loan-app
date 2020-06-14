@@ -1,9 +1,31 @@
 
 $(document).ready(function() {
+
+	$('div.staff').hide();
+
+	$('.position').on('change', function(){
+		$position = $('.position').val();
+
+		if($position == 'Manager' || $position == 'Guest' || $position == 'Admin'  ){
+			$('div.staff').hide();
+			$('div.main-staff').show();
+		}else{
+			$('div.staff').show();
+			$('div.main-staff').hide();
+		}
+	});
+
+});
+
+$(document).ready(function() {
 	$('.add_staff').on('click', function(){
 		var username = $('.username').val();
 		var position = $('.position').val();
 		var password = $('.password').val();
+		var name = $('.name').val();
+		var address = $('.address').val();
+		var number = $('.number').val();
+		var email = $('.email').val();
 
 		if(username.trim() != "" && position.trim() != "" && password.trim() != "" ){
 
@@ -13,7 +35,11 @@ $(document).ready(function() {
 				data: {
 					username: username,
 					password: password,
-					position: position
+					position: position,
+					name: name,
+					address: address,
+					number:number,
+					email:email
 				},
 				dataType: "json",
 				cache: false,
