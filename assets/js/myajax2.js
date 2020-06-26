@@ -603,7 +603,7 @@ $(document).on('click', '.update_task', function(){
 	});
 }); 
 
-// ================= Remove Task ================
+// ================= Fully Paid ================
 $(document).on('click', '.fully_paid', function(){
 	var loan_no = $(this).attr('id');
 	
@@ -678,7 +678,7 @@ $(document).on('click', '.fully_paid', function(){
 	});
 }); 
 
-// ================= Remove Task ================
+// ================= Change Password ================
 $(document).on('click', '.change_pass', function(){
 	var pass1 = $('input[name="new_pass"').val();
 	var pass2 = $('input[name="conf_pass"').val();

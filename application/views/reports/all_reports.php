@@ -103,7 +103,7 @@
                                                 <tbody>
                                                     <?php foreach ($loans as $key => $all) {?>
                                                     <tr>
-                                                        <td><?php echo $all['account_no'];?></td>
+                                                        <td><?php echo $all['loan_no'];?></td>
                                                         <td><?php echo $all['firstname'].' '.$all['middlename'].' '.$all['lastname'];?></td>
                                                         <td><?php echo $all['loan_amount'];?></td>
                                                         <td><?php echo $all['terms'];?></td>
