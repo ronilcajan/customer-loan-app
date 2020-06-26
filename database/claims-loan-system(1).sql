@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 02, 2020 at 03:51 AM
+-- Generation Time: Jun 15, 2020 at 03:01 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -70,7 +70,16 @@ INSERT INTO `approved_loans` (`loan_no`, `date_approved`, `loan_started`, `daily
 ('L1000', '2020-02-02', '2020-02-02', '2000.00', '2020-04-02', 'Paid'),
 ('L1001', '2020-02-02', '2020-02-12', '40.00', '2020-04-12', 'Paid'),
 ('L1002', '2020-02-02', '2020-02-12', '64.86', '2020-04-12', 'new'),
-('L1003', '2020-02-17', '2020-02-17', '80.00', '2020-04-17', 'new');
+('L1003', '2020-02-17', '2020-02-17', '80.00', '2020-04-17', 'new'),
+('L1004', '2020-03-03', '2020-03-03', '40.00', '2020-05-02', 'new'),
+('L1005', '2020-03-03', '2020-03-03', '40.00', '2020-05-02', 'new'),
+('L1006', '2020-06-13', NULL, '180.00', NULL, 'new'),
+('L1021', '2020-06-13', NULL, '44.44', NULL, 'new'),
+('L1017', '2020-06-13', NULL, '8.88', NULL, 'new'),
+('L1024', '2020-06-13', NULL, '42.64', NULL, 'new'),
+('L1026', '2020-06-13', NULL, '4.00', NULL, 'new'),
+('L1022', '2020-06-13', NULL, '6.66', NULL, 'new'),
+('L1019', '2020-06-13', NULL, '44.44', NULL, 'new');
 
 -- --------------------------------------------------------
 
@@ -123,7 +132,38 @@ INSERT INTO `co_maker` (`co_maker_no`, `name`, `cedula_no`, `date_issued`, `addr
 (381, 'dsadas', 'One', '2020-02-21', 'fdsfdsfds', 'L1000', 10001),
 (382, 'John', 'DASDSAD', '2020-02-29', 'fdsfdsfds', 'L1001', 10000),
 (383, 'John', 'One', '2020-02-08', 'dasdsad', 'L1002', 10001),
-(384, 'sdf', 'dsfdsf', '2020-02-18', 'fdsfdsf', 'L1003', 10002);
+(384, 'sdf', 'dsfdsf', '2020-02-18', 'fdsfdsf', 'L1003', 10002),
+(385, 'Ron', '02932', '2020-03-17', '2121sadsadas', 'L1004', 10000),
+(386, 'dasd', 'dasd', '2020-03-17', 'dasdsad', 'L1005', 10002),
+(390, 'vcxv', 'dsfd', '2020-06-19', 'fdsfdsfds', 'L1006', 10002),
+(391, 'fdsfds', 'fdsfd', '2020-06-26', 'fdsfd', 'L1007', 10002),
+(392, 'fdsfdsf', 'fsdfdsfdsf', '2020-06-25', 'asdsdsa', 'L1008', 10002),
+(393, 'fdsf', 'fsdf', '2020-06-25', 'dasdsad', 'L1009', 10002),
+(394, 'fsdfds', 'fdsf', '2020-06-25', 'dasdsad', 'L1010', 10002),
+(395, 'dfd', 'fds', '2020-06-20', 'fdsfds', 'L1011', 10000),
+(396, 'fsd', 'fsd', '2020-06-12', 'fdsfdsfds', 'L1012', 10000),
+(397, 'wqw', 'sdsd', '2020-06-20', 'fdsfdsfds', 'L1013', 10000),
+(398, '4545', '445', '2020-06-20', 'sdfsdfds', 'L1014', 10000),
+(399, 'dsd', 'ds', '2020-06-27', 'sasa', 'L1015', 10000),
+(400, 'dasd', 'fsdfdsfdsf', '2020-06-25', 'dfdsfdsfdsf', 'L1016', 10000),
+(401, 'dsad', 'DASDSAD', '2020-06-19', 'dsadasd', 'L1017', 10000),
+(402, 'sdsad', 'dsa', '2020-06-27', 'dfdsfdsfdsf', 'L1018', 10000),
+(403, 'fdf', 'One', '2020-06-20', 'DASDADASD', 'L1019', 10000),
+(404, 'fsdf', 'fsdf', '2020-06-20', 'sdfdsf', 'L1020', 10000),
+(405, 'dsd', 'dsds', '2020-06-20', 'dsds', 'L1021', 10001),
+(406, 'fd', 'fd', '2020-06-20', 'dsd', 'L1022', 10001),
+(407, 'cxcx', 'cxc', '2020-06-20', 'dasdasdsa', 'L1023', 10001),
+(408, 'John', 'fsdfdsfdsf', '2020-06-06', 'fdsfdsfds', 'L1024', 10001),
+(409, 'vc', 'vc', '2020-06-27', 'xcvcx', 'L1025', 10001),
+(410, 'John', 'One', '2020-06-27', 'fdsfdsfds', 'L1026', 10001),
+(411, 'dsadas', 'DASDSAD', '2020-06-06', 'fdsfdsfds', 'L1027', 10002),
+(412, 'dasd', 'DASDSAD', '2020-06-27', 'DASDADASD', 'L1028', 10002),
+(413, 'dasd', 'fsdfdsfdsf', '2020-06-20', 'DASDADASD', 'L1029', 10001),
+(414, 'dsadas', 'Cena', '2020-06-12', 'fdsfdsfds', 'L1030', 10001),
+(415, 'dsadas', 'DASDSAD', '2020-06-26', 'Plaridel', 'L1031', 10001),
+(416, 'SASASAS', 'dsad', '2020-06-20', 'dasdsad', 'L1032', 10001),
+(417, 'Nice', 'fsdfdsfdsf', '2020-06-12', 'DASDADASD', 'L1033', 10001),
+(418, 'dasd', 'DASDSAD', '2020-06-26', 'dfdsfdsfdsf', 'L1034', 10001);
 
 -- --------------------------------------------------------
 
@@ -147,7 +187,38 @@ INSERT INTO `debtor_business` (`business_no`, `business_name`, `business_address
 (256, 'dsadasdsad', 'Purok 3, dsfdsfds, wqwqw, ew, 2323', 'L1000', 10001),
 (257, 'dsadasdsad', 'Purok 2, Looc Proper, Plaridel, Misamis Occidental', 'L1001', 10000),
 (258, 'dasdasd', 'Purok 3, dsfdsfds, wqwqw, ew, 2323', 'L1002', 10001),
-(259, 'Sdfds', 'Purok 3, Looc Proper, Plaridel, Misamis Occidental', 'L1003', 10002);
+(259, 'Sdfds', 'Purok 3, Looc Proper, Plaridel, Misamis Occidental', 'L1003', 10002),
+(260, 'Ron', 'Purok 2, Looc Proper, Plaridel, Misamis Occidental', 'L1004', 10000),
+(261, 'ssadsadas', 'Purok 3, Looc Proper, Plaridel, Misamis Occidental', 'L1005', 10002),
+(265, 'Sari-Sari Store', 'Purok 3, Looc Proper, Plaridel, Misamis Occidental', 'L1006', 10002),
+(266, 'fdsfds', 'Purok 3, Looc Proper, Plaridel, Misamis Occidental', 'L1007', 10002),
+(267, 'fsdfds', 'Purok 3, Looc Proper, Plaridel, Misamis Occidental', 'L1008', 10002),
+(268, 'fdfdf', 'Purok 3, Looc Proper, Plaridel, Misamis Occidental', 'L1009', 10002),
+(269, 'fsdfdsf', 'Purok 3, Looc Proper, Plaridel, Misamis Occidental', 'L1010', 10002),
+(270, 'dsf', 'Purok 2, Looc Proper, Plaridel, Misamis Occidental', 'L1011', 10000),
+(271, 'fdfd', 'Purok 2, Looc Proper, Plaridel, Misamis Occidental', 'L1012', 10000),
+(272, 'xzxz', 'Purok 2, Looc Proper, Plaridel, Misamis Occidental', 'L1013', 10000),
+(273, 'dfdsf', 'Purok 2, Looc Proper, Plaridel, Misamis Occidental', 'L1014', 10000),
+(274, 'sdsds', 'Purok 2, Looc Proper, Plaridel, Misamis Occidental', 'L1015', 10000),
+(275, 'Google', 'Purok 2, Looc Proper, Plaridel, Misamis Occidental', 'L1016', 10000),
+(276, 'dasdsa', 'Purok 2, Looc Proper, Plaridel, Misamis Occidental', 'L1017', 10000),
+(277, 'cxcx', 'Purok 2, Looc Proper, Plaridel, Misamis Occidental', 'L1018', 10000),
+(278, 'fdf', 'Purok 2, Looc Proper, Plaridel, Misamis Occidental', 'L1019', 10000),
+(279, 'dsfds', 'Purok 2, Looc Proper, Plaridel, Misamis Occidental', 'L1020', 10000),
+(280, 'dsds', 'Purok 3, dsfdsfds, wqwqw, ew, 2323', 'L1021', 10001),
+(281, '232', 'Purok 3, dsfdsfds, wqwqw, ew, 2323', 'L1022', 10001),
+(282, 'cxcxc', 'Purok 3, dsfdsfds, wqwqw, ew, 2323', 'L1023', 10001),
+(283, 'asdsa', 'Purok 3, dsfdsfds, wqwqw, ew, 2323', 'L1024', 10001),
+(284, 'vcv', 'Purok 3, dsfdsfds, wqwqw, ew, 2323', 'L1025', 10001),
+(285, 'Google', 'Purok 3, dsfdsfds, wqwqw, ew, 2323', 'L1026', 10001),
+(286, 'dasdsad', 'Purok 3, Looc Proper, Plaridel, Misamis Occidental', 'L1027', 10002),
+(287, 'dsadasdsad', 'Purok 3, Looc Proper, Plaridel, Misamis Occidental', 'L1028', 10002),
+(288, 'saSASA', 'Purok 3, dsfdsfds, wqwqw, ew, 2323', 'L1029', 10001),
+(289, 'saSASA', 'Purok 3, dsfdsfds, wqwqw, ew, 2323', 'L1030', 10001),
+(290, 'dasdsad', 'Purok 3, dsfdsfds, wqwqw, ew, 2323', 'L1031', 10001),
+(291, 'Google', 'Purok 3, dsfdsfds, wqwqw, ew, 2323', 'L1032', 10001),
+(292, 'saSASA', 'Purok 3, dsfdsfds, wqwqw, ew, 2323', 'L1033', 10001),
+(293, 'dasdsad', 'Purok 3, dsfdsfds, wqwqw, ew, 2323', 'L1034', 10001);
 
 -- --------------------------------------------------------
 
@@ -178,7 +249,38 @@ INSERT INTO `loan` (`loan_no`, `account_no`, `area`, `loan_amount`, `interest`, 
 ('L1000', 10001, '', '100000.00', 10, 'james', '2020-02-02', 'Paid', 'Josh ', 'New loan', 'ron', 60),
 ('L1001', 10000, '', '2000.00', 10, 'james', '2020-02-02', 'Paid', 'Josh ', 'New loan', 'ron', 60),
 ('L1002', 10001, '', '3243.00', 10, 'Leo', '2020-02-02', 'Active', 'Josh ', 'New loan', 'ron', 60),
-('L1003', 10002, '', '4000.00', 10, 'james', '2020-02-17', 'Active', 'Josh ', 'New loan', 'ron', 60);
+('L1003', 10002, '', '4000.00', 10, 'james', '2020-02-17', 'Active', 'Josh ', 'New loan', 'ron', 60),
+('L1004', 10000, '', '2000.00', 10, 'james', '2020-03-03', 'Active', 'Josh ', 'New loan', 'ron', 60),
+('L1005', 10002, '', '2000.00', 10, 'james', '2020-03-03', 'Active', 'Josh ', 'New loan', 'ron', 60),
+('L1006', 10002, '', '9000.00', 10, 'james', '2020-06-13', 'Approved', 'Josh ', 'New loan', 'ron', 60),
+('L1007', 10002, '', '10000.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1008', 10002, '', '9000.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1009', 10002, '', '8000.00', 10, 'Leo', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1010', 10002, '', '23232.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1011', 10000, '', '33333.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1012', 10000, '', '2222.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1013', 10000, '', '2222.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1014', 10000, '', '4343.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1015', 10000, '', '4444.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1016', 10000, '', '333.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1017', 10000, '', '444.00', 10, 'Leo', '2020-06-13', 'Approved', 'Josh ', 'New loan', 'ron', 60),
+('L1018', 10000, '', '2222.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1019', 10000, '', '2222.00', 10, 'james', '2020-06-13', 'Approved', 'Josh ', 'New loan', 'ron', 60),
+('L1020', 10000, '', '444.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1021', 10001, '', '2222.00', 10, 'james', '2020-06-13', 'Approved', 'Josh ', 'New loan', 'ron', 60),
+('L1022', 10001, '', '333.00', 10, 'james', '2020-06-13', 'Approved', 'Josh ', 'New loan', 'ron', 60),
+('L1023', 10001, '', '33333.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1024', 10001, '', '2132.00', 10, 'james', '2020-06-13', 'Approved', 'Josh ', 'New loan', 'ron', 60),
+('L1025', 10001, '', '333.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1026', 10001, '', '200.00', 10, 'james', '2020-06-13', 'Approved', 'Josh ', 'New loan', 'ron', 60),
+('L1027', 10002, '', '32323.00', 10, 'Leo', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1028', 10002, '', '2323.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1029', 10001, '', '3333.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1030', 10001, '', '22222.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1031', 10001, '', '222.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1032', 10001, '', '333.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1033', 10001, '', '2222.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60),
+('L1034', 10001, '', '333.00', 10, 'james', '2020-06-13', 'Waiting for approval', 'Josh ', 'New loan', NULL, 60);
 
 -- --------------------------------------------------------
 
@@ -235,13 +337,14 @@ INSERT INTO `payment_transactions` (`transaction_id`, `loan_no`, `date`, `amount
 --
 
 CREATE TABLE `staff` (
-  `username` varchar(20) DEFAULT NULL,
+  `username` varchar(20) NOT NULL,
   `firstname` varchar(20) DEFAULT NULL,
   `middlename` varchar(20) DEFAULT NULL,
   `lastname` varchar(20) DEFAULT NULL,
   `number` int(8) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
   `email` varchar(30) DEFAULT NULL,
+  `position` varchar(30) NOT NULL,
   `bio` varchar(100) DEFAULT NULL,
   `profile_img` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -250,8 +353,10 @@ CREATE TABLE `staff` (
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`username`, `firstname`, `middlename`, `lastname`, `number`, `address`, `email`, `bio`, `profile_img`) VALUES
-('ron', 'Ronil', 'M', 'Cajan', 93213213, 'Looc Proper', 'cajanr02@gmail.com', 'HAlooo', '5c6c50a12055a39beecbe2df6c59e012.jpeg');
+INSERT INTO `staff` (`username`, `firstname`, `middlename`, `lastname`, `number`, `address`, `email`, `position`, `bio`, `profile_img`) VALUES
+('', 'ronoo', NULL, NULL, 1001, 'dasdas', 'c@gmail.com', '', NULL, NULL),
+('ron2222', 'fdsfdsf', NULL, NULL, 324324, 'ffdsf', 'f@gmail.com', '', NULL, NULL),
+('ron3435', 'fsdf', NULL, NULL, 3424343, ';lfdfgl', 'dfgd@gmail.com', 'Collector', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -299,6 +404,8 @@ INSERT INTO `users` (`username`, `password`, `user_type`) VALUES
 ('noel', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Manager'),
 ('ron', 'a8e920f3f38d42d0f2b0f705215b50e06770c8a7', 'Admin'),
 ('roncka', '791fe5dc618d225c48bcf81551e0cbac7a53a2eb', 'Guest'),
+('roni', '1a8565a9dc72048ba03b4156be3e569f22771f23', 'Manager'),
+('ronil', 'a5b42198e3fb950b5ab0d0067cbe077a41da1245', 'Cashier'),
 ('sarah', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Cashier');
 
 --
@@ -360,12 +467,6 @@ ALTER TABLE `payment_transactions`
   ADD KEY `payment_transactions_ibfk_1` (`loan_no`);
 
 --
--- Indexes for table `staff`
---
-ALTER TABLE `staff`
-  ADD UNIQUE KEY `username` (`username`);
-
---
 -- Indexes for table `task`
 --
 ALTER TABLE `task`
@@ -386,13 +487,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `co_maker`
 --
 ALTER TABLE `co_maker`
-  MODIFY `co_maker_no` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=385;
+  MODIFY `co_maker_no` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=419;
 
 --
 -- AUTO_INCREMENT for table `debtor_business`
 --
 ALTER TABLE `debtor_business`
-  MODIFY `business_no` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=260;
+  MODIFY `business_no` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=294;
 
 --
 -- AUTO_INCREMENT for table `payment_transactions`
@@ -453,12 +554,6 @@ ALTER TABLE `names`
 --
 ALTER TABLE `payment_transactions`
   ADD CONSTRAINT `payment_transactions_ibfk_1` FOREIGN KEY (`loan_no`) REFERENCES `loan` (`loan_no`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `staff`
---
-ALTER TABLE `staff`
-  ADD CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 
 --
 -- Constraints for table `task`

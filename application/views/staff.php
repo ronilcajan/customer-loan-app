@@ -55,11 +55,34 @@
                                             <td><?php echo $st['position'];?></td>
 
                                             <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="Remove staff" class="btn btn-danger btn-sm btn-link" data-toggle="modal">
+                                                <button type="button" rel="tooltip" title="Remove staff" class="btn btn-danger btn-sm btn-link" data-toggle="modal" data-target="#remove_staff<?php echo $st['username'];?>" id="remove-staff<?php echo $st['username'];?>">
                                                     <i class="material-icons">remove_circle</i>
                                                 </button>
                                             </td>
                                         </tr>
+
+                                        <!-- Modal for remove clients -->
+                                        <div class="modal fade" id="remove_staff<?php echo $st['username'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Removing Staffs</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Are you sure you want to remove this staff?</p>
+                                                        <small class="text-danger font-italic">Note:This process cannot be undoned!</small>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-danger remove-staff" id="<?php echo $st['username'];?>">Remove</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End of modal -->
                                     <?php } }?>
                                     </tbody>
                                 </table>
@@ -108,7 +131,7 @@
                                                         </div>
 
                                                         <div class="form-group staff">
-                                                            <label class="bmd-label-floating">Enter Co. Number</label>
+                                                            <label class="bmd-label-floating">Enter Contact No.</label>
                                                             <input type="number" class="form-control number" required>
 
                                                         </div>
@@ -126,6 +149,11 @@
                                             </div>
                                         </div>
                                         <!-- End of modal -->
+
+
+
+
+                                        
                 </div>
             </div>
         </div>

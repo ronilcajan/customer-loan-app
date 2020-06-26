@@ -128,7 +128,7 @@
                                         <p class="card-description">
                                              Your bio...
                                         </p>
-                                        <button class="btn btn-primary btn-round btn-sm">Select Profile Picture</button>
+                                        <!-- <button class="btn btn-primary btn-round btn-sm">Select Profile Picture</button> -->
                                     </div>
                                 </div>
                             </div>

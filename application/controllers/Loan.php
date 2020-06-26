@@ -193,7 +193,7 @@ class Loan extends CI_Controller {
 				}
 			}
 
-			$msg = "Hi there, This is to notify you that your loan application is approved. From RFS Corporation.";
+			$msg = "Hi, This is to notify you that your loan application is being process. From RFS Corporation.";
 			$apicode = "TR-RFSCO761275_H4IDW";
 
 			if($sim1_notif == 'yes'){

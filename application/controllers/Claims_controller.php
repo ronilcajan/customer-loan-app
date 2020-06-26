@@ -398,6 +398,17 @@ class Claims_controller extends CI_Controller {
 		echo json_encode($validator);
 	} 
 
+
+	public function remove_staff(){
+		$result = $this->claims_model->remove_staff($this->input->post('username'));
+		if($result){
+			echo "Loan remove";
+		}else{
+			echo "False";
+		}
+		
+	}
+
 	function logout(){
 
 		$user_data = $this->session->all_userdata();

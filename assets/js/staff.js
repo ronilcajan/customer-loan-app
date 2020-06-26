@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$('.position').on('change', function(){
 		$position = $('.position').val();
 
-		if($position == 'Manager' || $position == 'Guest' || $position == 'Admin'  ){
+		if($position == 'Manager' || $position == 'Guest' || $position == 'Admin'  || $position == 'Cashier'){
 			$('div.staff').hide();
 			$('div.main-staff').show();
 		}else{
@@ -228,3 +228,74 @@ $(document).ready(function(){
 
 	});
 });
+//================== Remove Staff =====================
+$(document).on('click', '.remove-staff', function(){
+	var username = $(this).attr('id');
+
+	var $button = $('#remove-staff'+username);
+	var table = $("#loan_clients_table").DataTable();
+	
+	$.ajax({
+		url: BASE_URL+"remove-staff",
+		method: 'POST',
+		data:{
+			username:username
+		},
+		beforeSend: function() {
+			$("#loading-screen").show();
+		},
+		success: function(data){
+			if(data!="False"){
+
+				$('.modal').modal('hide');
+				$("#loading-screen").hide();
+
+				showNotification(
+					data,
+					"check_circle",
+					"success"
+				);
+
+				
+			}else{
+				$("#loading-screen").hide();
+			}
+	        setTimeout(function() {
+				window.location.reload(1);
+			}, 1000);
+			
+		},
+		error: function (jqXHR, exception) {
+				$("#loading-screen").hide();
+		
+		        var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Not connect.\n Verify Network.';
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested page not found. [404].Please contact developer';
+		        } else if (jqXHR.status == 500) {
+		            msg = 'Internal Server Error [500].';
+		        } else if (exception === 'parsererror') {
+
+		           msg = 'parsererror. Please contact developer';
+
+		        } else if (exception === 'timeout') {
+		            msg = 'Time out error.Please contact developer';
+		        } else if (exception === 'abort') {
+		            msg = 'Ajax request aborted.Please contact developer';
+		        } else {
+		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+		        }
+		        showNotification(
+						msg,
+						"info",
+						"warning"
+				);
+				
+
+		        setTimeout(function() {
+					window.location.reload(1);
+				}, 3000);
+		    }
+	});
+}); 

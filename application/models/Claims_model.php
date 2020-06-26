@@ -113,6 +113,13 @@ class Claims_model extends CI_Model {
         }
     }   
 
+    public function remove_staff($data){
+
+        $this->db->where('username', $data);
+        $this->db->delete('staff');
+    
+        return $this->db->affected_rows();
+    }
 
     public function insert_staff($data){
         $staff = array('username' => $data['username'], 'password' => sha1($data['password']), 'user_type' => $data['position'],);

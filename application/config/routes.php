@@ -19,6 +19,7 @@ $route['end-task'] = 'claims_controller/end_task';
 $route['remove-task'] = 'claims_controller/remove_task';
 $route['update-task'] = 'claims_controller/update_task';
 $route['change-password'] = 'claims_controller/change_password';
+$route['remove-staff'] = 'claims_controller/remove_staff';
 
 $route['guest'] = 'borrowers/create_borrowers';
 $route['manager'] = 'claims_controller/dashboard';
