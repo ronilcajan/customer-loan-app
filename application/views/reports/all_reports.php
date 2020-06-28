@@ -60,7 +60,9 @@
                                                     <th>Contact Numbers</th>
                                                     <th>Status</th>
                                                 </thead>
+
                                                 <tbody>
+                                                    <?php if(!empty($clients)){?>
                                                     <?php foreach ($clients as $key => $all) {?>
                                                     <tr>
                                                         <td><?php echo $all['account_no'];?></td>
@@ -70,7 +72,7 @@
                                                         <td><?php echo $all['number1'].' & '.$all['number2'];?></td>
                                                         <td><?php echo $all['status'];?></td>
                                                     </tr>
-                                                   <?php } ?>
+                                                   <?php }} ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -101,6 +103,7 @@
                                                     <th>Status</th>
                                                 </thead>
                                                 <tbody>
+                                                    <?php if(!empty($loans)){?>
                                                     <?php foreach ($loans as $key => $all) {?>
                                                     <tr>
                                                         <td><?php echo $all['loan_no'];?></td>
@@ -112,7 +115,7 @@
                                                         <td><?php $time = $all['due_date']; echo date('M. d, Y', strtotime($time));?></td>
                                                         <td><?php echo $all['loan_status'];?></td>
                                                     </tr>
-                                                   <?php } ?>
+                                                   <?php } }?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -153,6 +156,7 @@
                                                     <th>Notes</th>
                                                 </thead>
                                                 <tbody>
+                                                    <?php if(!empty($payments)){?>
                                                     <?php foreach ($payments as $key => $all) {?>
                                                     <tr>
                                                         <td><?php echo $all['transaction_id'];?></td>
@@ -163,7 +167,7 @@
                                                         <td><?php echo $all['collected_by'];?></td>
                                                         <td><?php echo $all['notes'];?></td>
                                                     </tr>
-                                                   <?php } ?>
+                                                   <?php } }?>
                                                 </tbody>
                                             </table>
                                         </div>
