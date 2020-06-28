@@ -19,7 +19,21 @@ class Payments_model extends CI_Model {
         }
     }
 
-    public function insert_payment($data){
+    public function payment_check($data){
+        $sql = "SELECT * FROM `payment_transactions` WHERE loan_no = '$data' ORDER BY payment_no DESC LIMIT 1";
+        $query = $this->db->query($sql);
+
+
+        $result = $query->result_array();
+        
+        if(count($result) >0){
+            return $result;
+        }else{
+            return null;
+        }
+    }
+
+    public function insert_payment($data, $payment_no){
         $loan_no = $data['loan_no'];
 
         if(isset($data['total_pay'])){
@@ -28,7 +42,7 @@ class Payments_model extends CI_Model {
                 'loan_no' => $loan_no,
                 'date' => date('Y-m-d'),
                 'amount' => $data['total_pay'],
-                'collected_by' => $this->session->userdata('username'),
+                'payment_no' => $payment_no,
                 'notes' => 'Penalty added'
             );
             $this->db->insert('payment_transactions', $payment);
@@ -38,7 +52,7 @@ class Payments_model extends CI_Model {
                 'loan_no' => $loan_no,
                 'date' => date('Y-m-d'),
                 'amount' => $data['daily_payment'],
-                'collected_by' => $this->session->userdata('username'),
+                'payment_no' => $payment_no,
                 'notes' => 'Daily payment'
             );
             $this->db->insert('payment_transactions', $payment);
@@ -50,7 +64,7 @@ class Payments_model extends CI_Model {
 
     public function get_payment_first_month($data){
 
-        $sql = "SELECT * FROM `payment_transactions` WHERE loan_no = '$data' LIMIT 0,29";
+        $sql = "SELECT * FROM `payment_transactions` WHERE loan_no = '$data' AND payment_no BETWEEN 1 AND 30";
 
         $query = $this->db->query($sql);
 
@@ -62,7 +76,7 @@ class Payments_model extends CI_Model {
         }
     }
     public function get_payment_second_month($data){
-        $sql = "SELECT * FROM `payment_transactions` WHERE loan_no = '$data' LIMIT 30,59";
+        $sql = "SELECT * FROM `payment_transactions` WHERE loan_no = '$data' AND payment_no BETWEEN 31 AND 60";
 
         $query = $this->db->query($sql);
 

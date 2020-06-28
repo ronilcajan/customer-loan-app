@@ -74,7 +74,7 @@ $(document).ready(function() {
 			    }
 
 			});
-			return false
+			return false;
 		}else{
 			alert('empty');
 		}
@@ -151,6 +151,7 @@ $(document).on('click', '.pay', function(){
 	});
 	return false;
 });
+
 // ==================== Pay Penalty ================
 
 $(document).on('click', '.pay-penalty', function(){

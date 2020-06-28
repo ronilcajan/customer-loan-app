@@ -55,9 +55,9 @@ class Loan_model extends CI_Model {
 
     public function get_collector(){
 
-        $this->db->select('username');
-        $this->db->from('users');
-        $this->db->where('user_type', 'Collector');
+        $this->db->select('*');
+        $this->db->from('staff');
+        $this->db->where('position', 'Collector');
         
         $query = $this->db->get();
 

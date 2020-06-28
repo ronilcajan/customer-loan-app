@@ -99,7 +99,7 @@
                                                                         <option disabled selected>Choose collector...</option>
                                                                         <?php foreach($collector as $key => $collect) { 
                                                                             if(!empty($collect)){  ?>
-                                                                            <option value="<?php echo $collect['username'];?>"><?php echo $collect['username'];?> </option>
+                                                                            <option value="<?php echo $collect['username'];?>"><?php echo $collect['firstname'].' '.$collect['middlename'].' '.$collect['lastname'];?> </option>
                                                                         <?php }} ?>
                                                                     </select>
                                                                 </div>

@@ -737,13 +737,13 @@ function checkconnection(){
 
 	if(status){
 		showNotification(
-			"Connected to internet. You can send email notification.",
+			"Connected to internet. You can send Email and SMS notification.",
 			"wifi",
 			"success"
 		);
 	}else{
 		showNotification(
-			"No internet connection. You can't send email notification.",
+			"No internet connection. You can't send Email and SMS notification.",
 			"wifi_off",
 			"warning"
 		);

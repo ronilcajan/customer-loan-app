@@ -65,13 +65,19 @@
 
                                             <div class="col-md-8">
                                                 <div class="row">
-                                                    <div class="col-md-6 p-0">
+                                                    <div class="col-md-4 p-0">
                                                         <div class="form-group input-group-prepend">
                                                             <label class="bmd-label-floating text-primary">Account Number:</label>
                                                             <input type="text" class="form-control interest text-left font-weight-bold" value="<?php echo $loan['account_no'];?>" disabled>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 p-0">
+                                                    <div class="col-md-4 p-0">
+                                                        <div class="form-group input-group-prepend">
+                                                            <label class="bmd-label-floating text-primary">Loan No.:</label>
+                                                            <input type="text" class="form-control interest text-left font-weight-bold" value="<?php echo $loan['loan_no'];?>" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 p-0">
                                                         <div class="form-group input-group-prepend">
                                                             <label class="bmd-label-floating text-primary">Date Loan:</label>
                                                             <input type="text" class="form-control interest text-left font-weight-bold" value="<?php $time = strtotime($loan['loan_started']); echo date("M. d, Y", $time);?>" disabled>
@@ -120,6 +126,12 @@
                                                             <label class="bmd-label-floating text-primary">Terms(days): </label>
                                                             <input type="text" class="form-control interest text-left font-weight-bold" value="<?php echo $loan['terms'];?> " disabled>
                                                         </div>
+                                                    </div> 
+                                                    <div class="col-md-12 p-0">
+                                                        <div class="form-group input-group-prepend">
+                                                            <label class="bmd-label-floating text-primary">Collertor: </label>
+                                                            <input type="text" class="form-control interest text-left font-weight-bold" value="<?php echo $loan['collector'];?> " disabled>
+                                                        </div>
                                                     </div>     
                                                 </div>                                                         
                                             </div>
@@ -133,44 +145,50 @@
                                                 <div class="table-responsive">
                                                     <table class="table table-sm">
                                                         <thead class="text-primary">
-                                                            <th>No.</th>
+                                                            <th>Day</th>
                                                             <th>Date</th>
                                                             <th>Daily Amount</th>
-                                                            <th>Collected by</th>
                                                             <th>Note</th>
                                                         </thead>
                                                         <tbody>
-                                                           <?php for ($i=0; $i<=29 ; $i++) {  
-                                                            ?>
-                                                            <tr>
-                                                                <td><?php echo $i+1;?></td>
-
-                                                                <td>
-                                                                    <?php if(!empty($first_mnth[$i]['date'])){
-                                                                        echo $first_mnth[$i]['date']; 
-                                                                        }
-                                                                    ?>    
-                                                                </td>
-                                                                <td>
-                                                                    <?php if(!empty($first_mnth[$i]['amount'])){
-                                                                        echo 'P '.$first_mnth[$i]['amount']; 
-                                                                        }
-                                                                    ?>
-                                                                </td>
-                                                                <td>
-                                                                    <?php if(!empty($first_mnth[$i]['collected_by'])){
-                                                                        echo $first_mnth[$i]['collected_by']; 
-                                                                        }
-                                                                    ?>
-                                                                </td>
-                                                                <td>
-                                                                    <?php if(!empty($first_mnth[$i]['notes'])){
-                                                                        echo $first_mnth[$i]['notes']; 
-                                                                        }
-                                                                    ?>
-                                                                </td>
-                                                            </tr>
-                                                           <?php } ?>
+                                                            <?php if(!empty($first_mnth)){?>
+                                                            <?php for ($i=0; $i<count($first_mnth) ; $i++) { ?>
+                                                                <?php
+                                                                    if(!empty($first_mnth[$i]['payment_no'])){
+                                                                        $p = $first_mnth[$i]['payment_no'];
+                                                                    }
+                                                                    if(!empty($first_mnth[$i]['date'])){
+                                                                        $d = $first_mnth[$i]['date']; 
+                                                                    }
+                                                                    if(!empty($first_mnth[$i]['amount'])){
+                                                                        $am = $first_mnth[$i]['amount']; 
+                                                                    }
+                                                                    if(!empty($first_mnth[$i]['notes'])){
+                                                                        $n = $first_mnth[$i]['notes']; 
+                                                                    }
+                                                                    $a=$i+1;
+                                                                ?>
+                                                                <tr>
+                                                                    <td><?php echo $p;?></td>
+                                                                    <td><?php echo $d;?></td>
+                                                                    <td><?php echo $am;?></td>
+                                                                    <td><?php 
+                                                                            if($n=="Penalty added"){
+                                                                                echo "<span class='text-danger'>".$n;"</span>";
+                                                                            }else{
+                                                                                echo "<span class='text-success'>".$n;"</span>";
+                                                                            }?></td>
+                                                                </tr>
+                                                        <?php }
+                                                         }else{?>
+                                                                <?php for ($i=1; $i <= 30; $i++) { ?>
+                                                                    <tr>
+                                                                        <td><? echo $i;?></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                               <?php }} ?>
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -183,44 +201,52 @@
                                                 <div class="table-responsive">
                                                     <table class="table table-sm">
                                                         <thead class="text-primary">
-                                                            <th>No.</th>
+                                                            <th>Day</th>
                                                             <th>Date</th>
                                                             <th>Daily Amount</th>
-                                                            <th>Collected by</th>
                                                             <th>Note</th>
                                                         </thead>
                                                         <tbody>
-                                                            <?php for ($i=0; $i<=29 ; $i++) {
-                                                            ?>
-                                                            <tr>
-                                                                <td><?php echo $i+1;?></td>
+                                                            <?php if(!empty($second_mnth)){?>
 
-                                                                <td>
-                                                                    <?php if(!empty($second_mnth[$i]['date'])){
-                                                                        echo $second_mnth[$i]['date']; 
-                                                                        }
-                                                                    ?>    
-                                                                </td>
-                                                                <td>
-                                                                    <?php if(!empty($second_mnth[$i]['amount'])){
-                                                                        echo 'P '.$second_mnth[$i]['amount']; 
-                                                                        }
-                                                                    ?>
-                                                                </td>
-                                                                <td>
-                                                                    <?php if(!empty($second_mnth[$i]['collected_by'])){
-                                                                        echo $second_mnth[$i]['collected_by']; 
-                                                                        }
-                                                                    ?>
-                                                                </td>
-                                                                <td>
-                                                                    <?php if(!empty($second_mnth[$i]['notes'])){
-                                                                        echo $second_mnth[$i]['notes']; 
-                                                                        }
-                                                                    ?>
-                                                                </td>
-                                                            </tr>
-                                                           <?php } ?>
+                                                            
+                                                            <?php for ($i=0; $i<count($second_mnth) ; $i++) { ?>
+                                                                <?php
+                                                                    if(!empty($second_mnth[$i]['payment_no'])){
+                                                                        $p = $second_mnth[$i]['payment_no'];
+                                                                    }
+                                                                    if(!empty($second_mnth[$i]['date'])){
+                                                                        $d = $second_mnth[$i]['date']; 
+                                                                    }
+                                                                    if(!empty($second_mnth[$i]['amount'])){
+                                                                        $am = $second_mnth[$i]['amount']; 
+                                                                    }
+                                                                    if(!empty($second_mnth[$i]['notes'])){
+                                                                        $n = $second_mnth[$i]['notes']; 
+                                                                    }
+                                                                    $a=$i+1;
+                                                                ?>
+                                                                <tr>
+                                                                    <td><?php echo $p;?></td>
+                                                                    <td><?php echo $d;?></td>
+                                                                    <td><?php echo $am;?></td>
+                                                                    <td><?php 
+                                                                            if($n=="Penalty added"){
+                                                                                echo "<span class='text-danger'>".$n;"</span>";
+                                                                            }else{
+                                                                                echo "<span class='text-success'>".$n;"</span>";
+                                                                            }?></td>
+                                                                </tr>
+                                                        <?php }
+                                                            }else{?>
+                                                                <?php for ($i=1; $i <= 30; $i++) { ?>
+                                                                    <tr>
+                                                                        <td><? echo $i;?></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                               <?php }} ?>
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -244,14 +270,40 @@
                                                             <div class="row">
                                                                 <div class="ml-auto mr-auto">
                                                                     <button class="btn btn-primary norm_payment">Payment</button>
-                                                                    <button class="btn btn-primary add_penalty">Add Penalty</button>
+                                                                    <!-- Disable penalty button -->
+                                                                    <?php 
+                                                                   if(!is_null($pny)){
+                                                                        $d = 0;
+                                                                        if(!empty($pny[0]['date'])){
+                                                                            $d= $pny[0]['date'];
+                                                                        }
+                                                                        $now = time();
+                                                                        $date = strtotime($d);
+                                                                        $datediff = $now - $date;
+
+                                                                        $payment_no = round($datediff / (60 * 60 * 24));
+
+                                                                        if($payment_no >= 2){
+                                                                            echo '<button class="btn btn-primary add_penalty">Add Penalty</button>';
+                                                                        }
+                                                                    }
+                                                                    ?>
                                                                 </div>    
                                                             </div>
 
                                                             <div class="form-group mt-4">
                                                                 <label class="bmd-label-floating">Date Now</label>
-                                                                <input type="text" class="form-control pl-3" value="<?php echo date('M. d, Y');?>" readonly>
+                                                                <input type="text" class="form-control pl-3" value="<?php echo date('M d, Y');?>" readonly>
                                                             </div>
+                                                            <?php if(!is_null($pny)){?>
+                                                            <div class="form-group pnalty" style="display: none;">
+                                                                <label class="bmd-label-floating">Last Payment Date</label>
+                                                                <input type="text" class="form-control pl-3 " value="<?php 
+                                                                        if(!empty($pny[0]['date'])){
+                                                                            $time = strtotime($pny[0]['date']);
+                                                                            echo date('M d, Y', $time);}?>" readonly>
+                                                            </div>
+                                                        <?php } ?>
                                                             <div class="form-group input-group-prepend">
                                                                 <span class="input-group-text">
                                                                             ₱
@@ -259,6 +311,7 @@
                                                                 <label class="bmd-label-floating">Daily Payment</label>
                                                                 <input type="number" class="form-control pl-3 daily_payment" name="amount" value="<?php echo $loan['daily_payment'];?>" readonly required>
                                                             </div>
+                                                            <?php if(!is_null($pny)){ ?>
                                                             <div class="form-group input-group-prepend pnalty" style="display: none;">
                                                                 <span class="input-group-text">
                                                                             %
@@ -266,6 +319,7 @@
                                                                 <label class="bmd-label-floating">Penalty Percentage</label>
                                                                 <input type="number" class="form-control pl-3" name="amount" value="1" readonly required>
                                                             </div>
+
                                                             <div class="form-group input-group-prepend pnalty" style="display: none;">
                                                                 <span class="input-group-text">
                                                                             ₱
@@ -273,6 +327,7 @@
                                                                 <label class="bmd-label-floating">Total Payment</label>
                                                                 <input type="number" class="form-control pl-3 total_pay" name="amount" value="<?php echo $penalty;?>" readonly required>
                                                             </div>
+                                                        <?php } ?>
                                                             <input type="hidden" class="form-control loan_no" value="<?php echo $loan['loan_no'];?>">
                                                         </div>
                                                         <button type="button" class="btn btn-primary btn-round btn-sm ml-3 pay">Pay</button>
