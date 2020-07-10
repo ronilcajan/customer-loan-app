@@ -128,7 +128,7 @@
                                         <p class="card-description">
                                              Your bio...
                                         </p>
-                                        <!-- <button class="btn btn-primary btn-round btn-sm">Select Profile Picture</button> -->
+                                      <!--  <button class="btn btn-primary btn-round btn-sm">Select Profile Picture</button> -->
                                     </div>
                                 </div>
                             </div>
@@ -178,7 +178,7 @@
                                                             </td>
                                                             <td><?php echo $mytask['status'];?></td>
                                                             <td class="td-actions text-right">
-                                                                <button type="submit" rel="tooltip" title="Update Task" class="btn btn-success btn-link btn-sm update_task" id="<?php echo $mytask['task_id'];?>">
+                                                                <button rel="tooltip" title="Update Task" class="btn btn-success btn-link btn-sm update_task" id="<?php echo $mytask['task_id'];?>">
                                                                     <i class="material-icons">done</i>
                                                                 </button>
                                                                 <button type="button" rel="tooltip" title="Cancel Update" class="btn btn-danger btn-link btn-sm cancel_task" id="<?php echo $mytask['task_id'];?>">

@@ -17,7 +17,8 @@
                             <div class="col-md-4">
                                 <div class="card card-profile">
                                     <div class="card-avatar" style="height: 150px">
-                                        <?php if(empty($profile['prof_img'])){?>
+					
+                                        <?php if(empty($profile['prof-img'])){?>
                                             <img class="img img-fluid" style="height:130px" src="<?php echo base_url().'assets/images/person.png' ?>" alt="client-img"/>
                                     <?php }else{ ?>
                                         <img class="img img-fluid" style="height:130px" src="<?php echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img"/>
