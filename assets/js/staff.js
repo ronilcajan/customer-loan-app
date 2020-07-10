@@ -17,8 +17,7 @@ $(document).ready(function() {
 
 });
 
-$(document).ready(function() {
-	$('.add_staff').on('click', function(){
+$(document).on('click','.add_staff', function(){
 		var username = $('.username').val();
 		var position = $('.position').val();
 		var password = $('.password').val();
@@ -27,7 +26,7 @@ $(document).ready(function() {
 		var number = $('.number').val();
 		var email = $('.email').val();
 
-		if(username.trim() != "" && position.trim() != "" && password.trim() != "" ){
+		if(username.trim() != "" && position.trim() != "" ){
 
 			$.ajax({
 				type: "POST",
@@ -65,9 +64,14 @@ $(document).ready(function() {
 
 				}
 			});
+		}else{
+			showNotification(
+							response.messages,
+							"check_circle",
+							"success"
+						);		
 		}
 		return false;
-	});
 });
 
 // ======== Complete Staff Profile ==============
