@@ -20,16 +20,18 @@ MySQL 8.0
 A step by step series of examples that tell you how to get a development env running
 
 Say what the step will be
-
 ```
 Clone or download the repository.
 ```
+then
 ```
 Setup the database and create your login details
 ```
+then
 ```
 Setup email details for email notification application/controllers/Loan.php 
 ```
+and
 ```
 Make sure email 'Less Secure Apps' is on 
 ```
