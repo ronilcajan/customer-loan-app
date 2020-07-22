@@ -188,51 +188,57 @@ class Loan extends CI_Controller {
 
 					$validator['messages'] = 'Loan successfully registered. Email notification sent!';
 					$validator['email'] = true;
+					$validator['success'] = true;
 				}else{
+					$validator['email'] = false;
+					$validator['success'] = true;
 					$validator['messages'] = 'Loan successfully registered!';
 				}
+			}else{
+				$validator['success'] = true;
+				$validator['messages'] = 'Loan successfully registered!';
 			}
 
-			$msg = "Hi, This is to notify you that your loan application is being process. From RFS Corporation.";
-			$apicode = "TR-RFSCO761275_H4IDW";
+			// ============= API is in trial ======================
+			// $msg = "Hi, This is to notify you that your loan application is being process. From RFS Corporation.";
+			// $apicode = "TR-RFSCO761275_H4IDW";
 
-			if($sim1_notif == 'yes'){
-				$send_sms1 = $this->itexmo($sim1, $msg, $apicode);
+			// if($sim1_notif == 'yes'){
+			// 	$send_sms1 = $this->itexmo($sim1, $msg, $apicode);
 
-				if($send_sms1 == ''){
+			// 	if($send_sms1 == ''){
 
-					$validator['sim1'] = "Something went wrong. Please contact developer";
+			// 		$validator['sim1'] = "Something went wrong. Please contact developer";
 
-				}elseif ($send_sms1 == 0) {
+			// 	}elseif ($send_sms1 == 0) {
 
-					$validator['sim1'] = "SMS sent successfully!";
+			// 		$validator['sim1'] = "SMS sent successfully!";
 					
-				}else{
-					$validator['sim1'] = "SMS not sent.";
-				}
+			// 	}else{
+			// 		$validator['sim1'] = "SMS not sent.";
+			// 	}
 
-				$validator['sim_1'] = true;
-			}
+			// 	$validator['sim_1'] = true;
+			// }
 
-			if ($sim2_notif == 'yes') {
-				$send_sms2 = $this->itexmo($sim2, $msg, $apicode);
+			// if ($sim2_notif == 'yes') {
+			// 	$send_sms2 = $this->itexmo($sim2, $msg, $apicode);
 
-				if($send_sms == ''){
+			// 	if($send_sms == ''){
 
-					$validator['sim2'] = "Something went wrong. Please contact developer";
+			// 		$validator['sim2'] = "Something went wrong. Please contact developer";
 
-				}elseif ($send_sms == 0) {
+			// 	}elseif ($send_sms == 0) {
 
-					$validator['sim2'] = "SMS sent successfully!";
+			// 		$validator['sim2'] = "SMS sent successfully!";
 
-				}else{
-					$validator['sim2'] = "SMS not sent.";
-				}
-				$validator['sim_2'] = true;
-			}
+			// 	}else{
+			// 		$validator['sim2'] = "SMS not sent.";
+			// 	}
+			// 	$validator['sim_2'] = true;
+			// }
 
 			$this->loan_model->update_borrowers($account_no);
-			$validator['success'] = true;
 		}
 			
 
@@ -262,26 +268,7 @@ class Loan extends CI_Controller {
 		echo json_encode($data);
 	}
 
-	function send_sms($num, $message, $apicode){
-        
-        $url = 'https://www.itextmo.com/php_api/api.php';
-
-        $itextmo = array('1' => $num, '2' => $message, '3' => $apicode );
-
-        $param = array(
-        	'http' => array(
-        		'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-        		'method' => 'POST',
-        		'content' => http_build_query($itextmo),
-        	),
-        );
-
-        $context = stream_context_create($param);
-
-        return file_get_contents($url, false, $context);
-
-	}
-
+	// ======== Send sms =========== 
 	function itexmo($number,$message,$apicode){
 			$passwd = '}%4$$m4ze{';
 			$ch = curl_init();
@@ -329,33 +316,34 @@ class Loan extends CI_Controller {
 					$data['email'] = true;
 				}
 
-				$send_sms = $this->itexmo($num, $msg, $apicode);
-				$send_sms1 = $this->itexmo($num1, $msg, $apicode);
+				// ============= API is in trial ======================
+				// $send_sms = $this->itexmo($num, $msg, $apicode);
+				// $send_sms1 = $this->itexmo($num1, $msg, $apicode);
 
 
-				if($send_sms == ''){
+				// if($send_sms == ''){
 
-					$data['sim1'] = "Something went wrong. Please contact developer";
+				// 	$data['sim1'] = "Something went wrong. Please contact developer";
 
-				}elseif ($send_sms == 0) {
+				// }elseif ($send_sms == 0) {
 
-					$data['sim1'] = "SMS sent successfully!";
+				// 	$data['sim1'] = "SMS sent successfully!";
 
-				}else{
-					$data['sim1'] = "SMS not sent.";
-				}
+				// }else{
+				// 	$data['sim1'] = "SMS not sent.";
+				// }
 
-				if($send_sms1 == ''){
+				// if($send_sms1 == ''){
 
-					$data['sim2'] = "Something went wrong. Please contact developer";
+				// 	$data['sim2'] = "Something went wrong. Please contact developer";
 
-				}elseif ($send_sms1 == 0) {
+				// }elseif ($send_sms1 == 0) {
 
-					$data['sim2'] = "SMS sent successfully!";
+				// 	$data['sim2'] = "SMS sent successfully!";
 					
-				}else{
-					$data['sim2'] = "SMS not sent.";
-				}
+				// }else{
+				// 	$data['sim2'] = "SMS not sent.";
+				// }
 			}
 
 			$data['success'] =  true;

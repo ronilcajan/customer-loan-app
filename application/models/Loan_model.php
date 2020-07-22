@@ -37,9 +37,9 @@ class Loan_model extends CI_Model {
 
     public function get_verifier(){
 
-        $this->db->select('username');
-        $this->db->from('users');
-        $this->db->where('user_type', 'Loan Officer');
+        $this->db->select('*');
+        $this->db->from('staff');
+        $this->db->where('position', 'Loan Officer');
 
         $query = $this->db->get();
 

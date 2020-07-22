@@ -9,7 +9,7 @@
     <!-- End of NavBar -->
 
     <div class="main-panel">
-
+    
     <!-- Navbar -->
     <?php $this->load->view('navigation/topbar');?>
     <!-- End Navbar -->

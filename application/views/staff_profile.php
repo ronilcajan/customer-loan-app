@@ -35,13 +35,13 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Email address</label>
-                                                        <input type="email" name="email" class="form-control">
+                                                        <input type="email" name="email" class="form-control email">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Contact Number</label>
-                                                        <input type="number" name="num" class="form-control">
+                                                        <input type="number" name="num" class="form-control num">
                                                     </div>
                                                 </div>
                                             </div>
@@ -49,19 +49,19 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Fist Name</label>
-                                                        <input type="text" name="fname" class="form-control">
+                                                        <input type="text" name="fname" class="form-control fname">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Middle Name</label>
-                                                        <input type="text" name="mname" class="form-control">
+                                                        <input type="text" name="mname" class="form-control mname">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Last Name</label>
-                                                        <input type="text" name="lname" class="form-control">
+                                                        <input type="text" name="lname" class="form-control lname">
                                                     </div>
                                                 </div>
                                             </div>
@@ -69,7 +69,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Address</label>
-                                                        <input type="text" name="address" class="form-control">
+                                                        <input type="text" name="address" class="form-control address">
                                                     </div>
                                                 </div>
                                             </div>
@@ -77,7 +77,7 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">City</label>
-                                                        <input type="text" name="city" class="form-control">
+                                                        <input type="text" name="city" class="form-control city">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -89,7 +89,7 @@
                                                 <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Postal Code</label>
-                                                        <input type="number" name="postal" class="form-control">
+                                                        <input type="number" name="postal" class="form-control postal">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
@@ -174,7 +174,7 @@
                                                     <tr class="cancel_task<?php echo $mytask['task_id'];?>" style="display: none;">
                                                         <form id="edit_task" method="POST">
                                                             <td>
-                                                                <input class="form-control task_des" type="text" name="description" value="<?php echo $mytask['description'];?>">
+                                                                <input class="form-control task_des<?php echo $mytask['task_id'];?>" type="text" name="description" value="<?php echo $mytask['description'];?>">
                                                             </td>
                                                             <td><?php echo $mytask['status'];?></td>
                                                             <td class="td-actions text-right">

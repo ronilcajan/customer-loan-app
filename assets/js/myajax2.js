@@ -526,10 +526,11 @@ $(document).on('click', '.remove_task', function(){
 		    }
 	});
 }); 
+
 // ================= Update Task ================
 $(document).on('click', '.update_task', function(){
 	var id = $(this).attr('id');
-	var description = $('.task_des').val();
+	var description = $('.task_des'+id).val();
 	
 	$.ajax({
 		url: BASE_URL+"update-task",

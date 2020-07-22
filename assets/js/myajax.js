@@ -238,21 +238,23 @@ $(document).on('click', '.approve', function(){
 						"warning"
 					);
 				}
+				// ====== SMS API is in Trial =============
+				// showNotification(
+				// 	data.sim1,
+				// 	"info",
+				// 	"success"
+				// );
 
-				showNotification(
-					data.sim1,
-					"info",
-					"success"
-				);
-
-				showNotification(
-					data.sim2,
-					"info",
-					"success"
-				);
+				// showNotification(
+				// 	data.sim2,
+				// 	"info",
+				// 	"success"
+				// );
 
 				$("#loading-screen").hide();
-
+				setTimeout(function() {
+					window.location.reload(1);
+				}, 3000);
 			}else{
 				
 				$("#loading-screen").hide();
@@ -264,47 +266,7 @@ $(document).on('click', '.approve', function(){
 				);
 			}
 
-		},
-		error: function (jqXHR, exception) {
-				$("#loading-screen").hide();
-		
-		        var msg = '';
-		        if (jqXHR.status === 0) {
-		            msg = 'Not connect.\n Verify Network.';
-		        } else if (jqXHR.status == 404) {
-		            msg = 'Requested page not found. [404].Please contact developer';
-		        } else if (jqXHR.status == 500) {
-
-		            msg = 'Email notification did not send.';
-
-		        } else if (exception === 'parsererror') {
-
-		           msg = 'Loan Approved!';
-		           msg1 = 'No internet. Notification did not send.';
-
-		        } else if (exception === 'timeout') {
-		            msg = 'Time out error.Please contact developer';
-		        } else if (exception === 'abort') {
-		            msg = 'Ajax request aborted.Please contact developer';
-		        } else {
-		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
-		        }
-		        showNotification(
-						msg,
-						"success",
-						"success"
-				);
-				showNotification(
-						msg1,
-						"info",
-						"warning"
-				);
-				
-
-		        setTimeout(function() {
-					window.location.reload(1);
-				}, 3000);
-		    }
+		}
 	});
 }); 
 // =============== Delete Borrowers ================
@@ -929,23 +891,24 @@ $(document).ready(function() {
 							"check_circle",
 							"success"
 						);
-						showNotification(
-							data.sim1,
-							"info",
-							"success"
-						);
-						showNotification(
-							data.sim2,
-							"info",
-							"success"
-						);
+						// ==== SMS API is in trial only ===
+						// showNotification(
+						// 	data.sim1,
+						// 	"info",
+						// 	"success"
+						// );
+						// showNotification(
+						// 	data.sim2,
+						// 	"info",
+						// 	"success"
+						// );
 					}
 
 					$("#loan-form")[0].reset();
 
 					setTimeout(function() {
 						window.location.reload(1);
-					}, 2000);
+					}, 3000);
 
 				}else{
 
@@ -957,47 +920,7 @@ $(document).ready(function() {
 						"danger"
 					);
 				}
-			},
-			error: function (jqXHR, exception) {
-				$("#loading-screen").hide();
-		
-		        var msg = '';
-		        if (jqXHR.status === 0) {
-		            msg = 'Not connect.\n Verify Network.';
-		        } else if (jqXHR.status == 404) {
-		            msg = 'Requested page not found. [404]';
-		        } else if (jqXHR.status == 500) {
-		            msg = 'Internal Server Error [500].';
-		        } else if (exception === 'parsererror') {
-
-		           msg = 'Email notification did not send.';
-
-		           showNotification(
-						'Loan application successfully added.',
-						"check_circle",
-						"success"
-					);
-
-		        } else if (exception === 'timeout') {
-		            msg = 'Time out error.';
-		        } else if (exception === 'abort') {
-		            msg = 'Ajax request aborted.';
-		        } else {
-		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
-		        }
-		        showNotification(
-						msg,
-						"info",
-						"warning"
-				);
-				
-
-		        setTimeout(function() {
-					window.location.reload(1);
-				}, 5000);
-		    },
-
-		
+			}
 		});
 	}else{
 		showNotification(

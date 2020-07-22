@@ -402,7 +402,7 @@ class Claims_controller extends CI_Controller {
 	public function remove_staff(){
 		$result = $this->claims_model->remove_staff($this->input->post('username'));
 		if($result){
-			echo "Loan remove";
+			echo "User profile remove!";
 		}else{
 			echo "False";
 		}

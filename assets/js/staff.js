@@ -78,8 +78,25 @@ $(document).on('click','.add_staff', function(){
 
 $(document).ready(function(){
 	$('#btn_create_staff').on('click', function(){
-		var formdata = new FormData(document.getElementById("create_staff"));
+		var formdata 	= new FormData(document.getElementById("create_staff"));
+		var email 		= $('.email').val();
+		var num 		= $('.num').val();
+		var fname 		= $('.fname').val();
+		var mname 		= $('.mname').val();
+		var lname		= $('.lname').val();
+		var address 	= $('.address').val();
+		var city 		= $('.city').val();
+		var postal		= $('.postal').val();
 
+		if(	email.trim() != '' && 
+			num.trim() != '' && 
+			fname.trim() != '' && 
+			mname.trim() != '' &&
+			lname.trim() != '' &&
+			address.trim() != '' &&
+			city.trim() != '' &&
+			postal.trim() != ''
+		){
 		$.ajax({
 			type: "POST",
 				url: BASE_URL+"create-staff",
@@ -147,7 +164,15 @@ $(document).ready(function(){
 				}, 3000);
 		    }
 
+
 		});
+		}else{
+			showNotification(
+				'Please complete your profile details!',
+				"info",
+				"warning"
+			);
+		}
 
 		return false;
 

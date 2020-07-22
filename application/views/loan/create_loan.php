@@ -99,19 +99,22 @@
                                                                         <option disabled selected>Choose collector...</option>
                                                                         <?php foreach($collector as $key => $collect) { 
                                                                             if(!empty($collect)){  ?>
-                                                                            <option value="<?php echo $collect['username'];?>"><?php echo $collect['firstname'].' '.$collect['middlename'].' '.$collect['lastname'];?> </option>
+                                                                            <option value="<?php echo $collect['username'];?>"><?php echo $collect['firstname'];?> </option>
                                                                         <?php }} ?>
                                                                     </select>
                                                                 </div>
                                                             </div>
+
                                                             <div class="col-md-2">
                                                                 <div class="form-group">
                                                                     <select id="inputState" class="form-control verifier">
                                                                         <option disabled selected>Verified by...</option>
                                                                         <?php 
                                                                         foreach($verifier as $key => $verified) { ?>
-                                                                            <option value="<?php echo $verified['username'];?> "><?php echo $verified['username'];?></option>
-                                                                        <?php } ?>
+
+                                                                           <?php if(!empty($verified)){  ?>
+                                                                            <option value="<?php echo $verified['username'];?> "><?php echo $verified['firstname'];?></option>
+                                                                        <?php }} ?>
                                                                     </select>
                                                                 </div>
                                                             </div>
