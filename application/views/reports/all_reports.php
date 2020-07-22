@@ -164,7 +164,7 @@
                                                         <td><?php echo $all['firstname'].' '.$all['middlename'].' '.$all['lastname'];?></td>
                                                         <td><?php echo $all['amount'];?></td>
                                                         <td><?php echo $all['date'];?></td>
-                                                        <td><?php echo $all['collected_by'];?></td>
+                                                        <td><?php echo $all['collector'];?></td> 
                                                         <td><?php echo $all['notes'];?></td>
                                                     </tr>
                                                    <?php } }?>
