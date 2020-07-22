@@ -158,6 +158,10 @@ class Loan extends CI_Controller {
     public function insert_loan(){
 
 		$validator = array('success' => false, 'messages' => array() , 'email' => false, 'sim_1' => false, 'sim_2' => false, 'sim1' => array(), 'sim2' => array());
+		
+		$loan_data = $this->input->post();
+		$comaker_data = $this->input->post();
+
 		$full_name = $this->input->post('full_name');
 		$email = $this->input->post('email');
 		$amount = $this->input->post('loan_amount');
@@ -169,14 +173,13 @@ class Loan extends CI_Controller {
 		$sim2 = $this->input->post('sim2');
 		$account_no = $this->input->post('account_no');
 		
-		$data = $this->input->post();
-		$data1 = $this->input->post();
+		
 
-		$insert_data = $this->loan_model->insert_loan($data);
+		$insert_data = $this->loan_model->insert_loan($loan_data);
 
 		if($insert_data){
 
-			$this->loan_model->insert_co_maker($data1);
+			$this->loan_model->insert_co_maker($comaker_data);
 
 			if($email_notif == 'yes'){
 				if(filter_var($email, FILTER_VALIDATE_EMAIL)){
