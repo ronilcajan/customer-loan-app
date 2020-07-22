@@ -23,7 +23,7 @@
                                         </div>
                                         <?php if($loan['loan_stats'] == 'Paid'){?>
                                             <div class="col-md-2 text-right">
-                                                <button class="btn btn-outline-primary btn-round pull-right btn-sm" rel="tooltip" title="Pay loan" data-target="#payment-modal" data-toggle="modal" disabled=""><i class="material-icons">monetization_on</i> Pay Loan</button>                 
+                                                <button class="btn btn-outline-primary btn-round pull-right btn-sm" data-target="#payment-modal" data-toggle="modal" disabled=""><i class="material-icons">monetization_on</i> Pay Loan</button>                 
                                             </div>
 
                                             <div class="col-md-1 text-right">
@@ -32,7 +32,7 @@
 
                                          <?php }else{?>
                                             <div class="col-md-2 text-right">
-                                                <button class="btn btn-outline-primary btn-round pull-right btn-sm" rel="tooltip" title="Pay loan" data-target="#payment-modal" data-toggle="modal"><i class="material-icons">monetization_on</i> Pay Loan</button>                 
+                                                <button class="btn btn-outline-primary btn-round pull-right btn-sm" data-target="#payment-modal" data-toggle="modal"><i class="material-icons">monetization_on</i> Pay Loan</button>                 
                                             </div>
 
                                             <div class="col-md-1 text-right">
