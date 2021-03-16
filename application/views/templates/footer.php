@@ -34,7 +34,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
 <div>
     <!--   Core JS Files   -->
     <!-- my ajax here -->
@@ -42,12 +41,6 @@
         var BASE_URL = "<?php echo base_url();?>";
     </script>
     
-=======
-dsds
-<div>
-    <!--   Core JS Files   -->
-       
->>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
     <script src="<?php echo base_url();?>assets/js/core/jquery.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/core/jquery-migrate-1.2.1.js"></script>
     <script src="<?php echo base_url();?>assets/js/plugins/jquery-ui.min.js"></script>
@@ -62,11 +55,7 @@ dsds
 
     <?php $site = $_SERVER['REQUEST_URI'];?>
     <?php $site1 = 'reports';?>
-<<<<<<< HEAD
     <?php if(strpos($site, $site1) || strpos($site, 'promissory')): ?>
-=======
-    <?if(strpos($site, $site1) || strpos($site, 'promissory')){?>
->>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
         <script src="<?php echo base_url();?>assets/js/plugins/jszip.min.js"></script>
         <script src="<?php echo base_url();?>assets/js/plugins/dataTables.buttons.min.js"></script>
         <script src="<?php echo base_url();?>assets/js/plugins/pdfmake.min.js"></script>
@@ -75,11 +64,7 @@ dsds
         <script src="<?php echo base_url();?>assets/js/plugins/buttons.print.min.js"></script>
         <script src="<?php echo base_url();?>assets/js/plugins/buttons.flash.min.js"></script>
         <script src="<?php echo base_url();?>assets/js/plugins/jQuery.print.js"></script>
-<<<<<<< HEAD
     <?php endif ?>
-=======
-    <?php } ?>
->>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
     <script src="<?php echo base_url();?>assets/js/core/core.js"></script>
     <!-- Library for adding dinamically elements -->
     <script src="<?php echo base_url();?>assets/js/plugins/arrive.min.js"></script>
@@ -91,14 +76,6 @@ dsds
     <script src="<?php echo base_url();?>assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="<?php echo base_url();?>assets/js/material-dashboard.js?v=2.1.1"></script>
-<<<<<<< HEAD
-=======
-
-    <!-- my ajax here -->
-    <script type="text/javascript"> 
-        var BASE_URL = "<?php echo base_url();?>";
-    </script>
->>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
     <script src="<?php echo base_url();?>assets/js/myscript.js"></script>
     <script src="<?php echo base_url();?>assets/js/myajax.js"></script>
     <script src="<?php echo base_url();?>assets/js/myajax2.js"></script>
