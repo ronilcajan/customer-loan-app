@@ -34,71 +34,23 @@ $(document).ready(function() {
 			        $("#loading-screen").show();
 			    },
 				success: function(response) {
-<<<<<<< HEAD
 					$("#loading-screen").hide();
 					if (response.success == true) {
 						
 						window.location = response.messages;
 						
 					} else {
-=======
-					if (response.success == true) {
-						
-						window.location = response.messages;
-					} else {
-						$("#loading-screen").hide();
->>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
 						
 						showNotification(
 							response.messages,
 							"error",
 							"danger"
 						);
-<<<<<<< HEAD
-
-=======
->>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
 						$("i.usr-error-icon").addClass("text-danger");
 						$("i.psw-error-icon").addClass("text-danger");
 
 					}
-<<<<<<< HEAD
 				}
-=======
-				},
-				error: function (jqXHR, exception) {
-				$("#loading-screen").hide();
-		
-		        var msg = '';
-		        if (jqXHR.status === 0) {
-		            msg = 'Not connect.\n Verify Network.';
-		        } else if (jqXHR.status == 404) {
-		            msg = 'Requested page not found. [404].Please contact developer';
-		        } else if (jqXHR.status == 500) {
-		            msg = 'Internal Server Error [500].';
-		        } else if (exception === 'parsererror') {
-
-		           msg = 'parsererror. Please contact developer';
-
-		        } else if (exception === 'timeout') {
-		            msg = 'Time out error.Please contact developer';
-		        } else if (exception === 'abort') {
-		            msg = 'Ajax request aborted.Please contact developer';
-		        } else {
-		            msg = 'Uncaught Error.\n' + jqXHR.responseText;
-		        }
-		        showNotification(
-						msg,
-						"info",
-						"warning"
-				);
-				
-
-		        setTimeout(function() {
-					window.location.reload(1);
-				}, 5000);
-		    }
->>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
 
 			});
 			return false;

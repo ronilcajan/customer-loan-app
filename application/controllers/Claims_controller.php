@@ -8,11 +8,7 @@ class Claims_controller extends CI_Controller {
 	public function index(){
 
 		if($this->session->userdata('logged_in')){
-<<<<<<< HEAD
 			redirect('dashboard');
-=======
-			redirect('claims_controller/dashboard');
->>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
 		}
 
 		$title['title'] = "RFSC - Login";
@@ -58,10 +54,6 @@ class Claims_controller extends CI_Controller {
 				$validator['success'] = true;
 				$validator['messages'] = 'dashboard';					
 			}
-<<<<<<< HEAD
-
-=======
->>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
 		}else{
 
 			$validator['success'] = false;
@@ -72,10 +64,6 @@ class Claims_controller extends CI_Controller {
 		
 	}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
 	public function error404(){
 
 		$this->load->view('templates/header');
