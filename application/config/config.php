@@ -23,19 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-<<<<<<< HEAD
 $config['base_url'] = 'http://localhost/loanapp';
 // ======= dynamic base_url(folder name doesnt mattaer) ===========
 // $config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
 // $config['base_url'] .= "://".$_SERVER['HTTP_HOST'];
 // $config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
-=======
-// $config['base_url'] = 'http://localhost/claims-loan-system';
-// ======= dynamic base_url(folder name doesnt mattaer) ===========
-$config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
-$config['base_url'] .= "://".$_SERVER['HTTP_HOST'];
-$config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
->>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
 
 /*
 |--------------------------------------------------------------------------
@@ -47,11 +39,7 @@ $config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER
 | variable so that it is blank.
 |
 */
-<<<<<<< HEAD
 $config['index_page'] = '';
-=======
-$config['index_page'] = 'index.php';
->>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
 
 /*
 |--------------------------------------------------------------------------
