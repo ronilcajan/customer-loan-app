@@ -134,7 +134,11 @@
                             </div>
                         </div>
 
+<<<<<<< HEAD
                         <?php }else{ ?>
+=======
+                        <?}else{?>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                             <div class="row"> 
                                 <div class="col-md-8">
                                     <button class="btn btn-primary btn-round btn-sm" data-target="#my_task" data-toggle="modal"><i class="material-icons">add_circle</i> Add Task</button>
@@ -233,7 +237,11 @@
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
                     <?php } ?>
+=======
+                    <?php }?>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
 
                     </div>
                 </div>
@@ -292,7 +300,11 @@
                                                             <div class="fileinput-new thumbnail img-raised text-center">
                                                                 <?php if(empty($staff['profile_img'])){?>
                                                                     <img class="img-fluid" src="<?php echo base_url();?>assets/images/person.png"  width="200" height="200" id="output"/>
+<<<<<<< HEAD
                                                                 <?php }else{ ?>
+=======
+                                                                <?}else{?>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                                     <img class="img-fluid" src="<?php echo base_url().'uploads/'.$staff['profile_img'];?>" id="output"/>
                                                                 <?php } ?> 
                                                             </div>
@@ -313,20 +325,32 @@
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">First Name</label>
+<<<<<<< HEAD
                                                                 <input type="text" class="form-control" name="fname" value="<?= !empty($staff['firstname']) ? $staff['firstname'] : null; ?>" required>
+=======
+                                                                <input type="text" class="form-control" name="fname" value="<?php echo $staff['firstname'];?>" required>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Middle Name</label>
                                                                 <input type="text" class="form-control" name=
+<<<<<<< HEAD
                                                                 "mname" value="<?= !empty($staff['middlename']) ? $staff['middlename'] : null; ?>" required>
+=======
+                                                                "mname" value="<?php echo $staff['middlename'];?>" required>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Last Name</label>
+<<<<<<< HEAD
                                                                 <input type="text" class="form-control" name="lname" value="<?= !empty($staff['lastname']) ? $staff['lastname'] : null; ?>"  required>
+=======
+                                                                <input type="text" class="form-control" name="lname" value="<?php echo $staff['lastname'];?>"  required>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                             </div>
                                                         </div>
                                                     </div>
@@ -334,7 +358,11 @@
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Contact Number</label>
+<<<<<<< HEAD
                                                                 <input type="number" class="form-control" name="num" value="<?= !empty($staff['number']) ? $staff['number'] : null; ?>" required>
+=======
+                                                                <input type="number" class="form-control" name="num" value="<?php echo $staff['number'];?>" required>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                             </div>
                                                         </div>
                                                     </div>
@@ -343,7 +371,11 @@
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Email Address</label>
                                                                 <input type="email" class="form-control" name=
+<<<<<<< HEAD
                                                                 "email" value="<?= !empty($staff['email']) ? $staff['email'] : null; ?>" required>
+=======
+                                                                "email" value="<?php echo $staff['email'];?>" required>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                             </div>
                                                         </div>
                                                     </div>
@@ -351,7 +383,12 @@
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Address</label>
+<<<<<<< HEAD
                                                                 <input type="text" class="form-control" name="address" value="<?= !empty($staff['address']) ? $staff['address'] : null; ?>" required>
+=======
+                                                                <input type="text" class="form-control" name=
+                                                                "address" value="<?php echo $staff['address'];?>" required>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                             </div>
                                                         </div>
                                                     </div>
@@ -364,7 +401,11 @@
                                                         <label>Additional Info(Optional)</label>
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating">Write something about your self.. </label>
+<<<<<<< HEAD
                                                             <textarea class="form-control" name="bio" rows="5"><?= !empty($staff['bio']) ? $staff['bio'] : null; ?></textarea>
+=======
+                                                            <textarea class="form-control" name="bio" rows="5"><?php echo $staff['bio'];?></textarea>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                         </div>
                                                     </div>
                                                 </div>

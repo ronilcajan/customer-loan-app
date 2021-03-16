@@ -79,9 +79,15 @@
                                                             <div class="col-md-4">
                                                              <?php   if(empty($newC['profile_img'])){ ?>
                                                                 <img class="border-round" src="<?php echo base_url().'assets/images/person.png' ?>" width="150" height="150"/>
+<<<<<<< HEAD
                                                             <?php }else{ ?>
                                                                 <img class="border-round" src="<?php echo base_url().'uploads/'.$newC['profile_img'];?>" width="150" height="150"/>
                                                             <?php } ?>
+=======
+                                                            <?}else{?>
+                                                                <img class="border-round" src="<?php echo base_url().'uploads/'.$newC['profile_img'];?>" width="150" height="150"/>
+                                                            <?}?>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <p><strong>Name:</strong> 

@@ -57,9 +57,15 @@
                                                 <div class="fileinput-new thumbnail img-raised" style="width: 250px;">
                                                 <?php   if(empty($loan['profile_img'])){ ?>
                                                             <img class="border-round" src="<?php echo base_url().'assets/images/person.png' ?>" width="250"/>
+<<<<<<< HEAD
                                                         <?php }else{ ?>
                                                             <img class="img-fluid" width="250" id="output" src="<?php echo base_url().'uploads/'.$loan['profile_img']; ?>" alt="client-img"  />
                                                         <?php } ?>
+=======
+                                                        <?}else{?>
+                                                            <img class="img-fluid" width="250" id="output" src="<?php echo base_url().'uploads/'.$loan['profile_img']; ?>" alt="client-img"  />
+                                                        <?}?>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                 </div>
                                             </div>
 

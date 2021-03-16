@@ -79,7 +79,11 @@
                                                 <p class="card-description font-weight-bold">
                                                    <?php if(!empty($business['bname'])){ ?>
                                                       <?php echo $business['bname'];?>
+<<<<<<< HEAD
                                                     <?php }else{?>
+=======
+                                                    <?}else{?>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                     No business name
                                                 <?php } ?>
                                                 </p>
@@ -91,7 +95,11 @@
                                                 <p class="card-description font-weight-bold">
                                                    <?php if(!empty($business['baddress'])){ ?>
                                                       <?php echo $business['baddress'];?>
+<<<<<<< HEAD
                                                     <?php }else{?>
+=======
+                                                    <?}else{?>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                     No business address
                                                     <?php } ?>
                                                 </p>
@@ -136,7 +144,11 @@
                                                             <td><?php echo $value['loan_stat'];?></td>
                                                             <td><?php $time = $value['due_date']; echo date('M. d, Y', strtotime($time));?></td>
                                                         </tr>
+<<<<<<< HEAD
                                                     <?php }} ?>
+=======
+                                                    <?}}?>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                     
                                                 </tbody>
                                                 
@@ -167,7 +179,11 @@
                                                             <td><?php echo $cmaker['cedula_no'];?></td>
                                                             <td><?php echo $cmaker['address_issued'];?></td>
                                                             <td><?php $time = $cmaker['date_issued']; echo date('M. d, Y', strtotime($time));?></td>
+<<<<<<< HEAD
                                                     <?php } } ?>
+=======
+                                                    <?php } }?>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                     
                                                 </tbody>
                                                 
@@ -195,9 +211,15 @@
                                                                             <div class="fileinput-new thumbnail img-raised text-center">
                                                                                  <?php   if(empty($loan['profile_img'])){ ?>
                                                                                         <img class="border-round" src="<?php echo base_url().'assets/images/person.png' ?>" width="250"/>
+<<<<<<< HEAD
                                                                                     <?php }else{ ?>
                                                                                         <img class="img-fluid" width="250" id="output" src="<?php echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img"  />
                                                                                     <?php } ?>
+=======
+                                                                                    <?}else{?>
+                                                                                        <img class="img-fluid" width="250" id="output" src="<?php echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img"  />
+                                                                                    <?}?>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                                                <!--  <img class="img-fluid" id="output" src="<?php echo base_url().'uploads/'.$profile['prof-img']; ?>" alt="client-img" /> -->
                                                                             </div>
                                                                             <div class="input-group mt-2">

@@ -100,7 +100,11 @@
 								</thead>
 								<tbody>
 
+<<<<<<< HEAD
 								<?php
+=======
+								<?
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
 								if(!empty($due)){?>
 									<?php foreach ($due as $key => $d) {?>
 									<tr>
@@ -114,7 +118,11 @@
 											<?php echo $d['due_date'];?>
 										</td>
 									</tr>
+<<<<<<< HEAD
 								<?php } }else{ ?>
+=======
+								<?php } }else{?>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
 									<tr>
 										<td colspan="3" class="text-center">No data available</td>
 									</tr>

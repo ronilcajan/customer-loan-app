@@ -54,8 +54,13 @@
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Account no.</label>
+<<<<<<< HEAD
                                                                 <?php if($acc_no == 1000){ ?>
                                                                 <input type="number" class="form-control account_no" name="account_no" value="<?php echo $acc_no + 10000;?>" readonly>
+=======
+                                                                <?php if($acc_no == 1000){?>
+                                                                <input type="number" class="form-control account_no" name="account_no" value="<?php echo $acc_no['account_no'] + 10000;?>" readonly>
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
                                                                 <?php }else{ ?>
                                                                 <input type="number" class="form-control account_no" name="account_no" value="<?php echo $acc_no['account_no'] + 1;?>" readonly>
                                                                 <?php } ?>

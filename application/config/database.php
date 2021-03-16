@@ -78,7 +78,11 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
+<<<<<<< HEAD
 	'database' => 'loanapp',
+=======
+	'database' => 'claims-loan-system',
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

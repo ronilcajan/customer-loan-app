@@ -26,7 +26,10 @@ class Borrowers extends CI_Controller {
 			$this->load->view('templates/footer');
 
 		}else{
+<<<<<<< HEAD
 			
+=======
+>>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
 			$clients['acc_no'] = array('account_no' => $account_no['account_no']);
 			
 			$this->load->view('templates/header',$title);
