@@ -145,7 +145,7 @@
                                                 <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm remove_task" id="<?php echo $mytask['task_id'];?>">
                                                 <i class="material-icons">close</i>
                                                 </button></td>
-                                            <?}else{?>
+                                            <?php }else{?>
                                             <td class="td-actions text-right">
                                             <button type="button" rel="tooltip" title="Done Task" class="btn btn-success btn-link btn-sm done_task" id="<?php echo $mytask['task_id'];?>">
                                                 <i class="material-icons">done_all</i>

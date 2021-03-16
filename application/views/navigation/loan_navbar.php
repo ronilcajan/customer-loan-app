@@ -8,11 +8,7 @@
         <li class="nav-item">
             <?php if(strpos($site, 'loan/create-loan')){ ?>
             <a class="btn btn-primary btn-round btn-sm" rel="tooltip" title="Create Loan Here" href="<?php echo base_url();?>loan/create-loan"><i class="material-icons">add_box</i> Create New Loan</a>
-<<<<<<< HEAD
             <?php }else{ ?> 
-=======
-            <?}else{?> 
->>>>>>> 8dbaf0efed8ece514de3dc39ecdf4634cc87280a
             <a class="btn btn-outline-primary btn-round btn-sm" rel="tooltip" title="Create Loan Here" href="<?php echo base_url();?>loan/create-loan"><i class="material-icons">add_box</i> Create New Loan</a> 
             <?php } ?>
         </li>
