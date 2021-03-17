@@ -142,7 +142,11 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <?php $this->load->view('templates/change_pass') ?>
 	<?php $this->load->view('templates/footer') ?>
 </body>
+=======
+</div>
+>>>>>>> c68494c93961339b669e874124410c2290e2a0b8
   

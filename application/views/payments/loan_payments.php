@@ -56,7 +56,7 @@
 
                                             <div class="col-md-4 card-loan">
                                                 <div class="fileinput-new thumbnail img-raised" style="width: 250px;">
-                                                <?php   if(empty($loan['profile_img'])){ ?>
+                                                <?php if(empty($loan['profile_img'])){ ?>
                                                             <img class="border-round" src="<?php echo base_url().'assets/images/person.png' ?>" width="250"/>
                                                         <?php }else{ ?>
                                                             <img class="img-fluid" width="250" id="output" src="<?php echo base_url().'uploads/'.$loan['profile_img']; ?>" alt="client-img"  />

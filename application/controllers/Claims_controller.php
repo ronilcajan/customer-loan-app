@@ -81,7 +81,6 @@ class Claims_controller extends CI_Controller {
 		$title['title'] = "Dashboard";
 
 		$this->check_auth('dashboard');
-
 		$result['clients'] = $this->claims_model->get_num_borrowers();
 		$result['payments'] = $this->claims_model->get_sum_payments();
 		$result['active'] = $this->claims_model->get_actv_borrowers();
