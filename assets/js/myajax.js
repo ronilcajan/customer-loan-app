@@ -30,9 +30,6 @@ $(document).ready(function() {
 				},
 				dataType: "json",
 				cache: false,
-				beforeSend: function() {
-			        $("#loading-screen").show();
-			    },
 				success: function(response) {
 					$("#loading-screen").hide();
 					if (response.success == true) {
@@ -93,9 +90,6 @@ $(document).ready(function() {
 				processData: false,
 				contentType: false,
 				cache: false,
-				beforeSend: function() {
-			        $("#loading-screen").show();
-			    },
 				success: function(response) {
 					if (response.success == true) {
 						$("#form-register")[0].reset();
@@ -188,9 +182,6 @@ $(document).on('click', '.approve', function(){
 			amount:amount
 		},
 		dataType: "json",
-		beforeSend: function() {
-			$("#loading-screen").show();
-		},
 		success: function(data){
 			if(data.success){
 
@@ -250,9 +241,6 @@ $(document).on('click', '.delete', function(){
 		method: 'POST',
 		data:{
 			id:id
-		},
-		beforeSend: function() {
-			$("#loading-screen").show();
 		},
 		success: function(data){
 			if(data!="False"){
@@ -326,9 +314,6 @@ $(document).on('click', '.reject', function(){
 			id:id,
 			reason:reason
 		},
-		beforeSend: function() {
-			$("#loading-screen").show();
-		},
 		success: function(data){
 			if(data!="False"){
 
@@ -397,9 +382,6 @@ $(document).on('click', '.re-apply', function(){
 		data:{
 			id:id
 		},
-		beforeSend: function() {
-			$("#loading-screen").show();
-		},
 		success: function(data){
 			if(data!="False"){
 				$('.modal').modal('hide');
@@ -466,9 +448,6 @@ $(document).on('click', '.remove', function(){
 		method: 'POST',
 		data:{
 			id:id
-		},
-		beforeSend: function() {
-			$("#loading-screen").show();
 		},
 		success: function(data){
 			if(data!="False"){
@@ -537,9 +516,6 @@ $(document).on('click', '.remove-rejected', function(){
 		data:{
 			id:id
 		},
-		beforeSend: function() {
-			$("#loading-screen").show();
-		},
 		success: function(data){
 			if(data!="False"){
 				$('.modal').modal('hide');
@@ -607,9 +583,6 @@ $(document).on('click', '.cash-release', function(){
 		method: 'POST',
 		data:{
 			id:id
-		},
-		beforeSend: function() {
-			$("#loading-screen").show();
 		},
 		success: function(data){
 			if(data!="False"){
@@ -834,9 +807,6 @@ $(document).ready(function() {
 				adrs_issued : adrs_issued
 			},
 			cache: false,
-			beforeSend: function() {
-				$("#loading-screen").show();
-			},
 
 			success: function(response){
 				if(response.success == true){

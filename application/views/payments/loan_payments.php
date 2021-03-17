@@ -1,4 +1,5 @@
 <body class="">
+<?php $this->load->view('loading_screen');?>
     <div class="wrapper ">
 
         <!-- Top NavBar -->

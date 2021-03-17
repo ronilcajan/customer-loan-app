@@ -13,9 +13,6 @@ $(document).ready(function() {
 				},
 				dataType: "json",
 				cache: false,
-				beforeSend: function() {
-			        $("#loading-screen").show();
-			    },
 				success: function(response) {
 					if (response.success == true) {
 
@@ -97,9 +94,6 @@ $(document).on('click', '.pay', function(){
 		},
 		dataType: "json",
 		cache: false,
-		beforeSend: function() {
-	        $("#loading-screen").show();
-	    },
 		success: function(response) {
 			if (response.success == true) {
 
@@ -167,9 +161,6 @@ $(document).on('click', '.pay-penalty', function(){
 		},
 		dataType: "json",
 		cache: false,
-		beforeSend: function() {
-	        $("#loading-screen").show();
-	    },
 		success: function(response) {
 			if (response.success == true) {
 
@@ -235,9 +226,6 @@ $(document).ready(function(){
 				processData: false,
 				contentType: false,
 				cache: false,
-				beforeSend: function() {
-			        $("#loading-screen").show();
-			    },
 				success: function(response) {
 					if (response.success == true) {
 						$("#edit_profile").modal('hide');
@@ -314,9 +302,6 @@ $(document).ready(function(){
 				processData: false,
 				contentType: false,
 				cache: false,
-				beforeSend: function() {
-			        $("#loading-screen").show();
-			    },
 				success: function(response) {
 					if (response.success == true) {
 						$("#my_task").modal('hide');
@@ -390,9 +375,6 @@ $(document).on('click', '.done_task', function(){
 			id:id
 		},
 		dataType: "json",
-		beforeSend: function() {
-			$("#loading-screen").show();
-		},
 		success: function(data){
 			if(data.success){
 				$("#loading-screen").hide();
@@ -463,9 +445,6 @@ $(document).on('click', '.remove_task', function(){
 			id:id
 		},
 		dataType: "json",
-		beforeSend: function() {
-			$("#loading-screen").show();
-		},
 		success: function(data){
 			if(data.success){
 				$("#loading-screen").hide();
@@ -540,9 +519,6 @@ $(document).on('click', '.update_task', function(){
 			description:description
 		},
 		dataType: "json",
-		beforeSend: function() {
-			$("#loading-screen").show();
-		},
 		success: function(data){
 			if(data.success){
 				$("#loading-screen").hide();
@@ -582,9 +558,6 @@ $(document).on('click', '.fully_paid', function(){
 			loan_no:loan_no
 		},
 		dataType: "json",
-		beforeSend: function() {
-			$("#loading-screen").show();
-		},
 		success: function(data){
 			if(data.success){
 				$("#loading-screen").hide();
@@ -677,9 +650,6 @@ $(document).on('click', '.change_pass', function(){
 			processData: false,
 			contentType: false,
 			cache: false,
-			beforeSend: function() {
-				$("#loading-screen").show();
-			},
 			success: function(data){
 				if(data.success){
 					$("#loading-screen").hide();
