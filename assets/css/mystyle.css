@@ -1,0 +1,154 @@
+.login-div {
+	height: 80%;
+	width: 60%;
+	margin: 10% auto 0 auto;
+}
+
+.forgot-password {
+	font-size: 12px;
+}
+
+@media screen and (max-width: 1150px) {
+	.remember-me {
+		margin-left: 7%;
+	}
+}
+@media screen and (max-width: 860px) {
+	.login-div {
+		height: 100%;
+		width: 40%;
+		margin: 15% auto;
+	}
+}
+@media screen and (max-width: 630px) {
+	.login-div {
+		height: 100%;
+		width: 50%;
+		margin: 20% auto;
+	}
+}
+@media screen and (max-width: 455px) {
+	.login-div {
+		height: 100%;
+		width: 100%;
+		margin: 10% auto;
+	}
+}
+
+/*========= Input textbox for Birthdate modified =============*/
+input[type="date"]:required:invalid::-webkit-datetime-edit {
+	color: transparent;
+}
+input[type="date"]:focus:invalid::-webkit-datetime-edit {
+	color: black !important;
+}
+/*  ===Remove DataTable scrollbar */
+div#new_client_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer,
+div#loan_clients_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer,
+div#approved_clients_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer,
+div#rejected_clients_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer,
+div#clients_table_wrapper.dataTables_wrapper.dt-bootstrap4.no-footer {
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+
+/*  ==========Loading Screen============  */
+#loading-container{
+	position: absolute;
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+	background-color: white;
+	z-index: 9999;
+}
+#loading-screen{
+	position: absolute;
+	left: 47%;
+	top: 45%;
+	z-index: 9999;
+	text-align: center;
+	
+}
+
+.loader {
+	border: 16px solid #f3f3f3; /* Light grey */
+	border-top: 16px solid #942dae; /* Blue */
+	border-radius: 50%;
+	width: 120px;
+	height: 120px;
+	animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+  }
+
+
+.fa-toggle-off{
+	font-size: 25px;
+	cursor: pointer;
+	user-select: none;
+	color: grey;
+	transition: 1s all;
+}
+
+.fa-toggle-on{
+  	font-size: 25px;
+  	cursor: pointer;
+  	user-select: none;
+  	color: purple;
+  	transition: 1s all;
+}
+
+.calendar{
+border: 1px solid #9654AD;
+border-collapse:collapse;
+text-align: center;
+margin-left: 50px;
+}
+td.cal-td{
+width: 50px;
+height: 50px;
+text-align: center;
+border: 1px solid #e2e0e0;
+font-size: 18px;
+font-weight: bold;
+}
+th.cal-th{
+height: 50px;
+padding-bottom: 8px;
+background:#25BAE4;
+font-size: 20px;
+}
+.prev_sign a, .next_sign a{
+color:white;
+text-decoration: none;
+}
+tr.week_name{
+font-size: 16px;
+font-weight:400;
+color:red;
+width: 10px;
+background-color: #efe8e8;
+}
+.highlight{
+background-color:#9654AD;
+color:white;
+height: 45px;
+padding-top: 13px;
+padding-bottom: 7px;
+}
+
+
+input.text-p{
+    font-size: 12px; 
+    border: 1px solid black; 
+    border-top: none; 
+    border-left: none;
+    border-right: none;
+}
+.l-font{
+	font-size: 12px;
+}
